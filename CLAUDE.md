@@ -63,6 +63,19 @@ remotion-shorts/
 └── output/<ch>/<n>.mp4       # 결재된 최종본
 ```
 
+## 다른 컴퓨터에서 세팅 (clone 후)
+
+레포엔 **코드만** 있고 미디어/바이너리(`media/*.mp4`, `node_modules/`, `whisper.cpp/`)는 제외돼 있다. 각자 환경에서 받거나 자동 생성된다.
+
+1. `npm install` — 의존성(Remotion 등) 설치.
+2. **(자막 쓸 때만)** 첫 `node tools/transcribe.mjs …` 실행 시 `whisper.cpp/` 가 **그 OS에 맞게 자동 빌드 + 모델 자동 다운로드**된다 (이후 캐시). 빌드 전제조건:
+   - macOS: `xcode-select --install`
+   - Linux: `cmake`, `build-essential`
+   - 모델/버전 고정은 `--model`(기본 base) / `WHISPER_VERSION` 환경변수.
+3. 원본 영상을 `media/` 에 넣고(또는 `node tools/prep-media.mjs` 로 임포트) `node tools/new-video.mjs <channel> <number> --media <slug> …` 로 스캐폴드.
+
+> `whisper.cpp/` 를 깃에 올리지 않는 이유: 플랫폼 종속 **컴파일 바이너리**(다른 OS에선 실행 불가) + 모델 파일이 GitHub 100MB 제한 초과. `node_modules` 처럼 환경마다 새로 만드는 게 정상.
+
 ## 현재 스코프 / 다국어 / 자막 표시 규칙
 
 - **인풋:** 음악 또는 영화/드라마 클립 (mp4). **컷편집 없음.** **TTS 안 씀.**
