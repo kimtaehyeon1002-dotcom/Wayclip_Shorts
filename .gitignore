@@ -1,0 +1,8 @@
+node_modules/
+out/
+output/
+videos/*/*/source.mp4
+media/*.mp4
+.DS_Store
+*.log
+whisper.cpp/

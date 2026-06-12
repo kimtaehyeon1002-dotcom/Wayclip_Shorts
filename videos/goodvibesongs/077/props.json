@@ -1,0 +1,29 @@
+{
+  "title": "ただ声一つ",
+  "artist": "ロクデナシ",
+  "topCaption": "美声で**歌うジャイアン**😳",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "captions": [
+    {
+      "start": 6.4,
+      "end": 9.55,
+      "original": "今日だって笑う 笑う",
+      "translation": "今日だって笑う 笑う"
+    },
+    {
+      "start": 9.6,
+      "end": 13.25,
+      "original": "泣いちゃう僕を隠すために笑う",
+      "translation": "泣いちゃう僕を隠すために笑う"
+    },
+    {
+      "start": 13.3,
+      "end": 16.95,
+      "original": "言えないことは言えないでいい",
+      "translation": "言えないことは言えないでいい"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 509
+}

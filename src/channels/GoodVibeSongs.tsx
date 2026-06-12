@@ -1,0 +1,155 @@
+import React from "react";
+import { AbsoluteFill } from "remotion";
+import "../fonts";
+import type { GoodVibeSongsProps } from "../props";
+import { captionFont, originalFont, showOriginal, topFontJpLead } from "../lang";
+import { BackgroundVideo } from "../components/BackgroundVideo";
+import { CaptionTrack } from "../components/CaptionTrack";
+import { TopCaption } from "../components/TopCaption";
+
+// 굿바이브 — 음악 + 듀얼 자막. 검정 배경, 3-band 대칭 (상 440 / 영상 1040 / 하 440).
+// 자막: 영상 영역 세로 중앙. 위 원어(작은 이탤릭, 영어 음원만) / 아래 번역(46px/600, 흰).
+const VIDEO_TOP = 440;
+const VIDEO_H = 1040;
+
+export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
+  topCaption,
+  originalLanguage,
+  translationLanguage,
+  videoSrc,
+  captions,
+}) => {
+  return (
+    <AbsoluteFill
+      style={{ background: "#000", fontFeatureSettings: '"palt"' }}
+    >
+      {/* 상단 검정 + 멘트 */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: VIDEO_TOP,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          textAlign: "center",
+          padding: "40px 60px 60px 60px",
+          gap: 4,
+          background: "#000",
+        }}
+      >
+        <TopCaption
+          text={topCaption}
+          markup="bold"
+          strongStyle={{ fontWeight: 600, fontStyle: "normal" }}
+          lineStyle={{
+            fontFamily: topFontJpLead(translationLanguage),
+            fontSize: "55pt",
+            fontWeight: 500,
+            color: "#fff",
+            lineHeight: 1.18,
+            letterSpacing: "-0.04em",
+          }}
+        />
+      </div>
+
+      {/* 영상 영역 + vignette */}
+      <BackgroundVideo
+        src={videoSrc}
+        top={VIDEO_TOP}
+        height={VIDEO_H}
+        background="#000"
+        objectFit="cover"
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 100%)",
+            pointerEvents: "none",
+          }}
+        />
+      </BackgroundVideo>
+
+      {/* 자막 (영상 영역 위, 세로 중앙) */}
+      <CaptionTrack
+        captions={captions}
+        zoneStyle={{
+          position: "absolute",
+          top: VIDEO_TOP,
+          left: 60,
+          right: 60,
+          height: VIDEO_H,
+          pointerEvents: "none",
+        }}
+        groupStyle={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 3,
+          textAlign: "center",
+        }}
+        renderContent={(cap) => (
+          <>
+            {showOriginal(originalLanguage) && (
+              <div
+                style={{
+                  width: "100%",
+                  fontFamily: originalFont(originalLanguage),
+                  fontSize: 34,
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                  color: "rgba(255,255,255,0.82)",
+                  letterSpacing: "0.01em",
+                  lineHeight: 1.25,
+                  textShadow:
+                    "0 2px 14px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.8)",
+                  overflowWrap: "break-word",
+                  wordBreak: "keep-all",
+                }}
+              >
+                {cap.original}
+              </div>
+            )}
+            <div
+              style={{
+                width: "100%",
+                fontFamily: captionFont(translationLanguage),
+                fontSize: 46,
+                fontWeight: 600,
+                color: "#fff",
+                letterSpacing: "-0.01em",
+                lineHeight: translationLanguage === "th" ? 1.45 : 1.2,
+                textShadow:
+                  "0 3px 20px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9)",
+                overflowWrap: "break-word",
+                wordBreak: "keep-all",
+              }}
+            >
+              {cap.translation}
+            </div>
+          </>
+        )}
+      />
+
+      {/* 하단 검정 (비워둠) */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 440,
+          background: "#000",
+        }}
+      />
+    </AbsoluteFill>
+  );
+};

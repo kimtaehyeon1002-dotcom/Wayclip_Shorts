@@ -1,0 +1,35 @@
+{
+  "title": "I'm Not The Only One",
+  "artist": "Sam Smith",
+  "topCaption": "闇堕ちする前のサム・スミス\n伝説のライブ",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "captions": [
+    {
+      "start": 0.87,
+      "end": 5.0,
+      "original": "You say I'm crazy",
+      "translation": "私が おかしいって言うのね"
+    },
+    {
+      "start": 6.51,
+      "end": 11.21,
+      "original": "'Cause you don't think I know what you've done",
+      "translation": "私が何も知らないと思ってるから"
+    },
+    {
+      "start": 12.35,
+      "end": 17.33,
+      "original": "But when you call me baby",
+      "translation": "でも “ベイビー” って呼ぶたびに"
+    },
+    {
+      "start": 18.49,
+      "end": 21.6,
+      "original": "I know I'm not the only one",
+      "translation": "私だけじゃないって わかってる"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 662
+}
