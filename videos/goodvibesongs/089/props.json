@@ -1,0 +1,79 @@
+{
+  "title": "オドループ",
+  "artist": "フレデリック",
+  "topCaption": "3色ボールペンの擬人化",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 2.25,
+      "note": "플레이어 체인지 너무 잘한다",
+      "w": 482
+    },
+    {
+      "src": "comments/02.png",
+      "start": 2.25,
+      "end": 4.5,
+      "note": "춤추다가 등장하는 게 아니라 춤추면서 등장하는 게 포인트",
+      "w": 862
+    },
+    {
+      "src": "comments/03.png",
+      "start": 4.5,
+      "end": 6.75,
+      "note": "빨간 추리닝 형 주인공 될 때 압도적 실력 보여주는 진짜 강캐",
+      "w": 862
+    },
+    {
+      "src": "comments/04.png",
+      "start": 6.75,
+      "end": 9,
+      "note": "한 명도 빠지면 안 되는 우정이 느껴진다",
+      "w": 590
+    },
+    {
+      "src": "comments/05.png",
+      "start": 9,
+      "end": 11.25,
+      "note": "절대 일본인은 생각 못 할 춤사위라 좋다",
+      "w": 708
+    },
+    {
+      "src": "comments/06.png",
+      "start": 11.25,
+      "end": 13.5,
+      "note": "웃긴 거에 묻혀서 아무도 말 안 하는데 그냥 춤을 너무 잘 춘다",
+      "w": 866
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.03,
+      "end": 4.08,
+      "original": "踊ってない夜を知らない",
+      "translation": "踊ってない夜を知らない"
+    },
+    {
+      "start": 4.3,
+      "end": 7.06,
+      "original": "踊ってない夜が気に入らない",
+      "translation": "踊ってない夜が気に入らない"
+    },
+    {
+      "start": 7.28,
+      "end": 9.64,
+      "original": "踊ってない夜を知らない",
+      "translation": "踊ってない夜を知らない"
+    },
+    {
+      "start": 9.89,
+      "end": 13.28,
+      "original": "踊ってない夜が気に入らない",
+      "translation": "踊ってない夜が気に入らない"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 405
+}

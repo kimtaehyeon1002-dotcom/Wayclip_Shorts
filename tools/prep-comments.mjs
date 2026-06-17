@@ -44,6 +44,44 @@ function probeWidth(file) {
   return Number.isFinite(w) ? w : null;
 }
 
+function probeHeight(file) {
+  const out = execFileSync(
+    "ffprobe",
+    ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=height", "-of", "csv=p=0", file],
+    { encoding: "utf8" }
+  ).trim();
+  const h = parseInt(out, 10);
+  return Number.isFinite(h) ? h : null;
+}
+
+// 프사(좌상단 원형) 마스크 폭 자동 측정 — handleEnd 의 "가로 버전".
+// 유튜브 댓글 본문은 아바타 오른쪽으로 들여쓰기된 흰색 텍스트다. 본문 첫 줄에서
+// 가장 왼쪽 흰색(>thresh) x = bodyLeft 를 찾아, 마스크가 페더 번짐까지 포함해 그 앞에서
+// 끝나도록 avatarW = bodyLeft - 3*feather - margin 으로 정한다.
+// → 프사는 덮고 본문 첫 글자는 절대 안 덮는다. (눈대중 금지)
+// band: 핸들 줄(상단 ~y52)과 액션 줄(좋아요/返信, 하단)을 피해 본문 첫 줄만 스캔.
+function measureAvatarW(file, { yTop = 58, bandH = 38, thresh = 200, feather = 5, margin = 2 } = {}) {
+  const w = probeWidth(file);
+  const h = probeHeight(file);
+  if (!w || !h) return null;
+  const bh = Math.max(8, Math.min(bandH, h - yTop - 40)); // 하단 액션 줄(~40px) 제외
+  if (bh <= 0) return null;
+  const raw = execFileSync(
+    "ffmpeg",
+    ["-v", "error", "-i", file, "-vf", `crop=${w}:${bh}:0:${yTop},format=gray`, "-f", "rawvideo", "-pix_fmt", "gray", "-"],
+    { maxBuffer: 1 << 28 }
+  );
+  for (let x = 0; x < w; x++) {
+    for (let y = 0; y < bh; y++) {
+      if (raw[y * w + x] > thresh) {
+        const bodyLeft = x;
+        return Math.max(1, Math.round(bodyLeft - 3 * feather - margin));
+      }
+    }
+  }
+  return null;
+}
+
 // @핸들 끝 x좌표 자동 측정.
 // 유튜브 댓글: 닉네임=흰색, 날짜=회색. 맨 윗줄(핸들 라인)에서 아바타(x0~)를 제외한
 // 영역을 raw gray 로 덤프해 "흰색(>thresh)" 픽셀의 최대 x 를 찾는다 → 날짜(회색)는 자동 제외.
@@ -145,21 +183,28 @@ function main() {
     for (const k of ["sigma", "feather", "avatarW", "avatarH", "nickX", "nickY", "nickH"]) {
       if (e[k] != null) blurOpts[k] = e[k];
     }
+    // avatarW 미지정 → 본문 첫 글자 왼쪽에서 멈추도록 자동 측정 (handleEnd 의 가로 버전).
+    let avAuto = false;
+    if (blurOpts.avatarW == null) {
+      const aw = measureAvatarW(path.join(inDir, e.file), { feather: blurOpts.feather ?? 5 });
+      if (aw != null) { blurOpts.avatarW = aw; avAuto = true; }
+    }
     blurComment(path.join(inDir, e.file), out, blurOpts);
     const w = probeWidth(out);
     // note 는 식별용(화면 미표시) — 파일명(=한국어 번역)에서 자동. manifest 에 note 주면 우선.
     const note = e.note || path.basename(e.file, path.extname(e.file));
-    return { src: rel, start: e.start, end: e.end, note, ...(w ? { w } : {}), _he: e.handleEnd, _auto: !!e._auto };
+    return { src: rel, start: e.start, end: e.end, note, ...(w ? { w } : {}), _he: e.handleEnd, _auto: !!e._auto, _aw: blurOpts.avatarW, _avAuto: avAuto };
   });
 
-  props.comments = comments.map(({ _he, _auto, ...c }) => c);
+  props.comments = comments.map(({ _he, _auto, _aw, _avAuto, ...c }) => c);
   fs.writeFileSync(propsPath, JSON.stringify(props, null, 2) + "\n");
 
   console.log(`✓ ${comments.length}개 댓글 → videos/goodvibesongs/${number}/comments/ + props.json`);
   console.log(`  영상 ${D.toFixed(1)}s, 슬롯 ${(D / comments.length).toFixed(1)}s/개`);
   for (const c of comments) {
     const he = `handleEnd=${c._he}${c._auto ? "(auto)" : ""}`;
-    console.log(`   ${c.src}  ${c.start}s–${c.end}s  ${c.w || "?"}px  ${he}  "${c.note}"`);
+    const aw = `avatarW=${c._aw}${c._avAuto ? "(auto)" : ""}`;
+    console.log(`   ${c.src}  ${c.start}s–${c.end}s  ${c.w || "?"}px  ${he}  ${aw}  "${c.note}"`);
   }
   console.log(`\nNext: node tools/preview.mjs goodvibesongs ${number}  → http://localhost:3003/goodvibesongs`);
 }
