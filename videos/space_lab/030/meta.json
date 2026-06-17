@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "030",
+  "name": "space_lab/030",
+  "media": {
+    "slug": "peripheral-vision-speed-030",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 223
+}

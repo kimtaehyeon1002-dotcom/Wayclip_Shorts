@@ -10,16 +10,22 @@ import { WarnPill } from "../components/WarnPill";
 
 // 스페이스랩 — 정보 쇼츠. 자막 없음. 상단 헤드라인([[빨강]] + **굵게**) / 영상 contain(잘림 X) /
 // 영상 아래 빨간 깜빡 경고 / 하단 고정 CTA. 밴드 geometry 는 영상 비율에 맞춰 new-video 가 계산(layout prop).
-const NSJP = [`"${FONT.jp}"`, "sans-serif"].join(", ");
+const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const SpaceLab: React.FC<SpaceLabProps> = ({
   topCaption,
   bottomCTA,
   warnText,
+  videoNumber,
   translationLanguage,
   videoSrc,
   layout,
 }) => {
+  const numText = videoNumber
+    ? String(videoNumber).startsWith("#")
+      ? videoNumber
+      : `#${videoNumber}`
+    : "";
   return (
     <AbsoluteFill style={{ background: "#000", fontFeatureSettings: '"palt"' }}>
       {/* 상단 헤드라인 */}
@@ -43,14 +49,14 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
         <TopCaption
           text={topCaption}
           markup="redbold"
-          strongStyle={{ fontWeight: 800, fontStyle: "normal" }}
+          strongStyle={{ fontWeight: 700, fontStyle: "normal" }}
           redStyle={{ color: "#FC0200" }}
           lineStyle={{
             fontFamily: topFontNative(translationLanguage),
             fontSize: 60,
-            fontWeight: 600,
+            fontWeight: 500,
             color: "#fff",
-            lineHeight: 1.18,
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
             letterSpacing: "-0.04em",
             fontFeatureSettings: '"palt" 1',
           }}
@@ -79,16 +85,35 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
           height: layout.bottomH,
           background: "#000",
           display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
           padding: "105px 60px 0 60px",
+          gap: 2,
         }}
       >
+        {numText ? (
+          <div
+            style={{
+              fontFamily: NSJP,
+              fontSize: 33,
+              fontWeight: 400,
+              fontStyle: "italic",
+              fontSynthesis: "style",
+              color: "#fff",
+              letterSpacing: "-0.01em",
+              fontFeatureSettings: '"palt" 1',
+              textAlign: "center",
+            }}
+          >
+            {numText}
+          </div>
+        ) : null}
         <div
           style={{
             fontFamily: NSJP,
             fontSize: 60,
-            fontWeight: 600,
+            fontWeight: 400,
             color: "#fff",
             letterSpacing: "-0.04em",
             lineHeight: 1.18,

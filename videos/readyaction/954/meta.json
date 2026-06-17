@@ -1,0 +1,14 @@
+{
+  "channel": "readyaction",
+  "number": "954",
+  "name": "readyaction/954",
+  "media": {
+    "slug": "usual-suspects-1995",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 268
+}

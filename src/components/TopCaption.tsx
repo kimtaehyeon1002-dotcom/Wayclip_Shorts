@@ -55,6 +55,8 @@ export const TopCaption: React.FC<{
   strongStyle?: React.CSSProperties;
   redStyle?: React.CSSProperties;
   maxLines?: number;
+  // (선택) 줄별 폰트 크기(pt) 오버라이드. 해당 줄 인덱스 값이 숫자면 lineStyle.fontSize 대신 적용.
+  lineSizes?: (number | null)[];
 }> = ({
   text,
   lineStyle,
@@ -62,6 +64,7 @@ export const TopCaption: React.FC<{
   strongStyle = {},
   redStyle = {},
   maxLines = 2,
+  lineSizes,
 }) => {
   const lines = String(text ?? "")
     .replace(/\\n/g, "\n")
@@ -72,11 +75,16 @@ export const TopCaption: React.FC<{
 
   return (
     <>
-      {lines.map((line, i) => (
-        <div key={i} style={lineStyle}>
-          {renderMarkup(line, markup, strongStyle, redStyle)}
-        </div>
-      ))}
+      {lines.map((line, i) => {
+        const sz = lineSizes?.[i];
+        const style =
+          typeof sz === "number" ? { ...lineStyle, fontSize: `${sz}pt` } : lineStyle;
+        return (
+          <div key={i} style={style}>
+            {renderMarkup(line, markup, strongStyle, redStyle)}
+          </div>
+        );
+      })}
     </>
   );
 };

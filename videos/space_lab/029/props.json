@@ -1,0 +1,19 @@
+{
+  "title": "Gモンスター遠心分離機",
+  "artist": "Source",
+  "topCaption": "自分の体重の[[9倍]]に\n耐えさせる**怪物マシン**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#971",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 375,
+    "videoH": 1080,
+    "warnTop": 1475,
+    "bottomTop": 1545,
+    "bottomH": 375
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1254
+}

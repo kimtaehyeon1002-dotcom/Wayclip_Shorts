@@ -5,19 +5,28 @@ import type { GoodVibeSongsProps } from "../props";
 import { captionFont, originalFont, showOriginal, topFontJpLead } from "../lang";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
+import { CommentTrack } from "../components/CommentTrack";
 import { TopCaption } from "../components/TopCaption";
 
 // 굿바이브 — 음악 + 듀얼 자막. 검정 배경, 3-band 대칭 (상 440 / 영상 1040 / 하 440).
 // 자막: 영상 영역 세로 중앙. 위 원어(작은 이탤릭, 영어 음원만) / 아래 번역(46px/600, 흰).
 const VIDEO_TOP = 440;
 const VIDEO_H = 1040;
+// 하단 댓글 오버레이: 영상 바로 밑 작은 틈(GAP) + 내용 길이대로 폭 가변(가운데 정렬).
+const COMMENT_GAP = 16; // 영상 끝 ~ 댓글 사이 틈(px)
+const COMMENT_SCALE = 1.0; // 모든 댓글 공통 표시 배율(원본 px 기준). 글자 키우려면 ↑
+const COMMENT_MAXW = 900; // 표시 폭 상한(px) — 업로드 시 양끝 잘림 방지(안전여백 ~90px). 넘는 댓글은 글자 작아져도 캡
+const COMMENT_TOP = VIDEO_TOP + VIDEO_H + COMMENT_GAP; // = 1496
+const COMMENT_ZONE_H = 1920 - COMMENT_TOP - 20; // 하단 20px 여백
 
 export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
   topCaption,
+  topCaptionLineSizes,
   originalLanguage,
   translationLanguage,
   videoSrc,
   captions,
+  comments,
 }) => {
   return (
     <AbsoluteFill
@@ -36,21 +45,22 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
           alignItems: "center",
           justifyContent: "flex-end",
           textAlign: "center",
-          padding: "40px 60px 60px 60px",
+          padding: "40px 60px 30px 60px",
           gap: 4,
           background: "#000",
         }}
       >
         <TopCaption
           text={topCaption}
+          lineSizes={topCaptionLineSizes}
           markup="bold"
-          strongStyle={{ fontWeight: 600, fontStyle: "normal" }}
+          strongStyle={{ fontWeight: 400, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontJpLead(translationLanguage),
             fontSize: "55pt",
-            fontWeight: 500,
+            fontWeight: 300,
             color: "#fff",
-            lineHeight: 1.18,
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
             letterSpacing: "-0.04em",
           }}
         />
@@ -123,7 +133,7 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
                 fontSize: 46,
-                fontWeight: 600,
+                fontWeight: 400,
                 color: "#fff",
                 letterSpacing: "-0.01em",
                 lineHeight: translationLanguage === "th" ? 1.45 : 1.2,
@@ -139,7 +149,7 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
         )}
       />
 
-      {/* 하단 검정 (비워둠) */}
+      {/* 하단 검정 */}
       <div
         style={{
           position: "absolute",
@@ -148,6 +158,22 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
           right: 0,
           height: 440,
           background: "#000",
+        }}
+      />
+
+      {/* 하단 댓글 오버레이 (영상 바로 밑, 가운데). comments 비면 아무것도 안 그림 */}
+      <CommentTrack
+        comments={comments}
+        scale={COMMENT_SCALE}
+        maxWidth={COMMENT_MAXW}
+        maxHeight={COMMENT_ZONE_H}
+        zoneStyle={{
+          position: "absolute",
+          top: COMMENT_TOP,
+          left: 0,
+          right: 0,
+          height: COMMENT_ZONE_H,
+          pointerEvents: "none",
         }}
       />
     </AbsoluteFill>

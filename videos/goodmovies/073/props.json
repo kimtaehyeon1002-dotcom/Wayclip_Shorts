@@ -1,0 +1,67 @@
+{
+  "title": "The Office",
+  "artist": "",
+  "topCaption": "このシーン、**ただただ美しい**…",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "ザ・オフィス",
+  "captions": [
+    {
+      "start": 2.5,
+      "end": 3.75,
+      "original": "",
+      "translation": "またまた〜"
+    },
+    {
+      "start": 3.75,
+      "end": 4.46,
+      "original": "",
+      "translation": "「またまた」って何?"
+    },
+    {
+      "start": 4.46,
+      "end": 5.01,
+      "original": "",
+      "translation": "今の、何?"
+    },
+    {
+      "start": 7.74,
+      "end": 8.86,
+      "original": "",
+      "translation": "私、いいカード持ってるの"
+    },
+    {
+      "start": 8.86,
+      "end": 9.26,
+      "original": "",
+      "translation": "ほんとに?"
+    },
+    {
+      "start": 9.26,
+      "end": 9.63,
+      "original": "",
+      "translation": "ふふっ…"
+    },
+    {
+      "start": 10.07,
+      "end": 11.15,
+      "original": "",
+      "translation": "だから、全部いただいちゃう"
+    },
+    {
+      "start": 11.15,
+      "end": 12.52,
+      "original": "",
+      "translation": "うわ…"
+    },
+    {
+      "start": 15.07,
+      "end": 16.51,
+      "original": "",
+      "translation": "ハッタリだと思うけどな"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 699
+}

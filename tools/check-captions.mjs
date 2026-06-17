@@ -71,8 +71,12 @@ function main() {
   let topOverflow = false;
   console.log(`\n▸ 상단멘트  (영역폭 ${Math.round(topAvail)}px, 폰트 ${Math.round(topFs)}px)  [${channel}]`);
   if (!topLines.length) console.log("  (비어있음)");
+  const lineSizes = Array.isArray(props.topCaptionLineSizes) ? props.topCaptionLineSizes : null;
   topLines.forEach((line, i) => {
-    const estPx = estimateLineEm(line) * topFs;
+    // 줄별 pt 오버라이드가 있으면 px(=pt×4/3)로 환산해 사용, 없으면 채널 기본 fontPx.
+    const ovPt = lineSizes && typeof lineSizes[i] === "number" ? lineSizes[i] : null;
+    const fs = ovPt != null ? ovPt * (4 / 3) : topFs;
+    const estPx = estimateLineEm(line) * fs;
     const over = estPx > topAvail * 1.0;
     if (over) topOverflow = true;
     console.log(`  ${over ? "⚠ 넘침" : "✓"}  L${i + 1}: "${line}"`);

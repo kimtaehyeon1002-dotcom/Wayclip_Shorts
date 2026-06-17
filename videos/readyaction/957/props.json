@@ -1,0 +1,44 @@
+{
+  "title": "The Little Rascals",
+  "artist": "The Little Rascals (1994)",
+  "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#957",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ちびっこギャング",
+  "captions": [
+    {
+      "start": 0,
+      "end": 2.0,
+      "original": "So let me raise a toast",
+      "translation": "それでは、乾杯しよう"
+    },
+    {
+      "start": 2.0,
+      "end": 3.87,
+      "original": "to the girl I love most",
+      "translation": "心から愛するあの子に"
+    },
+    {
+      "start": 3.88,
+      "end": 6.44,
+      "original": "in the whole world.",
+      "translation": "世界中の誰よりも"
+    },
+    {
+      "start": 6.44,
+      "end": 8.86,
+      "original": "Please don't say my name.",
+      "translation": "お願い、私の名前は言わないで"
+    },
+    {
+      "start": 8.86,
+      "end": 10.06,
+      "original": "Darla.",
+      "translation": "ダーラ。"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 671
+}

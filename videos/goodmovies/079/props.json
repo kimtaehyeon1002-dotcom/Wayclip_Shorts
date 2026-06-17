@@ -1,0 +1,30 @@
+{
+  "title": "Jerry Maguire",
+  "artist": "",
+  "topCaption": "初めて会う人と、この子は\n本当に**家族**になれるのかな…",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ザ・エージェント",
+  "captions": [
+    { "start": 0.00, "end": 1.28, "original": "", "translation": "やあ、レイ" },
+    { "start": 1.28, "end": 2.78, "original": "", "translation": "学校、楽しんでおいで" },
+    { "start": 2.78, "end": 3.44, "original": "", "translation": "うまくいくよう祈ってて" },
+    { "start": 3.44, "end": 4.60, "original": "", "translation": "幸運を！" },
+    { "start": 18.32, "end": 19.62, "original": "", "translation": "ぎゅっとして" },
+    { "start": 29.92, "end": 33.60, "original": "", "translation": "あの子が男の人にキスするなんて、初めて見た…" },
+    { "start": 33.60, "end": 34.82, "original": "", "translation": "まるでパパみたいに" },
+    { "start": 34.82, "end": 36.36, "original": "", "translation": "グッときちゃうよね？" },
+    { "start": 36.36, "end": 37.15, "original": "", "translation": "うん、ほんとに" },
+    { "start": 37.15, "end": 38.78, "original": "", "translation": "あの子、ずっと求めてたのね" },
+    { "start": 38.78, "end": 39.46, "original": "", "translation": "落ち着いて" },
+    { "start": 39.46, "end": 40.86, "original": "", "translation": "デートの最初から泣かないでよ" },
+    { "start": 40.86, "end": 42.92, "original": "", "translation": "そう、私みたいに最後に泣けばいい" },
+    { "start": 42.92, "end": 43.44, "original": "", "translation": "いいわね？" },
+    { "start": 43.44, "end": 44.86, "original": "", "translation": "わかった、わかった" },
+    { "start": 44.86, "end": 46.36, "original": "", "translation": "オーケー、鍵ね" },
+    { "start": 46.36, "end": 47.32, "original": "", "translation": "あっ、鍵 鍵" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1479
+}

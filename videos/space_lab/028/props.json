@@ -1,0 +1,19 @@
+{
+  "title": "次元ポータルと物理学",
+  "artist": "Source",
+  "topCaption": "物理学から見た\n[[次元ポータル]]が存在しうる仕組み",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#972",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 386,
+    "videoH": 1059,
+    "warnTop": 1465,
+    "bottomTop": 1535,
+    "bottomH": 385
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 492
+}

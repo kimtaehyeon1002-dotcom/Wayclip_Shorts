@@ -1,0 +1,15 @@
+{
+  "title": "He's Just Not That Into You",
+  "artist": "",
+  "topCaption": "「ただの友達」\n…のはずが、危険度**120%**",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "映画",
+  "mediaTitleJa": "そんな彼なら捨てちゃえば?",
+  "captions": [
+    { "start": 1.10, "end": 2.33, "original": "", "translation": "じゃあ、私たち“お友達”ね" },
+    { "start": 3.95, "end": 4.63, "original": "", "translation": "ああ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 455
+}

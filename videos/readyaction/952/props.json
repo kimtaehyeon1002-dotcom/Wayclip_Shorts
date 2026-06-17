@@ -1,0 +1,26 @@
+{
+  "title": "Five Feet Apart",
+  "artist": "Five Feet Apart (2019)",
+  "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#952",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ファイブ・フィート・アパート",
+  "captions": [
+    { "start": 0.1, "end": 1.0, "original": "Wait, wait, wait, wait.", "translation": "待って、待って" },
+    { "start": 1.9, "end": 5.0, "original": "Tomorrow's your birthday?", "translation": "明日、誕生日なの？" },
+    { "start": 5.0, "end": 6.0, "original": "You could have told me that.", "translation": "言ってくれたらよかったのに" },
+    { "start": 6.0, "end": 8.14, "original": "I don't have a present for you.", "translation": "プレゼント、何も用意してないよ" },
+    { "start": 8.14, "end": 9.3, "original": "How about you just promise", "translation": "なら、約束してくれる？" },
+    { "start": 9.3, "end": 10.34, "original": "to stick around for the next one?", "translation": "次の誕生日まで、生きてるって" },
+    { "start": 19.34, "end": 20.54, "original": "Are you in?", "translation": "やる？" },
+    { "start": 20.64, "end": 21.63, "original": "I'm so in.", "translation": "もちろん、やるよ" },
+    { "start": 24.1, "end": 25.58, "original": "You know, people are always saying", "translation": "みんなよく言うだろ" },
+    { "start": 25.58, "end": 29.08, "original": "if you love something, you have to learn to let it go.", "translation": "大切なものほど、手放さなきゃって" },
+    { "start": 29.08, "end": 31.58, "original": "I thought that was such bullshit,", "translation": "そんなのクソだと思ってた" },
+    { "start": 31.58, "end": 34.08, "original": "till I watched you almost die.", "translation": "君が死にかけるのを見るまでは" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1160
+}

@@ -1,0 +1,19 @@
+{
+  "title": "廊下の錯覚",
+  "artist": "Source",
+  "topCaption": "真ん中を隠すと[[速く]]なり\n両端を隠すと[[遅く]]なる",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#970",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 590,
+    "videoH": 650,
+    "warnTop": 1260,
+    "bottomTop": 1330,
+    "bottomH": 590
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 223
+}
