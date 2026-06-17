@@ -1,0 +1,69 @@
+{
+  "title": "フライデイ・チャイナタウン",
+  "artist": "泰葉 (Ms.OOJA cover)",
+  "topCaption": "日本が一番きらめいていた時代\n**不朽のシティポップ**",
+  "topCaptionLineSizes": [
+    50,
+    null
+  ],
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 4.425,
+      "note": "1981년 곡이 2022년에 유행하다니 대단한 세상",
+      "w": 696
+    },
+    {
+      "src": "comments/02.png",
+      "start": 4.425,
+      "end": 8.85,
+      "note": "설마 레이와에 다시 올 줄이야 명곡은 영원하다",
+      "w": 934
+    },
+    {
+      "src": "comments/03.png",
+      "start": 8.85,
+      "end": 13.275,
+      "note": "묻히기엔 너무 아까운 명곡",
+      "w": 636
+    },
+    {
+      "src": "comments/04.png",
+      "start": 13.275,
+      "end": 17.7,
+      "note": "조롱받던 시절도 있었지만 재평가받아 다행",
+      "w": 984
+    }
+  ],
+  "captions": [
+    {
+      "start": 1.6,
+      "end": 5.8,
+      "original": "It's So Fly-Day Fly-Day Chinatown",
+      "translation": "It's So Fly-Day Fly-Day Chinatown"
+    },
+    {
+      "start": 5.8,
+      "end": 9.3,
+      "original": "ジャスミンに接吻を",
+      "translation": "ジャスミンに接吻を"
+    },
+    {
+      "start": 9.3,
+      "end": 13.7,
+      "original": "It's So Fly-Day Fly-Day Chinatown",
+      "translation": "It's So Fly-Day Fly-Day Chinatown"
+    },
+    {
+      "start": 13.7,
+      "end": 17.7,
+      "original": "私も異国人ね",
+      "translation": "私も異国人ね"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 531
+}

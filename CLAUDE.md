@@ -8,7 +8,7 @@
 
 | slug | 한국어 별명 | preview 포트 | Composition id | 비고 |
 | --- | --- | --- | --- | --- |
-| `goodvibesongs` | 굿바이브 | **3003** | `goodvibesongs` | 음악 + 듀얼 자막, 검정 배경. default en→ko |
+| `goodvibesongs` | 굿바이브 | **3003** | `goodvibesongs` | 음악 + 듀얼 자막, 검정 배경. default en→ja |
 | `goodmovies` | 굿무비 | **3004** | `goodmovies` | 영화 클립, 흰 배경 / 검정 멘트, 노란 번역. default en→ja |
 | `readyaction` | 레디액션 | **3005** | `readyaction` | 영화 클립, 검정 배경, 시리즈 카피 + #번호 + 영화 정보. default en→ja |
 | `thishiphop` | 디스힙합 | **3006** | `thishiphop` | 힙합 트랙, 검정 배경, 영상별 멘트 + #번호 + 영문 Artist-Track. default en→ja |
@@ -82,7 +82,8 @@ remotion-shorts/
 - **자막:** STT 원어 + LLM 번역 = 듀얼 자막. 시나리오 무관 `{original, translation}` 두 필드, 표시 여부는 채널/언어가 분기.
 - **원어 (음원):** `en` `ko` `ja` / **번역 (시청자):** `ko` `ja` `th`
 - **번역 자막**: 항상 노출(큰 글자). **원어 자막**: **영어 음원(`en`)일 때만 노출** (`showOriginal()` = `orig==="en"`). 한/일 음원은 번역만.
-- **언어별 폰트** (`src/lang.ts`): ko=Pretendard/Noto Sans KR, ja=Noto Sans JP, th=Noto Sans Thai(+line-height 1.45), en=Inter. (system-native 폰트는 Chromium 렌더에서 안 잡혀 디스힙합도 Inter+NSJP 로 귀결 — preview=render 일치.)
+- **출력은 일본 정서에 맞춘 일본어 (입력 언어 무관 — 필수).** 상단 문구(멘트/헤드라인/카피)와 번역 자막의 **인풋이 한국어·영어·일본어 등 어떤 언어로 오든**, 직역이 아니라 **일본 시청자 정서에 맞게 자연스럽게 의역·현지화하여 일본어로** 작성한다. 사용자가 한국어로 준 상단 문구를 그대로 옮기지 말고, 일본 쇼츠 톤으로 다시 쓸 것. (타깃 5채널 전부 일본 — 고정댓글도 전부 일본어.)
+- **언어별 폰트** (`src/lang.ts`): 출시 채널(hyperframes)이 웹폰트를 로드하지 않아 **맥 시스템 폰트**로 렌더된 룩을 그대로 재현한다. 각 스택은 **맥 시스템 폰트 우선 + 원격 웹폰트 폴백**(off-mac/CI 용): ja=**Hiragino Sans**(폴백 Noto Sans JP), en/라틴=**San Francisco**(`-apple-system`, 폴백 Inter), ko=**Apple SD Gothic Neo**(폴백 Pretendard/Noto Sans KR), th=**Thonburi**(폴백 Noto Sans Thai, +line-height 1.45). ⚠️ Remotion 렌더는 **맥 시스템 폰트를 정상적으로 사용한다**(과거 "Chromium 렌더에서 안 잡힌다"는 메모는 오류였음 — 레퍼런스와 픽셀 일치 확인). **맥에서 렌더해야 출시본과 100% 동일**; 비-mac 에선 폴백 웹폰트로 근사 렌더.
 - **상단 멘트 마크업:** 모든 채널 `**…**` → 굵게. `space_lab` 만 추가로 `[[…]]` → 빨강.
 
 ## 양산 워크플로
@@ -109,15 +110,22 @@ node tools/transcribe.mjs videos/goodvibesongs/076/source.mp4 --language en   # 
 node tools/align-script.mjs videos/goodvibesongs/076          # transcript + script → props.json captions
 #   경로 B (비영어/의역/힙합/영화): Claude 가 transcript.json 을 phrase 단위로 묶고 번역해
 #         videos/goodvibesongs/076/props.json 의 "captions" 배열을 채움 (번역 모호성 규칙 준수)
-#   경로 C (SRT 받음): SRT cue 1:1 그대로 옮기고 번역만 추가 (타임스탬프 보정 금지)
+#   경로 C (SRT 받음): SRT cue 1:1 그대로 옮기고 번역만 추가 (타임스탬프 보정 금지, cue 묶기 절대 금지)
 
 # 4) 검증
 node tools/check-captions.mjs videos/goodvibesongs/076    # 상단멘트/자막 오버플로 사전 감지 (넘치면 exit 1)
 node tools/validate-props.mjs videos/goodvibesongs/076    # props/언어/duration/captions/심볼링크 정합성
 
 # 5) 프리뷰 (채널 고정 포트)
-node tools/preview.mjs goodvibesongs 076                  # http://localhost:3003, 목록에서 채널 선택
-#   포트 점유 중이면 십의 자리 올려서: node tools/preview.mjs goodvibesongs 076 --port 3013
+node tools/preview.mjs goodvibesongs 076                  # http://localhost:3003/goodvibesongs
+#   ⚠️⚠️ 점유 중인 프리뷰 포트는 절대 kill 하지 말 것 (사용자가 다른 프리뷰를 보고 있을 수 있음).
+#        점유 중이면 십의 자리를 올려 빈 자리로 들어간다: 3003 차있으면 3013, 그것도 차있으면 3023…
+#        먼저 `for p in 3003 3013 3023 3033; do lsof -ti :$p; done` 로 빈 포트를 찾고 --port 로 지정:
+#        node tools/preview.mjs goodvibesongs 076 --port 3023
+#        (정리 단계에서 kill 하는 건 내가 띄운 그 포트만 — 7-b 참조. 남의 프리뷰 포트는 건드리지 않는다.)
+#   ⚠️ 사용자에게 안내하는 URL 엔 반드시 채널 경로를 붙일 것: http://localhost:<포트>/<composition-id>
+#      루트(http://localhost:<포트>)로 열면 항상 기본 채널(goodvibesongs)로 빠진다 (엉뚱한 채널).
+#      composition-id 는 slug 와 같되 space_lab 만 space-lab → http://localhost:<포트>/space-lab
 
 # 6) 렌더 → 결재본 (normalize 단계 없음)
 mkdir -p output/goodvibesongs
@@ -126,6 +134,46 @@ npx remotion render src/index.ts goodvibesongs output/goodvibesongs/076.mp4 \
 #   space_lab 은 id 가 space-lab:
 #   npx remotion render src/index.ts space-lab output/space_lab/076.mp4 \
 #     --props=videos/space_lab/076/props.json --public-dir=videos/space_lab/076
+
+# 7) 정리 (마지막 스텝, 필수) — 결재본(output) + <번호>캡션.txt 확정된 뒤에만.
+#   a) 이번 작업의 원본 소스 삭제 — 사용자가 최상단(레포 루트)에 처음 준 그 영상 파일 (예: 956소스.mov).
+#      ⚠️ 이번 영상 것만. 다른 작업의 소스(951소스.mov 등)는 절대 건드리지 말 것. media/<slug>.mp4(공유 임포트본)도 지우지 말 것.
+#   b) 프리뷰 스튜디오 kill — 5)에서 --port 로 내가 실제 띄운 그 포트만 (기본 채널포트라고 단정 말 것).
+#      lsof -ti :<내가_쓴_포트> | xargs kill   (예: 3023 에 띄웠으면 lsof -ti :3023). 다른 프리뷰 포트는 건드리지 않는다.
+#   c) (굿바이브 한정) <번호>댓글/ 폴더는 삭제하지 말고 결재본 옆으로 이동 — mv "<번호>댓글" output/goodvibesongs/
+#      (한국어 파일명 댓글 스샷 + manifest 보존. 나중에 재현/수정 가능)
+rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
+# 굿바이브 예: mv "085댓글" output/goodvibesongs/
+```
+
+### 결재본 캡션 + 고정댓글 (output 나올 때 자동 생성)
+
+**결재본(`output/<채널>/<번호>.mp4`)이 새로 렌더되면, 같은 폴더에 `<번호>캡션.txt` 도 항상 함께 만든다.** 사용자가 따로 "캡션도"라고 안 해도 자동. (Remotion 판은 normalize 단계가 없으니 render 직후가 타이밍.)
+
+- **파일명:** `<번호>캡션.txt` (예: 072번 → `072캡션.txt`). 결재본에 별명/접미사가 붙어도 **번호만** 써서 `083캡션.txt`.
+- **내용 순서:** 한 파일에 **캡션 → 구분선 → 고정댓글**. 포맷·채널별 캡션 작성 규칙·CTA 트렌드는 **[tools/jp-caption-writer.md](./tools/jp-caption-writer.md)** (= `/캡션` 스킬과 동일 내용) 참조. **굿무비만** IMDb 평점을 캡션에 넣으므로 그 수치만 **웹 검색으로 실값 확인** 후 기입(레디액션 등 다른 영화 채널은 평점 표기 안 함 — 불필요한 검색 금지).
+- **고정댓글은 채널별 고정 문구** — 요청 없으면 아래 그대로(변형 금지):
+
+| 채널 | 고정댓글 |
+| --- | --- |
+| 굿바이브 | `皆さんはただ待っているだけで大丈夫です。 私が自ら素敵な曲を毎日探してお届けします😊 フォローしておくだけで、フィードまで「配送」いたします！` |
+| 굿무비 | `もっと多くの映画の名シーンを見たいなら@goodmovies_rekoフォローしてチェックしてみてください😊` |
+| 레디액션 | `人生に美しい余韻を残す「1000本の名作映画」をここに。フォローして、あなたのフィードを小さな映画館にしてみませんか？次の週末に観たい特別な1本を、@readyaction_movies をフォローして見つけてみてください🎞️` |
+| 스페이스랩 | `日常の疑問から宇宙の神秘まで、もっと面白い科学の話が見たいなら @space_lab.note をフォロー！🪐🧪` |
+| 디스힙합 | `フォローすれば、毎日イケてるヒップホップが聴けるぜ skrrr🤙🏾` |
+
+파일 포맷(요지):
+
+```
+[별명] <번호> | <소재>
+
+〔キャプション〕
+(3문단 일본어 캡션)
+
+
+━━━━━━━━━━━━━━━ 📌 固定コメント ━━━━━━━━━━━━━━━
+
+(위 표의 채널 고정댓글)
 ```
 
 ### 번역 모호성 처리 (필수 — 프레임워크 무관)
@@ -134,8 +182,10 @@ npx remotion render src/index.ts goodvibesongs output/goodvibesongs/076.mp4 \
 
 ### 자막 파이프라인 규칙
 
+- **렌더(`remotion render`)는 반드시 프리뷰 승인 후에만.** 렌더는 무거운 작업이라 바로 돌리지 말 것. check-captions/validate-props 통과 → **승인용 프리뷰는 Claude 가 직접 `tools/preview.mjs` 로 스튜디오를 띄워서** 사용자에게 자막/레이아웃을 보여주고 명시적 승인을 받은 뒤 렌더한다. 승인 전 렌더 금지. (스틸 프레임 추출만으로 승인 대체 금지 — 사용자가 직접 재생/확인할 수 있게 프리뷰 서버를 항상 띄울 것. **안내 URL 엔 반드시 채널(composition-id) 경로를 붙일 것**: `http://localhost:<포트>/<composition-id>` — 루트 URL 은 항상 기본 채널(goodvibesongs)로 빠지므로 절대 루트로 안내하지 말 것. `space_lab` 만 경로가 `space-lab`.)
 - **렌더 전 `check-captions.mjs` 필수.** 상단멘트가 넘칠 것으로 추정되면(exit 1) 임의 수정 말고 사용자에게 물을 것: (1) 그 줄만 폰트 축소 (2) 문구 변경 (3) 두 줄 분리.
 - **사용자 script(가사/대사)가 STT보다 텍스트 권위.** STT 는 타이밍 권위. STT 오인식 텍스트로 자막 만들지 말 것.
+- **SRT 받으면 cue 를 절대 묶지 말 것 (경로 C).** SRT 의 cue 분할은 사용자가 자막 텀(끊는 타이밍)을 의도해서 직접 나눈 것 → `cue 수 = caption 수`, 타임스탬프 무보정. 일본어 어순/문법 때문에 한 cue 직역이 어색하면 **1:1 단어 대응이 안 되더라도 한 문장을 여러 cue 에 나눠 담아** 자연스럽게 흐르게 한다(예: `there's / something for you / in my bag` → `実はね / 君へのプレゼントが / 僕のバッグにもあるんだ`). 묶기는 금지, 분할(어순)은 허용. 짧은 cue(<2×FADE)로 CaptionTrack fade 가 깨지면 타임스탬프 늘리지 말고 컴포넌트가 짧은 cue 를 견디게 둘 것(삼각 페이드 — 이미 처리됨).
 - **모든 자막 라인은 번역 필수.** 후렴/추임새/의성어도 타깃 언어로 음역(일=카타카나, 한=한글, 태=ฯ).
 - whisper `.en` 모델 금지 — 비영어를 영어로 번역. 항상 `--language <원어>`. (transcribe.mjs 가 강제.)
 - LCS(align-script)는 영어 음원에 최적. 일본어(띄어쓰기 없음)는 경로 B.
@@ -143,11 +193,47 @@ npx remotion render src/index.ts goodvibesongs output/goodvibesongs/076.mp4 \
 
 ## 채널별 레이아웃 요약 (변경 금지 — 양산 일관성)
 
-- **goodvibesongs**: 검정. 상 440 / 영상 1040(cover) / 하 440(빈). 멘트 55pt/500(**굵게 600). 자막 영상 중앙: 원어 34px italic(영어만) → 번역 46px/600 흰.
+- **goodvibesongs**: 검정. 상 440 / 영상 1040(cover) / 하 440. 멘트 55pt/300(**굵게 400, 영상 쪽으로 하단패딩 30). 자막 영상 중앙: 원어 34px italic(영어만) → 번역 46px/400 흰. **하단(선택): 댓글 오버레이** — 영상 바로 밑 16px 틈 + 가운데, 내용 길이대로 폭 가변(원본 px×scale, maxWidth 1020 캡), 항상 1개 연속 노출. → 아래 "굿바이브 댓글 오버레이" 참조.
 - **goodmovies**: 흰. 상 440 / 영상 1040 / 하 440. 멘트 48pt/600 검정(**800). 자막 영상 하단: 번역 40px/600 **노랑#FFEB3B**(검정 stroke) 위 → 원어 52px/800 흰(검정 stroke) 아래. 하단 `映画『제목』` 36px/300 회색.
 - **readyaction**: 검정. 상 480 / 영상 960 / 하 480. 시리즈 고정 카피(default `歴代最高の**映画1000本を、**\n順不同で収集中`, **만 500). 자막 중앙: 원어 36px italic NSJP → 번역 48px/400 흰. 하단 `#번호`(40px italic) + `映画『제목』`(38px/200).
 - **thishiphop**: 검정. 상 480 / 영상 960 / 하 480. 영상별 멘트(매번 물어볼 것, 전체 동일 굵기 49pt/500). 자막 중앙: 원어 36px italic → 번역 44px/600 흰. 하단 `#번호`(Inter 46px italic) + `Artist - Track`(Inter 44px/150).
 - **space_lab**: 검정. **자막 없음.** 밴드 geometry 는 영상 비율로 `new-video` 가 자동 계산(`props.layout`). 헤드라인 60px/600(`[[빨강]]`+`**굵게800**`) / 영상 contain / 영상 아래 빨간 깜빡 경고 박스(끝 10초 전 등장 후 burst 반복) / 하단 고정 CTA 60px/600.
+
+## 굿바이브 댓글 오버레이 (goodvibesongs 전용)
+
+굿바이브 하단 검정(영상 바로 밑 440px)에 **유튜브 댓글 스크린샷**을 타이밍 맞춰 띄운다. 가사 반응 댓글로 몰입 + 팔로우 유도. `props.comments` 배열(`src/props.ts` `commentSchema`). 다른 채널엔 없음.
+
+**입력 (사용자가 줌):** 레포 루트에 **`<번호>댓글/`** 폴더 (영상 소스처럼 최상단). 그 안에 댓글 스샷들(png). 파일명은 아무거나(스크린샷 원본명).
+
+**⚠️ 작업 순서: STT → 자막(captions) 확정 → 그 다음 댓글 매칭.** 댓글 `anchor` 는 확정된 caption 시점(초)에 맞추므로, 자막을 먼저 끝낸 뒤 댓글을 배치할 것.
+
+**워크플로:**
+1. 사용자가 `<번호>댓글/` 에 댓글 스샷을 넣어줌 (각 1댓글 크롭, 검정 배경 유튜브 댓글). 파일명은 원본 스샷명 그대로.
+2. **⚠️ 스샷 스케일 확인 → 1x 면 2x 업스케일 (댓글 크기의 핵심).** 화면 표시 폭 = **원본 px × COMMENT_SCALE**(maxWidth 1020 캡). 즉 **저해상 스샷이면 화면에서도 작게** 나온다. 블러 레시피(아래)도 **레티나(~2x) 기준**(아바타 90px 등)이라 1x 스샷엔 안 맞음. 판단: **스샷 높이가 한 줄당 ~50px 미만(=댓글 1줄+본문 1줄이 ~100px 이하)이거나 폭이 대체로 <500px** 면 1x 다 → 전부 2x 로 올린다(`ffmpeg -i in.png -vf "scale=iw*2:ih*2:flags=lanczos" out.png`, 제자리 덮어쓰기). 그러면 표준 블러 레시피가 그대로 맞고 화면에도 크게 나온다. **COMMENT_SCALE(채널 공통 상수)은 건드리지 말 것 — 다른 영상까지 영향.** (반대로 이미 2x 레티나면 업스케일 불필요.)
+3. **Claude 가 각 스샷을 분석:**
+   - **(필수) 각 스샷 파일명을 댓글 내용의 한국어 번역으로 바꾼다** — `mv "스크린샷 ….png" "마음에 꽂힌다 멘탈 정화됨.png"`. **이 파일명이 곧 그 댓글의 제목/식별자**(어느 댓글인지·어느 가사에 붙일지 판단용, 화면엔 미표시). 파일명 안전: `/ : ? *` 같은 문자 빼고, 일본어 댓글이면 자연스러운 한국어로.
+   - 그 다음 `manifest.json` 작성 (file = 바뀐 한국어 파일명). **handleEnd 는 생략 — prep 가 자동 측정한다:**
+   ```json
+   [{ "file": "여기부터 너무 좋아.png", "anchor": 66 }]
+   ```
+   - `handleEnd`(선택, **기본 자동**): @핸들 끝 x좌표(블러 닉네임 폭). **닉네임=흰색·날짜=회색**이라 prep-comments 가 핸들 줄에서 **흰색(luma>200) 픽셀의 최대 x 를 스캔해 자동 산정**(회색 날짜는 자동 제외). **그리드로 눈대중 측정하지 말 것 — 폐지.** 자동값이 어쩌다 틀린 예외 스샷만 manifest 에 숫자로 직접 줘서 덮어쓴다.
+   - `anchor`(선택): 그 댓글이 **합당한 가사 시점(초)**. 특정 가사/장면을 가리키는 댓글이면 그 caption `start` 초를 넣음. 전체 어디든 가능한 일반 댓글이면 생략.
+   - `note`(선택): 안 주면 prep-comments 가 **파일명(=한국어 번역)을 note 로** 자동 사용. 굳이 따로 줄 필요 없음.
+4. `node tools/prep-comments.mjs <번호>` — handleEnd 자동측정(미지정 시) + 블러(sigma12 타이트) + `videos/goodvibesongs/<번호>/comments/NN.png` 복사 + 타이밍 분배 + `props.json` 의 `comments` 기록 + 원본 px(`w`) 기록. 로그에 산정된 `handleEnd=NN(auto)` 출력.
+5. `node tools/preview.mjs goodvibesongs <번호>` 로 승인 → 렌더.
+
+**블러 레시피 (sigma12 타이트 — 사용자 확정, 변경 금지):** `blur-comments.mjs` 가 적용.
+- 흐림 `gblur sigma=12` (프리미어 흐림값≈20 매핑), 페더(가장자리) `sigma=5`.
+- 프사 마스크 `x0 y0 90×90`, 닉네임 마스크 `x82 y6 (handleEnd-82)×42` (x82 로 아바타와 살짝 겹침).
+- **프사 블러가 닉네임 블러보다 위 레이어.** 날짜는 안 가림(핸들 끝까지만).
+- 좌표는 레티나(~2x) 유튜브 댓글 스샷 기준. **그래서 1x 스샷은 위 2번대로 먼저 2x 업스케일** 한 뒤 이 레시피를 쓴다 (스케일별로 박스를 새로 재지 말 것). 그래도 어긋나는 예외는 manifest 항목에 `sigma/feather/avatarW/avatarH/nickX/nickY/nickH` 를 넣어 per-entry 로 덮어쓸 수 있다(prep-comments 가 blur-comments 로 통과시킴).
+- **handleEnd 자동측정** (`measureHandleEnd`): manifest 에 handleEnd 없으면 핸들 줄(아바타 제외 x≥95, 상단 ~52px 밴드)을 raw gray 로 떠서 **흰색(>200) 최대 x + margin 8**. 닉네임(흰)만 잡히고 날짜(회색 ~170)는 빠진다. 임계값 낮추면 날짜까지 먹으니 **200 고정**. 200 미만 안티에일리어싱 잔상이 흐릿하게 남는 건 정상(식별 불가, 최종 축소 렌더에선 안 보임) — 더 지우려 임계값 내리지 말 것.
+
+**타이밍 분배:** 영상 길이 ÷ 댓글 개수 = 균등 슬롯, **항상 1개 연속 노출**(슬롯 경계 0.3s 크로스페이드). `anchor` 있는 댓글은 그 시점 슬롯에 배치(충돌 시 가까운 빈 슬롯), 나머지는 남은 슬롯에 순서대로 — "특정부분에 합당하게 + 나머지는 균등".
+
+**표시(레이아웃):** 영상 바로 밑 16px 틈, 가운데. 폭은 **내용 길이대로 가변**(가로 긴 댓글은 넓게, 짧은 댓글은 작게) — 모든 댓글 같은 배율 `COMMENT_SCALE`(GoodVibeSongs.tsx, 기본 1.0)로 글자 크기는 일정, `maxWidth 1020` 캡. 글자 더 키우려면 SCALE↑.
+
+**⚠️ 타임라인 참조 댓글은 물어볼 것:** `1:06` 처럼 **특정 타임스탬프**를 가리키는 댓글은 그게 영상의 어느 가사/장면인지 Claude 가 알 수 없음 → **`AskUserQuestion` 으로 사용자에게 물어** `anchor` 초를 정할 것. 가사 내용을 직접 가리키는 댓글(예: 특정 가사 구절 반응)은 해당 caption `start` 로 직접 매칭 가능.
 
 ## 영상 식별 / 안전 영역
 
@@ -166,6 +252,8 @@ npx remotion render src/index.ts goodvibesongs output/goodvibesongs/076.mp4 \
 | `check-captions.mjs` | 오버플로 사전 감지 (props.json + `channels.mjs` 레이아웃 상수) |
 | `validate-props.mjs` | 렌더 전 정합성 검증 (hyperframes lint/validate 대체) |
 | `preview.mjs` | 채널 고정 포트로 `remotion studio` (props + 미디어 자동) |
+| `blur-comments.mjs` | 댓글 스샷 프사+닉네임 가우시안 블러 (굿바이브 댓글 오버레이용, sigma12 타이트 레시피. handleEnd 외 avatar/nick/sigma/feather 플래그로 스케일 조정) |
+| `prep-comments.mjs` | `<번호>댓글/` → handleEnd 자동측정(흰색 닉네임 스캔, 미지정 시)+블러+영상디렉토리 복사+타이밍 분배+props 기록 (굿바이브 전용) |
 | `channels.mjs` | 채널 정의/기본 props/레이아웃 상수/space_lab layout 계산 (모든 도구 공유) |
 
 > **`normalize-output` 없음** — Remotion 출력은 이미 SNS 안전(start_time 0). 절대 edit-list 정규화하지 말 것.

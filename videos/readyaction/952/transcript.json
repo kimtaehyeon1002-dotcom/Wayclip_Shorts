@@ -1,0 +1,577 @@
+[
+  {
+    "text": "Wait",
+    "start": 0.1,
+    "end": 0.18
+  },
+  {
+    "text": ",",
+    "start": 0.25,
+    "end": 0.27
+  },
+  {
+    "text": "wait",
+    "start": 0.27,
+    "end": 0.45
+  },
+  {
+    "text": ",",
+    "start": 0.45,
+    "end": 0.54
+  },
+  {
+    "text": "wait",
+    "start": 0.54,
+    "end": 0.71
+  },
+  {
+    "text": ",",
+    "start": 0.72,
+    "end": 0.81
+  },
+  {
+    "text": "wait",
+    "start": 0.81,
+    "end": 0.99
+  },
+  {
+    "text": ".",
+    "start": 1,
+    "end": 1.9
+  },
+  {
+    "text": "Tomorrow",
+    "start": 1.9,
+    "end": 2.89
+  },
+  {
+    "text": "'s",
+    "start": 2.89,
+    "end": 3.13
+  },
+  {
+    "text": "your",
+    "start": 3.13,
+    "end": 3.62
+  },
+  {
+    "text": "birthday",
+    "start": 3.62,
+    "end": 4.61
+  },
+  {
+    "text": "?",
+    "start": 4.61,
+    "end": 5
+  },
+  {
+    "text": "You",
+    "start": 5,
+    "end": 5.12
+  },
+  {
+    "text": "could",
+    "start": 5.12,
+    "end": 5.31
+  },
+  {
+    "text": "have",
+    "start": 5.31,
+    "end": 5.45
+  },
+  {
+    "text": "told",
+    "start": 5.47,
+    "end": 5.63
+  },
+  {
+    "text": "me",
+    "start": 5.63,
+    "end": 5.71
+  },
+  {
+    "text": "that",
+    "start": 5.71,
+    "end": 5.86
+  },
+  {
+    "text": ".",
+    "start": 5.86,
+    "end": 6
+  },
+  {
+    "text": "I",
+    "start": 6,
+    "end": 6.07
+  },
+  {
+    "text": "don",
+    "start": 6.07,
+    "end": 6.3
+  },
+  {
+    "text": "'t",
+    "start": 6.3,
+    "end": 6.37
+  },
+  {
+    "text": "have",
+    "start": 6.48,
+    "end": 6.76
+  },
+  {
+    "text": "a",
+    "start": 6.76,
+    "end": 6.83
+  },
+  {
+    "text": "present",
+    "start": 6.83,
+    "end": 7.38
+  },
+  {
+    "text": "for",
+    "start": 7.38,
+    "end": 7.61
+  },
+  {
+    "text": "you",
+    "start": 7.61,
+    "end": 7.84
+  },
+  {
+    "text": ".",
+    "start": 7.84,
+    "end": 8.14
+  },
+  {
+    "text": "How",
+    "start": 8.14,
+    "end": 8.29
+  },
+  {
+    "text": "will",
+    "start": 8.32,
+    "end": 8.52
+  },
+  {
+    "text": "you",
+    "start": 8.52,
+    "end": 8.68
+  },
+  {
+    "text": "just",
+    "start": 8.68,
+    "end": 8.85
+  },
+  {
+    "text": "promise",
+    "start": 8.96,
+    "end": 9.3
+  },
+  {
+    "text": "to",
+    "start": 9.3,
+    "end": 9.38
+  },
+  {
+    "text": "stick",
+    "start": 9.38,
+    "end": 9.58
+  },
+  {
+    "text": "around",
+    "start": 9.58,
+    "end": 9.74
+  },
+  {
+    "text": "for",
+    "start": 9.74,
+    "end": 9.85
+  },
+  {
+    "text": "the",
+    "start": 9.85,
+    "end": 9.96
+  },
+  {
+    "text": "next",
+    "start": 9.96,
+    "end": 10.1
+  },
+  {
+    "text": "one",
+    "start": 10.11,
+    "end": 10.22
+  },
+  {
+    "text": "?",
+    "start": 10.22,
+    "end": 10.34
+  },
+  {
+    "text": "♪",
+    "start": 10.34,
+    "end": 10.59
+  },
+  {
+    "text": "And",
+    "start": 10.59,
+    "end": 10.84
+  },
+  {
+    "text": "then",
+    "start": 10.84,
+    "end": 11.18
+  },
+  {
+    "text": "I",
+    "start": 11.18,
+    "end": 11.26
+  },
+  {
+    "text": "'ll",
+    "start": 11.26,
+    "end": 11.51
+  },
+  {
+    "text": "leave",
+    "start": 11.51,
+    "end": 11.93
+  },
+  {
+    "text": "without",
+    "start": 11.93,
+    "end": 12.52
+  },
+  {
+    "text": "a",
+    "start": 12.52,
+    "end": 12.6
+  },
+  {
+    "text": "trace",
+    "start": 12.6,
+    "end": 13.08
+  },
+  {
+    "text": "♪",
+    "start": 13.08,
+    "end": 13.14
+  },
+  {
+    "text": "♪",
+    "start": 13.14,
+    "end": 13.38
+  },
+  {
+    "text": "Come",
+    "start": 13.38,
+    "end": 13.7
+  },
+  {
+    "text": "on",
+    "start": 13.7,
+    "end": 13.86
+  },
+  {
+    "text": ",",
+    "start": 13.86,
+    "end": 14.02
+  },
+  {
+    "text": "don",
+    "start": 14.02,
+    "end": 14.26
+  },
+  {
+    "text": "'t",
+    "start": 14.26,
+    "end": 14.42
+  },
+  {
+    "text": "leave",
+    "start": 14.42,
+    "end": 14.82
+  },
+  {
+    "text": "me",
+    "start": 14.82,
+    "end": 14.98
+  },
+  {
+    "text": "♪",
+    "start": 14.98,
+    "end": 15.24
+  },
+  {
+    "text": "♪",
+    "start": 15.24,
+    "end": 15.65
+  },
+  {
+    "text": "It",
+    "start": 15.65,
+    "end": 15.92
+  },
+  {
+    "text": "can",
+    "start": 15.92,
+    "end": 16.33
+  },
+  {
+    "text": "'t",
+    "start": 16.33,
+    "end": 16.6
+  },
+  {
+    "text": "be",
+    "start": 16.6,
+    "end": 16.87
+  },
+  {
+    "text": "that",
+    "start": 16.87,
+    "end": 17.42
+  },
+  {
+    "text": "easy",
+    "start": 17.42,
+    "end": 17.97
+  },
+  {
+    "text": "for",
+    "start": 17.97,
+    "end": 18.38
+  },
+  {
+    "text": "you",
+    "start": 18.38,
+    "end": 18.78
+  },
+  {
+    "text": "♪",
+    "start": 18.79,
+    "end": 19.24
+  },
+  {
+    "text": "-",
+    "start": 19.24,
+    "end": 19.34
+  },
+  {
+    "text": "Are",
+    "start": 19.34,
+    "end": 19.66
+  },
+  {
+    "text": "you",
+    "start": 19.66,
+    "end": 19.98
+  },
+  {
+    "text": "in",
+    "start": 19.98,
+    "end": 20.19
+  },
+  {
+    "text": "?",
+    "start": 20.19,
+    "end": 20.54
+  },
+  {
+    "text": "-",
+    "start": 20.54,
+    "end": 20.63
+  },
+  {
+    "text": "I",
+    "start": 20.64,
+    "end": 20.74
+  },
+  {
+    "text": "'m",
+    "start": 20.74,
+    "end": 20.93
+  },
+  {
+    "text": "so",
+    "start": 20.93,
+    "end": 21.13
+  },
+  {
+    "text": "in",
+    "start": 21.13,
+    "end": 21.33
+  },
+  {
+    "text": ".",
+    "start": 21.33,
+    "end": 21.63
+  },
+  {
+    "text": "♪",
+    "start": 21.64,
+    "end": 21.99
+  },
+  {
+    "text": "You",
+    "start": 21.99,
+    "end": 22.34
+  },
+  {
+    "text": "know",
+    "start": 22.34,
+    "end": 22.81
+  },
+  {
+    "text": ",",
+    "start": 22.81,
+    "end": 23.04
+  },
+  {
+    "text": "people",
+    "start": 23.04,
+    "end": 23.75
+  },
+  {
+    "text": "are",
+    "start": 23.75,
+    "end": 24.1
+  },
+  {
+    "text": "always",
+    "start": 24.1,
+    "end": 24.81
+  },
+  {
+    "text": "saying",
+    "start": 24.81,
+    "end": 25.58
+  },
+  {
+    "text": "if",
+    "start": 25.58,
+    "end": 25.67
+  },
+  {
+    "text": "you",
+    "start": 25.67,
+    "end": 25.82
+  },
+  {
+    "text": "love",
+    "start": 25.82,
+    "end": 26.08
+  },
+  {
+    "text": "something",
+    "start": 26.08,
+    "end": 26.38
+  },
+  {
+    "text": "you",
+    "start": 26.38,
+    "end": 26.66
+  },
+  {
+    "text": "have",
+    "start": 26.67,
+    "end": 27.06
+  },
+  {
+    "text": "to",
+    "start": 27.06,
+    "end": 27.25
+  },
+  {
+    "text": "learn",
+    "start": 27.25,
+    "end": 27.73
+  },
+  {
+    "text": "a",
+    "start": 27.73,
+    "end": 27.82
+  },
+  {
+    "text": "little",
+    "start": 27.82,
+    "end": 28.4
+  },
+  {
+    "text": "bit",
+    "start": 28.4,
+    "end": 28.69
+  },
+  {
+    "text": "ago",
+    "start": 28.69,
+    "end": 29.02
+  },
+  {
+    "text": ",",
+    "start": 29.02,
+    "end": 29.08
+  },
+  {
+    "text": "I",
+    "start": 29.08,
+    "end": 29.2
+  },
+  {
+    "text": "'m",
+    "start": 29.2,
+    "end": 29.43
+  },
+  {
+    "text": "supposed",
+    "start": 29.43,
+    "end": 30.38
+  },
+  {
+    "text": "to",
+    "start": 30.38,
+    "end": 30.61
+  },
+  {
+    "text": "bullshit",
+    "start": 30.61,
+    "end": 31.58
+  },
+  {
+    "text": "till",
+    "start": 31.58,
+    "end": 31.85
+  },
+  {
+    "text": "I",
+    "start": 31.85,
+    "end": 31.9
+  },
+  {
+    "text": "watch",
+    "start": 31.91,
+    "end": 32.25
+  },
+  {
+    "text": "you",
+    "start": 32.25,
+    "end": 32.45
+  },
+  {
+    "text": "almost",
+    "start": 32.45,
+    "end": 32.85
+  },
+  {
+    "text": "die",
+    "start": 32.85,
+    "end": 33.08
+  },
+  {
+    "text": ".",
+    "start": 33.08,
+    "end": 34.08
+  }
+]

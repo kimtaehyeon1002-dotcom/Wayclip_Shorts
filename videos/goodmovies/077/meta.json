@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "077",
+  "name": "goodmovies/077",
+  "media": {
+    "slug": "hes-just-not-that-into-you-2009",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 455
+}

@@ -11,8 +11,9 @@ export const BackgroundVideo: React.FC<{
   background: string;
   objectFit: "cover" | "contain";
   volume?: number;
+  overscan?: number; // 1보다 크면 살짝 확대해 cover 의 서브픽셀 가장자리 틈(흰선) 제거
   children?: React.ReactNode; // vignette 등 오버레이
-}> = ({ src, top, height, background, objectFit, volume = 1, children }) => {
+}> = ({ src, top, height, background, objectFit, volume = 1, overscan = 1, children }) => {
   return (
     <div
       style={{
@@ -33,6 +34,8 @@ export const BackgroundVideo: React.FC<{
           height: "100%",
           objectFit,
           display: "block",
+          transform: overscan !== 1 ? `scale(${overscan})` : undefined,
+          transformOrigin: "center",
         }}
       />
       {children}

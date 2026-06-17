@@ -52,7 +52,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             fontSize: "48pt",
             fontWeight: 600,
             color: "#000",
-            lineHeight: 1.22,
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.22,
             letterSpacing: "-0.02em",
           }}
         />
@@ -65,6 +65,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         height={VIDEO_H}
         background="#fff"
         objectFit="cover"
+        overscan={1.015}
       >
         <div
           style={{
@@ -94,8 +95,9 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-end",
-          paddingBottom: 70,
+          // 원본에 영문 자막이 화면 중앙(y≈960)에 박혀 있으므로 그 바로 아래에 번역을 둔다
+          justifyContent: "flex-start",
+          paddingTop: 555,
           gap: 6,
           textAlign: "center",
         }}

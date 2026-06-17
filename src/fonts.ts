@@ -10,7 +10,7 @@ import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadLocalFont } from "@remotion/fonts";
 
 const jp = loadJP("normal", {
-  weights: ["200", "400", "500", "600", "800"],
+  weights: ["100", "200", "300", "400", "500", "600", "700", "800"],
   subsets: ["japanese", "latin"],
   ignoreTooManyRequestsWarning: true,
 });

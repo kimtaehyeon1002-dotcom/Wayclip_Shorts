@@ -6,52 +6,72 @@ import type { Lang, OrigLang } from "./props";
 export const showOriginal = (orig: OrigLang): boolean => orig === "en";
 
 const SANS = "sans-serif";
-const q = (f: string) => `"${f}"`;
+
+// 출시 채널(hyperframes)은 웹폰트를 로드하지 않아 **맥 시스템 폰트**로 렌더됐다.
+// 동일한 룩을 위해 각 스택을 "맥 시스템 폰트 우선 + 원격 웹폰트(off-mac) 폴백" 으로 구성한다.
+//   일본어  → Hiragino Sans         (off-mac: Noto Sans JP)
+//   라틴/영 → San Francisco(-apple-system)  (off-mac: Inter)
+//   한국어  → Apple SD Gothic Neo    (off-mac: Pretendard / Noto Sans KR)
+//   태국어  → Thonburi               (off-mac: Noto Sans Thai)
+const JP = `"Hiragino Sans", "Yu Gothic", "${FONT.jp}"`;
+const LATIN = `-apple-system, BlinkMacSystemFont, "Helvetica Neue", "${FONT.inter}"`;
+const KO = `"Apple SD Gothic Neo", "${FONT.pretendard}", "${FONT.kr}"`;
+const TH = `"Thonburi", "${FONT.thai}", "Sarabun"`;
 
 // ── cap-translation (모든 채널 공통 본문 자막) ──
 export function captionFont(lang: Lang): string {
   switch (lang) {
     case "ko":
-      return [q(FONT.pretendard), q(FONT.kr), SANS].join(", ");
+      return [KO, SANS].join(", ");
     case "ja":
-      return [q(FONT.jp), SANS].join(", ");
+      return [JP, SANS].join(", ");
     case "th":
-      return [q(FONT.thai), SANS].join(", ");
+      return [TH, SANS].join(", ");
     case "en":
-      return [q(FONT.inter), SANS].join(", ");
+      return [LATIN, SANS].join(", ");
   }
 }
 
-// ── cap-original 기본 (굿바이브/굿무비) ──
+// ── cap-original 기본 (굿바이브/굿무비) — 언어 native ──
 export function originalFont(lang: Lang): string {
   switch (lang) {
     case "ko":
-      return [q(FONT.pretendard), q(FONT.kr), SANS].join(", ");
+      return [KO, SANS].join(", ");
     case "ja":
-      return [q(FONT.jp), SANS].join(", ");
+      return [JP, SANS].join(", ");
     case "en":
-      return [q(FONT.inter), SANS].join(", ");
+      return [LATIN, SANS].join(", ");
     case "th":
-      return [q(FONT.thai), SANS].join(", ");
+      return [TH, SANS].join(", ");
   }
 }
 
-// ── cap-original (레디액션/디스힙합) — 합성 italic + thin weight 위해 NSJP 통일 ──
+// ── cap-original (레디액션) — 전 언어 일본어 폰트(Hiragino)로 통일: 합성 italic + thin weight ──
 export function originalFontJp(): string {
-  return [q(FONT.jp), SANS].join(", ");
+  return [JP, SANS].join(", ");
 }
 
-// ── top-caption: NSJP 우선 (굿바이브/레디액션) ──
+// ── cap-original (디스힙합) — 라틴 SF 우선, 일본어 글리프는 Hiragino 폴백 ──
+export function originalFontLatin(): string {
+  return [LATIN, `"Hiragino Sans"`, `"${FONT.jp}"`, SANS].join(", ");
+}
+
+// ── 라틴 전용 (디스힙합 하단 #번호 / Artist-Track) ──
+export function latinFont(): string {
+  return [LATIN, SANS].join(", ");
+}
+
+// ── top-caption: 일본어 우선 (굿바이브/레디액션) ──
 export function topFontJpLead(lang: Lang): string {
   switch (lang) {
     case "ja":
-      return [q(FONT.jp), SANS].join(", ");
+      return [JP, SANS].join(", ");
     case "ko":
-      return [q(FONT.jp), q(FONT.pretendard), q(FONT.kr), SANS].join(", ");
+      return [KO, JP, SANS].join(", ");
     case "en":
-      return [q(FONT.jp), q(FONT.inter), SANS].join(", ");
+      return [LATIN, JP, SANS].join(", ");
     case "th":
-      return [q(FONT.jp), q(FONT.thai), SANS].join(", ");
+      return [TH, JP, SANS].join(", ");
   }
 }
 
@@ -59,23 +79,23 @@ export function topFontJpLead(lang: Lang): string {
 export function topFontNative(lang: Lang): string {
   switch (lang) {
     case "ja":
-      return [q(FONT.jp), SANS].join(", ");
+      return [JP, SANS].join(", ");
     case "ko":
-      return [q(FONT.pretendard), q(FONT.kr), q(FONT.jp), SANS].join(", ");
+      return [KO, JP, SANS].join(", ");
     case "en":
-      return [q(FONT.inter), q(FONT.jp), SANS].join(", ");
+      return [LATIN, JP, SANS].join(", ");
     case "th":
-      return [q(FONT.thai), q(FONT.jp), SANS].join(", ");
+      return [TH, JP, SANS].join(", ");
   }
 }
 
-// ── top-caption: Inter(라틴) 우선 + NSJP fallback (디스힙합) ──
+// ── top-caption: 라틴(SF) 우선 + 일본어 Hiragino 폴백 (디스힙합) ──
 export function topFontInterLead(lang: Lang): string {
   switch (lang) {
     case "th":
-      return [q(FONT.inter), q(FONT.thai), q(FONT.jp), SANS].join(", ");
+      return [LATIN, TH, JP, SANS].join(", ");
     default:
-      return [q(FONT.inter), q(FONT.jp), SANS].join(", ");
+      return [LATIN, JP, SANS].join(", ");
   }
 }
 

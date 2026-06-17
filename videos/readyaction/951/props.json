@@ -1,0 +1,18 @@
+{
+  "title": "Hereditary",
+  "artist": "Hereditary (2018)",
+  "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#951",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ヘレディタリー/継承",
+  "captions": [
+    { "start": 18.50, "end": 19.10, "original": "Stop!", "translation": "やめて！" },
+    { "start": 19.10, "end": 21.00, "original": "Mom, please stop!", "translation": "母さん、お願いやめて！" },
+    { "start": 21.00, "end": 22.00, "original": "Mom, I'm sorry!", "translation": "母さん、ごめんなさい！" },
+    { "start": 22.00, "end": 23.60, "original": "Okay, I'm sorry!", "translation": "わかった、ごめんなさい！" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 956
+}

@@ -12,7 +12,7 @@ import { TopCaption } from "../components/TopCaption";
 // 자막: 영상 영역 세로 중앙. 위 원어(흰 이탤릭) / 아래 번역(48px/400 흰). 하단 #번호 + 영화 정보.
 const VIDEO_TOP = 480;
 const VIDEO_H = 960;
-const NSJP = [`"${FONT.jp}"`, "sans-serif"].join(", ");
+const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const ReadyAction: React.FC<ReadyActionProps> = ({
   topCaption,
@@ -52,13 +52,13 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
-          strongStyle={{ fontWeight: 500, fontStyle: "normal" }}
+          strongStyle={{ fontWeight: 400, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontJpLead(translationLanguage),
             fontSize: "50pt",
-            fontWeight: 200,
+            fontWeight: 100,
             color: "#fff",
-            lineHeight: 1.18,
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
             letterSpacing: 0,
           }}
         />
@@ -108,7 +108,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
                   width: "100%",
                   fontFamily: originalFontJp(),
                   fontSize: 36,
-                  fontWeight: 500,
+                  fontWeight: 300,
                   fontStyle: "italic",
                   fontSynthesis: "style",
                   color: "#fff",
@@ -127,7 +127,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
                 fontSize: 48,
-                fontWeight: 400,
+                fontWeight: 300,
                 color: "#fff",
                 letterSpacing: "-0.04em",
                 lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
@@ -167,7 +167,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
             style={{
               fontFamily: NSJP,
               fontSize: 40,
-              fontWeight: 500,
+              fontWeight: 400,
               fontStyle: "italic",
               color: "#fff",
               letterSpacing: "0.04em",
@@ -181,7 +181,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
             style={{
               fontFamily: NSJP,
               fontSize: 38,
-              fontWeight: 200,
+              fontWeight: 100,
               color: "rgba(255,255,255,0.92)",
               letterSpacing: "0.02em",
               textAlign: "center",

@@ -21,7 +21,8 @@ export const channelDefaults = {
     artist: "",
     topCaption: "",
     originalLanguage: "en",
-    translationLanguage: "ko",
+    translationLanguage: "ja",
+    comments: [],
   },
   goodmovies: {
     title: "",
@@ -56,7 +57,8 @@ export const channelDefaults = {
     artist: "Source",
     topCaption: "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
     bottomCTA: "続きは本文で",
-    warnText: "⚠️今フォローしておかないと、見逃すかもしれません",
+    warnText: "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    videoNumber: "",
     originalLanguage: "ja",
     translationLanguage: "ja",
   },
@@ -85,6 +87,7 @@ export const hasCaptions = {
 export const hasVideoNumber = {
   readyaction: true,
   thishiphop: true,
+  space_lab: true, // 단, #번호 = 1000 - 영상번호 (new-video.mjs 가 분기)
 };
 
 // 오버플로 추정용 레이아웃 상수 (check-captions.mjs 가 사용). src/channels/*.tsx 의 수치 미러.

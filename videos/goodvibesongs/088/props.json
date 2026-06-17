@@ -1,0 +1,104 @@
+{
+  "title": "秒針を噛む",
+  "artist": "ずっと真夜中でいいのに。",
+  "topCaption": "**しゃもじ**を振る\nちょっと変わった**応援法**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 4.114,
+      "note": "이 분위기의 사람이 기타 막 치는 거 너무 최고",
+      "w": 904
+    },
+    {
+      "src": "comments/02.png",
+      "start": 4.114,
+      "end": 8.229,
+      "note": "샤모지 박자 끝판왕 즛토마로 단결력 진짜 좋아",
+      "w": 766
+    },
+    {
+      "src": "comments/03.png",
+      "start": 8.229,
+      "end": 12.343,
+      "note": "갑작스러운 샤모지 콜에 딱 맞춰 응하는 팬들 감동",
+      "w": 938
+    },
+    {
+      "src": "comments/04.png",
+      "start": 12.343,
+      "end": 16.457,
+      "note": "다 같이 샤모지 두드릴 때 이 일체감 진짜 최고",
+      "w": 706
+    },
+    {
+      "src": "comments/05.png",
+      "start": 16.457,
+      "end": 20.571,
+      "note": "라이브 특유의 손 샤모지 박자 진짜 좋아 마지막 롱톤 음정 올라가는 게 더 좋아",
+      "w": 782
+    },
+    {
+      "src": "comments/06.png",
+      "start": 20.571,
+      "end": 24.686,
+      "note": "대후렴 전 용자 등장 같은 라이브 어레인지 멜로디 너무 좋아",
+      "w": 938
+    },
+    {
+      "src": "comments/07.png",
+      "start": 24.686,
+      "end": 28.8,
+      "note": "여기서 기분 올리고 암전에 모았다 불 켜질 때 전력 점프하면 최고",
+      "w": 938
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 3,
+      "original": "前から 後ろから",
+      "translation": "前から 後ろから"
+    },
+    {
+      "start": 3,
+      "end": 8,
+      "original": "さすがです",
+      "translation": "さすがです"
+    },
+    {
+      "start": 8,
+      "end": 11,
+      "original": "後ろから 前から",
+      "translation": "後ろから 前から"
+    },
+    {
+      "start": 11,
+      "end": 15,
+      "original": "うまい！",
+      "translation": "うまい！"
+    },
+    {
+      "start": 15,
+      "end": 17.6,
+      "original": "みんなで楽しく",
+      "translation": "みんなで楽しく"
+    },
+    {
+      "start": 17.6,
+      "end": 22,
+      "original": "このまま奪って 隠して 忘れたい",
+      "translation": "このまま奪って 隠して 忘れたい"
+    },
+    {
+      "start": 22,
+      "end": 28.8,
+      "original": "このまま奪って 隠して 離さないで",
+      "translation": "このまま奪って 隠して 離さないで"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 864
+}

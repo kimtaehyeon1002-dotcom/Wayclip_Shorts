@@ -1,0 +1,14 @@
+{
+  "channel": "readyaction",
+  "number": "953",
+  "name": "readyaction/953",
+  "media": {
+    "slug": "troy-2004",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 432
+}

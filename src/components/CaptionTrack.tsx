@@ -20,13 +20,26 @@ export const CaptionTrack: React.FC<{
   return (
     <div style={zoneStyle}>
       {captions.map((cap, i) => {
-        const fadeOutStart = Math.max(cap.start + FADE, cap.end - FADE);
-        const opacity = interpolate(
-          t,
-          [cap.start, cap.start + FADE, fadeOutStart, cap.end],
-          [0, 1, 1, 0],
-          { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
-        );
+        // cue 가 2*FADE 보다 짧으면 4점 ramp 가 비단조가 되어 interpolate 가 깨진다.
+        // 그땐 fade 를 dur/2 로 줄이고, 그래도 hold 구간이 안 남으면 삼각(fade-in→out)으로.
+        const dur = cap.end - cap.start;
+        const fade = Math.min(FADE, dur / 2);
+        const fadeInEnd = cap.start + fade;
+        const fadeOutStart = cap.end - fade;
+        const opacity =
+          fadeOutStart > fadeInEnd
+            ? interpolate(
+                t,
+                [cap.start, fadeInEnd, fadeOutStart, cap.end],
+                [0, 1, 1, 0],
+                { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+              )
+            : interpolate(
+                t,
+                [cap.start, cap.start + dur / 2, cap.end],
+                [0, 1, 0],
+                { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+              );
         // 표시 구간 밖이면 아예 렌더 안 함 (visibility:hidden hard-kill 동등).
         if (opacity <= 0) return null;
         return (

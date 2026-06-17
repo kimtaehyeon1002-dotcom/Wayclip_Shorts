@@ -1,0 +1,131 @@
+{
+  "title": "めぐる季節",
+  "artist": "川合結人",
+  "topCaption": "まるでジブリそのもの\n**少年の歌声**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 3.44,
+      "note": "일본어가 이렇게 아름다운 언어였구나 느끼게 하는 목소리",
+      "w": 832
+    },
+    {
+      "src": "comments/02.png",
+      "start": 3.44,
+      "end": 6.88,
+      "note": "마치 지브리의 분신 여성과 다른 좋음 찰나적이라 더 운다",
+      "w": 900
+    },
+    {
+      "src": "comments/03.png",
+      "start": 6.88,
+      "end": 10.32,
+      "note": "이게 보이소프라노인가 남녀와 다른 차원의 음색",
+      "w": 602
+    },
+    {
+      "src": "comments/04.png",
+      "start": 10.32,
+      "end": 13.76,
+      "note": "변성기는 순식간 인생 한순간의 덧없는 목소리",
+      "w": 960
+    },
+    {
+      "src": "comments/05.png",
+      "start": 13.76,
+      "end": 17.2,
+      "note": "이건 이미 전설이다",
+      "w": 396
+    },
+    {
+      "src": "comments/06.png",
+      "start": 17.2,
+      "end": 20.64,
+      "note": "전쟁도 멈출 것 같은 노랫소리",
+      "w": 494
+    },
+    {
+      "src": "comments/07.png",
+      "start": 20.64,
+      "end": 24.08,
+      "note": "영상으로 남아 다행 평생의 보물",
+      "w": 630
+    },
+    {
+      "src": "comments/08.png",
+      "start": 24.08,
+      "end": 27.52,
+      "note": "천사 아이가 무서워할 필요 없다며 마중 온 것 같다",
+      "w": 1006
+    },
+    {
+      "src": "comments/09.png",
+      "start": 27.52,
+      "end": 30.96,
+      "note": "천사가 지상에 내려온 아이",
+      "w": 602
+    },
+    {
+      "src": "comments/10.png",
+      "start": 30.96,
+      "end": 34.4,
+      "note": "처음으로 쇼츠에서 본편을 찾아봤다",
+      "w": 562
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 4.4,
+      "original": "凍えた手のひらで",
+      "translation": "凍えた手のひらで"
+    },
+    {
+      "start": 4.4,
+      "end": 9,
+      "original": "とけてゆく粉雪は",
+      "translation": "とけてゆく粉雪は"
+    },
+    {
+      "start": 9,
+      "end": 12.48,
+      "original": "涙によく似てた",
+      "translation": "涙によく似てた"
+    },
+    {
+      "start": 12.48,
+      "end": 17.9,
+      "original": "ぬくもりに出会う冬",
+      "translation": "ぬくもりに出会う冬"
+    },
+    {
+      "start": 17.92,
+      "end": 22.8,
+      "original": "幸せを探す人が",
+      "translation": "幸せを探す人が"
+    },
+    {
+      "start": 22.8,
+      "end": 27.4,
+      "original": "一番幸せだって",
+      "translation": "一番幸せだって"
+    },
+    {
+      "start": 27.4,
+      "end": 29.6,
+      "original": "めぐる季節",
+      "translation": "めぐる季節"
+    },
+    {
+      "start": 29.6,
+      "end": 34.4,
+      "original": "想い出に変えながら",
+      "translation": "想い出に変えながら"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1032
+}

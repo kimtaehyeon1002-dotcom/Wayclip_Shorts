@@ -2,9 +2,8 @@ import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../fonts";
 
-// 빨간 경고 박스(space_lab) — 영상 끝 10초 전 fade-in → [솔리드 → 3번 깜빡 → 솔리드 → …] 끝까지 반복.
+// 빨간 경고 박스(space_lab) — 영상 처음부터 fade-in → [솔리드 → 3번 깜빡 → 솔리드 → …] 끝까지 반복.
 // 원본 GSAP 타임라인을 키프레임 배열로 재구성 후 프레임에서 보간 (결정적).
-const WARN_LEAD_TIME = 10;
 const APPEAR_FADE = 0.6;
 const APPEAR_HOLD = 0.8;
 const BLINK_OFF = 0.2;
@@ -28,7 +27,7 @@ function buildKeyframes(dur: number): { times: number[]; values: number[] } {
   };
 
   push(0, 0);
-  const warnStart = Math.max(0, dur - WARN_LEAD_TIME);
+  const warnStart = 0; // 영상 처음부터 등장
   push(warnStart, 0);
   push(warnStart + APPEAR_FADE, 1);
 
@@ -44,6 +43,20 @@ function buildKeyframes(dur: number): { times: number[]; values: number[] } {
   }
   push(dur, values[values.length - 1]);
   return { times, values };
+}
+
+// warnText 안의 "1000個" 만 한 단계 굵게 (나머지 400 → 강조 500).
+const WARN_EMPH = "1000個";
+function renderWarnText(text: string): React.ReactNode {
+  const idx = text.indexOf(WARN_EMPH);
+  if (idx < 0) return text;
+  return [
+    text.slice(0, idx),
+    <span key="emph" style={{ fontWeight: 500 }}>
+      {WARN_EMPH}
+    </span>,
+    text.slice(idx + WARN_EMPH.length),
+  ];
 }
 
 export const WarnPill: React.FC<{ warnText: string; topPx: number }> = ({
@@ -74,23 +87,27 @@ export const WarnPill: React.FC<{ warnText: string; topPx: number }> = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        zIndex: 5, // 2줄 오버플로가 아래 검정 하단 박스에 가려 잘리지 않도록
       }}
     >
       <span
         style={{
           display: "inline-block",
-          background: "#FC0200", // 채널 빨강 토큰
+          background: "transparent", // 빨간 배경 일시 off (사용자 요청 — 다시 켜라 할 때까지). 복원: "#FC0200"
           color: "#FFE401", // 채널 노랑 토큰
           fontFamily: [`"${FONT.jp}"`, "sans-serif"].join(", "),
           fontSize: 38,
           fontWeight: 400,
           letterSpacing: "-0.01em",
           fontFeatureSettings: '"palt" 1',
-          padding: "8px 14px",
+          whiteSpace: "pre-line", // warnText 의 \n 으로 줄바꿈
+          textAlign: "center",
+          lineHeight: 1.1,
+          padding: "0 14px",
           opacity,
         }}
       >
-        {warnText}
+        {renderWarnText(warnText)}
       </span>
     </div>
   );

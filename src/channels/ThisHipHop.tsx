@@ -2,18 +2,17 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { ThisHipHopProps } from "../props";
-import { captionFont, originalFontJp, showOriginal, topFontInterLead } from "../lang";
-import { FONT } from "../fonts";
+import { captionFont, originalFontLatin, latinFont, showOriginal, topFontInterLead } from "../lang";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { TopCaption } from "../components/TopCaption";
 
 // 디스힙합 — 힙합 트랙. 검정 배경. 상단 멘트(영상별 자유, 전체 동일 굵기) / 영상 1080×960.
 // 자막: 영상 영역 세로 중앙. 위 원어(흰 이탤릭) / 아래 번역(44px/600 흰). 하단 #번호 + 영문 Artist-Track.
-// 폰트: 라틴은 Inter, 일본어 글리프는 NSJP fallback (원본 system-native 선호는 Chromium 렌더에서 NSJP/Inter 로 귀결).
+// 폰트: 출시본과 동일하게 라틴=San Francisco(-apple-system), 일본어 글리프=Hiragino 폴백.
 const VIDEO_TOP = 480;
 const VIDEO_H = 960;
-const INTER = [`"${FONT.inter}"`, "sans-serif"].join(", ");
+const INTER = latinFont();
 
 export const ThisHipHop: React.FC<ThisHipHopProps> = ({
   topCaption,
@@ -58,7 +57,7 @@ export const ThisHipHop: React.FC<ThisHipHopProps> = ({
             fontSize: "49pt",
             fontWeight: 500,
             color: "#fff",
-            lineHeight: 1.18,
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
             letterSpacing: 0,
             fontFeatureSettings: '"palt" 1',
           }}
@@ -107,7 +106,7 @@ export const ThisHipHop: React.FC<ThisHipHopProps> = ({
               <div
                 style={{
                   width: "100%",
-                  fontFamily: originalFontJp(),
+                  fontFamily: originalFontLatin(),
                   fontSize: 36,
                   fontWeight: 500,
                   fontStyle: "italic",

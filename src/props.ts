@@ -18,14 +18,30 @@ export const captionSchema = z.object({
 });
 export type Caption = z.infer<typeof captionSchema>;
 
+// ── 댓글 오버레이 한 개 (굿바이브 하단) ──
+// src 는 public 루트(=영상 디렉토리, 렌더 시 --public-dir) 기준 경로. 예: "comments/01.png".
+// note 는 댓글 내용의 한국어 번역(식별용, 화면 미표시). start/end 는 초.
+export const commentSchema = z.object({
+  src: z.string(),
+  start: z.number(), // 초
+  end: z.number(), // 초
+  note: z.string().default(""),
+  // 블러본 원본 가로 px (prep-comments 가 ffprobe 로 기록). 표시 폭 = w × scale, maxWidth 캡.
+  w: z.number().optional(),
+});
+export type Comment = z.infer<typeof commentSchema>;
+
 // ── 공통 base ──
 // title/artist 는 메타(화면 미표시). topCaption 은 시청자 언어로 1~2줄(\n 분리).
 const baseShape = {
   title: z.string().default(""),
   artist: z.string().default(""),
   topCaption: z.string().default(""),
+  // (선택) 상단멘트 줄별 폰트 크기(pt) 오버라이드. 길이 = 줄 수, null/누락이면 채널 기본 크기.
+  // 한 줄만 넘칠 때 그 줄만 줄이는 escape hatch (예: [50, null]). 없으면 기존 양산 영상과 100% 동일.
+  topCaptionLineSizes: z.array(z.number().nullable()).optional(),
   originalLanguage: origLangSchema.default("en"),
-  translationLanguage: transLangSchema.default("ko"),
+  translationLanguage: transLangSchema.default("ja"),
   captions: z.array(captionSchema).default([]),
   // public 루트(렌더 시 --public-dir=영상디렉토리) 기준 미디어 경로. new-video 가 source.mp4 하드링크 생성.
   videoSrc: z.string().default("source.mp4"),
@@ -33,8 +49,11 @@ const baseShape = {
   durationInFrames: z.number().int().positive().default(900),
 };
 
-// ── goodvibesongs (굿바이브) — base 그대로 ──
-export const goodVibeSongsSchema = z.object({ ...baseShape });
+// ── goodvibesongs (굿바이브) — base + 하단 댓글 오버레이 ──
+export const goodVibeSongsSchema = z.object({
+  ...baseShape,
+  comments: z.array(commentSchema).default([]),
+});
 export type GoodVibeSongsProps = z.infer<typeof goodVibeSongsSchema>;
 
 // ── goodmovies (굿무비) — + 하단 영화 정보 ──
@@ -88,7 +107,9 @@ export const spaceLabSchema = z.object({
   bottomCTA: z.string().default("続きは本文で"),
   warnText: z
     .string()
-    .default("⚠️今フォローしておかないと、見逃すかもしれません"),
+    .default("⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします"),
+  // 1000 - 영상번호 (예: 028 → #972). new-video.mjs 가 자동 주입.
+  videoNumber: z.string().default(""),
   originalLanguage: origLangSchema.default("ja"),
   translationLanguage: transLangSchema.default("ja"),
   videoSrc: z.string().default("source.mp4"),
