@@ -104,6 +104,11 @@ node tools/new-video.mjs goodvibesongs 076 --media my-song --title "곡명" --ar
 # 2) STT (whisper.cpp 내장, 첫 실행 시 빌드+모델 다운로드). 항상 --language <원어>, .en 모델 금지.
 node tools/transcribe.mjs videos/goodvibesongs/076/source.mp4 --language en   # [--model medium]
 #   → videos/goodvibesongs/076/transcript.json
+#   ⓘ STT 직후 transcribe 가 무보컬(간주) 구간을 자동 검출해 출력한다(detect-gaps 내장).
+#     음악은 whisper 가 간주에 토큰을 "늘려서" 환각(한 글자 ~1s)하는데, 그 구간이 곧 자막을 비울 곳.
+#     캡션(3단계 경로 B/C) 작성 시 **그 gap 구간엔 caption 을 두지 말 것**(간주에 자막 연속 방지 — 088 교훈).
+#     단독 재실행/튜닝: node tools/detect-gaps.mjs videos/goodvibesongs/076 [--hold 0.9] [--min-gap 1.0]
+#     (제안일 뿐 props 자동수정 안 함. 짧은 곡간 쉼·인트로 침묵은 못 잡을 수 있으니 프리뷰로 최종 확인.)
 
 # 3) 자막 → props.json 의 captions
 #   경로 A (영어 + 가사): script.txt 작성 후
@@ -219,15 +224,16 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
    - `handleEnd`(선택, **기본 자동**): @핸들 끝 x좌표(블러 닉네임 폭). **닉네임=흰색·날짜=회색**이라 prep-comments 가 핸들 줄에서 **흰색(luma>200) 픽셀의 최대 x 를 스캔해 자동 산정**(회색 날짜는 자동 제외). **그리드로 눈대중 측정하지 말 것 — 폐지.** 자동값이 어쩌다 틀린 예외 스샷만 manifest 에 숫자로 직접 줘서 덮어쓴다.
    - `anchor`(선택): 그 댓글이 **합당한 가사 시점(초)**. 특정 가사/장면을 가리키는 댓글이면 그 caption `start` 초를 넣음. 전체 어디든 가능한 일반 댓글이면 생략.
    - `note`(선택): 안 주면 prep-comments 가 **파일명(=한국어 번역)을 note 로** 자동 사용. 굳이 따로 줄 필요 없음.
-4. `node tools/prep-comments.mjs <번호>` — handleEnd 자동측정(미지정 시) + 블러(sigma12 타이트) + `videos/goodvibesongs/<번호>/comments/NN.png` 복사 + 타이밍 분배 + `props.json` 의 `comments` 기록 + 원본 px(`w`) 기록. 로그에 산정된 `handleEnd=NN(auto)` 출력.
+4. `node tools/prep-comments.mjs <번호>` — handleEnd·avatarW 자동측정(미지정 시) + 블러(sigma12 타이트) + `videos/goodvibesongs/<번호>/comments/NN.png` 복사 + 타이밍 분배 + `props.json` 의 `comments` 기록 + 원본 px(`w`) 기록. 로그에 산정된 `handleEnd=NN(auto) avatarW=NN(auto)` 출력.
 5. `node tools/preview.mjs goodvibesongs <번호>` 로 승인 → 렌더.
 
 **블러 레시피 (sigma12 타이트 — 사용자 확정, 변경 금지):** `blur-comments.mjs` 가 적용.
 - 흐림 `gblur sigma=12` (프리미어 흐림값≈20 매핑), 페더(가장자리) `sigma=5`.
-- 프사 마스크 `x0 y0 90×90`, 닉네임 마스크 `x82 y6 (handleEnd-82)×42` (x82 로 아바타와 살짝 겹침).
+- 프사 마스크 `x0 y0 (avatarW)×90`(폭 자동측정 — 아래), 닉네임 마스크 `x82 y6 (handleEnd-82)×42` (x82 로 아바타와 살짝 겹침).
 - **프사 블러가 닉네임 블러보다 위 레이어.** 날짜는 안 가림(핸들 끝까지만).
 - 좌표는 레티나(~2x) 유튜브 댓글 스샷 기준. **그래서 1x 스샷은 위 2번대로 먼저 2x 업스케일** 한 뒤 이 레시피를 쓴다 (스케일별로 박스를 새로 재지 말 것). 그래도 어긋나는 예외는 manifest 항목에 `sigma/feather/avatarW/avatarH/nickX/nickY/nickH` 를 넣어 per-entry 로 덮어쓸 수 있다(prep-comments 가 blur-comments 로 통과시킴).
 - **handleEnd 자동측정** (`measureHandleEnd`): manifest 에 handleEnd 없으면 핸들 줄(아바타 제외 x≥95, 상단 ~52px 밴드)을 raw gray 로 떠서 **흰색(>200) 최대 x + margin 8**. 닉네임(흰)만 잡히고 날짜(회색 ~170)는 빠진다. 임계값 낮추면 날짜까지 먹으니 **200 고정**. 200 미만 안티에일리어싱 잔상이 흐릿하게 남는 건 정상(식별 불가, 최종 축소 렌더에선 안 보임) — 더 지우려 임계값 내리지 말 것.
+- **avatarW(프사 마스크 폭) 자동측정** (`measureAvatarW` = handleEnd 의 "가로 버전"): manifest 에 avatarW 없으면 **본문 첫 줄**(핸들 줄·액션 줄 제외, `y58`부터 `38px` 밴드)에서 **가장 왼쪽 흰색(>200) x = bodyLeft** 를 찾아 `avatarW = bodyLeft − 3×feather − 2`. → 프사는 덮으면서 **페더 번짐까지 포함해 본문 첫 글자는 절대 안 덮는다**(유튜브 본문은 아바타 오른쪽으로 들여쓰기됨). 눈대중 금지. 자동값이 틀리는 예외만 manifest 에 `avatarW` 숫자로 덮어쓴다. (avatarH 는 90 고정 — 프사 아래 같은 x 열은 빈 공간이라 세로는 문제 없음.)
 
 **타이밍 분배:** 영상 길이 ÷ 댓글 개수 = 균등 슬롯, **항상 1개 연속 노출**(슬롯 경계 0.3s 크로스페이드). `anchor` 있는 댓글은 그 시점 슬롯에 배치(충돌 시 가까운 빈 슬롯), 나머지는 남은 슬롯에 순서대로 — "특정부분에 합당하게 + 나머지는 균등".
 
@@ -249,11 +255,12 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
 | `new-video.mjs` | 영상 스캐폴드: props.json/meta.json + source.mp4 심볼링크 + public 하드링크 + durationInFrames(마지막 프레임 pts) + space_lab layout 자동 계산 |
 | `transcribe.mjs` | whisper.cpp STT → transcript.json (`@remotion/install-whisper-cpp`) |
 | `align-script.mjs` | LCS 정렬 → props.json 의 captions (경로 A) |
+| `detect-gaps.mjs` | STT 무보컬(간주) 구간 검출 — transcribe 가 STT 직후 자동 호출(늘린 환각/깨진 토큰/침묵). 캡션 비울 구간 제안 (음악 자막 간주-연속 방지). 단독 CLI + `--srt` 검증 |
 | `check-captions.mjs` | 오버플로 사전 감지 (props.json + `channels.mjs` 레이아웃 상수) |
 | `validate-props.mjs` | 렌더 전 정합성 검증 (hyperframes lint/validate 대체) |
 | `preview.mjs` | 채널 고정 포트로 `remotion studio` (props + 미디어 자동) |
 | `blur-comments.mjs` | 댓글 스샷 프사+닉네임 가우시안 블러 (굿바이브 댓글 오버레이용, sigma12 타이트 레시피. handleEnd 외 avatar/nick/sigma/feather 플래그로 스케일 조정) |
-| `prep-comments.mjs` | `<번호>댓글/` → handleEnd 자동측정(흰색 닉네임 스캔, 미지정 시)+블러+영상디렉토리 복사+타이밍 분배+props 기록 (굿바이브 전용) |
+| `prep-comments.mjs` | `<번호>댓글/` → handleEnd + avatarW(프사폭) 자동측정(흰색 픽셀 스캔, 미지정 시)+블러+영상디렉토리 복사+타이밍 분배+props 기록 (굿바이브 전용) |
 | `channels.mjs` | 채널 정의/기본 props/레이아웃 상수/space_lab layout 계산 (모든 도구 공유) |
 
 > **`normalize-output` 없음** — Remotion 출력은 이미 SNS 안전(start_time 0). 절대 edit-list 정규화하지 말 것.
