@@ -1,0 +1,19 @@
+{
+  "title": "連通管（パスカルの原理）",
+  "artist": "Source",
+  "topCaption": "つながったコップの水が\n必ず[[同じ高さ]]になる**理由**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#964",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 368,
+    "videoH": 1094,
+    "warnTop": 1482,
+    "bottomTop": 1552,
+    "bottomH": 368
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1227
+}

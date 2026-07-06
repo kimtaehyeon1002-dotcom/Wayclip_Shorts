@@ -1,0 +1,144 @@
+{
+  "title": "Shake It Off",
+  "artist": "Taylor Swift",
+  "topCaption": "演出より**体**が大事な\n**テイラースウィフト**",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 7.68,
+      "note": "1_밑에 남자들 받아내겠다는 게 미덥지 못해 웃김",
+      "w": 814
+    },
+    {
+      "src": "comments/02.png",
+      "start": 7.68,
+      "end": 15.36,
+      "note": "2_저 신발로 뛰어내리면 발 나가겠다",
+      "w": 516
+    },
+    {
+      "src": "comments/03.png",
+      "start": 15.36,
+      "end": 23.04,
+      "note": "3_숨 찬 뒤 이 성량으로 비브라토 역시다",
+      "w": 844
+    },
+    {
+      "src": "comments/04.png",
+      "start": 23.04,
+      "end": 30.72,
+      "note": "4_그 숨가쁨에서 이거 진짜 대박",
+      "w": 454
+    },
+    {
+      "src": "comments/05.png",
+      "start": 30.72,
+      "end": 38.4,
+      "note": "5_숨 고르는 게 한순간이라 너무 프로 아냐",
+      "w": 500
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.79,
+      "original": "Shake..",
+      "translation": "シェイク…"
+    },
+    {
+      "start": 5.63,
+      "end": 7.78,
+      "original": "N..no",
+      "translation": "む、無理むり…"
+    },
+    {
+      "start": 7.78,
+      "end": 9.73,
+      "original": "One second",
+      "translation": "ちょっと待って"
+    },
+    {
+      "start": 9.73,
+      "end": 11.43,
+      "original": "I don't care if it's the VMAs,",
+      "translation": "VMAだろうと関係ない、"
+    },
+    {
+      "start": 11.43,
+      "end": 13.29,
+      "original": "I'm not jumping off of there",
+      "translation": "あそこから飛び降りるなんてムリ！"
+    },
+    {
+      "start": 13.29,
+      "end": 16.45,
+      "original": "It's all kinds of people getting bit by snakes",
+      "translation": "ヘビに噛まれる人が続出してるし"
+    },
+    {
+      "start": 16.45,
+      "end": 21.12,
+      "original": "Dangerous",
+      "translation": "危ないって！"
+    },
+    {
+      "start": 21.12,
+      "end": 24.83,
+      "original": "ha... One second... okey..",
+      "translation": "はぁ…ちょっと待って…よし…"
+    },
+    {
+      "start": 24.83,
+      "end": 26.11,
+      "original": "Yeah, oh",
+      "translation": "よし、いくよ"
+    },
+    {
+      "start": 26.11,
+      "end": 27.67,
+      "original": "'Cause the players gonna play,",
+      "translation": "プレイヤーは遊び続けるし、"
+    },
+    {
+      "start": 27.67,
+      "end": 29.19,
+      "original": "play, play, play",
+      "translation": "プレイ、プレイ、プレイ"
+    },
+    {
+      "start": 29.19,
+      "end": 32.57,
+      "original": "And the haters gonna hate, hate, hate, hate, hate Baby,",
+      "translation": "アンチは叩き続ける、ヘイト、ヘイト…ベイビー"
+    },
+    {
+      "start": 32.57,
+      "end": 35.35,
+      "original": "I'm just gonna shake, shake, shake, shake, shake",
+      "translation": "私はただ受け流す、シェイク、シェイク…"
+    },
+    {
+      "start": 35.35,
+      "end": 36.45,
+      "original": "I shake it off,",
+      "translation": "気にしない、"
+    },
+    {
+      "start": 36.45,
+      "end": 37.45,
+      "original": "I shake it off!",
+      "translation": "受け流すの！"
+    },
+    {
+      "start": 37.45,
+      "end": 38.4,
+      "original": "Ooh-ooh-ooh",
+      "translation": "ウーウーウー"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1152
+}

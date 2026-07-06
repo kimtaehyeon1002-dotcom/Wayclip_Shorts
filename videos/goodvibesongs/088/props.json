@@ -56,48 +56,15 @@
     }
   ],
   "captions": [
-    {
-      "start": 0,
-      "end": 3,
-      "original": "前から 後ろから",
-      "translation": "前から 後ろから"
-    },
-    {
-      "start": 3,
-      "end": 8,
-      "original": "さすがです",
-      "translation": "さすがです"
-    },
-    {
-      "start": 8,
-      "end": 11,
-      "original": "後ろから 前から",
-      "translation": "後ろから 前から"
-    },
-    {
-      "start": 11,
-      "end": 15,
-      "original": "うまい！",
-      "translation": "うまい！"
-    },
-    {
-      "start": 15,
-      "end": 17.6,
-      "original": "みんなで楽しく",
-      "translation": "みんなで楽しく"
-    },
-    {
-      "start": 17.6,
-      "end": 22,
-      "original": "このまま奪って 隠して 忘れたい",
-      "translation": "このまま奪って 隠して 忘れたい"
-    },
-    {
-      "start": 22,
-      "end": 28.8,
-      "original": "このまま奪って 隠して 離さないで",
-      "translation": "このまま奪って 隠して 離さないで"
-    }
+    { "start": 1.02, "end": 2.59, "original": "前から後ろ", "translation": "前から後ろ" },
+    { "start": 2.59, "end": 3.68, "original": "このまま", "translation": "このまま" },
+    { "start": 7.13, "end": 8.47, "original": "さすがです", "translation": "さすがです" },
+    { "start": 8.47, "end": 9.92, "original": "後ろから前", "translation": "後ろから前" },
+    { "start": 9.92, "end": 10.7, "original": "このまま", "translation": "このまま" },
+    { "start": 14.4, "end": 14.73, "original": "うまい", "translation": "うまい" },
+    { "start": 14.73, "end": 17.05, "original": "みんなで楽しく", "translation": "みんなで楽しく" },
+    { "start": 17.3, "end": 22.94, "original": "このまま奪って隠して忘れたい", "translation": "このまま奪って隠して忘れたい" },
+    { "start": 24.91, "end": 28.93, "original": "このまま奪って隠して話したい", "translation": "このまま奪って隠して話したい" }
   ],
   "videoSrc": "source.mp4",
   "durationInFrames": 864

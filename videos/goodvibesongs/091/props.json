@@ -1,0 +1,84 @@
+{
+  "title": "Popular",
+  "artist": "Ariana Grande",
+  "topCaption": "**ミュージカル**も完璧な\n**アリアナ**",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 3.26,
+      "note": "아리아나가 코 콕 했을 때 아이가 눈 깜빡하는 게 너무 귀여워",
+      "w": 872
+    },
+    {
+      "src": "comments/02.png",
+      "start": 3.26,
+      "end": 6.52,
+      "note": "이 역 하고 싶어서 노래법까지 바꿔 오디션 이겼다니 진짜 대단해",
+      "w": 872
+    },
+    {
+      "src": "comments/03.png",
+      "start": 6.52,
+      "end": 9.78,
+      "note": "역시 디즈니 드라마 출연했던 아티스트",
+      "w": 666
+    },
+    {
+      "src": "comments/04.png",
+      "start": 9.78,
+      "end": 13.04,
+      "note": "칫 역시 귀엽네 아리엘 역은 아리아나였으면 했어 개인 취향이지만",
+      "w": 860
+    },
+    {
+      "src": "comments/05.png",
+      "start": 13.04,
+      "end": 16.3,
+      "note": "이분과 칸다 사야카는 아마 평생 프린세스",
+      "w": 684
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.2,
+      "end": 7,
+      "original": "You'll be",
+      "translation": "あなたは…"
+    },
+    {
+      "start": 7,
+      "end": 8,
+      "original": "popular!",
+      "translation": "人気者になれる！"
+    },
+    {
+      "start": 8,
+      "end": 10,
+      "original": "You're gonna be popular!",
+      "translation": "そう、人気者にしてあげる！"
+    },
+    {
+      "start": 10,
+      "end": 12,
+      "original": "I'll teach you the proper poise",
+      "translation": "上品な仕草を教えてあげる"
+    },
+    {
+      "start": 12,
+      "end": 14,
+      "original": "when you talk to boys",
+      "translation": "男の子と話すときのね"
+    },
+    {
+      "start": 14,
+      "end": 16.3,
+      "original": "Little ways to flirt and flounce",
+      "translation": "ちょっとした駆け引きの仕方も"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 489
+}

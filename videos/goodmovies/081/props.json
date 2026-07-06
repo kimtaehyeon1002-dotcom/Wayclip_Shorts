@@ -1,0 +1,23 @@
+{
+  "title": "Ruby Sparks",
+  "artist": "",
+  "topCaption": "「好き」と言ってたのに\n恋するとこんなに重くなる私",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ルビー・スパークス",
+  "captionPaddingTop": 430,
+  "captions": [
+    { "start": 2.62, "end": 3.54, "original": "", "translation": "ねえ、ねえ" },
+    { "start": 3.54, "end": 4.0, "original": "", "translation": "どうしたの?" },
+    { "start": 4.0, "end": 5.06, "original": "", "translation": "振り返ったら いなくなってて" },
+    { "start": 5.06, "end": 6.7, "original": "", "translation": "手を離したでしょ" },
+    { "start": 6.7, "end": 7.62, "original": "", "translation": "え?" },
+    { "start": 7.62, "end": 9.32, "original": "", "translation": "手を離したじゃない!" },
+    { "start": 11.88, "end": 13.3, "original": "", "translation": "電話に出なきゃいけなくて" },
+    { "start": 13.3, "end": 15.2, "original": "", "translation": "わかってる でも離したよね!" },
+    { "start": 15.2, "end": 15.7, "original": "", "translation": "ルビー…" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 471
+}

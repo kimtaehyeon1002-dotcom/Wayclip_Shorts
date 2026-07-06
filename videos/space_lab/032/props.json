@@ -1,0 +1,19 @@
+{
+  "title": "無重力の罠",
+  "artist": "Source",
+  "topCaption": "宇宙で壁を蹴れないと\n[[永遠に閉じ込められる]]",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#968",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 476,
+    "videoH": 879,
+    "warnTop": 1375,
+    "bottomTop": 1445,
+    "bottomH": 475
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 357
+}

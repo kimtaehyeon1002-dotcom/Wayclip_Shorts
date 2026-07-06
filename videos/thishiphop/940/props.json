@@ -1,0 +1,22 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "金持ちアピールはしない\nそれがカッコいい",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#940",
+  "artistTrack": "Macklemore & Ryan Lewis - Thrift Shop (feat. Wanz)",
+  "captions": [
+    { "start": 0.10, "end": 1.05, "original": "Can we go thrift shopping?", "translation": "古着屋、行かない？" },
+    { "start": 1.08, "end": 3.20, "original": "I'm gonna pop some tags", "translation": "古着屋で値札をぶっちぎるぜ" },
+    { "start": 3.20, "end": 6.02, "original": "Only got twenty dollars in my pocket", "translation": "ポケットにゃ20ドルだけさ" },
+    { "start": 6.11, "end": 8.84, "original": "I'm, I'm, I'm hunting, looking for a come-up", "translation": "お宝を狙ってハント中だ" },
+    { "start": 8.84, "end": 11.00, "original": "This is fucking awesome", "translation": "マジで最高だぜ" },
+    { "start": 11.08, "end": 13.26, "original": "I'm gonna pop some tags", "translation": "古着屋で値札をぶっちぎるぜ" },
+    { "start": 13.26, "end": 16.16, "original": "Only got twenty dollars in my pocket", "translation": "ポケットにゃ20ドルだけさ" },
+    { "start": 16.21, "end": 18.90, "original": "I'm, I'm, I'm hunting, looking for a come-up", "translation": "お宝を狙ってハント中だ" },
+    { "start": 18.90, "end": 21.10, "original": "This is fucking awesome", "translation": "マジで最高だぜ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 636
+}

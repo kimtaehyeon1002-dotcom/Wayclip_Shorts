@@ -1,0 +1,14 @@
+{
+  "channel": "readyaction",
+  "number": "949",
+  "name": "readyaction/949",
+  "media": {
+    "slug": "final-destination-3",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 696
+}

@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "083",
+  "name": "goodmovies/083",
+  "media": {
+    "slug": "jerry-maguire-hello",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 2132
+}

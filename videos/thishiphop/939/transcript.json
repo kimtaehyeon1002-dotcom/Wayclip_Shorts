@@ -1,0 +1,532 @@
+[
+  {
+    "text": "All",
+    "start": 0,
+    "end": 0.66
+  },
+  {
+    "text": "my",
+    "start": 0.66,
+    "end": 1.1
+  },
+  {
+    "text": "life",
+    "start": 1.1,
+    "end": 2
+  },
+  {
+    "text": "(",
+    "start": 2,
+    "end": 2.09
+  },
+  {
+    "text": "All",
+    "start": 2.09,
+    "end": 2.37
+  },
+  {
+    "text": "my",
+    "start": 2.37,
+    "end": 2.56
+  },
+  {
+    "text": "life",
+    "start": 2.56,
+    "end": 2.94
+  },
+  {
+    "text": ")",
+    "start": 2.94,
+    "end": 3.06
+  },
+  {
+    "text": "They",
+    "start": 3.06,
+    "end": 3.33
+  },
+  {
+    "text": "'ve",
+    "start": 3.33,
+    "end": 3.53
+  },
+  {
+    "text": "been",
+    "start": 3.53,
+    "end": 3.8
+  },
+  {
+    "text": "trying",
+    "start": 3.8,
+    "end": 4.21
+  },
+  {
+    "text": "to",
+    "start": 4.21,
+    "end": 4.34
+  },
+  {
+    "text": "keep",
+    "start": 4.34,
+    "end": 4.59
+  },
+  {
+    "text": "me",
+    "start": 4.63,
+    "end": 4.74
+  },
+  {
+    "text": "down",
+    "start": 4.74,
+    "end": 5.06
+  },
+  {
+    "text": "(",
+    "start": 5.06,
+    "end": 5.1
+  },
+  {
+    "text": "They",
+    "start": 5.1,
+    "end": 5.29
+  },
+  {
+    "text": "'ve",
+    "start": 5.29,
+    "end": 5.43
+  },
+  {
+    "text": "been",
+    "start": 5.43,
+    "end": 5.62
+  },
+  {
+    "text": "trying",
+    "start": 5.62,
+    "end": 5.9
+  },
+  {
+    "text": "to",
+    "start": 5.9,
+    "end": 5.99
+  },
+  {
+    "text": "keep",
+    "start": 5.99,
+    "end": 6.18
+  },
+  {
+    "text": "me",
+    "start": 6.18,
+    "end": 6.25
+  },
+  {
+    "text": "down",
+    "start": 6.28,
+    "end": 6.46
+  },
+  {
+    "text": ")",
+    "start": 6.46,
+    "end": 6.54
+  },
+  {
+    "text": "All",
+    "start": 6.55,
+    "end": 7.22
+  },
+  {
+    "text": "this",
+    "start": 7.22,
+    "end": 8.13
+  },
+  {
+    "text": "time",
+    "start": 8.13,
+    "end": 9.06
+  },
+  {
+    "text": "(",
+    "start": 9.06,
+    "end": 9.11
+  },
+  {
+    "text": "All",
+    "start": 9.11,
+    "end": 9.28
+  },
+  {
+    "text": "this",
+    "start": 9.28,
+    "end": 9.51
+  },
+  {
+    "text": "time",
+    "start": 9.51,
+    "end": 9.74
+  },
+  {
+    "text": ")",
+    "start": 9.74,
+    "end": 9.82
+  },
+  {
+    "text": "I",
+    "start": 9.82,
+    "end": 9.89
+  },
+  {
+    "text": "thought",
+    "start": 9.89,
+    "end": 10.42
+  },
+  {
+    "text": "I",
+    "start": 10.42,
+    "end": 10.49
+  },
+  {
+    "text": "would",
+    "start": 10.49,
+    "end": 10.86
+  },
+  {
+    "text": "make",
+    "start": 10.86,
+    "end": 11.15
+  },
+  {
+    "text": "it",
+    "start": 11.16,
+    "end": 11.31
+  },
+  {
+    "text": "out",
+    "start": 11.34,
+    "end": 11.53
+  },
+  {
+    "text": "(",
+    "start": 11.53,
+    "end": 11.6
+  },
+  {
+    "text": "Never",
+    "start": 11.6,
+    "end": 11.97
+  },
+  {
+    "text": "thought",
+    "start": 11.97,
+    "end": 12.5
+  },
+  {
+    "text": "I",
+    "start": 12.5,
+    "end": 12.56
+  },
+  {
+    "text": "'d",
+    "start": 12.57,
+    "end": 12.72
+  },
+  {
+    "text": "make",
+    "start": 12.72,
+    "end": 13.01
+  },
+  {
+    "text": "it",
+    "start": 13.02,
+    "end": 13.17
+  },
+  {
+    "text": "out",
+    "start": 13.17,
+    "end": 13.39
+  },
+  {
+    "text": ")",
+    "start": 13.39,
+    "end": 13.54
+  },
+  {
+    "text": "They",
+    "start": 13.54,
+    "end": 13.79
+  },
+  {
+    "text": "couldn",
+    "start": 13.79,
+    "end": 14.16
+  },
+  {
+    "text": "'t",
+    "start": 14.16,
+    "end": 14.26
+  },
+  {
+    "text": "break",
+    "start": 14.28,
+    "end": 14.58
+  },
+  {
+    "text": "me",
+    "start": 14.59,
+    "end": 14.71
+  },
+  {
+    "text": ",",
+    "start": 14.71,
+    "end": 14.83
+  },
+  {
+    "text": "they",
+    "start": 14.83,
+    "end": 15.08
+  },
+  {
+    "text": "couldn",
+    "start": 15.08,
+    "end": 15.45
+  },
+  {
+    "text": "'t",
+    "start": 15.45,
+    "end": 15.57
+  },
+  {
+    "text": "break",
+    "start": 15.57,
+    "end": 15.87
+  },
+  {
+    "text": "me",
+    "start": 15.87,
+    "end": 16.05
+  },
+  {
+    "text": "(",
+    "start": 16.06,
+    "end": 16.15
+  },
+  {
+    "text": "No",
+    "start": 16.15,
+    "end": 16.33
+  },
+  {
+    "text": ",",
+    "start": 16.33,
+    "end": 16.51
+  },
+  {
+    "text": "no",
+    "start": 16.51,
+    "end": 16.7
+  },
+  {
+    "text": ")",
+    "start": 16.7,
+    "end": 16.82
+  },
+  {
+    "text": "They",
+    "start": 16.82,
+    "end": 17.1
+  },
+  {
+    "text": "couldn",
+    "start": 17.1,
+    "end": 17.52
+  },
+  {
+    "text": "'t",
+    "start": 17.52,
+    "end": 17.66
+  },
+  {
+    "text": "take",
+    "start": 17.66,
+    "end": 17.94
+  },
+  {
+    "text": "me",
+    "start": 18.05,
+    "end": 18.08
+  },
+  {
+    "text": ",",
+    "start": 18.08,
+    "end": 18.22
+  },
+  {
+    "text": "they",
+    "start": 18.22,
+    "end": 18.5
+  },
+  {
+    "text": "couldn",
+    "start": 18.5,
+    "end": 18.92
+  },
+  {
+    "text": "'t",
+    "start": 18.92,
+    "end": 19.06
+  },
+  {
+    "text": "take",
+    "start": 19.06,
+    "end": 19.34
+  },
+  {
+    "text": "me",
+    "start": 19.34,
+    "end": 19.52
+  },
+  {
+    "text": "(",
+    "start": 19.52,
+    "end": 19.64
+  },
+  {
+    "text": "No",
+    "start": 19.64,
+    "end": 19.87
+  },
+  {
+    "text": ")",
+    "start": 19.87,
+    "end": 20
+  },
+  {
+    "text": "All",
+    "start": 20.15,
+    "end": 20.45
+  },
+  {
+    "text": "my",
+    "start": 20.45,
+    "end": 20.75
+  },
+  {
+    "text": "life",
+    "start": 20.75,
+    "end": 21.36
+  },
+  {
+    "text": "(",
+    "start": 21.36,
+    "end": 21.51
+  },
+  {
+    "text": "All",
+    "start": 21.51,
+    "end": 21.96
+  },
+  {
+    "text": "my",
+    "start": 21.96,
+    "end": 22.26
+  },
+  {
+    "text": "life",
+    "start": 22.26,
+    "end": 22.87
+  },
+  {
+    "text": ")",
+    "start": 22.87,
+    "end": 23.06
+  },
+  {
+    "text": "They",
+    "start": 23.06,
+    "end": 23.3
+  },
+  {
+    "text": "'ve",
+    "start": 23.3,
+    "end": 23.48
+  },
+  {
+    "text": "been",
+    "start": 23.48,
+    "end": 23.72
+  },
+  {
+    "text": "trying",
+    "start": 23.72,
+    "end": 24.09
+  },
+  {
+    "text": "to",
+    "start": 24.09,
+    "end": 24.21
+  },
+  {
+    "text": "keep",
+    "start": 24.21,
+    "end": 24.45
+  },
+  {
+    "text": "me",
+    "start": 24.45,
+    "end": 24.57
+  },
+  {
+    "text": "down",
+    "start": 24.57,
+    "end": 24.81
+  },
+  {
+    "text": "(",
+    "start": 24.81,
+    "end": 24.87
+  },
+  {
+    "text": "They",
+    "start": 24.87,
+    "end": 25.11
+  },
+  {
+    "text": "'ve",
+    "start": 25.11,
+    "end": 25.28
+  },
+  {
+    "text": "been",
+    "start": 25.29,
+    "end": 25.53
+  },
+  {
+    "text": "trying",
+    "start": 25.53,
+    "end": 25.89
+  },
+  {
+    "text": "to",
+    "start": 25.89,
+    "end": 26.02
+  },
+  {
+    "text": "keep",
+    "start": 26.02,
+    "end": 26.26
+  },
+  {
+    "text": "me",
+    "start": 26.26,
+    "end": 26.37
+  },
+  {
+    "text": "down",
+    "start": 26.38,
+    "end": 26.62
+  },
+  {
+    "text": ")",
+    "start": 26.62,
+    "end": 26.8
+  }
+]
