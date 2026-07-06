@@ -10,10 +10,11 @@ export const BackgroundVideo: React.FC<{
   height: number;
   background: string;
   objectFit: "cover" | "contain";
-  volume?: number;
+  objectPosition?: string; // cover 크롭 기준점 (CSS object-position). 누락이면 가운데.
+  volume?: number | ((frame: number) => number); // 숫자 고정 또는 프레임 함수(끝 페이드 등)
   overscan?: number; // 1보다 크면 살짝 확대해 cover 의 서브픽셀 가장자리 틈(흰선) 제거
   children?: React.ReactNode; // vignette 등 오버레이
-}> = ({ src, top, height, background, objectFit, volume = 1, overscan = 1, children }) => {
+}> = ({ src, top, height, background, objectFit, objectPosition, volume = 1, overscan = 1, children }) => {
   return (
     <div
       style={{
@@ -33,6 +34,7 @@ export const BackgroundVideo: React.FC<{
           width: "100%",
           height: "100%",
           objectFit,
+          objectPosition,
           display: "block",
           transform: overscan !== 1 ? `scale(${overscan})` : undefined,
           transformOrigin: "center",

@@ -20,6 +20,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
   captions,
   mediaKind,
   mediaTitleJa,
+  captionPaddingTop,
 }) => {
   return (
     <AbsoluteFill
@@ -81,6 +82,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
       {/* 자막 (영상 영역 안 하단 정렬) */}
       <CaptionTrack
         captions={captions}
+        fadeSeconds={0.05}
         zoneStyle={{
           position: "absolute",
           top: VIDEO_TOP,
@@ -95,9 +97,10 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          // 원본에 영문 자막이 화면 중앙(y≈960)에 박혀 있으므로 그 바로 아래에 번역을 둔다
+          // 원본에 영문 자막이 박혀 있으면 그 바로 위/아래에 번역을 "타이트하게 붙여서" 둔다
+          // (captionPaddingTop 으로 위치 조정. 떨어뜨리지 말 것 — 첫 추정부터 붙게 잡기. CLAUDE.md 자막 파이프라인 규칙 참조)
           justifyContent: "flex-start",
-          paddingTop: 555,
+          paddingTop: captionPaddingTop,
           gap: 6,
           textAlign: "center",
         }}
@@ -122,8 +125,8 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             >
               {cap.translation}
             </div>
-            {/* 아래: 원어 (흰, 굵게) — 영어 음원만 */}
-            {showOriginal(originalLanguage) && (
+            {/* 아래: 원어 (흰, 굵게) — 영어 음원만. 원본에 자막이 박힌 영상은 original 을 비워 번역만 표시 */}
+            {showOriginal(originalLanguage) && cap.original && (
               <div
                 style={{
                   width: "100%",

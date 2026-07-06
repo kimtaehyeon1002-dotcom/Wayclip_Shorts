@@ -13,7 +13,10 @@ const BLINKS_PER_BURST = 3;
 const BURST_LEN = (BLINK_OFF + BLINK_ON) * BLINKS_PER_BURST; // 0.6 (원본 변수명 그대로 — 루프 가드용)
 const BURST_GAP = 1.36;
 
-function buildKeyframes(dur: number): { times: number[]; values: number[] } {
+function buildKeyframes(
+  dur: number,
+  blink: boolean
+): { times: number[]; values: number[] } {
   const times: number[] = [];
   const values: number[] = [];
   const push = (time: number, value: number) => {
@@ -30,6 +33,12 @@ function buildKeyframes(dur: number): { times: number[]; values: number[] } {
   const warnStart = 0; // 영상 처음부터 등장
   push(warnStart, 0);
   push(warnStart + APPEAR_FADE, 1);
+
+  // blink=false: fade-in 후 끝까지 솔리드 유지 (깜빡임 없음 — 영상별 옵션).
+  if (!blink) {
+    push(dur, 1);
+    return { times, values };
+  }
 
   let cursor = warnStart + APPEAR_FADE + APPEAR_HOLD;
   while (cursor + BURST_LEN < dur) {
@@ -59,20 +68,26 @@ function renderWarnText(text: string): React.ReactNode {
   ];
 }
 
-export const WarnPill: React.FC<{ warnText: string; topPx: number }> = ({
-  warnText,
-  topPx,
-}) => {
+export const WarnPill: React.FC<{
+  warnText: string;
+  topPx: number;
+  blink?: boolean;
+  maxOpacity?: number;
+}> = ({ warnText, topPx, blink = true, maxOpacity = 1 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const t = frame / fps;
   const dur = durationInFrames / fps;
 
-  const { times, values } = React.useMemo(() => buildKeyframes(dur), [dur]);
-  const opacity = interpolate(t, times, values, {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const { times, values } = React.useMemo(
+    () => buildKeyframes(dur, blink),
+    [dur, blink]
+  );
+  const opacity =
+    interpolate(t, times, values, {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }) * maxOpacity;
 
   if (opacity <= 0) return null;
 

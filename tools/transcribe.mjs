@@ -20,6 +20,7 @@ import {
   downloadWhisperModel,
   transcribe,
 } from "@remotion/install-whisper-cpp";
+import { analyzeGaps, printGapReport } from "./detect-gaps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -113,6 +114,12 @@ async function main() {
     const flat = flatten(result.transcription);
     fs.writeFileSync(outPath, JSON.stringify(flat, null, 2) + "\n");
     console.log(`✓ wrote ${path.relative(process.cwd(), outPath)} — ${flat.length} tokens`);
+    // STT 직후 무보컬(간주) 구간 자동 검출 → 캡션(경로 B/C) 작성 시 그 구간을 비우라고 안내.
+    try {
+      printGapReport(analyzeGaps(flat), { tokenCount: flat.length });
+    } catch (e) {
+      console.warn(`⚠ 무보컬 구간 검출 건너뜀: ${e?.message || e}`);
+    }
   } finally {
     fs.rmSync(wav, { force: true });
   }

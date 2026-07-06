@@ -65,6 +65,9 @@ export const goodMoviesSchema = z.object({
   translationLanguage: transLangSchema.default("ja"),
   mediaKind: mediaKindSchema,
   mediaTitleJa: z.string().default(""),
+  // 자막(번역) 윗 패딩(px). 기본 555 = 표준 위치. 원본에 자막이 박힌(크롭한) 영상에서
+  // 박힌 자막에 딱 붙도록 영상별로 조정. 미지정 시 표준값 유지(다른 영상 영향 없음).
+  captionPaddingTop: z.number().default(555),
 });
 export type GoodMoviesProps = z.infer<typeof goodMoviesSchema>;
 
@@ -85,6 +88,21 @@ export const thisHipHopSchema = z.object({
   translationLanguage: transLangSchema.default("ja"),
   videoNumber: z.string().default(""),
   artistTrack: z.string().default(""),
+  // (선택) 영상 cover 크롭의 세로 기준점. CSS object-position 값(예: "center 22%").
+  // 누락이면 가운데(기존 양산 영상과 동일). 얼굴이 위쪽에 있어 가운데 크롭에서 잘릴 때만 위로 당김.
+  videoObjectPosition: z.string().optional(),
+  // (선택) 영상 맞춤. 기본 "cover"(밴드 꽉 채움, 가장자리 크롭 — 양산 표준).
+  // "contain" 이면 잘림 없이 영상 전체 노출(가로 영상이면 위아래 검정 여백). 와이드 소스 전용 예외.
+  videoFit: z.enum(["cover", "contain"]).default("cover"),
+  // (선택) 소스 영상 가로/세로 비(width/height). contain 일 때 레터박스 높이를 계산해
+  // 상·하단 문구가 "실제 영상 가장자리"에 붙도록(밴드 가장자리가 아니라) 쓴다. cover 면 무시.
+  videoAspectRatio: z.number().positive().optional(),
+  // (선택) 상·하단 검정 밴드 높이(px). 누락이면 480(기존 양산 표준). 작게 줄이면 영상 영역이
+  // 세로로 더 커져(=1920-2*band) cover 크롭이 덜 잘림. 영상 영역은 항상 가운데 정렬 유지.
+  bandHeight: z.number().int().positive().optional(),
+  // (선택) 영상 끝 페이드아웃 길이(초). 주면 컴포지션 마지막 N초 동안 화면이 검정으로
+  // 어두워지고 오디오도 함께 줄어든다(끝맺음 처리). 누락이면 페이드 없음(양산 표준 — hard end).
+  endFadeSeconds: z.number().positive().optional(),
 });
 export type ThisHipHopProps = z.infer<typeof thisHipHopSchema>;
 
@@ -104,10 +122,16 @@ export const spaceLabSchema = z.object({
   topCaption: z
     .string()
     .default("[[NASA]]が「タコ」から学んだ驚異の[[技術]]"),
+  // 헤드라인 최대 줄 수. 기본 2 (양산 표준). 영상별로 3줄이 필요하면 props 에서 3 으로 올림.
+  topCaptionMaxLines: z.number().int().positive().default(2),
   bottomCTA: z.string().default("続きは本文で"),
   warnText: z
     .string()
     .default("⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします"),
+  // 경고박스 깜빡임 on/off (기본 true=양산 표준). false 면 fade-in 후 솔리드 유지.
+  warnBlink: z.boolean().default(true),
+  // 경고박스 최대 불투명도 (기본 1). <1 이면 반투명 (영상별 옵션).
+  warnOpacity: z.number().positive().default(1),
   // 1000 - 영상번호 (예: 028 → #972). new-video.mjs 가 자동 주입.
   videoNumber: z.string().default(""),
   originalLanguage: origLangSchema.default("ja"),
