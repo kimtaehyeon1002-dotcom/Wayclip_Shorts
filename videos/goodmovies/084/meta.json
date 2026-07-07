@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "084",
+  "name": "goodmovies/084",
+  "media": {
+    "slug": "lemony-snicket-2004",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 1798
+}

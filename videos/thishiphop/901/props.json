@@ -1,0 +1,37 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "船を指揮する\nレジェンド・チビ船長",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "videoNumber": "#901",
+  "artistTrack": "サカナクション - 夜の踊り子",
+  "captions": [
+    {
+      "start": 2.4,
+      "end": 6.7,
+      "original": "雨になって何分か後に行く",
+      "translation": "雨になって何分か後に行く"
+    },
+    {
+      "start": 6.7,
+      "end": 9.7,
+      "original": "今泣いて何分か後に行く",
+      "translation": "今泣いて何分か後に行く"
+    },
+    {
+      "start": 9.7,
+      "end": 13.2,
+      "original": "今泣いて何分か後の自分",
+      "translation": "今泣いて何分か後の自分"
+    },
+    {
+      "start": 13.2,
+      "end": 16.7,
+      "original": "ウォウ アッ アッ アッ アッ",
+      "translation": "ウォウ アッ アッ アッ アッ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 501
+}

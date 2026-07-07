@@ -1,0 +1,22 @@
+{
+  "title": "キネシンとドーパミン輸送",
+  "artist": "Source",
+  "topCaption": "無気力な時は思い出して。\n[[キネシン]]はあなたの幸せの為に\n今日も[[ドーパミン]]を運んでいる",
+  "topCaptionMaxLines": 3,
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "warnBlink": false,
+  "warnOpacity": 0.65,
+  "videoNumber": "#966",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 501,
+    "videoH": 828,
+    "warnTop": 1349,
+    "bottomTop": 1419,
+    "bottomH": 501
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 399
+}

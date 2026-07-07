@@ -1,0 +1,23 @@
+{
+  "title": "In Da Club",
+  "artist": "50 Cent",
+  "topCaption": "誰よりもアゲて\n祝ってくれる誕生日ソング",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#936",
+  "artistTrack": "50 Cent - In Da Club",
+  "captions": [
+    { "start": 0.0, "end": 1.18, "original": "Go shawty,", "translation": "行こうぜ お嬢さん" },
+    { "start": 1.18, "end": 2.40, "original": "it's your birthday", "translation": "今夜は君の誕生日" },
+    { "start": 2.40, "end": 3.44, "original": "We gonna party", "translation": "パーティーしようぜ" },
+    { "start": 3.44, "end": 4.60, "original": "like it's your birthday", "translation": "まるで君の誕生日みたいに" },
+    { "start": 4.60, "end": 6.16, "original": "We gonna sip Bacardi like,", "translation": "バカルディを飲み交わそう" },
+    { "start": 6.16, "end": 7.54, "original": "Aye~", "translation": "エイ〜" },
+    { "start": 7.54, "end": 8.76, "original": "Where a party yeah", "translation": "パーティーはどこだ?" },
+    { "start": 10.20, "end": 11.33, "original": "The party at", "translation": "どこでやってんだ?" },
+    { "start": 11.33, "end": 14.0, "original": "Uh, and the girls and the Bacardi at", "translation": "女もバカルディもどこだ?" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 420,
+  "endFadeSeconds": 0.6
+}

@@ -47,14 +47,19 @@ function main() {
   if (!fs.existsSync(path.join(absDir, "props.json"))) die(`${dir}/props.json 없음 — new-video 먼저 실행`);
 
   const usePort = port || PORTS[channel] || 3000;
+  // Composition id 는 slug 와 같되 space_lab 만 space-lab (Remotion id 는 언더스코어 불가).
+  const compId = channel === "space_lab" ? "space-lab" : channel;
   const args = [
     "remotion", "studio", "src/index.ts",
     "--port", String(usePort),
     "--props", path.join(dir, "props.json"),
     "--public-dir", dir,
+    // 자동 브라우저 오픈 끄기 — 루트(http://localhost:PORT)로 열려 항상 기본 채널(goodvibesongs)로 빠지는 함정 방지.
+    // 반드시 아래 채널 경로(compId) URL 로 열 것.
+    "--no-open",
   ];
-  console.log(`▸ Studio: http://localhost:${usePort}  [${channel}/${number}]`);
-  console.log(`  컴포지션 목록에서 "${channel}" 선택`);
+  console.log(`▸ Studio: http://localhost:${usePort}/${compId}  [${channel}/${number}]`);
+  console.log(`  ⚠️ 위 채널 경로(/${compId}) URL 로 열 것. 루트 URL 은 항상 기본 채널(goodvibesongs)로 빠짐.`);
   const child = spawn("npx", args, { cwd: ROOT, stdio: "inherit" });
   child.on("exit", (code) => process.exit(code ?? 0));
 }

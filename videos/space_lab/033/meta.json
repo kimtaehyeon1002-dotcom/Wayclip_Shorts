@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "033",
+  "name": "space_lab/033",
+  "media": {
+    "slug": "b2-radar-stealth",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 267
+}

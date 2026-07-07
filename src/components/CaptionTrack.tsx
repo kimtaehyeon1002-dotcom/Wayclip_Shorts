@@ -2,7 +2,7 @@ import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Caption } from "../props";
 
-const FADE = 0.18; // 초 — 원본 GSAP FADE 상수와 동일
+const FADE = 0.18; // 초 — 원본 GSAP FADE 상수와 동일 (기본값)
 
 // GSAP 일시정지 타임라인 대신, 각 caption 의 opacity 를 현재 프레임의 순수 함수로 계산.
 // 4점 ramp + 양끝 clamp 로 원본의 "fade-in → hold → fade-out → end 에서 hard-kill" 재현.
@@ -12,7 +12,10 @@ export const CaptionTrack: React.FC<{
   groupStyle: React.CSSProperties;
   // 채널마다 원어/번역 순서·스타일이 달라서 내용 렌더는 위임.
   renderContent: (cap: Caption) => React.ReactNode;
-}> = ({ captions, zoneStyle, groupStyle, renderContent }) => {
+  // 페이드 길이(초). 미지정 시 기본 FADE. (굿무비: 원본 박힌 자막의 하드컷에 맞춰 짧게)
+  fadeSeconds?: number;
+}> = ({ captions, zoneStyle, groupStyle, renderContent, fadeSeconds }) => {
+  const FADE_S = fadeSeconds ?? FADE;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps; // 초 — caption start/end 와 같은 단위
@@ -23,7 +26,7 @@ export const CaptionTrack: React.FC<{
         // cue 가 2*FADE 보다 짧으면 4점 ramp 가 비단조가 되어 interpolate 가 깨진다.
         // 그땐 fade 를 dur/2 로 줄이고, 그래도 hold 구간이 안 남으면 삼각(fade-in→out)으로.
         const dur = cap.end - cap.start;
-        const fade = Math.min(FADE, dur / 2);
+        const fade = Math.min(FADE_S, dur / 2);
         const fadeInEnd = cap.start + fade;
         const fadeOutStart = cap.end - fade;
         const opacity =

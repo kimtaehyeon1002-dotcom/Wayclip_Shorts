@@ -1,0 +1,16 @@
+{
+  "title": "The Crown",
+  "artist": "",
+  "topCaption": "POV：こういう男が必要だ",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "ザ・クラウン",
+  "captionPaddingTop": 435,
+  "captions": [
+    { "start": 4.58, "end": 5.79,  "original": "", "translation": "あぁもう！" },
+    { "start": 9.89, "end": 10.84, "original": "", "translation": "早く撮れ！" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 422
+}

@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "081",
+  "name": "goodmovies/081",
+  "media": {
+    "slug": "ruby-sparks",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 471
+}

@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "080",
+  "name": "goodmovies/080",
+  "media": {
+    "slug": "paulie",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 2939
+}

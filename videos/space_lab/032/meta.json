@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "032",
+  "name": "space_lab/032",
+  "media": {
+    "slug": "space-zerog-trapped",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 357
+}

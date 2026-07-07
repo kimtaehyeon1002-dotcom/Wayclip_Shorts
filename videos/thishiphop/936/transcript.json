@@ -1,0 +1,307 @@
+[
+  {
+    "text": "We",
+    "start": 0.09,
+    "end": 0.56
+  },
+  {
+    "text": "go",
+    "start": 0.56,
+    "end": 1.04
+  },
+  {
+    "text": "party",
+    "start": 1.25,
+    "end": 2.53
+  },
+  {
+    "text": "like",
+    "start": 2.53,
+    "end": 3.6
+  },
+  {
+    "text": "it",
+    "start": 3.72,
+    "end": 3.79
+  },
+  {
+    "text": "'s",
+    "start": 3.79,
+    "end": 3.89
+  },
+  {
+    "text": "your",
+    "start": 4.05,
+    "end": 4.13
+  },
+  {
+    "text": "birthday",
+    "start": 4.13,
+    "end": 4.6
+  },
+  {
+    "text": ".",
+    "start": 4.6,
+    "end": 4.61
+  },
+  {
+    "text": "We",
+    "start": 4.62,
+    "end": 4.76
+  },
+  {
+    "text": "go",
+    "start": 4.78,
+    "end": 4.92
+  },
+  {
+    "text": "sip",
+    "start": 4.92,
+    "end": 5.15
+  },
+  {
+    "text": "a",
+    "start": 5.15,
+    "end": 5.22
+  },
+  {
+    "text": "card",
+    "start": 5.28,
+    "end": 5.52
+  },
+  {
+    "text": ".",
+    "start": 5.52,
+    "end": 5.78
+  },
+  {
+    "text": "We",
+    "start": 5.78,
+    "end": 5.95
+  },
+  {
+    "text": "like",
+    "start": 5.95,
+    "end": 6.3
+  },
+  {
+    "text": ",",
+    "start": 6.3,
+    "end": 6.47
+  },
+  {
+    "text": "\"",
+    "start": 6.47,
+    "end": 6.56
+  },
+  {
+    "text": "A",
+    "start": 6.56,
+    "end": 6.64
+  },
+  {
+    "text": "yy",
+    "start": 6.64,
+    "end": 6.81
+  },
+  {
+    "text": "y",
+    "start": 6.81,
+    "end": 6.89
+  },
+  {
+    "text": ",",
+    "start": 6.89,
+    "end": 7.06
+  },
+  {
+    "text": "where",
+    "start": 7.06,
+    "end": 7.35
+  },
+  {
+    "text": "the",
+    "start": 7.61,
+    "end": 7.76
+  },
+  {
+    "text": "party",
+    "start": 7.76,
+    "end": 8.2
+  },
+  {
+    "text": "at",
+    "start": 8.2,
+    "end": 8.37
+  },
+  {
+    "text": "?\"",
+    "start": 8.37,
+    "end": 8.62
+  },
+  {
+    "text": "You",
+    "start": 8.85,
+    "end": 8.95
+  },
+  {
+    "text": "don",
+    "start": 8.95,
+    "end": 9.08
+  },
+  {
+    "text": "'t",
+    "start": 9.08,
+    "end": 9.16
+  },
+  {
+    "text": "remember",
+    "start": 9.16,
+    "end": 9.48
+  },
+  {
+    "text": "that",
+    "start": 9.67,
+    "end": 9.67
+  },
+  {
+    "text": "?",
+    "start": 9.78,
+    "end": 9.82
+  },
+  {
+    "text": "Where",
+    "start": 9.82,
+    "end": 10.18
+  },
+  {
+    "text": "the",
+    "start": 10.26,
+    "end": 10.29
+  },
+  {
+    "text": "party",
+    "start": 10.44,
+    "end": 10.78
+  },
+  {
+    "text": "at",
+    "start": 10.78,
+    "end": 10.93
+  },
+  {
+    "text": "?",
+    "start": 10.93,
+    "end": 11.15
+  },
+  {
+    "text": "I",
+    "start": 11.23,
+    "end": 11.23
+  },
+  {
+    "text": "don",
+    "start": 11.23,
+    "end": 11.39
+  },
+  {
+    "text": "'t",
+    "start": 11.39,
+    "end": 11.5
+  },
+  {
+    "text": "know",
+    "start": 11.5,
+    "end": 11.72
+  },
+  {
+    "text": "where",
+    "start": 11.72,
+    "end": 11.99
+  },
+  {
+    "text": "the",
+    "start": 11.99,
+    "end": 12.15
+  },
+  {
+    "text": "girls",
+    "start": 12.15,
+    "end": 12.42
+  },
+  {
+    "text": "at",
+    "start": 12.42,
+    "end": 12.53
+  },
+  {
+    "text": ".",
+    "start": 12.53,
+    "end": 12.74
+  },
+  {
+    "text": "B",
+    "start": 12.74,
+    "end": 12.77
+  },
+  {
+    "text": "ac",
+    "start": 12.91,
+    "end": 12.98
+  },
+  {
+    "text": "ardi",
+    "start": 12.98,
+    "end": 13.3
+  },
+  {
+    "text": "at",
+    "start": 13.3,
+    "end": 13.47
+  },
+  {
+    "text": "?",
+    "start": 13.47,
+    "end": 13.58
+  },
+  {
+    "text": "I",
+    "start": 13.74,
+    "end": 13.94
+  },
+  {
+    "text": "can",
+    "start": 14.13,
+    "end": 14.54
+  },
+  {
+    "text": "'t",
+    "start": 14.54,
+    "end": 14.93
+  },
+  {
+    "text": "wait",
+    "start": 14.93,
+    "end": 15.74
+  },
+  {
+    "text": "with",
+    "start": 15.74,
+    "end": 15.74
+  },
+  {
+    "text": "all",
+    "start": 15.74,
+    "end": 15.74
+  },
+  {
+    "text": "my",
+    "start": 15.74,
+    "end": 15.74
+  },
+  {
+    "text": "...",
+    "start": 15.74,
+    "end": 15.74
+  }
+]

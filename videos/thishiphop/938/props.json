@@ -1,0 +1,23 @@
+{
+  "title": "GO UP",
+  "artist": "RIVA",
+  "topCaption": "\"日本の女エミネム\"\nと呼ばれる怪物ラッパー",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#938",
+  "artistTrack": "RIVA - GO UP",
+  "captions": [
+    { "start": 0.00, "end": 2.40, "original": "Takatata takata takata takatata", "translation": "タカタタタカタタカタタカタタ" },
+    { "start": 2.45, "end": 3.90, "original": "Working like an alien but still many ahead of me", "translation": "宇宙人みたいに働いてもまだ先は長い" },
+    { "start": 3.95, "end": 5.90, "original": "I quit slacking and begging and put excruciating efforts in it", "translation": "サボるのも媚びるのも止めて努力してみた" },
+    { "start": 5.95, "end": 7.90, "original": "Believe in em, salute em and then bruise em repeat it", "translation": "彼らを信じて敬って殴って繰り返す" },
+    { "start": 7.95, "end": 8.85, "original": "Wait a minute, why are you trying to make me the villain?", "translation": "なんで私を悪役にするの？" },
+    { "start": 8.90, "end": 10.30, "original": "You'll be mine skin to bone by then", "translation": "そうなる前にはもうお前を喰ってる" },
+    { "start": 10.40, "end": 10.90, "original": "like a zombie apocalypse", "translation": "ゾンビアポカリプス" },
+    { "start": 10.95, "end": 12.30, "original": "I'm giddy giddy giddy giddy giddy did you get it?", "translation": "完全にハイになってる 分かるっしょ？" }
+  ],
+  "videoSrc": "source.mp4",
+  "videoObjectPosition": "center 6%",
+  "bandHeight": 360,
+  "durationInFrames": 411
+}

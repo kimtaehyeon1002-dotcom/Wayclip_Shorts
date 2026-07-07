@@ -28,7 +28,7 @@ const inter = loadInter("normal", {
   subsets: ["latin"],
 });
 const interItalic = loadInter("italic", {
-  weights: ["400"],
+  weights: ["300", "400"],
   subsets: ["latin"],
 });
 

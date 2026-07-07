@@ -1,0 +1,19 @@
+{
+  "title": "アルテミス2の月周回軌道",
+  "artist": "Source",
+  "topCaption": "今年4月2日、54年ぶりの有人月探査\n[[アルテミス2]]の**とんでもない軌道**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#965",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 660,
+    "videoH": 510,
+    "warnTop": 1190,
+    "bottomTop": 1260,
+    "bottomH": 660
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 366
+}

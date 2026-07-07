@@ -1,0 +1,19 @@
+{
+  "title": "B-2 스텔스",
+  "artist": "Source",
+  "topCaption": "アメリカ軍のB-2爆撃機が\n[[レーダーに映らない]]**本当の理由**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#967",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 402,
+    "videoH": 1026,
+    "warnTop": 1448,
+    "bottomTop": 1518,
+    "bottomH": 402
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 267
+}

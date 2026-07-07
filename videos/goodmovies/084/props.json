@@ -1,0 +1,38 @@
+{
+  "title": "Lemony Snicket's A Series of Unfortunate Events",
+  "artist": "",
+  "topCaption": "原作 vs Netflix版\nどっち派かで意見が割れる話題作",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "映画",
+  "mediaTitleJa": "レモニー・スニケットの世にも不幸せな物語",
+  "captionPaddingTop": 645,
+  "captions": [
+    {
+      "start": 11.76,
+      "end": 12.5,
+      "original": "",
+      "translation": "早く、引き戻して!"
+    },
+    {
+      "start": 19.14,
+      "end": 20.48,
+      "original": "",
+      "translation": "バイオレット!　まかせて!"
+    },
+    {
+      "start": 21.12,
+      "end": 22.04,
+      "original": "",
+      "translation": "急かすつもりはないけど…"
+    },
+    {
+      "start": 28.67,
+      "end": 30.3,
+      "original": "",
+      "translation": "ナイスショット!　ありがと、放って!"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1798
+}

@@ -1,0 +1,21 @@
+{
+  "title": "luther",
+  "artist": "Kendrick Lamar",
+  "topCaption": "ケンドリック・ラマー「luther」\n初めて聴いた瞬間のガチ反応🔥",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#934",
+  "artistTrack": "Kendrick Lamar - luther",
+  "videoFit": "contain",
+  "videoAspectRatio": 1.836735,
+  "captions": [
+    { "start": 0.24, "end": 2.5, "original": "If this world was mine", "translation": "この世界が僕のものなら" },
+    { "start": 2.58, "end": 5.9, "original": "I'd take your dreams and make 'em multiply", "translation": "君の夢を何倍にも叶えてあげる" },
+    { "start": 5.96, "end": 7.4, "original": "If this world was mine", "translation": "この世界が僕のものなら" },
+    { "start": 7.45, "end": 9.6, "original": "I'd take your dreams and make 'em multiply", "translation": "君の夢を何倍にも叶えてあげる" },
+    { "start": 9.65, "end": 11.0, "original": "If this world was mine", "translation": "この世界が僕のものなら" },
+    { "start": 11.04, "end": 12.64, "original": "I'd take your dreams and make 'em multiply", "translation": "君の夢を何倍にも叶えてあげる" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 380
+}

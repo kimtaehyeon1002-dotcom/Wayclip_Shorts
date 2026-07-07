@@ -14,8 +14,11 @@ const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const SpaceLab: React.FC<SpaceLabProps> = ({
   topCaption,
+  topCaptionMaxLines,
   bottomCTA,
   warnText,
+  warnBlink,
+  warnOpacity,
   videoNumber,
   translationLanguage,
   videoSrc,
@@ -48,6 +51,7 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
       >
         <TopCaption
           text={topCaption}
+          maxLines={topCaptionMaxLines}
           markup="redbold"
           strongStyle={{ fontWeight: 700, fontStyle: "normal" }}
           redStyle={{ color: "#FC0200" }}
@@ -73,7 +77,12 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
       />
 
       {/* 빨간 깜빡 경고 (영상 아래) */}
-      <WarnPill warnText={warnText} topPx={layout.warnTop} />
+      <WarnPill
+        warnText={warnText}
+        topPx={layout.warnTop}
+        blink={warnBlink}
+        maxOpacity={warnOpacity}
+      />
 
       {/* 하단 고정 CTA */}
       <div

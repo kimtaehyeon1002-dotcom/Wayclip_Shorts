@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "035",
+  "name": "space_lab/035",
+  "media": {
+    "slug": "artemis2-orbit-035",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 366
+}
