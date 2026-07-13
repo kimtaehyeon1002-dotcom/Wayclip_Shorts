@@ -1,0 +1,270 @@
+{
+  "title": "キセキ",
+  "artist": "Green boys",
+  "topCaption": "致死量の平成",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.614,
+      "note": "배우가 육성으로 노래하는 게 대단해",
+      "w": 680
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.614,
+      "end": 11.227,
+      "note": "부스스한 머리에도 노래 하나로 압도해",
+      "w": 974
+    },
+    {
+      "src": "comments/03.png",
+      "start": 11.227,
+      "end": 16.841,
+      "note": "스다 마사키 성량 미쳤다",
+      "w": 454
+    },
+    {
+      "src": "comments/04.png",
+      "start": 16.841,
+      "end": 22.455,
+      "note": "스다 마사키는 이때부터 곡 몰입이 남달랐어",
+      "w": 980
+    },
+    {
+      "src": "comments/05.png",
+      "start": 22.455,
+      "end": 28.069,
+      "note": "청춘을 즐기라 해도 지나면 아쉬움이 남아",
+      "w": 1014
+    },
+    {
+      "src": "comments/06.png",
+      "start": 28.069,
+      "end": 33.682,
+      "note": "고등학생 되면 이런 청춘 할 줄 알았지",
+      "w": 740
+    },
+    {
+      "src": "comments/07.png",
+      "start": 33.682,
+      "end": 39.296,
+      "note": "폴더폰에 SNS도 없던 그 시절로 돌아가고 싶다",
+      "w": 912
+    },
+    {
+      "src": "comments/08.png",
+      "start": 39.296,
+      "end": 44.91,
+      "note": "제목이 奇跡도 軌跡도 아닌 キセキ인 게 좋아",
+      "w": 584
+    },
+    {
+      "src": "comments/09.png",
+      "start": 44.91,
+      "end": 50.524,
+      "note": "초등학생 때 이런 청춘을 동경했어",
+      "w": 908
+    },
+    {
+      "src": "comments/10.png",
+      "start": 50.524,
+      "end": 56.137,
+      "note": "동창 열에 여덟아홉은 부를 수 있을걸",
+      "w": 586
+    },
+    {
+      "src": "comments/11.png",
+      "start": 56.137,
+      "end": 61.751,
+      "note": "몇 년이 지나도 누구나 기억하는 곡",
+      "w": 640
+    },
+    {
+      "src": "comments/12.png",
+      "start": 61.751,
+      "end": 67.365,
+      "note": "모르는 사람 없는 수준의 명곡",
+      "w": 756
+    },
+    {
+      "src": "comments/13.png",
+      "start": 67.365,
+      "end": 72.978,
+      "note": "전 세대가 다 아는 곡이지",
+      "w": 598
+    },
+    {
+      "src": "comments/14.png",
+      "start": 72.978,
+      "end": 78.592,
+      "note": "요즘 뜨는 곡보다 이런 곡이 좋아",
+      "w": 800
+    },
+    {
+      "src": "comments/15.png",
+      "start": 78.592,
+      "end": 84.206,
+      "note": "헤이세이가 점점 멀어져 간다",
+      "w": 670
+    },
+    {
+      "src": "comments/16.png",
+      "start": 84.206,
+      "end": 89.82,
+      "note": "옛날 곡은 마음에 더 울려",
+      "w": 892
+    },
+    {
+      "src": "comments/17.png",
+      "start": 89.82,
+      "end": 95.433,
+      "note": "일본에선 누구나 아는 명곡",
+      "w": 522
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.03,
+      "end": 5.9,
+      "original": "明日、今日よりも好きになれる",
+      "translation": "明日、今日よりも好きになれる"
+    },
+    {
+      "start": 6.07,
+      "end": 10.72,
+      "original": "溢れる想いが止まらない",
+      "translation": "溢れる想いが止まらない"
+    },
+    {
+      "start": 10.72,
+      "end": 16.42,
+      "original": "今もこんなに好きでいるのに",
+      "translation": "今もこんなに好きでいるのに"
+    },
+    {
+      "start": 16.42,
+      "end": 21.05,
+      "original": "言葉に出来ない",
+      "translation": "言葉に出来ない"
+    },
+    {
+      "start": 21.1,
+      "end": 27.04,
+      "original": "君のくれた日々が積み重なり",
+      "translation": "君のくれた日々が積み重なり"
+    },
+    {
+      "start": 27.04,
+      "end": 31.75,
+      "original": "過ぎ去った日々 2人歩いた『軌跡』",
+      "translation": "過ぎ去った日々 2人歩いた『軌跡』"
+    },
+    {
+      "start": 31.92,
+      "end": 37.6,
+      "original": "僕らの出逢いがもし偶然ならば?",
+      "translation": "僕らの出逢いがもし偶然ならば?"
+    },
+    {
+      "start": 37.94,
+      "end": 42.08,
+      "original": "運命ならば? 君に巡り合えた",
+      "translation": "運命ならば? 君に巡り合えた"
+    },
+    {
+      "start": 42.08,
+      "end": 44.35,
+      "original": "それって『奇跡』",
+      "translation": "それって『奇跡』"
+    },
+    {
+      "start": 44.56,
+      "end": 47.55,
+      "original": "2人寄り添って歩いて",
+      "translation": "2人寄り添って歩いて"
+    },
+    {
+      "start": 47.66,
+      "end": 50.18,
+      "original": "永久の愛を形にして",
+      "translation": "永久の愛を形にして"
+    },
+    {
+      "start": 50.18,
+      "end": 53.3,
+      "original": "いつまでも君の横で 笑っていたくて",
+      "translation": "いつまでも君の横で 笑っていたくて"
+    },
+    {
+      "start": 53.3,
+      "end": 55.3,
+      "original": "アリガトウや　Ah",
+      "translation": "アリガトウや　Ah"
+    },
+    {
+      "start": 55.3,
+      "end": 60.02,
+      "original": "愛してるじゃ まだ足りないけど",
+      "translation": "愛してるじゃ まだ足りないけど"
+    },
+    {
+      "start": 60.02,
+      "end": 64.58,
+      "original": "せめて言わせて 「幸せです」と",
+      "translation": "せめて言わせて 「幸せです」と"
+    },
+    {
+      "start": 64.58,
+      "end": 67.38,
+      "original": "うまく行かない日だって",
+      "translation": "うまく行かない日だって"
+    },
+    {
+      "start": 67.38,
+      "end": 70,
+      "original": "2人で居れば晴れだって!",
+      "translation": "2人で居れば晴れだって!"
+    },
+    {
+      "start": 70,
+      "end": 72.34,
+      "original": "喜びや悲しみも",
+      "translation": "喜びや悲しみも"
+    },
+    {
+      "start": 72.34,
+      "end": 74.72,
+      "original": "全て分け合える",
+      "translation": "全て分け合える"
+    },
+    {
+      "start": 74.72,
+      "end": 78.4,
+      "original": "君がいるから 生きていけるから!",
+      "translation": "君がいるから 生きていけるから!"
+    },
+    {
+      "start": 78.58,
+      "end": 83.3,
+      "original": "だからいつも そばにいてよ",
+      "translation": "だからいつも そばにいてよ"
+    },
+    {
+      "start": 83.3,
+      "end": 87.94,
+      "original": "『愛しい君へ』",
+      "translation": "『愛しい君へ』"
+    },
+    {
+      "start": 87.94,
+      "end": 94.46,
+      "original": "最後の一秒まで",
+      "translation": "最後の一秒まで"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 2863
+}
