@@ -47,11 +47,11 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
-          strongStyle={{ fontWeight: 800, fontStyle: "normal" }}
+          strongStyle={{ fontWeight: 600, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontNative(translationLanguage),
             fontSize: "48pt",
-            fontWeight: 600,
+            fontWeight: 400,
             color: "#000",
             lineHeight: translationLanguage === "th" ? 1.4 : 1.22,
             letterSpacing: "-0.02em",
@@ -112,7 +112,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
                 fontSize: 40,
-                fontWeight: 600,
+                fontWeight: 400,
                 color: "#FFEB3B",
                 letterSpacing: "-0.01em",
                 lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
@@ -132,7 +132,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                   width: "100%",
                   fontFamily: originalFont(originalLanguage),
                   fontSize: 52,
-                  fontWeight: 800,
+                  fontWeight: 600,
                   color: "#fff",
                   letterSpacing: "-0.01em",
                   lineHeight: 1.18,
