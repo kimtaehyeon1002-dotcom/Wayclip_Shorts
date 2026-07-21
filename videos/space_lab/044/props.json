@@ -1,0 +1,19 @@
+{
+  "title": "じゃんけんマスコットの一発逆転",
+  "artist": "Source",
+  "topCaption": "いつも負けてばかりの[[マスコット]]が\n最後に**まさかの一発逆転**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#956",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 560,
+    "videoH": 711,
+    "warnTop": 1291,
+    "bottomTop": 1361,
+    "bottomH": 559
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 446
+}

@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "044",
+  "name": "space_lab/044",
+  "media": {
+    "slug": "janken-mascot-044",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 446
+}
