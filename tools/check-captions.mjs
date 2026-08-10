@@ -20,7 +20,8 @@ import { join, resolve } from "node:path";
 import { CANVAS_W, captionLayouts, resolvePropsPath } from "./channels.mjs";
 
 // 글자별 advance 폭(em, font-size 1 기준). 보수적(살짝 넓게).
-function charAdvance(ch) {
+// 실측 보정: 60px 로 렌더한 잉크 폭과 비교해 계수를 맞춤 (scratchpad 측정, 2026-08).
+export function charAdvance(ch) {
   const c = ch.codePointAt(0);
   if ((c >= 0x0300 && c <= 0x036f) || (c >= 0x0e30 && c <= 0x0e3a) ||
       (c >= 0x0e47 && c <= 0x0e4e) || c === 0x0e31) return 0;
@@ -29,7 +30,9 @@ function charAdvance(ch) {
   if ((c >= 0xac00 && c <= 0xd7a3) || (c >= 0x1100 && c <= 0x11ff) ||
       (c >= 0x3130 && c <= 0x318f)) return 1.0;
   if ((c >= 0x3000 && c <= 0x303f) || (c >= 0xff00 && c <= 0xffef)) return 0.5;
-  if (c >= 0x0e00 && c <= 0x0e7f) return 0.6;
+  // 태국어(Thonburi/Noto Sans Thai) 자음은 생각보다 넓다. 60px 실측 3건 평균 ×1.166 →
+  // 0.6 이면 과소 추정이라 오버플로를 놓친다(space_lab 047 th 가 4줄로 터진 원인). 보수적으로 0.72.
+  if (c >= 0x0e00 && c <= 0x0e7f) return 0.72;
   if (ch === " ") return 0.27;
   // 라틴 확장 — 베트남어 성조 글자(U+1EXX)와 유럽 악센트 문자.
   // 기저 글자와 폭이 같으므로 기본 라틴과 동일 취급 (default 0.6 으로 새면 과대 추정).
@@ -45,7 +48,7 @@ function charAdvance(ch) {
   return 0.6;
 }
 
-function estimateLineEm(text) {
+export function estimateLineEm(text) {
   // 마크업 마커([[ ]] ** **)는 폭 계산에서 제외
   const clean = String(text).replace(/\[\[|\]\]|\*\*/g, "");
   let em = 0;
@@ -177,4 +180,5 @@ function main() {
   process.exit(0);
 }
 
-main();
+// 직접 실행일 때만 검사 수행 (charAdvance/estimateLineEm 은 다른 도구에서 import 가능하게)
+if (process.argv[1] && process.argv[1].endsWith("check-captions.mjs")) main();
