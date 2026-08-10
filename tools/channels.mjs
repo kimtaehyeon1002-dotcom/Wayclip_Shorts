@@ -9,7 +9,11 @@ export const CHANNELS = [
   "space_lab",
 ];
 export const ORIG_LANGS = ["en", "ko", "ja"];
-export const TRANS_LANGS = ["ko", "ja", "th"];
+// tw = 대만(번체중국어). 언어코드 = props 파일 접미사(props.tw.json) = 결재본 접미사(047-tw.mp4).
+export const TRANS_LANGS = ["ko", "ja", "th", "tw", "vi"];
+// 굿무비·스페이스랩 양산 언어 세트 — props.json(=ja 베이스) + props.<lang>.json 3개.
+export const MULTILANG_CHANNELS = ["goodmovies", "space_lab"];
+export const MULTILANG_SET = ["ja", "tw", "th", "vi"];
 export const FPS = 30;
 export const CANVAS_W = 1080;
 export const CANVAS_H = 1920;
@@ -112,6 +116,9 @@ export const captionLayouts = {
   space_lab: {
     top: { padL: 50, padR: 50, fontPx: 60, maxLines: 2 },
     caption: null,
+    // 영상 아래 빨간 깜빡 경고 박스 (WarnPill.tsx: fontSize 38 / padding 0 14px / height 70 = 2줄).
+    // 일본어 기준으로 짜인 문구라 태국어·베트남어에서 실제로 넘친다 → 사전 검사 대상.
+    warn: { padL: 14, padR: 14, fontPx: 38, maxLines: 2 },
   },
 };
 
@@ -129,4 +136,39 @@ export function computeSpaceLabLayout(srcW, srcH) {
   const warnTop = topH + videoH + VIDEO_BOTTOM_GAP;
   const bottomTop = warnTop + WARN_H;
   return { topH, videoH, warnTop, bottomTop, bottomH };
+}
+
+// ── 다국어 props 파일 규칙 ─────────────────────────────────────────────
+// props.json          = 베이스(굿무비·스페이스랩은 일본어)
+// props.<lang>.json   = 변형 (props.tw.json / props.th.json / props.vi.json)
+// 언어코드 = 파일 접미사 = 결재본 접미사로 통일.
+
+/** 변형 props 파일명. 베이스 언어면 props.json. */
+export function propsFileName(lang, baseLang = "ja") {
+  return !lang || lang === baseLang ? "props.json" : `props.${lang}.json`;
+}
+
+/** 결재본/캡션 파일 접미사. 베이스 언어는 접미사 없음(기존 파일명 유지). */
+export function langSuffix(lang, baseLang = "ja") {
+  return !lang || lang === baseLang ? "" : `-${lang}`;
+}
+
+/**
+ * `--lang X` → 실제 읽을 props 경로.
+ * props.X.json 이 있으면 그것, 없고 props.json 의 translationLanguage 가 X 면 props.json.
+ * 둘 다 아니면 null (호출부가 에러 처리).
+ */
+export function resolvePropsPath(fs, path, dirAbs, lang) {
+  const base = path.join(dirAbs, "props.json");
+  if (!lang) return fs.existsSync(base) ? base : null;
+  const variant = path.join(dirAbs, `props.${lang}.json`);
+  if (fs.existsSync(variant)) return variant;
+  if (!fs.existsSync(base)) return null;
+  try {
+    const p = JSON.parse(fs.readFileSync(base, "utf8"));
+    if (p.translationLanguage === lang) return base;
+  } catch {
+    /* 파싱 실패는 호출부의 기존 에러 경로가 잡는다 */
+  }
+  return null;
 }

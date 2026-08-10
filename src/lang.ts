@@ -13,10 +13,15 @@ const SANS = "sans-serif";
 //   라틴/영 → San Francisco(-apple-system)  (off-mac: Inter)
 //   한국어  → Apple SD Gothic Neo    (off-mac: Pretendard / Noto Sans KR)
 //   태국어  → Thonburi               (off-mac: Noto Sans Thai)
+//   대만(tw)→ PingFang TC            (off-mac: Noto Sans TC)  ※ 번체중국어
+//   베트남  → San Francisco          (off-mac: Inter + vietnamese subset)
 const JP = `"Hiragino Sans", "Yu Gothic", "${FONT.jp}"`;
 const LATIN = `-apple-system, BlinkMacSystemFont, "Helvetica Neue", "${FONT.inter}"`;
 const KO = `"Apple SD Gothic Neo", "${FONT.pretendard}", "${FONT.kr}"`;
 const TH = `"Thonburi", "${FONT.thai}", "Sarabun"`;
+const TW = `"PingFang TC", "Heiti TC", "${FONT.tc}"`;
+// 베트남어는 라틴 + 성조부호라 전용 서체가 아니라 라틴 스택을 그대로 쓴다 (SF/Inter 둘 다 vietnamese 커버).
+const VI = LATIN;
 
 // ── cap-translation (모든 채널 공통 본문 자막) ──
 export function captionFont(lang: Lang): string {
@@ -27,6 +32,10 @@ export function captionFont(lang: Lang): string {
       return [JP, SANS].join(", ");
     case "th":
       return [TH, SANS].join(", ");
+    case "tw":
+      return [TW, SANS].join(", ");
+    case "vi":
+      return [VI, SANS].join(", ");
     case "en":
       return [LATIN, SANS].join(", ");
   }
@@ -43,6 +52,10 @@ export function originalFont(lang: Lang): string {
       return [LATIN, SANS].join(", ");
     case "th":
       return [TH, SANS].join(", ");
+    case "tw":
+      return [TW, SANS].join(", ");
+    case "vi":
+      return [VI, SANS].join(", ");
   }
 }
 
@@ -72,6 +85,10 @@ export function topFontJpLead(lang: Lang): string {
       return [LATIN, JP, SANS].join(", ");
     case "th":
       return [TH, JP, SANS].join(", ");
+    case "tw":
+      return [TW, JP, SANS].join(", ");
+    case "vi":
+      return [VI, JP, SANS].join(", ");
   }
 }
 
@@ -86,6 +103,11 @@ export function topFontNative(lang: Lang): string {
       return [LATIN, JP, SANS].join(", ");
     case "th":
       return [TH, JP, SANS].join(", ");
+    // 번체는 일본어 한자 자형(신자체)으로 폴백되면 안 되므로 TC 를 확실히 앞에 둔다.
+    case "tw":
+      return [TW, JP, SANS].join(", ");
+    case "vi":
+      return [VI, JP, SANS].join(", ");
   }
 }
 
@@ -94,11 +116,46 @@ export function topFontInterLead(lang: Lang): string {
   switch (lang) {
     case "th":
       return [LATIN, TH, JP, SANS].join(", ");
+    case "tw":
+      return [LATIN, TW, JP, SANS].join(", ");
     default:
       return [LATIN, JP, SANS].join(", ");
   }
 }
 
-// 태국어는 성조 부호로 line-height 가 더 필요.
-export const thaiLineHeight = (lang: Lang, base: number): number =>
-  lang === "th" ? Math.max(base, 1.45) : base;
+// 문자 체계별 최소 line-height.
+//   태국어: 성조/모음 부호가 글자 위·아래로 2단씩 쌓임.
+//   베트남어: 라틴이지만 성조 + 모음부호가 겹쳐 위쪽으로 한 단 더 올라감.
+export const scriptLineHeight = (lang: Lang, base: number): number => {
+  if (lang === "th") return Math.max(base, 1.45);
+  if (lang === "vi") return Math.max(base, 1.35);
+  return base;
+};
+
+/** @deprecated scriptLineHeight 를 쓸 것 — 기존 호출부 호환용 별칭. */
+export const thaiLineHeight = scriptLineHeight;
+
+// 음수 트래킹은 CJK 조판 관습(글자폭이 고정 1em 이라 좁혀야 자연스러움).
+// 태국어·베트남어는 부호가 붙어 있어 좁히면 가독성이 급격히 나빠지므로 0.
+export const letterSpacingFor = (lang: Lang, cjkEm = -0.04): string => {
+  switch (lang) {
+    case "ja":
+    case "tw":
+      return `${cjkEm}em`;
+    case "ko":
+      return `${cjkEm / 2}em`;
+    default:
+      return "0";
+  }
+};
+
+// "palt" = 일본어 프로포셔널 자간 OpenType 기능. CJK 외 언어엔 무의미하고
+// 폰트에 따라 라틴 커닝을 건드릴 수 있으므로 ja/tw 에만 적용.
+export const paltFor = (lang: Lang): string =>
+  lang === "ja" || lang === "tw" ? '"palt" 1' : "normal";
+
+// CJK 는 단어 중간 개행을 막는 게 관습(keep-all)이지만,
+// 태국어는 띄어쓰기가 없어 keep-all 이면 한 줄이 통째로 안 꺾여 그대로 넘친다.
+// 베트남어는 공백 단어라 normal 로 두면 브라우저 기본 규칙이 잘 처리한다.
+export const wordBreakFor = (lang: Lang): "keep-all" | "normal" =>
+  lang === "th" || lang === "vi" || lang === "en" ? "normal" : "keep-all";

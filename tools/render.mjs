@@ -1,0 +1,162 @@
+#!/usr/bin/env node
+/**
+ * render.mjs — 결재본 렌더. 다국어 채널은 한 번에 4개 언어(ja/tw/th/vi)를 낸다.
+ *
+ *   node tools/render.mjs goodmovies 086                 # 채널 기본 언어 세트 전부
+ *   node tools/render.mjs space_lab 047 --langs ja,tw    # 일부만
+ *   node tools/render.mjs goodmovies 086 --only-missing  # 이미 있는 결재본은 스킵
+ *   node tools/render.mjs readyaction 954                # 단일 언어 채널 → 기존과 동일하게 1개
+ *
+ * 출력: output/<ch>/<n>/<n>.mp4 (베이스) + <n>-<lang>.mp4 (변형)
+ *
+ * ⚠️ normalize 단계 없음 — Remotion 출력은 이미 start_time 0 (CLAUDE.md 참조).
+ * ⚠️ 렌더는 프리뷰 승인 후에만. 이 도구는 승인 여부를 알 수 없으니 호출 시점을 지킬 것.
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
+import {
+  CHANNELS,
+  MULTILANG_CHANNELS,
+  MULTILANG_SET,
+  TRANS_LANGS,
+  compositionId,
+  langSuffix,
+  propsFileName,
+  resolvePropsPath,
+} from "./channels.mjs";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, "..");
+
+function die(msg) {
+  console.error(`✗ ${msg}`);
+  process.exit(1);
+}
+
+function parseArgs() {
+  const argv = process.argv.slice(2);
+  let channel = null;
+  let number = null;
+  let langs = null;
+  let onlyMissing = false;
+  let skipCheck = false;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--langs") langs = String(argv[++i] || "").split(",").map((s) => s.trim()).filter(Boolean);
+    else if (a === "--only-missing") onlyMissing = true;
+    else if (a === "--skip-check") skipCheck = true;
+    else if (a.startsWith("--")) die(`Unknown flag: ${a}`);
+    else if (!channel) channel = a;
+    else if (!number) number = a;
+    else die(`Unexpected arg: ${a}`);
+  }
+  if (!channel || !number) {
+    die("Usage: node tools/render.mjs <channel> <number> [--langs ja,tw,th,vi] [--only-missing]");
+  }
+  if (!CHANNELS.includes(channel)) die(`Unknown channel: ${channel}`);
+  if (langs) {
+    for (const l of langs) if (!TRANS_LANGS.includes(l)) die(`알 수 없는 언어: ${l}`);
+  }
+  return { channel, number, langs, onlyMissing, skipCheck };
+}
+
+function main() {
+  const { channel, number, langs: langsArg, onlyMissing, skipCheck } = parseArgs();
+
+  const dirRel = path.join("videos", channel, number);
+  const dirAbs = path.join(ROOT, dirRel);
+  const metaPath = path.join(dirAbs, "meta.json");
+  if (!fs.existsSync(path.join(dirAbs, "props.json"))) die(`${dirRel}/props.json 없음 — new-video 먼저 실행`);
+  if (!fs.existsSync(metaPath)) die(`${dirRel}/meta.json 없음`);
+
+  const base = JSON.parse(fs.readFileSync(path.join(dirAbs, "props.json"), "utf8"));
+  const baseLang = base.translationLanguage || "ja";
+
+  // 언어 결정: --langs > meta.languages.translations > 다국어 채널 기본 세트 > 베이스 1개
+  let langs = langsArg;
+  if (!langs) {
+    const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
+    const fromMeta = meta.languages && Array.isArray(meta.languages.translations)
+      ? meta.languages.translations
+      : null;
+    langs = fromMeta || (MULTILANG_CHANNELS.includes(channel) ? MULTILANG_SET : [baseLang]);
+  }
+  // 실제로 props 가 있는 언어만 — 아직 파생 안 한 언어를 조용히 베이스로 렌더하면 안 됨.
+  const plan = [];
+  for (const lang of langs) {
+    const propsAbs = resolvePropsPath(fs, path, dirAbs, lang);
+    if (!propsAbs) {
+      console.log(`⚠ ${lang}: ${propsFileName(lang, baseLang)} 없음 — 건너뜀 (derive-lang.mjs 로 파생 필요)`);
+      continue;
+    }
+    plan.push({ lang, propsRel: path.join(dirRel, path.basename(propsAbs)) });
+  }
+  if (!plan.length) die("렌더할 언어가 없습니다.");
+
+  const outDirRel = path.join("output", channel, number);
+  fs.mkdirSync(path.join(ROOT, outDirRel), { recursive: true });
+  const compId = compositionId[channel];
+
+  const done = [];
+  const skipped = [];
+  const failed = [];
+
+  for (const { lang, propsRel } of plan) {
+    const outName = `${number}${langSuffix(lang, baseLang)}.mp4`;
+    const outRel = path.join(outDirRel, outName);
+
+    if (onlyMissing && fs.existsSync(path.join(ROOT, outRel))) {
+      console.log(`· ${lang}: ${outRel} 이미 있음 — 스킵`);
+      skipped.push(lang);
+      continue;
+    }
+
+    // 렌더 전 오버플로 사전 검사 — 넘치면 그 언어는 렌더하지 않는다 (긴 렌더를 버리지 않기 위해).
+    if (!skipCheck) {
+      const check = spawnSync(
+        process.execPath,
+        [path.join("tools", "check-captions.mjs"), dirRel, ...(lang === baseLang ? [] : ["--lang", lang])],
+        { cwd: ROOT, encoding: "utf8" }
+      );
+      if (check.status !== 0) {
+        console.error(`\n✗ ${lang}: check-captions 실패 — 렌더 중단`);
+        console.error(check.stdout || "");
+        failed.push(`${lang} (오버플로)`);
+        continue;
+      }
+    }
+
+    console.log(`\n▸ 렌더 [${channel}/${number} / ${lang}] → ${outRel}`);
+    const r = spawnSync(
+      "npx",
+      [
+        "remotion", "render", "src/index.ts", compId, outRel,
+        `--props=${propsRel}`,
+        `--public-dir=${dirRel}`,
+      ],
+      { cwd: ROOT, stdio: "inherit" }
+    );
+    if (r.status !== 0) {
+      failed.push(`${lang} (remotion exit ${r.status})`);
+      continue;
+    }
+    done.push({ lang, outRel });
+  }
+
+  console.log("\n─────────────────────────────");
+  for (const d of done) console.log(`✓ ${d.lang}  ${d.outRel}`);
+  if (skipped.length) console.log(`· 스킵: ${skipped.join(", ")}`);
+  if (failed.length) {
+    console.log(`✗ 실패: ${failed.join(", ")}`);
+  }
+  console.log(
+    `\n다음: 같은 폴더에 캡션 txt 를 언어별로 작성 — ` +
+      plan.map((p) => `${number}캡션${langSuffix(p.lang, baseLang)}.txt`).join(", ")
+  );
+  console.log("  (포맷·채널 규칙: tools/jp-caption-writer.md)");
+  process.exit(failed.length ? 1 : 0);
+}
+
+main();

@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "047",
+  "name": "space_lab/047",
+  "media": {
+    "slug": "ton618-blackhole-047",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 1371
+}

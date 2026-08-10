@@ -1,0 +1,21 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "2026年的遠距離戀愛，\n大概就是這樣🥹",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "正常人",
+  "captionPaddingTop": 430,
+  "captions": [
+    { "start": 0.54, "end": 1.4, "original": "", "translation": "真的好累" },
+    { "start": 2.41, "end": 3.55, "original": "", "translation": "要睡了嗎" },
+    { "start": 5.7, "end": 7.29, "original": "", "translation": "Skype 就這樣開著吧" },
+    { "start": 9.73, "end": 10.32, "original": "", "translation": "抱我" },
+    { "start": 10.32, "end": 10.93, "original": "", "translation": "到床上" },
+    { "start": 18.9, "end": 20.32, "original": "", "translation": "你還醒著啊" },
+    { "start": 22.0, "end": 23.23, "original": "", "translation": "早安" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 738
+}

@@ -2,7 +2,17 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { GoodMoviesProps } from "../props";
-import { captionFont, originalFont, showOriginal, topFontNative } from "../lang";
+import {
+  captionFont,
+  letterSpacingFor,
+  originalFont,
+  paltFor,
+  scriptLineHeight,
+  showOriginal,
+  topFontNative,
+  wordBreakFor,
+} from "../lang";
+import { mediaCredit } from "../i18n";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { TopCaption } from "../components/TopCaption";
@@ -24,7 +34,10 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
 }) => {
   return (
     <AbsoluteFill
-      style={{ background: "#fff", fontFeatureSettings: '"palt"' }}
+      style={{
+        background: "#fff",
+        fontFeatureSettings: paltFor(translationLanguage),
+      }}
     >
       {/* 상단 흰색 + 멘트 (Bold) */}
       <div
@@ -53,8 +66,8 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             fontSize: "48pt",
             fontWeight: 400,
             color: "#000",
-            lineHeight: translationLanguage === "th" ? 1.4 : 1.22,
-            letterSpacing: "-0.02em",
+            lineHeight: scriptLineHeight(translationLanguage, 1.22),
+            letterSpacing: letterSpacingFor(translationLanguage, -0.02),
           }}
         />
       </div>
@@ -114,13 +127,13 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                 fontSize: 40,
                 fontWeight: 400,
                 color: "#FFEB3B",
-                letterSpacing: "-0.01em",
-                lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
+                letterSpacing: letterSpacingFor(translationLanguage, -0.01),
+                lineHeight: scriptLineHeight(translationLanguage, 1.22),
                 WebkitTextStroke: "1.5px #000",
                 paintOrder: "stroke fill",
                 textShadow: "0 3px 12px rgba(0,0,0,0.85)",
                 overflowWrap: "break-word",
-                wordBreak: "keep-all",
+                wordBreak: wordBreakFor(translationLanguage),
               }}
             >
               {cap.translation}
@@ -169,14 +182,15 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         {mediaTitleJa ? (
           <div
             style={{
-              fontFamily: '"Noto Sans JP", sans-serif',
+              fontFamily: topFontNative(translationLanguage),
               fontSize: 36,
               fontWeight: 300,
               color: "rgba(0,0,0,0.62)",
               letterSpacing: "0.02em",
             }}
           >
-            {`${mediaKind || "映画"}『${mediaTitleJa}』`}
+            {/* mediaTitleJa = "표시용 제목" — 변형 props 엔 그 언어권 개봉 제목을 넣는다 */}
+            {mediaCredit(mediaKind, mediaTitleJa, translationLanguage)}
           </div>
         ) : null}
       </div>

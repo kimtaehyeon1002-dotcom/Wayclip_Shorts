@@ -6,6 +6,7 @@
 import { loadFont as loadJP } from "@remotion/google-fonts/NotoSansJP";
 import { loadFont as loadKR } from "@remotion/google-fonts/NotoSansKR";
 import { loadFont as loadThai } from "@remotion/google-fonts/NotoSansThai";
+import { loadFont as loadTC } from "@remotion/google-fonts/NotoSansTC";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadLocalFont } from "@remotion/fonts";
 
@@ -19,17 +20,25 @@ const kr = loadKR("normal", {
   subsets: ["korean", "latin"],
   ignoreTooManyRequestsWarning: true,
 });
+// 태국어: 스페이스랩 헤드라인이 500, **굵게** 가 700 이라 400/600 만으론 합성 굵기가 나온다 → 실제 쓰는 weight 전부.
 const thai = loadThai("normal", {
-  weights: ["400", "600"],
+  weights: ["400", "500", "600", "700"],
   subsets: ["thai", "latin"],
 });
+// 번체중국어(대만) — 일본어와 같은 이유로 글리프가 많아 요청 수가 큼(경고만 끔).
+const tc = loadTC("normal", {
+  weights: ["400", "500", "600", "700"],
+  subsets: ["chinese-traditional", "latin"],
+  ignoreTooManyRequestsWarning: true,
+});
+// vietnamese subset 이 없으면 베트남어 성조부호(U+1EXX)가 폴백 폰트로 새어 룩이 깨진다.
 const inter = loadInter("normal", {
   weights: ["100", "200", "400", "500", "600", "800"],
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 const interItalic = loadInter("italic", {
   weights: ["300", "400"],
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
 // Pretendard 는 Google Fonts 에 없음 → CDN(jsDelivr)에서 가변 woff2 로드.
@@ -46,6 +55,7 @@ export const FONT = {
   jp: jp.fontFamily, // "Noto Sans JP"
   kr: kr.fontFamily, // "Noto Sans KR"
   thai: thai.fontFamily, // "Noto Sans Thai"
+  tc: tc.fontFamily, // "Noto Sans TC" (번체중국어/대만)
   inter: inter.fontFamily, // "Inter"
   interItalic: interItalic.fontFamily,
   pretendard: "Pretendard",

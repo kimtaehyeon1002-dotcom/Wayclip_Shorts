@@ -2,15 +2,19 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { SpaceLabProps } from "../props";
-import { topFontNative } from "../lang";
-import { FONT } from "../fonts";
+import {
+  letterSpacingFor,
+  paltFor,
+  scriptLineHeight,
+  topFontNative,
+} from "../lang";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { TopCaption } from "../components/TopCaption";
 import { WarnPill } from "../components/WarnPill";
 
 // 스페이스랩 — 정보 쇼츠. 자막 없음. 상단 헤드라인([[빨강]] + **굵게**) / 영상 contain(잘림 X) /
 // 영상 아래 빨간 깜빡 경고 / 하단 고정 CTA. 밴드 geometry 는 영상 비율에 맞춰 new-video 가 계산(layout prop).
-const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
+// 텍스트는 전부 translationLanguage 기반 — ja/tw/th/vi 4개 결재본을 같은 컴포지션으로 낸다.
 
 export const SpaceLab: React.FC<SpaceLabProps> = ({
   topCaption,
@@ -30,7 +34,12 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
       : `#${videoNumber}`
     : "";
   return (
-    <AbsoluteFill style={{ background: "#000", fontFeatureSettings: '"palt"' }}>
+    <AbsoluteFill
+      style={{
+        background: "#000",
+        fontFeatureSettings: paltFor(translationLanguage),
+      }}
+    >
       {/* 상단 헤드라인 */}
       <div
         style={{
@@ -60,9 +69,9 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
             fontSize: 60,
             fontWeight: 500,
             color: "#fff",
-            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
-            letterSpacing: "-0.04em",
-            fontFeatureSettings: '"palt" 1',
+            lineHeight: scriptLineHeight(translationLanguage, 1.18),
+            letterSpacing: letterSpacingFor(translationLanguage, -0.04),
+            fontFeatureSettings: paltFor(translationLanguage),
           }}
         />
       </div>
@@ -82,6 +91,7 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
         topPx={layout.warnTop}
         blink={warnBlink}
         maxOpacity={warnOpacity}
+        lang={translationLanguage}
       />
 
       {/* 하단 고정 CTA */}
@@ -104,7 +114,8 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
         {numText ? (
           <div
             style={{
-              fontFamily: NSJP,
+              // #번호는 라틴 숫자뿐이라 어느 언어든 자형 차이가 없다 — 일본어 스택 그대로(합성 italic 유지).
+              fontFamily: topFontNative("ja"),
               fontSize: 33,
               fontWeight: 400,
               fontStyle: "italic",
@@ -120,13 +131,13 @@ export const SpaceLab: React.FC<SpaceLabProps> = ({
         ) : null}
         <div
           style={{
-            fontFamily: NSJP,
+            fontFamily: topFontNative(translationLanguage),
             fontSize: 60,
             fontWeight: 400,
             color: "#fff",
-            letterSpacing: "-0.04em",
-            lineHeight: 1.18,
-            fontFeatureSettings: '"palt" 1',
+            letterSpacing: letterSpacingFor(translationLanguage, -0.04),
+            lineHeight: scriptLineHeight(translationLanguage, 1.18),
+            fontFeatureSettings: paltFor(translationLanguage),
             textAlign: "center",
           }}
         >
