@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "040",
+  "name": "space_lab/040",
+  "media": {
+    "slug": "climate-spiral-040",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 900
+}

@@ -1,0 +1,163 @@
+{
+  "title": "点描の唄",
+  "artist": "Mrs. GREEN APPLE",
+  "topCaption": "原曲には無いのに\n誰もが愛する**大森元貴のソロ**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.011,
+      "note": "3-42 여기서부터 미쳤다",
+      "w": 394
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.011,
+      "end": 10.022,
+      "note": "문득 유튜브 열면 미세스 노래를 듣다니 사치스러운 세상",
+      "w": 914
+    },
+    {
+      "src": "comments/03.png",
+      "start": 10.022,
+      "end": 15.033,
+      "note": "이 사람이 있는 시대에 살아서 다행",
+      "w": 632
+    },
+    {
+      "src": "comments/04.png",
+      "start": 15.033,
+      "end": 20.044,
+      "note": "오모리는 현대의 모차르트 100년후에도 이름 남을듯",
+      "w": 982
+    },
+    {
+      "src": "comments/05.png",
+      "start": 20.044,
+      "end": 25.056,
+      "note": "어째서 이렇게 사람을 끌어당기는 노래를 할까",
+      "w": 946
+    },
+    {
+      "src": "comments/06.png",
+      "start": 25.056,
+      "end": 30.067,
+      "note": "노래하기보다 전하기 위해 태어난 사람",
+      "w": 920
+    },
+    {
+      "src": "comments/07.png",
+      "start": 30.067,
+      "end": 35.078,
+      "note": "원곡은 축제 둘이일때 이건 축제끝나고 혼자 돌아갈때",
+      "w": 974
+    },
+    {
+      "src": "comments/08.png",
+      "start": 35.078,
+      "end": 40.089,
+      "note": "점묘의 노래는 오모리 모토키 솔로가 최강",
+      "w": 668
+    },
+    {
+      "src": "comments/09.png",
+      "start": 40.089,
+      "end": 45.1,
+      "note": "솔로 점묘의 노래 어두운 하늘과 어우러져 감성적",
+      "w": 988
+    },
+    {
+      "src": "comments/10.png",
+      "start": 45.1,
+      "end": 50.111,
+      "note": "4-55 終わるな의 る가 너무 좋아",
+      "w": 644
+    },
+    {
+      "src": "comments/11.png",
+      "start": 50.111,
+      "end": 55.122,
+      "note": "살아있는 동안 꼭 한번 라이브로 듣고싶어",
+      "w": 660
+    },
+    {
+      "src": "comments/12.png",
+      "start": 55.122,
+      "end": 60.133,
+      "note": "미세스 중 압도적으로 좋아서 평생 듣는중",
+      "w": 904
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 2,
+      "original": "ずっと",
+      "translation": "ずっと"
+    },
+    {
+      "start": 2,
+      "end": 5,
+      "original": "この思いは変わらない",
+      "translation": "この思いは変わらない"
+    },
+    {
+      "start": 5.4,
+      "end": 12.32,
+      "original": "いつまでも いつまでも",
+      "translation": "いつまでも いつまでも"
+    },
+    {
+      "start": 12.32,
+      "end": 18.66,
+      "original": "続いて欲しいと願っている",
+      "translation": "続いて欲しいと願っている"
+    },
+    {
+      "start": 18.66,
+      "end": 25.16,
+      "original": "手を取ることは出来ずとも",
+      "translation": "手を取ることは出来ずとも"
+    },
+    {
+      "start": 25.16,
+      "end": 31.16,
+      "original": "過ぎていく今に抱きしめられている",
+      "translation": "過ぎていく今に抱きしめられている"
+    },
+    {
+      "start": 31.16,
+      "end": 35.05,
+      "original": "私の",
+      "translation": "私の"
+    },
+    {
+      "start": 35.05,
+      "end": 37.86,
+      "original": "僕の",
+      "translation": "僕の"
+    },
+    {
+      "start": 37.86,
+      "end": 44.48,
+      "original": "時間が止まればいいのに",
+      "translation": "時間が止まればいいのに"
+    },
+    {
+      "start": 44.48,
+      "end": 51.88,
+      "original": "今日を噛み締めていよう",
+      "translation": "今日を噛み締めていよう"
+    },
+    {
+      "start": 51.88,
+      "end": 57.64,
+      "original": "終わるな 夏よ、終わるな",
+      "translation": "終わるな 夏よ、終わるな"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1804
+}

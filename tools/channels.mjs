@@ -183,9 +183,15 @@ export function propsFileName(lang, baseLang = "ja") {
   return !lang || lang === baseLang ? "props.json" : `props.${lang}.json`;
 }
 
-/** 결재본/캡션 파일 접미사. 베이스 언어는 접미사 없음(기존 파일명 유지). */
-export function langSuffix(lang, baseLang = "ja") {
-  return !lang || lang === baseLang ? "" : `-${lang}`;
+/**
+ * 결재본 출력 폴더 — **언어별로 최상위 폴더를 분리**한다.
+ *   베이스(일본어)  output/readyaction/952/952.mp4      (기존 그대로)
+ *   변형            output/readyaction-tw/952/952.mp4
+ * 폴더가 언어를 나타내므로 **파일명엔 접미사를 붙이지 않는다** —
+ * 각 언어 폴더가 일본어 폴더와 똑같은 모양이라 나라별로 통째로 넘기기 쉽다.
+ */
+export function outputChannelDir(channel, lang, baseLang = "ja") {
+  return !lang || lang === baseLang ? channel : `${channel}-${lang}`;
 }
 
 /**

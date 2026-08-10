@@ -1,0 +1,19 @@
+{
+  "title": "ジメチル水銀 数滴の悲劇",
+  "artist": "Source",
+  "topCaption": "[[わずか数滴]]の液体が、\n**天才科学者の命**を奪った",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#958",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 572,
+    "videoH": 686,
+    "warnTop": 1278,
+    "bottomTop": 1348,
+    "bottomH": 572
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 245
+}

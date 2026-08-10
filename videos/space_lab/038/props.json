@@ -1,0 +1,19 @@
+{
+  "title": "ガリレオの自由落下",
+  "artist": "Source",
+  "topCaption": "[[400年後]]、科学が証明した\n**ガリレオは正しかった**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#962",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 527,
+    "videoH": 776,
+    "warnTop": 1323,
+    "bottomTop": 1393,
+    "bottomH": 527
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 2395
+}

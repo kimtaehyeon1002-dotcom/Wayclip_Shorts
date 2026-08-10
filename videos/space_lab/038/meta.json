@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "038",
+  "name": "space_lab/038",
+  "media": {
+    "slug": "galileo-freefall-038",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 2395
+}

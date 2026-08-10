@@ -1,0 +1,19 @@
+{
+  "title": "記憶だけで心臓を描く医学生",
+  "artist": "Source",
+  "topCaption": "医学生がたった[[20秒]]で\n人間の心臓を描き上げた",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#959",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 423,
+    "videoH": 985,
+    "warnTop": 1428,
+    "bottomTop": 1498,
+    "bottomH": 422
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 775
+}

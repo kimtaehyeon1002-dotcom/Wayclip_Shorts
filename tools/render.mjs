@@ -7,7 +7,12 @@
  *   node tools/render.mjs goodmovies 086 --only-missing  # 이미 있는 결재본은 스킵
  *   node tools/render.mjs readyaction 954                # 단일 언어 채널 → 기존과 동일하게 1개
  *
- * 출력: output/<ch>/<n>/<n>.mp4 (베이스) + <n>-<lang>.mp4 (변형)
+ * 출력: **언어별 최상위 폴더 분리**, 영상번호는 전 국가 공통(관리 편의).
+ *   output/readyaction/952/952.mp4      (일본어 = 베이스, 기존 그대로)
+ *   output/readyaction-tw/952/952.mp4   (대만)
+ *   output/readyaction-th/952/952.mp4   (태국)
+ *   output/readyaction-vi/952/952.mp4   (베트남)
+ * 캡션 txt 도 같은 폴더 안에 `<n>캡션.txt` — 파일명엔 언어 접미사를 붙이지 않는다.
  *
  * ⚠️ normalize 단계 없음 — Remotion 출력은 이미 start_time 0 (CLAUDE.md 참조).
  * ⚠️ 렌더는 프리뷰 승인 후에만. 이 도구는 승인 여부를 알 수 없으니 호출 시점을 지킬 것.
@@ -22,7 +27,7 @@ import {
   MULTILANG_SET,
   TRANS_LANGS,
   compositionId,
-  langSuffix,
+  outputChannelDir,
   propsFileName,
   resolvePropsPath,
 } from "./channels.mjs";
@@ -95,8 +100,6 @@ function main() {
   }
   if (!plan.length) die("렌더할 언어가 없습니다.");
 
-  const outDirRel = path.join("output", channel, number);
-  fs.mkdirSync(path.join(ROOT, outDirRel), { recursive: true });
   const compId = compositionId[channel];
 
   const done = [];
@@ -104,8 +107,10 @@ function main() {
   const failed = [];
 
   for (const { lang, propsRel } of plan) {
-    const outName = `${number}${langSuffix(lang, baseLang)}.mp4`;
-    const outRel = path.join(outDirRel, outName);
+    // 언어별 최상위 폴더 분리: output/<channel>[-<lang>]/<number>/<number>.mp4
+    const outDirRel = path.join("output", outputChannelDir(channel, lang, baseLang), number);
+    const outRel = path.join(outDirRel, `${number}.mp4`);
+    fs.mkdirSync(path.join(ROOT, outDirRel), { recursive: true });
 
     if (onlyMissing && fs.existsSync(path.join(ROOT, outRel))) {
       console.log(`· ${lang}: ${outRel} 이미 있음 — 스킵`);
@@ -151,10 +156,12 @@ function main() {
   if (failed.length) {
     console.log(`✗ 실패: ${failed.join(", ")}`);
   }
-  console.log(
-    `\n다음: 같은 폴더에 캡션 txt 를 언어별로 작성 — ` +
-      plan.map((p) => `${number}캡션${langSuffix(p.lang, baseLang)}.txt`).join(", ")
-  );
+  console.log(`\n다음: 각 언어 폴더 안에 캡션 txt 작성 —`);
+  for (const p of plan) {
+    console.log(
+      `  output/${outputChannelDir(channel, p.lang, baseLang)}/${number}/${number}캡션.txt`
+    );
+  }
   console.log("  (포맷·채널 규칙: tools/jp-caption-writer.md)");
   process.exit(failed.length ? 1 : 0);
 }
