@@ -10,12 +10,12 @@
 | --- | --- | --- | --- | --- |
 | `goodvibesongs` | 굿바이브 | **3003** | `goodvibesongs` | 음악 + 듀얼 자막, 검정 배경. default en→ja |
 | `goodmovies` | 굿무비 | **3004** | `goodmovies` | 영화 클립, 흰 배경 / 검정 멘트, 노란 번역. default en→ja. **🌏 4개 언어** |
-| `readyaction` | 레디액션 | **3005** | `readyaction` | 영화 클립, 검정 배경, 시리즈 카피 + #번호 + 영화 정보. default en→ja |
+| `readyaction` | 레디액션 | **3005** | `readyaction` | 영화 클립, 검정 배경, 시리즈 카피 + #번호 + 영화 정보. default en→ja. **🌏 4개 언어** |
 | `thishiphop` | 디스힙합 | **3006** | `thishiphop` | 힙합 트랙, 검정 배경, 영상별 멘트 + #번호 + 영문 Artist-Track. default en→ja |
 | `space_lab` | 스페이스랩 | **3007** | `space-lab` | 정보 쇼츠, contain(잘림 X), 헤드라인 + 빨간 깜빡 경고 + 고정 CTA, **자막 없음**. default ja→ja. **🌏 4개 언어** |
 
-> **🌏 = 다국어 채널.** 굿무비·스페이스랩은 한 영상당 **일본어 / 대만(번체) / 태국어 / 베트남어 4개 결재본 + 캡션 4개**를 낸다.
-> 나머지 3채널은 일본어 1개. 아래 "다국어 양산 (굿무비 · 스페이스랩)" 참조.
+> **🌏 = 다국어 채널.** 굿무비·스페이스랩·레디액션은 한 영상당 **일본어 / 대만(번체) / 태국어 / 베트남어 4개 결재본 + 캡션 4개**를 낸다.
+> 나머지 2채널(굿바이브·디스힙합)은 일본어 1개. 아래 "🌏 다국어 양산" 참조.
 
 > ⚠️ `space_lab` 의 **Composition id 는 `space-lab`** (Remotion id 는 언더스코어 불가). 디렉토리/대화에선 `space_lab` slug 그대로 쓰되, `remotion render`/`still` 의 id 만 `space-lab`. `tools/preview.mjs` 와 `new-video.mjs` 안내가 자동 변환해 준다.
 
@@ -65,8 +65,9 @@ remotion-shorts/
 ├── videos/<ch>/<n>/          # 영상별: props.json + meta.json + source.mp4(하드링크). 렌더 시 --public-dir 가 여기를 가리킴
 │                             #   🌏 다국어 채널은 props.tw.json / props.th.json / props.vi.json 형제 파일 추가
 │                             #      (source.mp4 는 4개 언어가 공유 — 하드링크·public-dir 그대로)
-└── output/<ch>/<n>/          # 영상번호별 폴더. 결재본 <n>.mp4 + <n>캡션.txt + (굿바이브)<n>댓글/ + (있으면)<n>자막.srt 가 한곳에
-                              #   🌏 다국어: <n>-tw.mp4 <n>-th.mp4 <n>-vi.mp4 + <n>캡션-tw.txt … 같은 폴더에 접미사로
+├── output/<ch>/<n>/          # 영상번호별 폴더. 결재본 <n>.mp4 + <n>캡션.txt + (굿바이브)<n>댓글/ + (있으면)<n>자막.srt 가 한곳에
+└── output/<ch>-<lang>/<n>/   # 🌏 다국어: 언어별 최상위 폴더 분리. 안의 모양은 일본어 폴더와 동일
+                              #   (<n>.mp4 + <n>캡션.txt — 파일명엔 접미사 없음, 번호는 전 국가 공통)
 ```
 
 ## 다른 컴퓨터에서 세팅 (clone 후)
@@ -149,10 +150,11 @@ node tools/preview.mjs space_lab 047 --lang tw --port 3017     # (선택) 언어
 #   ⚠️ 일본어를 나중에 고쳤으면 반드시: node tools/derive-lang.mjs <dir> --sync
 #      (durationInFrames/layout/caption 타임스탬프 등 구조 필드만 재동기화, 번역문은 보존)
 
-# 6) 렌더 → 결재본 (normalize 단계 없음). 결재본은 영상번호별 폴더 output/<ch>/<n>/ 안에.
-node tools/render.mjs goodvibesongs 076              # 단일 언어 채널 → 076.mp4 1개
-node tools/render.mjs space_lab 047                  # 다국어 채널 → 047.mp4 + 047-tw/-th/-vi.mp4
-node tools/render.mjs space_lab 047 --langs ja,tw    # 일부만 / --only-missing 로 기존 건 스킵
+# 6) 렌더 → 결재본 (normalize 단계 없음).
+node tools/render.mjs goodvibesongs 076              # 단일 언어 채널 → output/goodvibesongs/076/076.mp4
+node tools/render.mjs space_lab 047                  # 다국어 → output/space_lab[-tw|-th|-vi]/047/047.mp4
+node tools/render.mjs readyaction 952 --langs tw,th,vi   # 일본어판이 이미 있으면 나머지만
+#   --only-missing 로 이미 있는 결재본은 스킵
 #   render.mjs 가 composition id 변환(space_lab→space-lab), --props/--public-dir, mkdir,
 #   그리고 **렌더 직전 check-captions 자동 게이트**(넘치면 그 언어는 렌더 안 함)까지 처리한다.
 #   수동으로 돌릴 때(참고):
@@ -175,7 +177,7 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
 **결재본(`output/<채널>/<번호>/<번호>.mp4`)이 새로 렌더되면, 같은 번호 폴더(`output/<채널>/<번호>/`) 안에 `<번호>캡션.txt` 도 항상 함께 만든다.** 사용자가 따로 "캡션도"라고 안 해도 자동. (Remotion 판은 normalize 단계가 없으니 render 직후가 타이밍.) — **결재본·캡션·댓글·자막 등 한 영상의 산출물은 전부 그 번호 폴더 안에 모은다.**
 
 - **파일명:** `<번호>캡션.txt` (예: 072번 → `072캡션.txt`), 위치는 `output/<채널>/<번호>/`. 결재본에 별명/접미사가 붙어도 **번호만** 써서 `083캡션.txt`.
-- **🌏 다국어 채널(굿무비·스페이스랩)은 캡션도 4개** — `<번호>캡션.txt`(일) + `<번호>캡션-tw.txt` / `-th.txt` / `-vi.txt`.
+- **🌏 다국어 채널(굿무비·스페이스랩·레디액션)은 캡션도 4개** — 각 언어 폴더(`output/<ch>-<lang>/<번호>/`) 안에 `<번호>캡션.txt`.
   본문·고정댓글 전부 해당 언어로 **재작성**(직역 금지), **@핸들만 그대로**. 굿무비 IMDb 평점은 일본어판에서 한 번만 검색해 4개가 공유.
   언어별 고정댓글 표와 추천 문단 문형은 [tools/jp-caption-writer.md](./tools/jp-caption-writer.md) "다국어" 절 참조.
 - **내용 순서:** 한 파일에 **캡션 → 구분선 → 고정댓글**. 포맷·채널별 캡션 작성 규칙·CTA 트렌드는 **[tools/jp-caption-writer.md](./tools/jp-caption-writer.md)** (= `/캡션` 스킬과 동일 내용) 참조. **굿무비만** IMDb 평점을 캡션에 넣으므로 그 수치만 **웹 검색으로 실값 확인** 후 기입(레디액션 등 다른 영화 채널은 평점 표기 안 함 — 불필요한 검색 금지).
@@ -246,13 +248,26 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
     - **단, 문구가 단색 밴드가 아니라 콘텐츠/그래픽 위에 바로 얹혀 있어** 크롭하면 그래픽까지 잘리는 경우엔 임의로 자르지 말고 **still 1컷 떠서 사용자에게 확인 후 진행**(굿무비가 박힌 영문 자막을 콘텐츠로 보고 남기는 것과 같은 판단).
     - **⚠️ 잘라낸 원본 상단문구는 버리지 말고 헤드라인 소스로 쓴다:** 크롭 전 still 에서 원본 상/하단에 박혀 있던 문구(헤드라인/제목)를 읽어, 그 의미를 참고해 **헤드라인을 직접 작성**한다 — 직역이 아니라 **일본 시청자 정서에 맞게 자연스럽게 의역·현지화한 일본어**로(상단 멘트 전역 규칙과 동일). 원본이 한국어·영어든 일본어로 재작성하고, **원본이 이미 일본어면 톤·길이만 다듬어 유사하게** 쓴다. 별도 지시 없으면 사용자에게 매번 묻지 말고 이 원본 문구를 근거로 알아서 작성(`[[빨강]]`/`**굵게**` 마크업은 강조할 핵심어에 적용).
 
-## 🌏 다국어 양산 (굿무비 · 스페이스랩)
+## 🌏 다국어 양산 (굿무비 · 스페이스랩 · 레디액션)
 
-두 채널은 한 영상당 **일본어 / 대만(번체, `tw`) / 태국어(`th`) / 베트남어(`vi`) 4개 결재본 + 캡션 4개**를 낸다.
+세 채널은 한 영상당 **일본어 / 대만(번체, `tw`) / 태국어(`th`) / 베트남어(`vi`) 4개 결재본 + 캡션 4개**를 낸다.
 
-**구조:** `props.json` 이 **일본어 베이스**, 변형은 같은 디렉토리의 형제 파일 `props.<lang>.json`.
+**입력 구조:** `props.json` 이 **일본어 베이스**, 변형은 같은 디렉토리의 형제 파일 `props.<lang>.json`.
 `source.mp4` 하드링크와 `--public-dir` 는 4개 언어가 공유하므로 추가 미디어 복사가 없다.
-무플래그 호출(`check-captions <dir>` 등)은 예전 그대로 베이스만 본다 — 기존 60개 영상 무영향.
+무플래그 호출(`check-captions <dir>` 등)은 예전 그대로 베이스만 본다 — 기존 영상 무영향.
+
+**⚠️ 출력 구조: 언어별로 최상위 폴더를 분리하고, 영상번호는 전 국가 공통으로 통일한다.**
+
+```
+output/readyaction/952/952.mp4      + 952캡션.txt   ← 일본어(베이스, 기존 그대로)
+output/readyaction-tw/952/952.mp4   + 952캡션.txt   ← 대만
+output/readyaction-th/952/952.mp4   + 952캡션.txt   ← 태국
+output/readyaction-vi/952/952.mp4   + 952캡션.txt   ← 베트남
+```
+
+**폴더가 언어를 나타내므로 파일명엔 언어 접미사를 붙이지 않는다.** 각 언어 폴더가 일본어 폴더와
+똑같은 모양이라 나라별로 통째로 넘기기 쉽다. **같은 영상은 어느 나라든 같은 번호** — 번호를 나라별로
+따로 매기지 말 것(관리 편의, 사용자 지시 2026-08-10). `tools/render.mjs` 가 이 경로를 자동으로 만든다.
 
 **순서 (반드시 이 순서):**
 1. 일본어로 props 완성 → `check-captions` → **프리뷰 승인**
