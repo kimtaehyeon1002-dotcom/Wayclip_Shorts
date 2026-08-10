@@ -29,6 +29,7 @@ const VIDEO_H = 960;
 
 export const GoodMovies: React.FC<GoodMoviesProps> = ({
   topCaption,
+  topCaptionLineSizes,
   originalLanguage,
   translationLanguage,
   videoSrc,
@@ -71,6 +72,10 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
+          // 줄별 pt 오버라이드 — check-captions 는 예전부터 이 값을 반영했는데 렌더엔
+          // 연결돼 있지 않았다(검사는 통과하는데 화면은 넘치는 함정). 개편으로 상단이
+          // 48pt→50pt 가 되면서 개편 전 영상(075/084)이 실제로 걸려 배선.
+          lineSizes={topCaptionLineSizes}
           strongStyle={{ fontWeight: 500, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontJpLead(translationLanguage),

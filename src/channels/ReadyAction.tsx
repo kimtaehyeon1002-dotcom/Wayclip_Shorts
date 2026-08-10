@@ -26,6 +26,7 @@ const VIDEO_H = 960;
 
 export const ReadyAction: React.FC<ReadyActionProps> = ({
   topCaption,
+  topCaptionLineSizes,
   originalLanguage,
   translationLanguage,
   videoSrc,
@@ -67,6 +68,8 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
+          // 굿무비와 같은 이유로 배선 (check-captions 는 반영하는데 렌더는 무시하던 상태).
+          lineSizes={topCaptionLineSizes}
           strongStyle={{ fontWeight: 400, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontJpLead(translationLanguage),
