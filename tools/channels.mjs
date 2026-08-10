@@ -24,7 +24,7 @@ export const channelFixedStrings = {
     // 시리즈 고정 카피. **…** 가 굵게(weight 100 → 400).
     ja: { topCaption: "歴代最高の**映画1000本を、**\n順不同で収集中" },
     tw: { topCaption: "史上最棒的**1000部電影，**\n不分順序收藏中" },
-    th: { topCaption: "รวม**1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ" },
+    th: { topCaption: "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ" },
     vi: { topCaption: "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự" },
   },
   space_lab: {
