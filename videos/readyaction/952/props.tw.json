@@ -1,0 +1,86 @@
+{
+  "title": "Five Feet Apart",
+  "artist": "Five Feet Apart (2019)",
+  "topCaption": "史上最棒的**1000部電影，**\n不分順序收藏中",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "videoNumber": "#952",
+  "mediaKind": "映画",
+  "mediaTitleJa": "愛上觸不到的你",
+  "captions": [
+    {
+      "start": 0.1,
+      "end": 1,
+      "original": "Wait, wait, wait, wait.",
+      "translation": "等等、等等"
+    },
+    {
+      "start": 1.9,
+      "end": 5,
+      "original": "Tomorrow's your birthday?",
+      "translation": "明天是妳生日？"
+    },
+    {
+      "start": 5,
+      "end": 6,
+      "original": "You could have told me that.",
+      "translation": "妳早該告訴我的"
+    },
+    {
+      "start": 6,
+      "end": 8.14,
+      "original": "I don't have a present for you.",
+      "translation": "我什麼禮物都沒準備"
+    },
+    {
+      "start": 8.14,
+      "end": 9.3,
+      "original": "How about you just promise",
+      "translation": "那不如妳答應我"
+    },
+    {
+      "start": 9.3,
+      "end": 10.34,
+      "original": "to stick around for the next one?",
+      "translation": "活到下一個生日"
+    },
+    {
+      "start": 19.34,
+      "end": 20.54,
+      "original": "Are you in?",
+      "translation": "妳要不要？"
+    },
+    {
+      "start": 20.64,
+      "end": 21.63,
+      "original": "I'm so in.",
+      "translation": "我當然要"
+    },
+    {
+      "start": 24.1,
+      "end": 25.58,
+      "original": "You know, people are always saying",
+      "translation": "大家總說"
+    },
+    {
+      "start": 25.58,
+      "end": 29.08,
+      "original": "if you love something, you have to learn to let it go.",
+      "translation": "越是深愛，越要學會放手"
+    },
+    {
+      "start": 29.08,
+      "end": 31.58,
+      "original": "I thought that was such bullshit,",
+      "translation": "我一直覺得這是屁話"
+    },
+    {
+      "start": 31.58,
+      "end": 34.08,
+      "original": "till I watched you almost die.",
+      "translation": "直到我看著妳差點死去"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1160
+}

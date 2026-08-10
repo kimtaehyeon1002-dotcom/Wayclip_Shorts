@@ -1,0 +1,44 @@
+{
+  "title": "The Little Rascals",
+  "artist": "The Little Rascals (1994)",
+  "topCaption": "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự",
+  "originalLanguage": "en",
+  "translationLanguage": "vi",
+  "videoNumber": "#957",
+  "mediaKind": "映画",
+  "mediaTitleJa": "The Little Rascals",
+  "captions": [
+    {
+      "start": 0,
+      "end": 2,
+      "original": "So let me raise a toast",
+      "translation": "Vậy thì cho tớ nâng ly"
+    },
+    {
+      "start": 2,
+      "end": 3.87,
+      "original": "to the girl I love most",
+      "translation": "mừng cô gái tớ yêu nhất"
+    },
+    {
+      "start": 3.88,
+      "end": 6.44,
+      "original": "in the whole world.",
+      "translation": "nhất trên đời này"
+    },
+    {
+      "start": 6.44,
+      "end": 8.86,
+      "original": "Please don't say my name.",
+      "translation": "Làm ơn đừng nói tên tớ ra"
+    },
+    {
+      "start": 8.86,
+      "end": 10.06,
+      "original": "Darla.",
+      "translation": "Darla."
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 671
+}

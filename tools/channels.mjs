@@ -11,9 +11,44 @@ export const CHANNELS = [
 export const ORIG_LANGS = ["en", "ko", "ja"];
 // tw = 대만(번체중국어). 언어코드 = props 파일 접미사(props.tw.json) = 결재본 접미사(047-tw.mp4).
 export const TRANS_LANGS = ["ko", "ja", "th", "tw", "vi"];
-// 굿무비·스페이스랩 양산 언어 세트 — props.json(=ja 베이스) + props.<lang>.json 3개.
-export const MULTILANG_CHANNELS = ["goodmovies", "space_lab"];
+// 다국어 양산 채널 — props.json(=ja 베이스) + props.<lang>.json 3개.
+export const MULTILANG_CHANNELS = ["goodmovies", "space_lab", "readyaction"];
 export const MULTILANG_SET = ["ja", "tw", "th", "vi"];
+
+// 채널 전체가 공유하는 **고정 문구**의 언어별 대응.
+// 영상마다 바뀌는 텍스트(헤드라인·자막·작품명)가 아니라, 채널 브랜딩으로 매 영상 같은 문자열.
+// derive-lang 이 변형 props 를 만들 때 자동으로 채워 넣는다 → 영상마다 손번역해서 문구가
+// 갈라지는 사고를 막는다. 문구를 바꾸려면 여기만 고치고 --sync 가 아니라 재파생할 것.
+export const channelFixedStrings = {
+  readyaction: {
+    // 시리즈 고정 카피. **…** 가 굵게(weight 100 → 400).
+    ja: { topCaption: "歴代最高の**映画1000本を、**\n順不同で収集中" },
+    tw: { topCaption: "史上最棒的**1000部電影，**\n不分順序收藏中" },
+    th: { topCaption: "รวม**1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ" },
+    vi: { topCaption: "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự" },
+  },
+  space_lab: {
+    // 헤드라인(topCaption)은 영상별이라 여기 없음 — bottomCTA/warnText 만 채널 고정.
+    ja: {
+      bottomCTA: "続きは本文で",
+      warnText: "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    },
+    tw: {
+      bottomCTA: "更多內容看貼文",
+      warnText: "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**",
+    },
+    th: {
+      bottomCTA: "อ่านต่อในแคปชัน",
+      warnText: "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**",
+    },
+    vi: {
+      bottomCTA: "Xem tiếp ở phần mô tả",
+      warnText: "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết",
+    },
+  },
+  // 굿무비는 채널 고정 문구가 없다 (상단 멘트가 영상마다 다름).
+  goodmovies: {},
+};
 export const FPS = 30;
 export const CANVAS_W = 1080;
 export const CANVAS_H = 1920;

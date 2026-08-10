@@ -59,8 +59,10 @@ export const goodVibeSongsSchema = z.object({
 export type GoodVibeSongsProps = z.infer<typeof goodVibeSongsSchema>;
 
 // ── goodmovies (굿무비) — + 하단 영화 정보 ──
+// enum 값은 **일본어 안정 키** — 화면 표기는 src/i18n.ts 의 mediaLabel() 이 언어별로 매핑한다.
+// (readyaction/950 이 "短編" 을 쓰고 있어 enum 에 추가. 새 종류를 쓸 땐 i18n.ts 표에도 같이 넣을 것.)
 export const mediaKindSchema = z
-  .enum(["映画", "ドラマ", "アニメ", "ドキュメンタリー"])
+  .enum(["映画", "ドラマ", "アニメ", "ドキュメンタリー", "短編"])
   .default("映画");
 export const goodMoviesSchema = z.object({
   ...baseShape,

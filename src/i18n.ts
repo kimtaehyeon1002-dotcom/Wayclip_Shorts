@@ -4,7 +4,7 @@
 // 화면 표시만 여기서 언어별로 매핑한다.
 import type { Lang } from "./props";
 
-type MediaKind = "映画" | "ドラマ" | "アニメ" | "ドキュメンタリー";
+type MediaKind = "映画" | "ドラマ" | "アニメ" | "ドキュメンタリー" | "短編";
 
 const MEDIA_LABEL: Record<MediaKind, Partial<Record<Lang, string>>> = {
   映画: { ja: "映画", tw: "電影", th: "ภาพยนตร์", vi: "Phim điện ảnh", ko: "영화", en: "Film" },
@@ -18,6 +18,7 @@ const MEDIA_LABEL: Record<MediaKind, Partial<Record<Lang, string>>> = {
     ko: "다큐멘터리",
     en: "Documentary",
   },
+  短編: { ja: "短編", tw: "短片", th: "หนังสั้น", vi: "Phim ngắn", ko: "단편", en: "Short" },
 };
 
 export function mediaLabel(kind: string, lang: Lang): string {

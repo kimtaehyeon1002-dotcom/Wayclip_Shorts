@@ -1,0 +1,86 @@
+{
+  "title": "Five Feet Apart",
+  "artist": "Five Feet Apart (2019)",
+  "topCaption": "รวม**1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#952",
+  "mediaKind": "映画",
+  "mediaTitleJa": "Five Feet Apart",
+  "captions": [
+    {
+      "start": 0.1,
+      "end": 1,
+      "original": "Wait, wait, wait, wait.",
+      "translation": "เดี๋ยว ๆ"
+    },
+    {
+      "start": 1.9,
+      "end": 5,
+      "original": "Tomorrow's your birthday?",
+      "translation": "พรุ่งนี้วันเกิดเธอเหรอ"
+    },
+    {
+      "start": 5,
+      "end": 6,
+      "original": "You could have told me that.",
+      "translation": "บอกกันหน่อยก็ดีสิ"
+    },
+    {
+      "start": 6,
+      "end": 8.14,
+      "original": "I don't have a present for you.",
+      "translation": "ฉันไม่ได้เตรียมของขวัญให้เลย"
+    },
+    {
+      "start": 8.14,
+      "end": 9.3,
+      "original": "How about you just promise",
+      "translation": "งั้นสัญญากับฉันได้ไหม"
+    },
+    {
+      "start": 9.3,
+      "end": 10.34,
+      "original": "to stick around for the next one?",
+      "translation": "ว่าจะอยู่ถึงวันเกิดปีหน้า"
+    },
+    {
+      "start": 19.34,
+      "end": 20.54,
+      "original": "Are you in?",
+      "translation": "เอาไหม"
+    },
+    {
+      "start": 20.64,
+      "end": 21.63,
+      "original": "I'm so in.",
+      "translation": "เอาสิ แน่นอน"
+    },
+    {
+      "start": 24.1,
+      "end": 25.58,
+      "original": "You know, people are always saying",
+      "translation": "คนชอบพูดกันว่า"
+    },
+    {
+      "start": 25.58,
+      "end": 29.08,
+      "original": "if you love something, you have to learn to let it go.",
+      "translation": "ยิ่งรักมาก ยิ่งต้องเรียนรู้ที่จะปล่อยมือ"
+    },
+    {
+      "start": 29.08,
+      "end": 31.58,
+      "original": "I thought that was such bullshit,",
+      "translation": "ฉันเคยคิดว่ามันไร้สาระสิ้นดี"
+    },
+    {
+      "start": 31.58,
+      "end": 34.08,
+      "original": "till I watched you almost die.",
+      "translation": "จนได้เห็นเธอเกือบตายต่อหน้า"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1160
+}

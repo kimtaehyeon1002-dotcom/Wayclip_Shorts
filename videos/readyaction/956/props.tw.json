@@ -1,0 +1,74 @@
+{
+  "title": "What's Eating Gilbert Grape",
+  "artist": "What's Eating Gilbert Grape (1993)",
+  "topCaption": "史上最棒的**1000部電影，**\n不分順序收藏中",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "videoNumber": "#956",
+  "mediaKind": "映画",
+  "mediaTitleJa": "戀戀情深",
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.44,
+      "original": "Six days is my party",
+      "translation": "再六天就是我的派對"
+    },
+    {
+      "start": 1.44,
+      "end": 3.81,
+      "original": "and I'm gonna become 18.",
+      "translation": "我就要滿十八歲了"
+    },
+    {
+      "start": 3.81,
+      "end": 6.12,
+      "original": "I'm 18 and you're not invited.",
+      "translation": "我十八歲了，不邀請妳"
+    },
+    {
+      "start": 6.12,
+      "end": 7.42,
+      "original": "Arnie,",
+      "translation": "亞尼"
+    },
+    {
+      "start": 7.42,
+      "end": 8.3,
+      "original": "don't be rude",
+      "translation": "別沒禮貌"
+    },
+    {
+      "start": 8.3,
+      "end": 9.96,
+      "original": "Oh, it's okay...",
+      "translation": "沒關係啦…"
+    },
+    {
+      "start": 9.96,
+      "end": 11.39,
+      "original": "He's just being honest",
+      "translation": "他只是很誠實"
+    },
+    {
+      "start": 11.39,
+      "end": 12.08,
+      "original": "I don't mind",
+      "translation": "我不介意"
+    },
+    {
+      "start": 23.02,
+      "end": 24.36,
+      "original": "Mama,",
+      "translation": "媽媽"
+    },
+    {
+      "start": 24.36,
+      "end": 25.18,
+      "original": "wake up!",
+      "translation": "快醒醒！"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 845
+}

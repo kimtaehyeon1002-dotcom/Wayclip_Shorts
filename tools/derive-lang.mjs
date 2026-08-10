@@ -15,7 +15,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { MULTILANG_SET, TRANS_LANGS, propsFileName } from "./channels.mjs";
+import {
+  MULTILANG_SET,
+  TRANS_LANGS,
+  channelFixedStrings,
+  propsFileName,
+} from "./channels.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -81,6 +86,10 @@ function main() {
 
   const base = JSON.parse(fs.readFileSync(basePath, "utf8"));
   const baseLang = base.translationLanguage || "ja";
+  const channel = fs.existsSync(metaPath)
+    ? JSON.parse(fs.readFileSync(metaPath, "utf8")).channel
+    : null;
+  const fixed = (channel && channelFixedStrings[channel]) || {};
 
   for (const lang of langs) {
     if (lang === baseLang) {
@@ -99,8 +108,18 @@ function main() {
     if (!exists) {
       // 생성: 일본어 전체를 복사하고 언어만 교체. 텍스트는 Claude 가 이 파일 위에서 번역한다.
       const variant = { ...base, translationLanguage: lang };
+      // 채널 고정 문구(시리즈 카피/CTA/경고문구)는 이미 번역본이 있으니 자동으로 채운다.
+      const auto = fixed[lang] || {};
+      const filled = [];
+      for (const [k, v] of Object.entries(auto)) {
+        if (k in variant) {
+          variant[k] = v;
+          filled.push(k);
+        }
+      }
       writeJson(outPath, variant);
-      console.log(`✓ ${file} 생성 (텍스트는 아직 ${baseLang} — 번역 필요)`);
+      const todo = filled.length ? ` (${filled.join("/")} 자동 채움 — 나머지 텍스트는 번역 필요)` : " (텍스트는 아직 " + baseLang + " — 번역 필요)";
+      console.log(`✓ ${file} 생성${todo}`);
       continue;
     }
 

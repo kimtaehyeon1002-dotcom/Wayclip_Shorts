@@ -1,0 +1,74 @@
+{
+  "title": "What's Eating Gilbert Grape",
+  "artist": "What's Eating Gilbert Grape (1993)",
+  "topCaption": "รวม**1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#956",
+  "mediaKind": "映画",
+  "mediaTitleJa": "What's Eating Gilbert Grape",
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.44,
+      "original": "Six days is my party",
+      "translation": "อีกหกวันก็ปาร์ตี้ของผมแล้ว"
+    },
+    {
+      "start": 1.44,
+      "end": 3.81,
+      "original": "and I'm gonna become 18.",
+      "translation": "แล้วผมก็จะอายุ 18"
+    },
+    {
+      "start": 3.81,
+      "end": 6.12,
+      "original": "I'm 18 and you're not invited.",
+      "translation": "ผมอายุ 18 แล้ว ไม่เชิญคุณนะ"
+    },
+    {
+      "start": 6.12,
+      "end": 7.42,
+      "original": "Arnie,",
+      "translation": "อาร์นี่"
+    },
+    {
+      "start": 7.42,
+      "end": 8.3,
+      "original": "don't be rude",
+      "translation": "อย่าเสียมารยาทสิ"
+    },
+    {
+      "start": 8.3,
+      "end": 9.96,
+      "original": "Oh, it's okay...",
+      "translation": "ไม่เป็นไรหรอก…"
+    },
+    {
+      "start": 9.96,
+      "end": 11.39,
+      "original": "He's just being honest",
+      "translation": "เขาแค่พูดตรง ๆ"
+    },
+    {
+      "start": 11.39,
+      "end": 12.08,
+      "original": "I don't mind",
+      "translation": "ฉันไม่ถือหรอก"
+    },
+    {
+      "start": 23.02,
+      "end": 24.36,
+      "original": "Mama,",
+      "translation": "แม่"
+    },
+    {
+      "start": 24.36,
+      "end": 25.18,
+      "original": "wake up!",
+      "translation": "ตื่นสิ!"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 845
+}

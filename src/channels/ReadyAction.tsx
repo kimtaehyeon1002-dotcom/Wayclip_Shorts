@@ -2,17 +2,27 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { ReadyActionProps } from "../props";
-import { captionFont, originalFontJp, showOriginal, topFontJpLead } from "../lang";
-import { FONT } from "../fonts";
+import {
+  captionFont,
+  letterSpacingFor,
+  originalFontJp,
+  paltFor,
+  scriptLineHeight,
+  showOriginal,
+  topFontJpLead,
+  topFontNative,
+  wordBreakFor,
+} from "../lang";
+import { mediaCredit } from "../i18n";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { TopCaption } from "../components/TopCaption";
 
 // 레디액션 — 영화 클립. 검정 배경. 상단 시리즈 고정 카피(**…**만 굵게) / 영상 1080×960 거의 정사각.
 // 자막: 영상 영역 세로 중앙. 위 원어(흰 이탤릭) / 아래 번역(48px/400 흰). 하단 #번호 + 영화 정보.
+// 텍스트는 translationLanguage 기반 — ja/tw/th/vi 결재본을 같은 컴포지션으로 낸다.
 const VIDEO_TOP = 480;
 const VIDEO_H = 960;
-const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const ReadyAction: React.FC<ReadyActionProps> = ({
   topCaption,
@@ -30,7 +40,12 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
       : `#${videoNumber}`
     : "";
   return (
-    <AbsoluteFill style={{ background: "#000", fontFeatureSettings: '"palt"' }}>
+    <AbsoluteFill
+      style={{
+        background: "#000",
+        fontFeatureSettings: paltFor(translationLanguage),
+      }}
+    >
       {/* 상단 검정 + 시리즈 고정 멘트 */}
       <div
         style={{
@@ -58,7 +73,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
             fontSize: "50pt",
             fontWeight: 100,
             color: "#fff",
-            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
+            lineHeight: scriptLineHeight(translationLanguage, 1.18),
             letterSpacing: 0,
           }}
         />
@@ -129,13 +144,13 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
                 fontSize: 48,
                 fontWeight: 300,
                 color: "#fff",
-                letterSpacing: "-0.04em",
-                lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
+                letterSpacing: letterSpacingFor(translationLanguage, -0.04),
+                lineHeight: scriptLineHeight(translationLanguage, 1.22),
                 WebkitTextStroke: "1.5px rgba(0,0,0,0.7)",
                 paintOrder: "stroke fill",
                 textShadow: "0 3px 14px rgba(0,0,0,0.65), 0 0 5px rgba(0,0,0,0.55)",
                 overflowWrap: "break-word",
-                wordBreak: "keep-all",
+                wordBreak: wordBreakFor(translationLanguage),
               }}
             >
               {cap.translation}
@@ -165,7 +180,8 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
         {numText ? (
           <div
             style={{
-              fontFamily: NSJP,
+              // #번호는 라틴 숫자뿐 — 어느 언어든 자형이 같으므로 일본어 스택 고정(합성 italic 유지).
+              fontFamily: topFontNative("ja"),
               fontSize: 40,
               fontWeight: 400,
               fontStyle: "italic",
@@ -179,7 +195,7 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
         {mediaTitleJa ? (
           <div
             style={{
-              fontFamily: NSJP,
+              fontFamily: topFontNative(translationLanguage),
               fontSize: 38,
               fontWeight: 100,
               color: "rgba(255,255,255,0.92)",
@@ -187,7 +203,8 @@ export const ReadyAction: React.FC<ReadyActionProps> = ({
               textAlign: "center",
             }}
           >
-            {`${mediaKind || "映画"}『${mediaTitleJa}』`}
+            {/* mediaTitleJa = "표시용 제목" — 변형 props 엔 그 언어권 개봉 제목 */}
+            {mediaCredit(mediaKind, mediaTitleJa, translationLanguage)}
           </div>
         ) : null}
       </div>
