@@ -1,0 +1,19 @@
+{
+  "title": "新幹線とカワセミ",
+  "artist": "Standard of AI",
+  "topCaption": "トンネルを出るたびの[[爆音]]を\n消したのは**一羽の鳥**だった",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#945",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 540,
+    "videoH": 750,
+    "warnTop": 1310,
+    "bottomTop": 1380,
+    "bottomH": 540
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 898
+}

@@ -1,0 +1,19 @@
+{
+  "title": "量子物理学・何にも触れていない",
+  "artist": "Curiosity / X",
+  "topCaption": "量子物理学によれば、私たちは\n実は[[何ひとつ触れていない]]",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#951",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 489,
+    "videoH": 852,
+    "warnTop": 1361,
+    "bottomTop": 1431,
+    "bottomH": 489
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 327
+}

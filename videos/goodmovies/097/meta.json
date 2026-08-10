@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "097",
+  "name": "goodmovies/097",
+  "media": {
+    "slug": "heretic-2024",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 1657
+}

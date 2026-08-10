@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "049",
+  "name": "space_lab/049",
+  "media": {
+    "slug": "quantum-touch-049",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 327
+}

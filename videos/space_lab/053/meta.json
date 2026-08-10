@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "053",
+  "name": "space_lab/053",
+  "media": {
+    "slug": "radium-vs-uranium-053",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 747
+}

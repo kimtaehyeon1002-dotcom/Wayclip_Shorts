@@ -14,6 +14,16 @@ export const FPS = 30;
 export const CANVAS_W = 1080;
 export const CANVAS_H = 1920;
 
+// 굿바이브 워터마크 표준 (101 확정본 — 2026-07-29). 모든 굿바이브 영상 고정, 영상별로 바꾸지 말 것.
+// y=0.375 → 영상 밴드(top 440, h 1040) 안 37.5% 지점 = 화면 y 830px. 작고 은은한 핸들 표기.
+export const GOODVIBE_WATERMARK = {
+  text: "@goodvibesongs.mp3",
+  y: 0.375,
+  size: 17,
+  opacity: 0.45,
+  weight: 500,
+};
+
 // 채널별 기본 props (src/props.ts schema default 미러). durationInFrames/captions/layout 은 런타임 주입.
 export const channelDefaults = {
   goodvibesongs: {
@@ -23,13 +33,15 @@ export const channelDefaults = {
     originalLanguage: "en",
     translationLanguage: "ja",
     comments: [],
+    watermark: { ...GOODVIBE_WATERMARK },
   },
   goodmovies: {
     title: "",
     artist: "",
-    topCaption: "",
+    topCaption: "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中",
     originalLanguage: "en",
     translationLanguage: "ja",
+    videoNumber: "",
     mediaKind: "映画",
     mediaTitleJa: "",
   },
@@ -85,9 +97,16 @@ export const hasCaptions = {
 
 // 템플릿이 #번호를 자동 주입하는 채널 (videoNumber 변수 보유).
 export const hasVideoNumber = {
+  goodmovies: true, // #번호 = 1000 - 영상번호 (2026-07-29 개편)
   readyaction: true,
   thishiphop: true,
   space_lab: true, // 단, #번호 = 1000 - 영상번호 (new-video.mjs 가 분기)
+};
+
+// #번호를 "1000 - 영상번호" 로 쓰는 채널 (나머지는 #영상번호 그대로).
+export const numberFrom1000 = {
+  goodmovies: true,
+  space_lab: true,
 };
 
 // 오버플로 추정용 레이아웃 상수 (check-captions.mjs 가 사용). src/channels/*.tsx 의 수치 미러.
@@ -98,8 +117,9 @@ export const captionLayouts = {
     caption: { zoneL: 60, zoneR: 60, fontPx: 46 },
   },
   goodmovies: {
-    top: { padL: 60, padR: 60, fontPx: 64, maxLines: 2 },
-    caption: { zoneL: 50, zoneR: 50, fontPx: 52 },
+    // 2026-07-29 개편: 상단 50pt(레디액션식), 자막 존 60/60 + 번역 48px 기준.
+    top: { padL: 60, padR: 60, fontPx: 66.67, maxLines: 2 },
+    caption: { zoneL: 60, zoneR: 60, fontPx: 48 },
   },
   readyaction: {
     top: { padL: 60, padR: 60, fontPx: 66.67, maxLines: 2 },

@@ -1,0 +1,87 @@
+{
+  "title": "HOT LIMIT",
+  "artist": "T.M.Revolution",
+  "topCaption": "これ以上夏を\n**刺激しないでくれ**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 4.094,
+      "note": "아 장마 끝 선언 여기서 하는구나",
+      "w": 582
+    },
+    {
+      "src": "comments/02.png",
+      "start": 4.094,
+      "end": 8.189,
+      "note": "평생 노래 잘하네 이 근육 요정",
+      "w": 528
+    },
+    {
+      "src": "comments/03.png",
+      "start": 8.189,
+      "end": 12.283,
+      "note": "듣는 타입의 프로틴",
+      "w": 450
+    },
+    {
+      "src": "comments/04.png",
+      "start": 12.283,
+      "end": 16.378,
+      "note": "아직도 의상에 시대가 못 따라잡는 게 대단해",
+      "w": 762
+    },
+    {
+      "src": "comments/05.png",
+      "start": 16.378,
+      "end": 20.472,
+      "note": "당시 이게 무슨 의상이야 지금도 이게 무슨 의상이야",
+      "w": 442
+    },
+    {
+      "src": "comments/06.png",
+      "start": 20.472,
+      "end": 24.567,
+      "note": "이 이상 여름을 자극하지 말아줘",
+      "w": 518
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.32,
+      "end": 3.9,
+      "original": "妖精たちが夏を刺激する",
+      "translation": "妖精たちが夏を刺激する"
+    },
+    {
+      "start": 3.9,
+      "end": 7.15,
+      "original": "ナマ足 魅惑のマーメイド",
+      "translation": "ナマ足 魅惑のマーメイド"
+    },
+    {
+      "start": 7.15,
+      "end": 10.8,
+      "original": "出すとこ出して たわわになったら",
+      "translation": "出すとこ出して たわわになったら"
+    },
+    {
+      "start": 10.8,
+      "end": 15,
+      "original": "ホンモノの恋は やれ 爽快っ",
+      "translation": "ホンモノの恋は やれ 爽快っ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 737,
+  "captionYOffset": 0
+}

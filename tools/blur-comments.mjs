@@ -18,6 +18,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
 const DEFAULTS = {
@@ -93,7 +94,9 @@ function parseArgs(argv) {
 }
 
 // 직접 실행 시 CLI
-if (path.resolve(process.argv[1] || "") === path.resolve(new URL(import.meta.url).pathname)) {
+// ⚠ new URL(import.meta.url).pathname 은 퍼센트 인코딩("%20" 등)이라 한글/공백 경로에서
+//   process.argv[1] 과 절대 일치하지 않는다 → CLI 가 조용히 아무것도 안 함. fileURLToPath 로 디코딩.
+if (path.resolve(process.argv[1] || "") === path.resolve(fileURLToPath(import.meta.url))) {
   const { src, out, ...opts } = parseArgs(process.argv.slice(2));
   blurComment(src, out, opts);
   console.log(`✓ ${out}  (sigma=${opts.sigma} feather=${opts.feather} handleEnd=${opts.handleEnd})`);

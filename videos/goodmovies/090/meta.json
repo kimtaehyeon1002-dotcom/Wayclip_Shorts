@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "090",
+  "name": "goodmovies/090",
+  "media": {
+    "slug": "derailed-2005",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 1313
+}

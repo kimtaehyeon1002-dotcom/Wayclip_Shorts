@@ -1,0 +1,19 @@
+{
+  "title": "三重倒立振子の遷移制御",
+  "artist": "韓国の大学 制御研究室",
+  "topCaption": "棒[[3本]]を倒さず立て続ける\n**制御工学**の最難関",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#950",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 613,
+    "videoH": 604,
+    "warnTop": 1237,
+    "bottomTop": 1307,
+    "bottomH": 613
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 575
+}

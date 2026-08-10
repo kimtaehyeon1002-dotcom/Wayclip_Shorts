@@ -1,0 +1,19 @@
+{
+  "title": "AIディズニー予告編プロポーズ",
+  "artist": "@cellocoelho / Standard of AI",
+  "topCaption": "AIで作った[[ディズニー予告編]]で\nプロポーズに**成功した男性**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#944",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 280,
+    "videoH": 1270,
+    "warnTop": 1570,
+    "bottomTop": 1640,
+    "bottomH": 280
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 2930
+}

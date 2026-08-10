@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "055",
+  "name": "space_lab/055",
+  "media": {
+    "slug": "shinkansen-kingfisher-055",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 898
+}

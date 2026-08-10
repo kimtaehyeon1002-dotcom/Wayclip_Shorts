@@ -2,15 +2,20 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { GoodMoviesProps } from "../props";
-import { captionFont, originalFont, showOriginal, topFontNative } from "../lang";
+import { captionFont, originalFontJp, showOriginal, topFontJpLead } from "../lang";
+import { FONT } from "../fonts";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { TopCaption } from "../components/TopCaption";
 
 // 굿무비 — 영화 클립 + 듀얼 자막. 흰 배경 / 검정 멘트.
-// 자막: 영상 영역 하단. 위 번역(노란 40px/600) / 아래 원어(흰 52px/800, 영어 음원만). 하단 영화 정보.
-const VIDEO_TOP = 440;
-const VIDEO_H = 1040;
+// 2026-07-29 개편: 레이아웃은 레디액션식(상 480 / 영상 960 / 하 480, 자막 영상 세로 중앙,
+//   상단 시리즈 고정 카피, 하단 #(1000-번호) + 영화 정보), 색은 굿무비 유지
+//   (흰 배경 / 검정 상단·하단 문구 / 번역 노랑 #FFEB3B / 원어 흰 + 검정 stroke).
+// 자막 순서도 레디액션식: 위 원어(흰 이탤릭 36px) → 아래 번역(노랑 48px).
+const VIDEO_TOP = 480;
+const VIDEO_H = 960;
+const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const GoodMovies: React.FC<GoodMoviesProps> = ({
   topCaption,
@@ -18,15 +23,21 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
   translationLanguage,
   videoSrc,
   captions,
+  videoNumber,
   mediaKind,
   mediaTitleJa,
-  captionPaddingTop,
+  captionYOffset = 0,
 }) => {
+  const numText = videoNumber
+    ? String(videoNumber).startsWith("#")
+      ? videoNumber
+      : `#${videoNumber}`
+    : "";
   return (
     <AbsoluteFill
       style={{ background: "#fff", fontFeatureSettings: '"palt"' }}
     >
-      {/* 상단 흰색 + 멘트 (Bold) */}
+      {/* 상단 흰색 + 시리즈 고정 카피 (**…** 만 굵게) */}
       <div
         style={{
           position: "absolute",
@@ -47,19 +58,19 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
-          strongStyle={{ fontWeight: 600, fontStyle: "normal" }}
+          strongStyle={{ fontWeight: 500, fontStyle: "normal" }}
           lineStyle={{
-            fontFamily: topFontNative(translationLanguage),
-            fontSize: "48pt",
-            fontWeight: 400,
+            fontFamily: topFontJpLead(translationLanguage),
+            fontSize: "50pt",
+            fontWeight: 200,
             color: "#000",
-            lineHeight: translationLanguage === "th" ? 1.4 : 1.22,
-            letterSpacing: "-0.02em",
+            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
+            letterSpacing: 0,
           }}
         />
       </div>
 
-      {/* 영상 영역 + 하단 그라데이션 */}
+      {/* 영상 영역 + vignette */}
       <BackgroundVideo
         src={videoSrc}
         top={VIDEO_TOP}
@@ -73,21 +84,21 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.20) 22%, rgba(0,0,0,0) 45%)",
+              "radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 100%)",
             pointerEvents: "none",
           }}
         />
       </BackgroundVideo>
 
-      {/* 자막 (영상 영역 안 하단 정렬) */}
+      {/* 자막 (영상 영역 세로 중앙) */}
       <CaptionTrack
         captions={captions}
         fadeSeconds={0.05}
         zoneStyle={{
           position: "absolute",
           top: VIDEO_TOP,
-          left: 50,
-          right: 50,
+          left: 60,
+          right: 60,
           height: VIDEO_H,
           pointerEvents: "none",
         }}
@@ -97,24 +108,45 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          // 원본에 영문 자막이 박혀 있으면 그 바로 위/아래에 번역을 "타이트하게 붙여서" 둔다
-          // (captionPaddingTop 으로 위치 조정. 떨어뜨리지 말 것 — 첫 추정부터 붙게 잡기. CLAUDE.md 자막 파이프라인 규칙 참조)
-          justifyContent: "flex-start",
-          paddingTop: captionPaddingTop,
-          gap: 6,
+          justifyContent: "center",
+          gap: 0,
           textAlign: "center",
+          transform: `translateY(${captionYOffset}px)`,
         }}
         renderContent={(cap) => (
           <>
-            {/* 위: 번역 (노란) */}
+            {/* 위: 원어 (흰 이탤릭) — 영어 음원만. 원본에 자막이 박힌 영상은 original 을 비워 번역만 표시 */}
+            {showOriginal(originalLanguage) && cap.original && (
+              <div
+                style={{
+                  width: "100%",
+                  fontFamily: originalFontJp(),
+                  fontSize: 36,
+                  fontWeight: 300,
+                  fontStyle: "italic",
+                  fontSynthesis: "style",
+                  color: "#fff",
+                  letterSpacing: "0.01em",
+                  lineHeight: 1.25,
+                  WebkitTextStroke: "1.2px #000",
+                  paintOrder: "stroke fill",
+                  textShadow: "0 2px 10px rgba(0,0,0,0.7), 0 0 3px rgba(0,0,0,0.5)",
+                  overflowWrap: "break-word",
+                  wordBreak: "keep-all",
+                }}
+              >
+                {cap.original}
+              </div>
+            )}
+            {/* 아래: 번역 (노랑) */}
             <div
               style={{
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
-                fontSize: 40,
+                fontSize: 48,
                 fontWeight: 400,
                 color: "#FFEB3B",
-                letterSpacing: "-0.01em",
+                letterSpacing: "-0.02em",
                 lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
                 WebkitTextStroke: "1.5px #000",
                 paintOrder: "stroke fill",
@@ -125,55 +157,51 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             >
               {cap.translation}
             </div>
-            {/* 아래: 원어 (흰, 굵게) — 영어 음원만. 원본에 자막이 박힌 영상은 original 을 비워 번역만 표시 */}
-            {showOriginal(originalLanguage) && cap.original && (
-              <div
-                style={{
-                  width: "100%",
-                  fontFamily: originalFont(originalLanguage),
-                  fontSize: 52,
-                  fontWeight: 600,
-                  color: "#fff",
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.18,
-                  WebkitTextStroke: "2px #000",
-                  paintOrder: "stroke fill",
-                  textShadow: "0 4px 14px rgba(0,0,0,0.85)",
-                  overflowWrap: "break-word",
-                  wordBreak: "keep-all",
-                }}
-              >
-                {cap.original}
-              </div>
-            )}
           </>
         )}
       />
 
-      {/* 하단 흰색 + 영화/드라마 정보 */}
+      {/* 하단 흰색 + #(1000-번호) + 영화/드라마 정보 */}
       <div
         style={{
           position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
-          height: 440,
+          height: VIDEO_TOP,
           background: "#fff",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
-          paddingTop: 60,
+          padding: "90px 40px 0 40px",
+          gap: 4,
+          lineHeight: 1.05,
         }}
       >
+        {numText ? (
+          <div
+            style={{
+              fontFamily: NSJP,
+              fontSize: 40,
+              fontWeight: 400,
+              fontStyle: "italic",
+              color: "#000",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {numText}
+          </div>
+        ) : null}
         {mediaTitleJa ? (
           <div
             style={{
-              fontFamily: '"Noto Sans JP", sans-serif',
-              fontSize: 36,
-              fontWeight: 300,
-              color: "rgba(0,0,0,0.62)",
+              fontFamily: NSJP,
+              fontSize: 38,
+              fontWeight: 200,
+              color: "rgba(0,0,0,0.72)",
               letterSpacing: "0.02em",
+              textAlign: "center",
             }}
           >
             {`${mediaKind || "映画"}『${mediaTitleJa}』`}

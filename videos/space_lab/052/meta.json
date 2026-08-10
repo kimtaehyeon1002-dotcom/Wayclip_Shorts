@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "052",
+  "name": "space_lab/052",
+  "media": {
+    "slug": "uv-bright-clothes-052",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 359
+}

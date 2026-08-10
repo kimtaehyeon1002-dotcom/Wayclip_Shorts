@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "094",
+  "name": "goodmovies/094",
+  "media": {
+    "slug": "to-die-for-1995",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 275
+}

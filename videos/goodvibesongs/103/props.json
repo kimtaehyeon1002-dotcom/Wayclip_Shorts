@@ -1,0 +1,84 @@
+{
+  "title": "キュートなキューたい",
+  "artist": "CUTIE STREET",
+  "topCaption": "一瞬リズムを見失って\n**あたふた**ぱるたん🍓",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 1.8,
+      "note": "앗 다음의 어라가 너무 좋아",
+      "w": 700
+    },
+    {
+      "src": "comments/02.png",
+      "start": 1.8,
+      "end": 3.6,
+      "note": "낮은 에가 아니라 어라인 게 너무 귀여워",
+      "w": 696
+    },
+    {
+      "src": "comments/03.png",
+      "start": 3.6,
+      "end": 5.4,
+      "note": "폭소하는 카나쨩 귀여워",
+      "w": 534
+    },
+    {
+      "src": "comments/04.png",
+      "start": 5.4,
+      "end": 7.2,
+      "note": "정신차려보니 3시간 지나있었어",
+      "w": 458
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.1,
+      "end": 1.0,
+      "original": "あっ！",
+      "translation": "あっ！"
+    },
+    {
+      "start": 1.0,
+      "end": 1.7,
+      "original": "あれ？",
+      "translation": "あれ？"
+    },
+    {
+      "start": 1.7,
+      "end": 2.6,
+      "original": "あ？",
+      "translation": "あ？"
+    },
+    {
+      "start": 2.7,
+      "end": 4.4,
+      "original": "キュートな球体で",
+      "translation": "キュートな球体で"
+    },
+    {
+      "start": 4.4,
+      "end": 5.0,
+      "original": "(Pick up!)",
+      "translation": "(Pick up!)"
+    },
+    {
+      "start": 5.0,
+      "end": 6.5,
+      "original": "カチッとコロコロブルブルドキドキ",
+      "translation": "カチッとコロコロブルブルドキドキ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 216
+}

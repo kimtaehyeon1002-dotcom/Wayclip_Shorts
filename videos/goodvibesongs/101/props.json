@@ -1,0 +1,84 @@
+{
+  "title": "貴方の恋人になりたい",
+  "artist": "CHOQMAY",
+  "topCaption": "付き合いたいじゃなくて\n恋人になりたい",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 7.383,
+      "note": "목소리도 귀엽고 어쩔 수 없는 감정을 살짝 갈라진 목소리로 부르는 게 최고",
+      "w": 912
+    },
+    {
+      "src": "comments/02.png",
+      "start": 7.383,
+      "end": 14.767,
+      "note": "내가 사랑에 빠진 걸로도 짝사랑 상대가 다른 사람에게 빠진 걸로도 해석돼서 너무 좋아",
+      "w": 926
+    },
+    {
+      "src": "comments/03.png",
+      "start": 14.767,
+      "end": 22.15,
+      "note": "멜로디랑 목소리는 쓸쓸한데 반주는 팝이라 순수한 짝사랑 같아서 정말 좋아",
+      "w": 928
+    },
+    {
+      "src": "comments/04.png",
+      "start": 22.15,
+      "end": 29.533,
+      "note": "멜로디가 절묘하게 애틋하고 그리워서 몇 번이고 듣고 싶어져",
+      "w": 898
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 4.24,
+      "original": "僕はいつかあなたの",
+      "translation": "僕はいつかあなたの"
+    },
+    {
+      "start": 4.24,
+      "end": 8.1,
+      "original": "恋人になりたい",
+      "translation": "恋人になりたい"
+    },
+    {
+      "start": 8.1,
+      "end": 14,
+      "original": "あのね、今 恋に落ちている",
+      "translation": "あのね、今 恋に落ちている"
+    },
+    {
+      "start": 14,
+      "end": 17.92,
+      "original": "恋に落ちている",
+      "translation": "恋に落ちている"
+    },
+    {
+      "start": 18.13,
+      "end": 21.85,
+      "original": "チョコより甘い",
+      "translation": "チョコより甘い"
+    },
+    {
+      "start": 22.01,
+      "end": 26.99,
+      "original": "温度で溶ける",
+      "translation": "温度で溶ける"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 886,
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  }
+}

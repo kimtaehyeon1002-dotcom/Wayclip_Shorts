@@ -1,0 +1,14 @@
+{
+  "channel": "goodvibesongs",
+  "number": "100",
+  "name": "goodvibesongs/100",
+  "media": {
+    "slug": "goosehouse-hikaru-nara",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 832
+}
