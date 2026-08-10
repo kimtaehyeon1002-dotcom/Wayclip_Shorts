@@ -2,7 +2,13 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { GoodVibeSongsProps } from "../props";
-import { captionFont, originalFont, showOriginal, topFontJpLead } from "../lang";
+import {
+  captionFont,
+  latinFont,
+  originalFont,
+  showOriginal,
+  topFontJpLead,
+} from "../lang";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { CommentTrack } from "../components/CommentTrack";
@@ -12,6 +18,8 @@ import { TopCaption } from "../components/TopCaption";
 // 자막: 영상 영역 세로 중앙. 위 원어(작은 이탤릭, 영어 음원만) / 아래 번역(46px/600, 흰).
 const VIDEO_TOP = 440;
 const VIDEO_H = 1040;
+// 자막을 영상 세로중앙에서 살짝 아래로 내린 양(px). 2026-07-29 사용자 요청으로 0 → 70.
+const CAPTION_Y_OFFSET = 70;
 // 하단 댓글 오버레이: 영상 바로 밑 작은 틈(GAP) + 내용 길이대로 폭 가변(가운데 정렬).
 const COMMENT_GAP = 16; // 영상 끝 ~ 댓글 사이 틈(px)
 const COMMENT_SCALE = 1.0; // 모든 댓글 공통 표시 배율(원본 px 기준). 글자 키우려면 ↑
@@ -27,6 +35,8 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
   videoSrc,
   captions,
   comments,
+  watermark,
+  captionYOffset = CAPTION_Y_OFFSET,
 }) => {
   return (
     <AbsoluteFill
@@ -85,6 +95,30 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
         />
       </BackgroundVideo>
 
+      {/* (선택) 채널 핸들 워터마크 — 영상 밴드 위, 은은하게. 자막보다 아래 레이어 */}
+      {watermark && (
+        <div
+          style={{
+            position: "absolute",
+            top: VIDEO_TOP + VIDEO_H * watermark.y,
+            left: 0,
+            right: 0,
+            transform: "translateY(-50%)",
+            textAlign: "center",
+            fontFamily: latinFont(),
+            fontSize: watermark.size,
+            fontWeight: watermark.weight,
+            color: "#fff",
+            opacity: watermark.opacity,
+            letterSpacing: "0.02em",
+            textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+            pointerEvents: "none",
+          }}
+        >
+          {watermark.text}
+        </div>
+      )}
+
       {/* 자막 (영상 영역 위, 세로 중앙) */}
       <CaptionTrack
         captions={captions}
@@ -105,6 +139,7 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
           justifyContent: "center",
           gap: 3,
           textAlign: "center",
+          transform: `translateY(${captionYOffset}px)`,
         }}
         renderContent={(cap) => (
           <>

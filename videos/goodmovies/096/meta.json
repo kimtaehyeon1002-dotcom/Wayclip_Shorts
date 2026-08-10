@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "096",
+  "name": "goodmovies/096",
+  "media": {
+    "slug": "13-going-on-30-2004",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 759
+}

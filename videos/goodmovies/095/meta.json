@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "095",
+  "name": "goodmovies/095",
+  "media": {
+    "slug": "500-days-of-summer-2009",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 307
+}

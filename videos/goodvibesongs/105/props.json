@@ -1,0 +1,84 @@
+{
+  "title": "透明",
+  "artist": "Novelbright",
+  "topCaption": "**口から音源**って\nこういうことか",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 6.167,
+      "note": "노벨브라이트 편식했던 나를 때리고 싶다",
+      "w": 710
+    },
+    {
+      "src": "comments/02.png",
+      "start": 6.167,
+      "end": 12.333,
+      "note": "이거 미쳤다 노래 너무 잘한다",
+      "w": 440
+    },
+    {
+      "src": "comments/03.png",
+      "start": 12.333,
+      "end": 18.5,
+      "note": "입에서 음원이 나오네",
+      "w": 472
+    },
+    {
+      "src": "comments/04.png",
+      "start": 18.5,
+      "end": 24.667,
+      "note": "노브라의 투명감 프리렌에 어울릴 것 같아",
+      "w": 798
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.35,
+      "end": 0.7,
+      "original": "綺麗だ",
+      "translation": "綺麗だ"
+    },
+    {
+      "start": 1.1,
+      "end": 3,
+      "original": "大嫌いから好きになっていく",
+      "translation": "大嫌いから好きになっていく"
+    },
+    {
+      "start": 3.3,
+      "end": 5.75,
+      "original": "この瞬間の名前は",
+      "translation": "この瞬間の名前は"
+    },
+    {
+      "start": 6.45,
+      "end": 8.9,
+      "original": "君と名付けたいな",
+      "translation": "君と名付けたいな"
+    },
+    {
+      "start": 11.8,
+      "end": 13.65,
+      "original": "遠ざかってしまいそうになったら",
+      "translation": "遠ざかってしまいそうになったら"
+    },
+    {
+      "start": 14.2,
+      "end": 16.25,
+      "original": "もう一度思い出して",
+      "translation": "もう一度思い出して"
+    },
+    {
+      "start": 17,
+      "end": 20.25,
+      "original": "ありのままでいいんだよ",
+      "translation": "ありのままでいいんだよ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 740,
+  "captionYOffset": -35
+}

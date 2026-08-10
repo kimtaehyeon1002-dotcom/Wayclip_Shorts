@@ -33,6 +33,21 @@ export const commentSchema = z.object({
 });
 export type Comment = z.infer<typeof commentSchema>;
 
+// ── 텍스트 워터마크 (채널 핸들 — 영상 밴드 위에 은은하게) ──
+// 굿바이브 표준(101 확정본, 2026-07-29): { text: "@goodvibesongs.mp3", y: 0.375, size: 17,
+// opacity: 0.45, weight: 500 } — 아래 default 와 동일. 영상별로 바꾸지 말 것(양산 일관성).
+// 표준값은 tools/channels.mjs 의 GOODVIBE_WATERMARK 와 미러. 한쪽만 고치지 말 것.
+export const watermarkSchema = z.object({
+  text: z.string(),
+  // 영상 밴드 안 세로 위치 (0 = 밴드 맨 위, 0.5 = 정중앙, 1 = 밴드 맨 아래).
+  // 0.375 → 화면 y 830px. 자막(세로 중앙 +70px)보다 위라 겹치지 않음.
+  y: z.number().default(0.375),
+  size: z.number().default(17), // px
+  opacity: z.number().default(0.45),
+  weight: z.number().default(500),
+});
+export type Watermark = z.infer<typeof watermarkSchema>;
+
 // ── 공통 base ──
 // title/artist 는 메타(화면 미표시). topCaption 은 시청자 언어로 1~2줄(\n 분리).
 const baseShape = {
@@ -51,10 +66,15 @@ const baseShape = {
   durationInFrames: z.number().int().positive().default(900),
 };
 
-// ── goodvibesongs (굿바이브) — base + 하단 댓글 오버레이 ──
+// ── goodvibesongs (굿바이브) — base + 하단 댓글 오버레이 + (선택) 텍스트 워터마크 ──
 export const goodVibeSongsSchema = z.object({
   ...baseShape,
   comments: z.array(commentSchema).default([]),
+  // (선택) 채널 핸들 워터마크. 누락이면 아무것도 안 그림(기존 양산 영상과 100% 동일).
+  watermark: watermarkSchema.optional(),
+  // (선택) 자막을 영상 세로중앙에서 아래로 내리는 양(px). 기본 70 = 채널 표준.
+  // 화면분할(상/하 2단) 영상처럼 중앙 정렬이 필요할 때만 0 으로 덮어쓴다.
+  captionYOffset: z.number().default(70),
 });
 export type GoodVibeSongsProps = z.infer<typeof goodVibeSongsSchema>;
 
@@ -66,12 +86,19 @@ export const mediaKindSchema = z
   .default("映画");
 export const goodMoviesSchema = z.object({
   ...baseShape,
+  // 2026-07-29 개편: 레디액션식 시리즈 고정 카피 (영상별 멘트 → 시리즈 카피).
+  topCaption: z.string().default("死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中"),
   translationLanguage: transLangSchema.default("ja"),
+  // 하단 #번호 = 1000 - 영상번호 (예: 090 → #910). new-video.mjs 가 자동 주입.
+  videoNumber: z.string().default(""),
   mediaKind: mediaKindSchema,
   mediaTitleJa: z.string().default(""),
-  // 자막(번역) 윗 패딩(px). 기본 555 = 표준 위치. 원본에 자막이 박힌(크롭한) 영상에서
-  // 박힌 자막에 딱 붙도록 영상별로 조정. 미지정 시 표준값 유지(다른 영상 영향 없음).
+  // (deprecated) 자막이 영상 하단 정렬이던 시절의 윗 패딩(px). 자막이 세로 중앙으로 바뀌어
+  // 더는 쓰이지 않음. 기존 영상(073~084) props.json 호환을 위해 스키마에만 남겨둠.
   captionPaddingTop: z.number().default(555),
+  // 자막 블록을 영상 세로중앙에서 아래(+)/위(-)로 미는 px. 클로즈업이라 자막이 얼굴을
+  // 가릴 때 영상별로 내린다. default 0 = 기존대로 세로 중앙 (다른 영상 영향 없음).
+  captionYOffset: z.number().default(0),
 });
 export type GoodMoviesProps = z.infer<typeof goodMoviesSchema>;
 

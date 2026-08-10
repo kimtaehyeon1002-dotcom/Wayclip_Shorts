@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "050",
+  "name": "space_lab/050",
+  "media": {
+    "slug": "triple-inverted-pendulum-050",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 575
+}

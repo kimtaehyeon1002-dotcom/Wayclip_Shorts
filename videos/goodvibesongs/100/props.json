@@ -1,0 +1,72 @@
+{
+  "title": "光るなら",
+  "artist": "Goose house",
+  "topCaption": "聴いた瞬間\n**あの四月**に戻れる歌",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 4.1,
+      "end": 10.008,
+      "note": "키미다요 키미난다요 부분에서 텐션 올라간다",
+      "w": 916
+    },
+    {
+      "src": "comments/02.png",
+      "start": 10.008,
+      "end": 15.916,
+      "note": "진짜 좋은 곡 음악이 좋아지는 그런 곡",
+      "w": 564
+    },
+    {
+      "src": "comments/03.png",
+      "start": 15.916,
+      "end": 21.824,
+      "note": "이 곡 들으면 짝사랑했던 사람이 떠올라",
+      "w": 744
+    },
+    {
+      "src": "comments/04.png",
+      "start": 21.824,
+      "end": 27.733,
+      "note": "지금 들어도 언제 들어도 힘이 나는 노래",
+      "w": 656
+    }
+  ],
+  "captions": [
+    {
+      "start": 4.1,
+      "end": 9.79,
+      "original": "君だよ 君なんだよ 教えてくれた",
+      "translation": "君だよ 君なんだよ 教えてくれた"
+    },
+    {
+      "start": 9.8,
+      "end": 15.7,
+      "original": "暗闇も光るなら 星空になる",
+      "translation": "暗闇も光るなら 星空になる"
+    },
+    {
+      "start": 15.7,
+      "end": 21.5,
+      "original": "悲しみを笑顔に もう隠さないで",
+      "translation": "悲しみを笑顔に もう隠さないで"
+    },
+    {
+      "start": 21.5,
+      "end": 27.73,
+      "original": "煌めくどんな星も 君を照らすから",
+      "translation": "煌めくどんな星も 君を照らすから"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 832,
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  }
+}

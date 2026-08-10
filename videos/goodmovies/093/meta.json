@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "093",
+  "name": "goodmovies/093",
+  "media": {
+    "slug": "rumor-has-it-2005",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 1266
+}

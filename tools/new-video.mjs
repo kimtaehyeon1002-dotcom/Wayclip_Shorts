@@ -23,6 +23,7 @@ import {
   channelDefaults,
   hasCaptions,
   hasVideoNumber,
+  numberFrom1000,
   computeSpaceLabLayout,
   compositionId,
 } from "./channels.mjs";
@@ -184,12 +185,11 @@ function main() {
   if (args.warnText !== null && "warnText" in props) props.warnText = args.warnText;
 
   // #번호 자동 주입 (videoNumber 보유 채널)
-  // space_lab 만 #번호 = 1000 - 영상번호 (예: 028 → #972). 나머지는 #영상번호.
+  // space_lab / goodmovies 는 #번호 = 1000 - 영상번호 (예: 090 → #910). 나머지는 #영상번호.
   if (hasVideoNumber[channel]) {
-    props.videoNumber =
-      channel === "space_lab"
-        ? `#${1000 - parseInt(number, 10)}`
-        : `#${number}`;
+    props.videoNumber = numberFrom1000[channel]
+      ? `#${1000 - parseInt(number, 10)}`
+      : `#${number}`;
   }
 
   // 자막 워크플로 채널은 captions 빈 배열로 시작

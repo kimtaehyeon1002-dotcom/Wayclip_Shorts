@@ -1,0 +1,24 @@
+{
+  "title": "Derailed",
+  "artist": "Derailed (2005)",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#910",
+  "mediaKind": "映画",
+  "mediaTitleJa": "すべてはその朝始まった",
+  "captions": [
+    { "start": 0.0,   "end": 1.77,  "original": "I bet you $20",                  "translation": "20ドル、賭けませんか" },
+    { "start": 1.77,  "end": 2.74,  "original": "that I can kiss you",            "translation": "僕があなたにキスできる方に" },
+    { "start": 2.74,  "end": 4.44,  "original": "without ever touching your lips", "translation": "一度も唇に触れずに" },
+    { "start": 6.42,  "end": 7.21,  "original": "Kiss me?",                       "translation": "キス、ですか？" },
+    { "start": 7.21,  "end": 9.01,  "original": "Without touching",               "translation": "触れずに？" },
+    { "start": 9.01,  "end": 10.34, "original": "How?",                           "translation": "どうやるんですか？" },
+    { "start": 10.34, "end": 11.63, "original": "What do you mean how?",          "translation": "どうやって、ですか？" },
+    { "start": 11.63, "end": 12.29, "original": "That's the bet",                 "translation": "それが賭けなんです" },
+    { "start": 12.29, "end": 13.72, "original": "Okay, let me see the 20",        "translation": "じゃあ、20ドル見せてください" },
+    { "start": 41.25, "end": 42.37, "original": "Worth every penny",              "translation": "20ドルの価値はありました" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1313
+}

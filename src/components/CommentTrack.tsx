@@ -44,7 +44,7 @@ export const CommentTrack: React.FC<{
                 maxHeight,
                 objectFit: "contain",
               }}
-            />
+              from={-4} />
           </div>
         );
       })}

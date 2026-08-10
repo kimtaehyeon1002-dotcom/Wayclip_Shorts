@@ -1,0 +1,9 @@
+{
+  "slug": "navi-fastest-route-054",
+  "kind": "doc",
+  "title": "양방향 다익스트라 경로탐색 시각화",
+  "artist_or_source": "stemexplor / Standard of AI",
+  "original_language": "ja",
+  "duration_s": 15.02,
+  "notes": "내비 최단경로 알고리즘 시각화 (bidirectional Dijkstra)"
+}

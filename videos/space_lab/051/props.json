@@ -1,0 +1,19 @@
+{
+  "title": "Canadair CL-415 スーパースクーパー",
+  "artist": "Standard of AI / X",
+  "topCaption": "着陸せずに水面を疾走し\nたった[[12秒]]で**6,000L**を汲み上げる",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#949",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 546,
+    "videoH": 738,
+    "warnTop": 1304,
+    "bottomTop": 1374,
+    "bottomH": 546
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 441
+}

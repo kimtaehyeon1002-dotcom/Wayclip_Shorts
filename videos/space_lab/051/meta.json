@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "051",
+  "name": "space_lab/051",
+  "media": {
+    "slug": "super-scooper-051",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 441
+}
