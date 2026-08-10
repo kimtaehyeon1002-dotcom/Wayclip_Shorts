@@ -1,0 +1,19 @@
+{
+  "title": "Isle of Man TT",
+  "artist": "Source",
+  "topCaption": "[[死の疾走]]、マン島TT\n**時速300km**で田舎道を駆け抜ける",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#954",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 609,
+    "videoH": 612,
+    "warnTop": 1241,
+    "bottomTop": 1311,
+    "bottomH": 609
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1798
+}

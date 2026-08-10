@@ -1,0 +1,21 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "ความรักทางไกลในปี 2026\nมันเป็นแบบนี้แหละ🥹",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "Normal People",
+  "captionPaddingTop": 430,
+  "captions": [
+    { "start": 0.54, "end": 1.4, "original": "", "translation": "เหนื่อยจริง ๆ เลย" },
+    { "start": 2.41, "end": 3.55, "original": "", "translation": "จะนอนแล้วเหรอ" },
+    { "start": 5.7, "end": 7.29, "original": "", "translation": "เปิด Skype ทิ้งไว้แบบนี้แหละ" },
+    { "start": 9.73, "end": 10.32, "original": "", "translation": "อุ้มฉัน" },
+    { "start": 10.32, "end": 10.93, "original": "", "translation": "ไปนอนบนเตียงที" },
+    { "start": 18.9, "end": 20.32, "original": "", "translation": "ตื่นอยู่เหรอ" },
+    { "start": 22.0, "end": 23.23, "original": "", "translation": "อรุณสวัสดิ์" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 738
+}

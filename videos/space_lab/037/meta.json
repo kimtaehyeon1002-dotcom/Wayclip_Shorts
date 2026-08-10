@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "037",
+  "name": "space_lab/037",
+  "media": {
+    "slug": "magnus-effect-037",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 675
+}

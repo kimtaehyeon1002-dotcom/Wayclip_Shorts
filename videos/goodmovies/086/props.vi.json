@@ -1,0 +1,21 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "Yêu xa năm 2026\nlà như thế này đây🥹",
+  "originalLanguage": "en",
+  "translationLanguage": "vi",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "Normal People",
+  "captionPaddingTop": 430,
+  "captions": [
+    { "start": 0.54, "end": 1.4, "original": "", "translation": "Em mệt thật rồi" },
+    { "start": 2.41, "end": 3.55, "original": "", "translation": "Ngủ luôn nhé?" },
+    { "start": 5.7, "end": 7.29, "original": "", "translation": "Cứ để Skype bật thế này nhé" },
+    { "start": 9.73, "end": 10.32, "original": "", "translation": "Bế em" },
+    { "start": 10.32, "end": 10.93, "original": "", "translation": "lên giường đi" },
+    { "start": 18.9, "end": 20.32, "original": "", "translation": "Anh vẫn thức à" },
+    { "start": 22.0, "end": 23.23, "original": "", "translation": "Chào buổi sáng" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 738
+}

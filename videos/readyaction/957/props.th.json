@@ -1,0 +1,44 @@
+{
+  "title": "The Little Rascals",
+  "artist": "The Little Rascals (1994)",
+  "topCaption": "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#957",
+  "mediaKind": "映画",
+  "mediaTitleJa": "The Little Rascals",
+  "captions": [
+    {
+      "start": 0,
+      "end": 2,
+      "original": "So let me raise a toast",
+      "translation": "งั้น ขอยกแก้วดื่มให้"
+    },
+    {
+      "start": 2,
+      "end": 3.87,
+      "original": "to the girl I love most",
+      "translation": "แด่ผู้หญิงที่ฉันรักที่สุด"
+    },
+    {
+      "start": 3.88,
+      "end": 6.44,
+      "original": "in the whole world.",
+      "translation": "ที่สุดในโลกใบนี้"
+    },
+    {
+      "start": 6.44,
+      "end": 8.86,
+      "original": "Please don't say my name.",
+      "translation": "ขอร้อง อย่าพูดชื่อฉันนะ"
+    },
+    {
+      "start": 8.86,
+      "end": 10.06,
+      "original": "Darla.",
+      "translation": "ดาร์ลา"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 671
+}

@@ -1,0 +1,44 @@
+{
+  "title": "The Little Rascals",
+  "artist": "The Little Rascals (1994)",
+  "topCaption": "史上最棒的**1000部電影，**\n不分順序收藏中",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "videoNumber": "#957",
+  "mediaKind": "映画",
+  "mediaTitleJa": "一窩小屁蛋",
+  "captions": [
+    {
+      "start": 0,
+      "end": 2,
+      "original": "So let me raise a toast",
+      "translation": "那麼，讓我舉杯"
+    },
+    {
+      "start": 2,
+      "end": 3.87,
+      "original": "to the girl I love most",
+      "translation": "敬我最愛的女孩"
+    },
+    {
+      "start": 3.88,
+      "end": 6.44,
+      "original": "in the whole world.",
+      "translation": "全世界最愛的她"
+    },
+    {
+      "start": 6.44,
+      "end": 8.86,
+      "original": "Please don't say my name.",
+      "translation": "拜託，別說出我的名字"
+    },
+    {
+      "start": 8.86,
+      "end": 10.06,
+      "original": "Darla.",
+      "translation": "妲拉。"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 671
+}

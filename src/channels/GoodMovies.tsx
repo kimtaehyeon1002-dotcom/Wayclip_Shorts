@@ -2,8 +2,18 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import "../fonts";
 import type { GoodMoviesProps } from "../props";
-import { captionFont, originalFontJp, showOriginal, topFontJpLead } from "../lang";
-import { FONT } from "../fonts";
+import {
+  captionFont,
+  letterSpacingFor,
+  originalFontJp,
+  paltFor,
+  scriptLineHeight,
+  showOriginal,
+  topFontJpLead,
+  topFontNative,
+  wordBreakFor,
+} from "../lang";
+import { mediaCredit } from "../i18n";
 import { BackgroundVideo } from "../components/BackgroundVideo";
 import { CaptionTrack } from "../components/CaptionTrack";
 import { TopCaption } from "../components/TopCaption";
@@ -13,9 +23,9 @@ import { TopCaption } from "../components/TopCaption";
 //   상단 시리즈 고정 카피, 하단 #(1000-번호) + 영화 정보), 색은 굿무비 유지
 //   (흰 배경 / 검정 상단·하단 문구 / 번역 노랑 #FFEB3B / 원어 흰 + 검정 stroke).
 // 자막 순서도 레디액션식: 위 원어(흰 이탤릭 36px) → 아래 번역(노랑 48px).
+// 텍스트는 translationLanguage 기반 — ja/tw/th/vi 결재본을 같은 컴포지션으로 낸다.
 const VIDEO_TOP = 480;
 const VIDEO_H = 960;
-const NSJP = [`"Hiragino Sans"`, `"${FONT.jp}"`, "sans-serif"].join(", ");
 
 export const GoodMovies: React.FC<GoodMoviesProps> = ({
   topCaption,
@@ -35,7 +45,10 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
     : "";
   return (
     <AbsoluteFill
-      style={{ background: "#fff", fontFeatureSettings: '"palt"' }}
+      style={{
+        background: "#fff",
+        fontFeatureSettings: paltFor(translationLanguage),
+      }}
     >
       {/* 상단 흰색 + 시리즈 고정 카피 (**…** 만 굵게) */}
       <div
@@ -64,7 +77,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
             fontSize: "50pt",
             fontWeight: 200,
             color: "#000",
-            lineHeight: translationLanguage === "th" ? 1.4 : 1.18,
+            lineHeight: scriptLineHeight(translationLanguage, 1.18),
             letterSpacing: 0,
           }}
         />
@@ -146,13 +159,13 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                 fontSize: 48,
                 fontWeight: 400,
                 color: "#FFEB3B",
-                letterSpacing: "-0.02em",
-                lineHeight: translationLanguage === "th" ? 1.45 : 1.22,
+                letterSpacing: letterSpacingFor(translationLanguage, -0.02),
+                lineHeight: scriptLineHeight(translationLanguage, 1.22),
                 WebkitTextStroke: "1.5px #000",
                 paintOrder: "stroke fill",
                 textShadow: "0 3px 12px rgba(0,0,0,0.85)",
                 overflowWrap: "break-word",
-                wordBreak: "keep-all",
+                wordBreak: wordBreakFor(translationLanguage),
               }}
             >
               {cap.translation}
@@ -182,7 +195,8 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         {numText ? (
           <div
             style={{
-              fontFamily: NSJP,
+              // #번호는 라틴 숫자뿐 — 어느 언어든 자형이 같으므로 일본어 스택 고정(합성 italic 유지).
+              fontFamily: topFontNative("ja"),
               fontSize: 40,
               fontWeight: 400,
               fontStyle: "italic",
@@ -196,7 +210,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         {mediaTitleJa ? (
           <div
             style={{
-              fontFamily: NSJP,
+              fontFamily: topFontNative(translationLanguage),
               fontSize: 38,
               fontWeight: 200,
               color: "rgba(0,0,0,0.72)",
@@ -204,7 +218,8 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
               textAlign: "center",
             }}
           >
-            {`${mediaKind || "映画"}『${mediaTitleJa}』`}
+            {/* mediaTitleJa = "표시용 제목" — 변형 props 엔 그 언어권 개봉 제목을 넣는다 */}
+            {mediaCredit(mediaKind, mediaTitleJa, translationLanguage)}
           </div>
         ) : null}
       </div>

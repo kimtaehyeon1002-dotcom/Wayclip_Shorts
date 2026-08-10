@@ -1,0 +1,19 @@
+{
+  "title": "The Climate Spiral (Ed Hawkins)",
+  "artist": "Source",
+  "topCaption": "これはおそらく、これまでに作られた\n[[最も強力]]な**気候の可視化**だ",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#960",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 375,
+    "videoH": 1080,
+    "warnTop": 1475,
+    "bottomTop": 1545,
+    "bottomH": 375
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 900
+}

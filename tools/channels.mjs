@@ -9,7 +9,46 @@ export const CHANNELS = [
   "space_lab",
 ];
 export const ORIG_LANGS = ["en", "ko", "ja"];
-export const TRANS_LANGS = ["ko", "ja", "th"];
+// tw = 대만(번체중국어). 언어코드 = props 파일 접미사(props.tw.json) = 결재본 접미사(047-tw.mp4).
+export const TRANS_LANGS = ["ko", "ja", "th", "tw", "vi"];
+// 다국어 양산 채널 — props.json(=ja 베이스) + props.<lang>.json 3개.
+export const MULTILANG_CHANNELS = ["goodmovies", "space_lab", "readyaction"];
+export const MULTILANG_SET = ["ja", "tw", "th", "vi"];
+
+// 채널 전체가 공유하는 **고정 문구**의 언어별 대응.
+// 영상마다 바뀌는 텍스트(헤드라인·자막·작품명)가 아니라, 채널 브랜딩으로 매 영상 같은 문자열.
+// derive-lang 이 변형 props 를 만들 때 자동으로 채워 넣는다 → 영상마다 손번역해서 문구가
+// 갈라지는 사고를 막는다. 문구를 바꾸려면 여기만 고치고 --sync 가 아니라 재파생할 것.
+export const channelFixedStrings = {
+  readyaction: {
+    // 시리즈 고정 카피. **…** 가 굵게(weight 100 → 400).
+    ja: { topCaption: "歴代最高の**映画1000本を、**\n順不同で収集中" },
+    tw: { topCaption: "史上最棒的**1000部電影，**\n不分順序收藏中" },
+    th: { topCaption: "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ" },
+    vi: { topCaption: "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự" },
+  },
+  space_lab: {
+    // 헤드라인(topCaption)은 영상별이라 여기 없음 — bottomCTA/warnText 만 채널 고정.
+    ja: {
+      bottomCTA: "続きは本文で",
+      warnText: "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    },
+    tw: {
+      bottomCTA: "更多內容看貼文",
+      warnText: "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**",
+    },
+    th: {
+      bottomCTA: "อ่านต่อในแคปชัน",
+      warnText: "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**",
+    },
+    vi: {
+      bottomCTA: "Xem tiếp ở phần mô tả",
+      warnText: "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết",
+    },
+  },
+  // 굿무비는 채널 고정 문구가 없다 (상단 멘트가 영상마다 다름).
+  goodmovies: {},
+};
 export const FPS = 30;
 export const CANVAS_W = 1080;
 export const CANVAS_H = 1920;
@@ -132,6 +171,9 @@ export const captionLayouts = {
   space_lab: {
     top: { padL: 50, padR: 50, fontPx: 60, maxLines: 2 },
     caption: null,
+    // 영상 아래 빨간 깜빡 경고 박스 (WarnPill.tsx: fontSize 38 / padding 0 14px / height 70 = 2줄).
+    // 일본어 기준으로 짜인 문구라 태국어·베트남어에서 실제로 넘친다 → 사전 검사 대상.
+    warn: { padL: 14, padR: 14, fontPx: 38, maxLines: 2 },
   },
 };
 
@@ -149,4 +191,45 @@ export function computeSpaceLabLayout(srcW, srcH) {
   const warnTop = topH + videoH + VIDEO_BOTTOM_GAP;
   const bottomTop = warnTop + WARN_H;
   return { topH, videoH, warnTop, bottomTop, bottomH };
+}
+
+// ── 다국어 props 파일 규칙 ─────────────────────────────────────────────
+// props.json          = 베이스(굿무비·스페이스랩은 일본어)
+// props.<lang>.json   = 변형 (props.tw.json / props.th.json / props.vi.json)
+// 언어코드 = 파일 접미사 = 결재본 접미사로 통일.
+
+/** 변형 props 파일명. 베이스 언어면 props.json. */
+export function propsFileName(lang, baseLang = "ja") {
+  return !lang || lang === baseLang ? "props.json" : `props.${lang}.json`;
+}
+
+/**
+ * 결재본 출력 폴더 — **언어별로 최상위 폴더를 분리**한다.
+ *   베이스(일본어)  output/readyaction/952/952.mp4      (기존 그대로)
+ *   변형            output/readyaction-tw/952/952.mp4
+ * 폴더가 언어를 나타내므로 **파일명엔 접미사를 붙이지 않는다** —
+ * 각 언어 폴더가 일본어 폴더와 똑같은 모양이라 나라별로 통째로 넘기기 쉽다.
+ */
+export function outputChannelDir(channel, lang, baseLang = "ja") {
+  return !lang || lang === baseLang ? channel : `${channel}-${lang}`;
+}
+
+/**
+ * `--lang X` → 실제 읽을 props 경로.
+ * props.X.json 이 있으면 그것, 없고 props.json 의 translationLanguage 가 X 면 props.json.
+ * 둘 다 아니면 null (호출부가 에러 처리).
+ */
+export function resolvePropsPath(fs, path, dirAbs, lang) {
+  const base = path.join(dirAbs, "props.json");
+  if (!lang) return fs.existsSync(base) ? base : null;
+  const variant = path.join(dirAbs, `props.${lang}.json`);
+  if (fs.existsSync(variant)) return variant;
+  if (!fs.existsSync(base)) return null;
+  try {
+    const p = JSON.parse(fs.readFileSync(base, "utf8"));
+    if (p.translationLanguage === lang) return base;
+  } catch {
+    /* 파싱 실패는 호출부의 기존 에러 경로가 잡는다 */
+  }
+  return null;
 }

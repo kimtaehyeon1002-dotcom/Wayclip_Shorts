@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 // ── 언어 ──
-// 원어(음원): en | ko | ja  /  번역(시청자): ko | ja | th
+// 원어(음원): en | ko | ja  /  번역(시청자): ko | ja | th | tw | vi
+//   tw = 대만(번체중국어) — 언어코드 = props 파일 접미사 = 결재본 접미사로 통일(tw/th/vi).
+//   굿무비·스페이스랩은 한 영상당 ja/tw/th/vi 4개 결재본을 낸다 (props.<lang>.json 형제 파일).
 export const origLangSchema = z.enum(["en", "ko", "ja"]);
-export const transLangSchema = z.enum(["ko", "ja", "th"]);
+export const transLangSchema = z.enum(["ko", "ja", "th", "tw", "vi"]);
 export type OrigLang = z.infer<typeof origLangSchema>;
 export type TransLang = z.infer<typeof transLangSchema>;
 export type Lang = OrigLang | TransLang;
@@ -77,8 +79,10 @@ export const goodVibeSongsSchema = z.object({
 export type GoodVibeSongsProps = z.infer<typeof goodVibeSongsSchema>;
 
 // ── goodmovies (굿무비) — + 하단 영화 정보 ──
+// enum 값은 **일본어 안정 키** — 화면 표기는 src/i18n.ts 의 mediaLabel() 이 언어별로 매핑한다.
+// (readyaction/950 이 "短編" 을 쓰고 있어 enum 에 추가. 새 종류를 쓸 땐 i18n.ts 표에도 같이 넣을 것.)
 export const mediaKindSchema = z
-  .enum(["映画", "ドラマ", "アニメ", "ドキュメンタリー"])
+  .enum(["映画", "ドラマ", "アニメ", "ドキュメンタリー", "短編"])
   .default("映画");
 export const goodMoviesSchema = z.object({
   ...baseShape,

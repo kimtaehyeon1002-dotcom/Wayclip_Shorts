@@ -1,0 +1,21 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "2026年の遠距離恋愛って、\nこんな感じ🥹",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "ノーマル・ピープル",
+  "captionPaddingTop": 430,
+  "captions": [
+    { "start": 0.54, "end": 1.4, "original": "", "translation": "ほんとに疲れちゃった" },
+    { "start": 2.41, "end": 3.55, "original": "", "translation": "もう寝る?" },
+    { "start": 5.7, "end": 7.29, "original": "", "translation": "スカイプ、つないだままにしよ" },
+    { "start": 9.73, "end": 10.32, "original": "", "translation": "ベッドまで" },
+    { "start": 10.32, "end": 10.93, "original": "", "translation": "運んでよ" },
+    { "start": 18.9, "end": 20.32, "original": "", "translation": "起きてたんだ" },
+    { "start": 22.0, "end": 23.23, "original": "", "translation": "おはよう" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 738
+}

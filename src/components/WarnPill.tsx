@@ -1,6 +1,14 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../fonts";
+import type { Lang } from "../props";
+import { captionFont, letterSpacingFor, paltFor, scriptLineHeight } from "../lang";
+
+// ⚠️ 일본어는 **Noto Sans JP 고정**을 유지한다. 이 컴포넌트만 예외적으로 Hiragino 를 안 쓰고 있었고
+// (다른 텍스트는 전부 Hiragino 우선), captionFont("ja") 로 바꾸면 기존 space_lab 전 영상의
+// 경고문구 자형이 바뀐다. 다국어는 각 언어 native 스택을 쓰되 일본어 룩은 건드리지 않는다.
+const warnFont = (lang: Lang): string =>
+  lang === "ja" ? [`"${FONT.jp}"`, "sans-serif"].join(", ") : captionFont(lang);
 
 // 빨간 경고 박스(space_lab) — 영상 처음부터 fade-in → [솔리드 → 3번 깜빡 → 솔리드 → …] 끝까지 반복.
 // 원본 GSAP 타임라인을 키프레임 배열로 재구성 후 프레임에서 보간 (결정적).
@@ -54,17 +62,31 @@ function buildKeyframes(
   return { times, values };
 }
 
-// warnText 안의 "1000個" 만 한 단계 굵게 (나머지 400 → 강조 500).
-const WARN_EMPH = "1000個";
+// warnText 강조 — `**…**` 구간만 한 단계 굵게 (나머지 400 → 강조 500).
+// 마크업이 없으면 기존 동작(일본어 "1000個" 자동 강조)으로 폴백 → 기존 영상 렌더 결과 불변.
+const WARN_EMPH_FALLBACK = "1000個";
+
 function renderWarnText(text: string): React.ReactNode {
-  const idx = text.indexOf(WARN_EMPH);
+  if (text.includes("**")) {
+    // `**` 로 split 하면 홀수 인덱스가 강조 구간 (topCaption 의 bold 마크업과 같은 규칙).
+    return text.split("**").map((part, i) =>
+      i % 2 === 1 ? (
+        <span key={i} style={{ fontWeight: 500 }}>
+          {part}
+        </span>
+      ) : (
+        <React.Fragment key={i}>{part}</React.Fragment>
+      )
+    );
+  }
+  const idx = text.indexOf(WARN_EMPH_FALLBACK);
   if (idx < 0) return text;
   return [
     text.slice(0, idx),
     <span key="emph" style={{ fontWeight: 500 }}>
-      {WARN_EMPH}
+      {WARN_EMPH_FALLBACK}
     </span>,
-    text.slice(idx + WARN_EMPH.length),
+    text.slice(idx + WARN_EMPH_FALLBACK.length),
   ];
 }
 
@@ -73,7 +95,8 @@ export const WarnPill: React.FC<{
   topPx: number;
   blink?: boolean;
   maxOpacity?: number;
-}> = ({ warnText, topPx, blink = true, maxOpacity = 1 }) => {
+  lang?: Lang;
+}> = ({ warnText, topPx, blink = true, maxOpacity = 1, lang = "ja" }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const t = frame / fps;
@@ -110,14 +133,14 @@ export const WarnPill: React.FC<{
           display: "inline-block",
           background: "transparent", // 빨간 배경 일시 off (사용자 요청 — 다시 켜라 할 때까지). 복원: "#FC0200"
           color: "#FFE401", // 채널 노랑 토큰
-          fontFamily: [`"${FONT.jp}"`, "sans-serif"].join(", "),
+          fontFamily: warnFont(lang),
           fontSize: 38,
           fontWeight: 400,
-          letterSpacing: "-0.01em",
-          fontFeatureSettings: '"palt" 1',
+          letterSpacing: letterSpacingFor(lang, -0.01),
+          fontFeatureSettings: paltFor(lang),
           whiteSpace: "pre-line", // warnText 의 \n 으로 줄바꿈
           textAlign: "center",
-          lineHeight: 1.1,
+          lineHeight: scriptLineHeight(lang, 1.1),
           padding: "0 14px",
           opacity,
         }}

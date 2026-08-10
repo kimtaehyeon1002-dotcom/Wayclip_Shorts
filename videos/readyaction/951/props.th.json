@@ -1,0 +1,38 @@
+{
+  "title": "Hereditary",
+  "artist": "Hereditary (2018)",
+  "topCaption": "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#951",
+  "mediaKind": "映画",
+  "mediaTitleJa": "Hereditary",
+  "captions": [
+    {
+      "start": 18.5,
+      "end": 19.1,
+      "original": "Stop!",
+      "translation": "หยุดนะ!"
+    },
+    {
+      "start": 19.1,
+      "end": 21,
+      "original": "Mom, please stop!",
+      "translation": "แม่ หยุดเถอะ!"
+    },
+    {
+      "start": 21,
+      "end": 22,
+      "original": "Mom, I'm sorry!",
+      "translation": "แม่ ผมขอโทษ!"
+    },
+    {
+      "start": 22,
+      "end": 23.6,
+      "original": "Okay, I'm sorry!",
+      "translation": "โอเค ผมขอโทษ!"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 956
+}

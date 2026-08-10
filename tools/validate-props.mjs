@@ -2,7 +2,9 @@
 /**
  * validate-props.mjs — 렌더 전 props.json + 미디어 정합성 검증 (hyperframes lint/validate 대체).
  *
- *   node tools/validate-props.mjs videos/<channel>/<number>
+ *   node tools/validate-props.mjs videos/<channel>/<number> [--lang tw|th|vi]
+ *
+ * --lang: 다국어 변형(props.<lang>.json)을 검증. 생략 시 베이스 props.json.
  *
  * 검사: props.json 파싱 / 언어값 / durationInFrames / captions 모양 / source.mp4 심볼링크 resolve /
  *       durationInFrames ≤ 미디어 마지막 프레임(끝 빈 프레임 방지) / space_lab layout 필수 키.
@@ -11,7 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { ORIG_LANGS, TRANS_LANGS, FPS, hasCaptions } from "./channels.mjs";
+import { ORIG_LANGS, TRANS_LANGS, FPS, hasCaptions, resolvePropsPath } from "./channels.mjs";
 
 const errors = [];
 const warns = [];
@@ -36,12 +38,26 @@ function probeLastFrameFrames(mp4) {
 }
 
 function main() {
-  const dir = path.resolve(process.argv[2] || "");
-  const propsPath = path.join(dir, "props.json");
+  const argv = process.argv.slice(2);
+  let dirArg = null;
+  let lang = null;
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === "--lang") lang = argv[++i];
+    else if (!dirArg) dirArg = argv[i];
+  }
+  const dir = path.resolve(dirArg || "");
+  const propsPath = resolvePropsPath(fs, path, dir, lang);
   const metaPath = path.join(dir, "meta.json");
   const srcPath = path.join(dir, "source.mp4");
 
-  if (!fs.existsSync(propsPath)) { console.error(`✗ props.json 없음: ${propsPath}`); process.exit(1); }
+  if (!propsPath) {
+    console.error(
+      lang
+        ? `✗ props.${lang}.json 없음: ${dir} — derive-lang.mjs 먼저 실행`
+        : `✗ props.json 없음: ${path.join(dir, "props.json")}`
+    );
+    process.exit(1);
+  }
   if (!fs.existsSync(metaPath)) { console.error(`✗ meta.json 없음: ${metaPath}`); process.exit(1); }
 
   let props, meta;
@@ -103,7 +119,9 @@ function main() {
     console.error(`\n✗ 검증 실패 (${errors.length} error, ${warns.length} warn)`);
     process.exit(1);
   }
-  console.log(`\n✓ 검증 통과 [${channel}/${meta.number}] (${warns.length} warn)`);
+  console.log(
+    `\n✓ 검증 통과 [${channel}/${meta.number} / ${props.translationLanguage}] (${warns.length} warn)`
+  );
   process.exit(0);
 }
 
