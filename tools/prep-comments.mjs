@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 /**
  * 굿바이브 하단 댓글 오버레이 준비 — 한 방에:
- *   ① 프사/닉네임 블러(sigma12 타이트)  ② 영상 디렉토리로 복사  ③ 타이밍 분배  ④ props.json 기록
+ *   ① 프사/닉네임 블러(자동 지오메트리 + 모자이크)  ② 영상 디렉토리로 복사  ③ 타이밍 분배  ④ props.json 기록
  *
  * 입력: 레포 루트의 <번호>댓글/ 폴더 (사용자가 댓글 스샷을 넣어둠) + 그 안에 manifest.json.
  *   manifest.json = [
- *     { "file": "001.png", "handleEnd": 280, "note": "여기부터 너무 좋아", "anchor": 66 },
+ *     { "file": "001.png", "note": "여기부터 너무 좋아", "anchor": 66 },
  *     ...
  *   ]
  *   - file:      폴더 내 스샷 파일명
- *   - handleEnd: @핸들 끝 x좌표(날짜 직전). 블러 닉네임 폭 결정. (Claude 가 그리드로 측정)
+ *   - handleEnd: (선택) @핸들 끝 x좌표. **기본은 blur-comments 가 스샷마다 자동 측정**하므로
+ *                생략한다. 예외 스샷만 숫자로 덮어쓴다.
  *   - note:      댓글 내용의 한국어 번역(식별용, 화면 미표시)
  *   - anchor:    (선택) 이 댓글이 합당한 가사 시점(초). 있으면 그 슬롯에 배치.
  *
@@ -44,65 +45,6 @@ function probeWidth(file) {
   return Number.isFinite(w) ? w : null;
 }
 
-function probeHeight(file) {
-  const out = execFileSync(
-    "ffprobe",
-    ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=height", "-of", "csv=p=0", file],
-    { encoding: "utf8" }
-  ).trim();
-  const h = parseInt(out, 10);
-  return Number.isFinite(h) ? h : null;
-}
-
-// 프사(좌상단 원형) 마스크 폭 자동 측정 — handleEnd 의 "가로 버전".
-// 유튜브 댓글 본문은 아바타 오른쪽으로 들여쓰기된 흰색 텍스트다. 본문 첫 줄에서
-// 가장 왼쪽 흰색(>thresh) x = bodyLeft 를 찾아, 마스크가 페더 번짐까지 포함해 그 앞에서
-// 끝나도록 avatarW = bodyLeft - 3*feather - margin 으로 정한다.
-// → 프사는 덮고 본문 첫 글자는 절대 안 덮는다. (눈대중 금지)
-// band: 핸들 줄(상단 ~y52)과 액션 줄(좋아요/返信, 하단)을 피해 본문 첫 줄만 스캔.
-function measureAvatarW(file, { yTop = 58, bandH = 38, thresh = 200, feather = 5, margin = 2 } = {}) {
-  const w = probeWidth(file);
-  const h = probeHeight(file);
-  if (!w || !h) return null;
-  const bh = Math.max(8, Math.min(bandH, h - yTop - 40)); // 하단 액션 줄(~40px) 제외
-  if (bh <= 0) return null;
-  const raw = execFileSync(
-    "ffmpeg",
-    ["-v", "error", "-i", file, "-vf", `crop=${w}:${bh}:0:${yTop},format=gray`, "-f", "rawvideo", "-pix_fmt", "gray", "-"],
-    { maxBuffer: 1 << 28 }
-  );
-  for (let x = 0; x < w; x++) {
-    for (let y = 0; y < bh; y++) {
-      if (raw[y * w + x] > thresh) {
-        const bodyLeft = x;
-        return Math.max(1, Math.round(bodyLeft - 3 * feather - margin));
-      }
-    }
-  }
-  return null;
-}
-
-// @핸들 끝 x좌표 자동 측정.
-// 유튜브 댓글: 닉네임=흰색, 날짜=회색. 맨 윗줄(핸들 라인)에서 아바타(x0~)를 제외한
-// 영역을 raw gray 로 덤프해 "흰색(>thresh)" 픽셀의 최대 x 를 찾는다 → 날짜(회색)는 자동 제외.
-// margin 으로 안티에일리어싱 꼬리를 살짝 더 덮는다. handleEnd 미지정 시 prep 가 호출.
-function measureHandleEnd(file, { x0 = 95, band = 52, thresh = 200, margin = 8 } = {}) {
-  const w = probeWidth(file);
-  if (!w || w <= x0) return null;
-  const cw = w - x0;
-  const raw = execFileSync(
-    "ffmpeg",
-    ["-v", "error", "-i", file, "-vf", `crop=${cw}:${band}:${x0}:0,format=gray`, "-f", "rawvideo", "-pix_fmt", "gray", "-"],
-    { maxBuffer: 1 << 28 }
-  );
-  const h = Math.floor(raw.length / cw); // 실제 밴드 높이(이미지가 band 보다 낮을 수 있음)
-  for (let x = cw - 1; x >= 0; x--) {
-    for (let y = 0; y < h; y++) {
-      if (raw[y * cw + x] > thresh) return Math.min(w - 1, x0 + x + margin);
-    }
-  }
-  return null;
-}
 
 // 균등 슬롯 + anchor 배치. taken[i] = 슬롯 i 에 들어갈 엔트리.
 function assignSlots(entries, D) {
@@ -153,12 +95,6 @@ function main() {
   for (const e of manifest) {
     if (!e.file) die(`manifest 항목에 file 없음: ${JSON.stringify(e)}`);
     if (!fs.existsSync(path.join(inDir, e.file))) die(`스샷 없음: ${number}댓글/${e.file}`);
-    // handleEnd 미지정 → 흰색 닉네임 끝 자동 측정 (날짜=회색이라 자동 제외)
-    if (e.handleEnd == null) {
-      e.handleEnd = measureHandleEnd(path.join(inDir, e.file));
-      if (e.handleEnd == null) die(`handleEnd 자동측정 실패(흰색 닉네임 미검출): ${e.file} — 수동 지정 필요`);
-      e._auto = true;
-    }
   }
 
   const props = JSON.parse(fs.readFileSync(propsPath, "utf8"));
@@ -177,34 +113,35 @@ function main() {
     const nn = String(i + 1).padStart(2, "0");
     const rel = `comments/${nn}.png`;
     const out = path.join(videoDir, rel);
-    // 블러 파라미터: handleEnd 외에 스샷 스케일이 2x 가 아니면 매니페스트가
-    // sigma/feather/avatarW/avatarH/nickX/nickY/nickH 를 넘겨 덮어쓸 수 있다.
-    const blurOpts = { handleEnd: e.handleEnd };
-    for (const k of ["sigma", "feather", "avatarW", "avatarH", "nickX", "nickY", "nickH"]) {
+    // 블러: 지오메트리(프사/핸들 박스)와 강도는 blur-comments 가 스샷마다 자동 측정한다.
+    // manifest 에 값을 주면 그 항목만 덮어쓴다(예외 스샷용).
+    const blurOpts = {};
+    for (const k of ["handleEnd", "sigma", "block", "feather", "avatarW", "avatarH", "avatarX", "avatarY", "nickX", "nickY", "nickH"]) {
       if (e[k] != null) blurOpts[k] = e[k];
     }
-    // avatarW 미지정 → 본문 첫 글자 왼쪽에서 멈추도록 자동 측정 (handleEnd 의 가로 버전).
-    let avAuto = false;
-    if (blurOpts.avatarW == null) {
-      const aw = measureAvatarW(path.join(inDir, e.file), { feather: blurOpts.feather ?? 5 });
-      if (aw != null) { blurOpts.avatarW = aw; avAuto = true; }
+    let plan;
+    try {
+      ({ plan } = blurComment(path.join(inDir, e.file), out, blurOpts));
+    } catch (err) {
+      die(`블러 실패: ${e.file} — ${err.message}`);
     }
-    blurComment(path.join(inDir, e.file), out, blurOpts);
     const w = probeWidth(out);
     // note 는 식별용(화면 미표시) — 파일명(=한국어 번역)에서 자동. manifest 에 note 주면 우선.
     const note = e.note || path.basename(e.file, path.extname(e.file));
-    return { src: rel, start: e.start, end: e.end, note, ...(w ? { w } : {}), _he: e.handleEnd, _auto: !!e._auto, _aw: blurOpts.avatarW, _avAuto: avAuto };
+    return { src: rel, start: e.start, end: e.end, note, ...(w ? { w } : {}), _plan: plan };
   });
 
-  props.comments = comments.map(({ _he, _auto, _aw, _avAuto, ...c }) => c);
+  props.comments = comments.map(({ _plan, ...c }) => c);
   fs.writeFileSync(propsPath, JSON.stringify(props, null, 2) + "\n");
 
   console.log(`✓ ${comments.length}개 댓글 → videos/goodvibesongs/${number}/comments/ + props.json`);
   console.log(`  영상 ${D.toFixed(1)}s, 슬롯 ${(D / comments.length).toFixed(1)}s/개`);
   for (const c of comments) {
-    const he = `handleEnd=${c._he}${c._auto ? "(auto)" : ""}`;
-    const aw = `avatarW=${c._aw}${c._avAuto ? "(auto)" : ""}`;
-    console.log(`   ${c.src}  ${c.start}s–${c.end}s  ${c.w || "?"}px  ${he}  ${aw}  "${c.note}"`);
+    const p = c._plan;
+    const geo = `프사 ${p.avatarW}x${p.avatarH} / 닉 ${p.handleEnd - p.nickX}x${p.nickH}`;
+    console.log(
+      `   ${c.src}  ${c.start}s–${c.end}s  ${c.w || "?"}px  ${geo}  block=${p.block} sigma=${p.sigma}  "${c.note}"`
+    );
   }
   console.log(`\nNext: node tools/preview.mjs goodvibesongs ${number}  → http://localhost:3003/goodvibesongs`);
 }

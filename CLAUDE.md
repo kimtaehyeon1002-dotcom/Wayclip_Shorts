@@ -315,26 +315,32 @@ vi=San Francisco(폴백 Inter, `vietnamese` subset 필수 — 없으면 성조�
 
 **워크플로:**
 1. 사용자가 `<번호>댓글/` 에 댓글 스샷을 넣어줌 (각 1댓글 크롭, 검정 배경 유튜브 댓글). 파일명은 원본 스샷명 그대로.
-2. **⚠️ 스샷 스케일 확인 → 1x 면 2x 업스케일 (댓글 크기의 핵심).** 화면 표시 폭 = **원본 px × COMMENT_SCALE**(maxWidth 1020 캡). 즉 **저해상 스샷이면 화면에서도 작게** 나온다. 블러 레시피(아래)도 **레티나(~2x) 기준**(아바타 90px 등)이라 1x 스샷엔 안 맞음. 판단: **스샷 높이가 한 줄당 ~50px 미만(=댓글 1줄+본문 1줄이 ~100px 이하)이거나 폭이 대체로 <500px** 면 1x 다 → 전부 2x 로 올린다(`ffmpeg -i in.png -vf "scale=iw*2:ih*2:flags=lanczos" out.png`, 제자리 덮어쓰기). 그러면 표준 블러 레시피가 그대로 맞고 화면에도 크게 나온다. **COMMENT_SCALE(채널 공통 상수)은 건드리지 말 것 — 다른 영상까지 영향.** (반대로 이미 2x 레티나면 업스케일 불필요.)
+2. **⚠️ 스샷 스케일 확인 → 1x 면 2x 업스케일 (댓글 "크기"의 문제).** 화면 표시 폭 = **원본 px × COMMENT_SCALE**(maxWidth 1020 캡). 즉 **저해상 스샷이면 화면에서도 작게** 나온다. 판단: **폭이 대체로 <500px** 면 1x 다 → 전부 2x 로 올린다(`ffmpeg -i in.png -vf "scale=iw*2:ih*2:flags=lanczos" out.png`, 제자리 덮어쓰기). **COMMENT_SCALE(채널 공통 상수)은 건드리지 말 것 — 다른 영상까지 영향.**
+   ⓘ **블러는 스케일 무관** — 2026-08-21 개정으로 blur-comments 가 스샷마다 지오메트리를 자동 측정한다. 업스케일은 순전히 화면 크기 때문이지 블러 정확도 때문이 아니다.
 3. **Claude 가 각 스샷을 분석:**
    - **(필수) 각 스샷 파일명을 댓글 내용의 한국어 번역으로 바꾼다** — `mv "스크린샷 ….png" "마음에 꽂힌다 멘탈 정화됨.png"`. **이 파일명이 곧 그 댓글의 제목/식별자**(어느 댓글인지·어느 가사에 붙일지 판단용, 화면엔 미표시). 파일명 안전: `/ : ? *` 같은 문자 빼고, 일본어 댓글이면 자연스러운 한국어로.
    - 그 다음 `manifest.json` 작성 (file = 바뀐 한국어 파일명). **handleEnd 는 생략 — prep 가 자동 측정한다:**
    ```json
    [{ "file": "여기부터 너무 좋아.png", "anchor": 66 }]
    ```
-   - `handleEnd`(선택, **기본 자동**): @핸들 끝 x좌표(블러 닉네임 폭). **닉네임=흰색·날짜=회색**이라 prep-comments 가 핸들 줄에서 **흰색(luma>200) 픽셀의 최대 x 를 스캔해 자동 산정**(회색 날짜는 자동 제외). **그리드로 눈대중 측정하지 말 것 — 폐지.** 자동값이 어쩌다 틀린 예외 스샷만 manifest 에 숫자로 직접 줘서 덮어쓴다.
+   - `handleEnd`(선택, **기본 자동**): @핸들 끝 x좌표(블러 닉네임 폭). **닉네임=흰색·날짜=회색**이라 blur-comments 가 핸들 줄에서 **흰색(luma>200) 픽셀의 최대 x 를 스캔해 자동 산정**(회색 날짜는 자동 제외). **그리드로 눈대중 측정하지 말 것 — 폐지.** 자동값이 어쩌다 틀린 예외 스샷만 manifest 에 숫자로 직접 줘서 덮어쓴다.
    - `anchor`(선택): 그 댓글이 **합당한 가사 시점(초)**. 특정 가사/장면을 가리키는 댓글이면 그 caption `start` 초를 넣음. 전체 어디든 가능한 일반 댓글이면 생략.
    - `note`(선택): 안 주면 prep-comments 가 **파일명(=한국어 번역)을 note 로** 자동 사용. 굳이 따로 줄 필요 없음.
-4. `node tools/prep-comments.mjs <번호>` — handleEnd·avatarW 자동측정(미지정 시) + 블러(sigma12 타이트) + `videos/goodvibesongs/<번호>/comments/NN.png` 복사 + 타이밍 분배 + `props.json` 의 `comments` 기록 + 원본 px(`w`) 기록. 로그에 산정된 `handleEnd=NN(auto) avatarW=NN(auto)` 출력.
+4. `node tools/prep-comments.mjs <번호>` — 지오메트리 자동측정 + 블러 + `videos/goodvibesongs/<번호>/comments/NN.png` 복사 + 타이밍 분배 + `props.json` 의 `comments` 기록 + 원본 px(`w`) 기록. 로그에 스샷별 `프사 WxH / 닉 WxH block=N sigma=N` 출력 — **여기 숫자가 튀는 스샷이 있으면 그 장만 눈으로 확인할 것.**
 5. `node tools/preview.mjs goodvibesongs <번호>` 로 승인 → 렌더.
 
-**블러 레시피 (sigma12 타이트 — 사용자 확정, 변경 금지):** `blur-comments.mjs` 가 적용.
-- 흐림 `gblur sigma=12` (프리미어 흐림값≈20 매핑), 페더(가장자리) `sigma=5`.
-- 프사 마스크 `x0 y0 (avatarW)×90`(폭 자동측정 — 아래), 닉네임 마스크 `x82 y6 (handleEnd-82)×42` (x82 로 아바타와 살짝 겹침).
+**블러 레시피 (2026-08-21 개정 — "자동 지오메트리 + 모자이크". 110에서 핸들이 읽혀 전면 교체):** `blur-comments.mjs` 가 적용.
+
+- **스샷마다 스스로 잰다 — 고정 좌표 없음.** 예전 레시피는 `프사 x0 y0 90×90`, `닉 x82 y6 …×42` 같은 **레티나(2x) 고정 좌표**였다. 실제 스샷은 1x~2x 가 섞여 들어와(110은 줄높이 25~29px) 마스크가 헐겁게 얹혔다. 지금은 다음을 측정한다:
+  - `textLeft` = 핸들·본문·액션(좋아요/返信) 줄의 공통 들여쓰기 x. 세 줄 모두 같은 x 에서 시작하고 **밝은 프사는 그 줄의 minx 를 작게만** 만들므로 **여러 줄 minx 의 최댓값**이 참값이다. (중앙값을 쓰면 세로로 긴 밝은 프사에 끌려간다 — 105/107 사례.)
+  - `lineH` = **텍스트 칼럼(x ≥ textLeft) 안에서만** 잰 줄 높이 중앙값. 전체 폭으로 재면 세로로 긴 프사가 줄들을 이어붙여 lineH 가 50↑ 으로 뻥튀기되고, 그만큼 마스크가 본문까지 덮는다.
+  - `handleEnd` = 핸들 줄의 흰색(>200) 최대 x. 날짜는 회색(~170)이라 자동 제외 — **임계값 200 고정**(내리면 날짜까지 먹는다).
+  - 프사 bbox = textLeft 왼쪽에서 배경보다 밝은(>45) 픽셀. **그 행에 밝은 픽셀이 일정 개수 이상인 행만** 인정하고 가장 긴 연속 구간을 취한다(스레드 가이드선 같은 1~2px 세로 잔선 무시). 검출 결과는 "핸들 줄 위 ~ +2.1줄" 하한 박스와 **합집합** — 아스키아트 댓글처럼 프사 칼럼에 본문이 삐져나와도 프사 아랫부분이 노출되지 않는다.
+- **강도도 lineH 에서 파생:** 모자이크 블록 `≈lineH×0.85` → 가우시안 `sigma≈lineH×0.6`, 페더 `≈lineH×0.12`. **모자이크를 먼저 거는 게 핵심** — 가우시안만으로는 sigma 를 올려도 글자 윤곽 잔상이 남는다.
+- **⚠️ 마스크는 그릴 때 `1.5×feather` 만큼 부풀린 뒤 blur 한다 (110 사태의 진짜 원인).** 흰 박스를 그대로 blur 하면 박스가 얇을수록(닉 줄 ~35px, feather 5) 가장자리 그라데이션이 **박스 안쪽까지 파고들어 내부 알파가 255 에 도달하지 못한다** → 블러가 반투명으로 얹혀 원본 글자가 그대로 비친다. sigma 를 아무리 올려도 안 지워지던 이유가 이것. 부풀리면 의도한 박스 전체가 알파 255 평지가 되고 페더는 **바깥으로만**(총 3×feather) 나간다. 그래서 마스크 경계는 이웃 요소에서 `3×feather` 를 확보해 둔다(프사 오른쪽 ↔ 본문 첫 글자, 닉 아래 ↔ 본문 첫 줄).
 - **프사 블러가 닉네임 블러보다 위 레이어.** 날짜는 안 가림(핸들 끝까지만).
-- 좌표는 레티나(~2x) 유튜브 댓글 스샷 기준. **그래서 1x 스샷은 위 2번대로 먼저 2x 업스케일** 한 뒤 이 레시피를 쓴다 (스케일별로 박스를 새로 재지 말 것). 그래도 어긋나는 예외는 manifest 항목에 `sigma/feather/avatarW/avatarH/nickX/nickY/nickH` 를 넣어 per-entry 로 덮어쓸 수 있다(prep-comments 가 blur-comments 로 통과시킴).
-- **handleEnd 자동측정** (`measureHandleEnd`): manifest 에 handleEnd 없으면 핸들 줄(아바타 제외 x≥95, 상단 ~52px 밴드)을 raw gray 로 떠서 **흰색(>200) 최대 x + margin 8**. 닉네임(흰)만 잡히고 날짜(회색 ~170)는 빠진다. 임계값 낮추면 날짜까지 먹으니 **200 고정**. 200 미만 안티에일리어싱 잔상이 흐릿하게 남는 건 정상(식별 불가, 최종 축소 렌더에선 안 보임) — 더 지우려 임계값 내리지 말 것.
-- **avatarW(프사 마스크 폭) 자동측정** (`measureAvatarW` = handleEnd 의 "가로 버전"): manifest 에 avatarW 없으면 **본문 첫 줄**(핸들 줄·액션 줄 제외, `y58`부터 `38px` 밴드)에서 **가장 왼쪽 흰색(>200) x = bodyLeft** 를 찾아 `avatarW = bodyLeft − 3×feather − 2`. → 프사는 덮으면서 **페더 번짐까지 포함해 본문 첫 글자는 절대 안 덮는다**(유튜브 본문은 아바타 오른쪽으로 들여쓰기됨). 눈대중 금지. 자동값이 틀리는 예외만 manifest 에 `avatarW` 숫자로 덮어쓴다. (avatarH 는 90 고정 — 프사 아래 같은 x 열은 빈 공간이라 세로는 문제 없음.)
+- 예외 스샷은 manifest 항목에 `handleEnd/sigma/block/feather/avatarW/avatarH/avatarX/avatarY/nickX/nickY/nickH` 를 넣어 per-entry 로 덮어쓸 수 있다(prep-comments 가 blur-comments 로 통과시킴). **먼저 `node tools/blur-comments.mjs <이미지> --debug` 로 측정값을 보고 판단할 것.**
+- **검수:** 결과를 그냥 보면 다 지워진 듯 보인다. **핸들 부분을 3배 확대해서 확인할 것** — `ffmpeg -i out.png -vf "crop=iw:60:0:0,scale=iw*3:ih*3:flags=neighbor" zoom.png`.
 
 **타이밍 분배:** 영상 길이 ÷ 댓글 개수 = 균등 슬롯, **항상 1개 연속 노출**(슬롯 경계 0.3s 크로스페이드). `anchor` 있는 댓글은 그 시점 슬롯에 배치(충돌 시 가까운 빈 슬롯), 나머지는 남은 슬롯에 순서대로 — "특정부분에 합당하게 + 나머지는 균등".
 
@@ -362,8 +368,8 @@ vi=San Francisco(폴백 Inter, `vietnamese` subset 필수 — 없으면 성조�
 | `derive-lang.mjs` | 🌏 `props.json` → `props.<lang>.json` 파생 + `--sync` 로 구조 필드만 재동기화 (번역문 보존). **번역은 안 함** |
 | `render.mjs` | 🌏 결재본 렌더 — 언어별 순차 렌더 + composition id 변환 + 렌더 전 check-captions 자동 게이트 |
 | `preview.mjs` | 채널 고정 포트로 `remotion studio` (props + 미디어 자동). `--lang` 지원 |
-| `blur-comments.mjs` | 댓글 스샷 프사+닉네임 가우시안 블러 (굿바이브 댓글 오버레이용, sigma12 타이트 레시피. handleEnd 외 avatar/nick/sigma/feather 플래그로 스케일 조정) |
-| `prep-comments.mjs` | `<번호>댓글/` → handleEnd + avatarW(프사폭) 자동측정(흰색 픽셀 스캔, 미지정 시)+블러+영상디렉토리 복사+타이밍 분배+props 기록 (굿바이브 전용) |
+| `blur-comments.mjs` | 댓글 스샷 프사+닉네임 비식별화 (굿바이브 전용). 스샷 지오메트리 자동 측정(`--debug`) + 모자이크→가우시안. 예외는 플래그로 덮어쓰기 |
+| `prep-comments.mjs` | `<번호>댓글/` → 블러(자동 지오메트리)+영상디렉토리 복사+타이밍 분배+props 기록 (굿바이브 전용) |
 | `channels.mjs` | 채널 정의/기본 props/레이아웃 상수/space_lab layout 계산 (모든 도구 공유) |
 
 > **`normalize-output` 없음** — Remotion 출력은 이미 SNS 안전(start_time 0). 절대 edit-list 정규화하지 말 것.
