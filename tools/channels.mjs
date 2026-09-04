@@ -77,7 +77,7 @@ export const channelDefaults = {
   goodmovies: {
     title: "",
     artist: "",
-    topCaption: "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中",
+    topCaption: "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
     originalLanguage: "en",
     translationLanguage: "ja",
     videoNumber: "",

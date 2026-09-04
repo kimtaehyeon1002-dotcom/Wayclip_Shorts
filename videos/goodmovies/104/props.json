@@ -1,0 +1,74 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#896",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ターミネーター2",
+  "captions": [
+    {
+      "start": 0.523,
+      "end": 1.523,
+      "original": "What's the dog's name?",
+      "translation": "犬の名前は？"
+    },
+    {
+      "start": 1.923,
+      "end": 2.289,
+      "original": "Max",
+      "translation": "マックス"
+    },
+    {
+      "start": 3.623,
+      "end": 4.389,
+      "original": "Hey, Janelle.",
+      "translation": "やあ、ジャネル"
+    },
+    {
+      "start": 4.956,
+      "end": 5.856,
+      "original": "What's wrong with Wolfie?",
+      "translation": "ウルフィー、どうかしたの？"
+    },
+    {
+      "start": 6.423,
+      "end": 7.523,
+      "original": "I can hear him barking.",
+      "translation": "吠えてるのが聞こえるけど"
+    },
+    {
+      "start": 8.056,
+      "end": 8.523,
+      "original": "Is he okay?",
+      "translation": "大丈夫なの？"
+    },
+    {
+      "start": 8.823,
+      "end": 9.589,
+      "original": "Wolfie's fine, honey.",
+      "translation": "ウルフィーなら元気よ"
+    },
+    {
+      "start": 9.889,
+      "end": 10.889,
+      "original": "Wolfie's just fine.",
+      "translation": "ウルフィーは何ともないわ"
+    },
+    {
+      "start": 12.656,
+      "end": 13.256,
+      "original": "Where are you?",
+      "translation": "今どこにいるの？"
+    },
+    {
+      "start": 15.989,
+      "end": 16.989,
+      "original": "Your foster parents are dead.",
+      "translation": "お前の養父母はもう死んでいる"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 591
+}

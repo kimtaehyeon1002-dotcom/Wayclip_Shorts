@@ -87,7 +87,7 @@ export const mediaKindSchema = z
 export const goodMoviesSchema = z.object({
   ...baseShape,
   // 2026-07-29 개편: 레디액션식 시리즈 고정 카피 (영상별 멘트 → 시리즈 카피).
-  topCaption: z.string().default("死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中"),
+  topCaption: z.string().default("死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中"),
   translationLanguage: transLangSchema.default("ja"),
   // 하단 #번호 = 1000 - 영상번호 (예: 090 → #910). new-video.mjs 가 자동 주입.
   videoNumber: z.string().default(""),

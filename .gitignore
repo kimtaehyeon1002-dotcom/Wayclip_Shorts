@@ -6,3 +6,6 @@ media/*.mp4
 .DS_Store
 *.log
 whisper.cpp/
+
+# 🎬 굿무비 레퍼런스 워크플로 중간 산출물 (ref-build --work 기본값)
+_ref-*/
