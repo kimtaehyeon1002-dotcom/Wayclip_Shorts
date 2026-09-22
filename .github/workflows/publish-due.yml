@@ -1,0 +1,55 @@
+# 예약 게시 — 10분마다 publishAt 이 지난 pending 항목을 인스타 릴스로 게시한다.
+# GitHub cron 은 5~15분 늦을 수 있다 → publishAt 은 "이 시각 이후" 의 의미.
+name: publish-due
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "특정 항목만 (remotion-<channel>-<number>[-lang]). 비우면 --due"
+        required: false
+        type: string
+      dry_run:
+        description: "점검만 (게시 안 함)"
+        required: false
+        type: boolean
+        default: false
+concurrency:
+  group: publish
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # 모든 시크릿을 JSON 으로 — 포맷(채널)이 늘어 IG_<SLUG>_<LANG> 이 추가돼도 이 파일은 안 바뀐다.
+      SECRETS_JSON: ${{ toJSON(secrets) }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      GMAIL_USER: ${{ secrets.GMAIL_USER }}
+      GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+      NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --workspace=@wayclip/publisher --workspace=@wayclip/shared --include-workspace-root=false
+      - name: 게시
+        run: |
+          if [ -n "${{ inputs.id }}" ]; then
+            node publisher/publish-reel.mjs --id "${{ inputs.id }}" ${{ inputs.dry_run == true && '--dry-run' || '' }}
+          else
+            node publisher/publish-reel.mjs --due ${{ inputs.dry_run == true && '--dry-run' || '' }}
+          fi
+      - name: schedule.json 상태 커밋
+        if: ${{ inputs.dry_run != true }}
+        run: node publisher/commit-schedule.mjs

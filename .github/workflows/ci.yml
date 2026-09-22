@@ -1,0 +1,27 @@
+# CI — 타입체크 + 공유 모듈 테스트 + props/포맷 정합성. 렌더는 하지 않는다 (맥 시스템 폰트 필요, GL 없음).
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: formats/*.json 검증 + 생성 파일 최신성
+        run: node tools/gen-formats.mjs --check
+      - run: npm run typecheck
+      - run: npm test
+      - name: web 빌드
+        run: npm run build -w @wayclip/web
+      - name: schedule.json 정합성
+        run: node publisher/publish-reel.mjs --list > /dev/null
