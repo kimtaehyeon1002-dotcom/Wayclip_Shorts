@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "066",
+  "name": "space_lab/066",
+  "media": {
+    "slug": "yellow-brick-road-pacific",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 194
+}

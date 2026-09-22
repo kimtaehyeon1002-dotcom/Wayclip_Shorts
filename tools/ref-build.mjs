@@ -18,7 +18,7 @@
  *   --number <n>        영상 번호 (산출물 이름에 쓰임, 필수)
  *   --channel <slug>    채널 (default goodmovies)
  *   --band WxH          영상 밴드 크기 (default: 채널값 — 굿무비/레디액션 1080x960)
- *   --work <dir>        중간 산출물 디렉토리 (default ./_ref-<번호>)
+ *   --work <dir>        중간 산출물 디렉토리 (default ./_ref/<번호>)
  *   --go                검증 시트 확인 후 R-2/R-3 까지 진행
  *   --scaffold          --go 에 더해 prep-media + new-video + captions 골격까지
  *   --audio ref|orig    오디오 출처 (default ref)
@@ -49,7 +49,7 @@ function main() {
   const num = str(opt.number) ?? die("--number 필요");
   const ch = str(opt.channel) ?? "goodmovies";
   const band = str(opt.band) ?? BAND[ch] ?? "1080x960";
-  const work = str(opt.work) ?? `_ref-${num}`;
+  const work = str(opt.work) ?? `_ref/${num}`;
   mkdirSync(work, { recursive: true });
 
   const cuts = path.join(work, `${num}.cuts.json`);

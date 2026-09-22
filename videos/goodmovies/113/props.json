@@ -1,0 +1,80 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#887",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "ロザンヌ",
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.757,
+      "original": "Did you send me flowers, Dan?",
+      "translation": "ダン、この花あなたが送ったの？"
+    },
+    {
+      "start": 1.823,
+      "end": 2.423,
+      "original": "No.",
+      "translation": "いや"
+    },
+    {
+      "start": 2.423,
+      "end": 3.757,
+      "original": "Why would I do that?",
+      "translation": "俺がそんなことするわけないだろ"
+    },
+    {
+      "start": 5.39,
+      "end": 6.09,
+      "original": "Yeah, right.",
+      "translation": "そうよね"
+    },
+    {
+      "start": 6.09,
+      "end": 7.523,
+      "original": "Like you'd ever be romantic enough",
+      "translation": "あなたがそんなロマンチックなこと"
+    },
+    {
+      "start": 7.523,
+      "end": 8.423,
+      "original": "to do something like that",
+      "translation": "するはずないもんね"
+    },
+    {
+      "start": 8.423,
+      "end": 9.457,
+      "original": "for no reason.",
+      "translation": "特別な日でもないのに"
+    },
+    {
+      "start": 10.223,
+      "end": 11.623,
+      "original": "Dear Roseanne, I lied,",
+      "translation": "ロザンヌへ 実は嘘をついた"
+    },
+    {
+      "start": 11.623,
+      "end": 13.157,
+      "original": "They're from me, love Dan.",
+      "translation": "この花は俺からだ 愛を込めて ダン"
+    },
+    {
+      "start": 14.857,
+      "end": 16.09,
+      "original": "You scum!",
+      "translation": "もう、最低！"
+    },
+    {
+      "start": 17.823,
+      "end": 18.9,
+      "original": "I love you too dear.",
+      "translation": "俺も愛してるよ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 567
+}

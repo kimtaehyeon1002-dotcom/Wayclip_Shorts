@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "063",
+  "name": "space_lab/063",
+  "media": {
+    "slug": "whale-transport-firetrucks",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 180
+}

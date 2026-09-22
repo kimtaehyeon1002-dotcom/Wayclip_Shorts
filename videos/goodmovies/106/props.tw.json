@@ -1,0 +1,70 @@
+{
+  "title": "The Perks of Being a Wallflower",
+  "artist": "",
+  "topCaption": "死前必看的**經典電影**\n**1000部，**不分順序介紹中",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "videoNumber": "#894",
+  "mediaKind": "映画",
+  "mediaTitleJa": "壁花男孩",
+  "captionScale": 0.85,
+  "captionYOffset": 290,
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.5,
+      "original": "Can I ask you something?",
+      "translation": "我可以問你一件事嗎？"
+    },
+    {
+      "start": 1.55,
+      "end": 2.45,
+      "original": "Yeah",
+      "translation": "當然"
+    },
+    {
+      "start": 3.32,
+      "end": 4.6,
+      "original": "Why...",
+      "translation": "為什麼…"
+    },
+    {
+      "start": 4.62,
+      "end": 9.1,
+      "original": "do nice people choose the wrong people to date?",
+      "translation": "好人總是選錯對象呢？"
+    },
+    {
+      "start": 9.38,
+      "end": 11.35,
+      "original": "Are we talking about anyone specific?",
+      "translation": "你是在說某個特定的人嗎？"
+    },
+    {
+      "start": 13.15,
+      "end": 14.25,
+      "original": "Well...",
+      "translation": "這個嘛…"
+    },
+    {
+      "start": 17.85,
+      "end": 19.95,
+      "original": "We accept the love we think we deserve",
+      "translation": "我們接受自己認為配得上的愛"
+    },
+    {
+      "start": 21.35,
+      "end": 23.2,
+      "original": "Can we make them know that they deserve more?",
+      "translation": "能讓他們知道自己值得更好嗎？"
+    },
+    {
+      "start": 24.1,
+      "end": 25.75,
+      "original": "We can try",
+      "translation": "我們可以試試"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 804
+}

@@ -1,0 +1,109 @@
+{
+  "title": "心做し",
+  "artist": "majiko",
+  "topCaption": "飲み込んできた感情が\nついに**叫びに変わった**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.147,
+      "note": "감정 담는 게 장난 아니야",
+      "w": 406
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.147,
+      "end": 10.293,
+      "note": "후렴의 비통한 창법이 마음에 울리네요",
+      "w": 656
+    },
+    {
+      "src": "comments/03.png",
+      "start": 10.293,
+      "end": 15.44,
+      "note": "외치듯 한탄하듯 부르는 창법은 반칙이지",
+      "w": 402
+    },
+    {
+      "src": "comments/04.png",
+      "start": 15.44,
+      "end": 20.587,
+      "note": "비명 같은 노랫소리가 정말 마음에 울렸어요",
+      "w": 668
+    },
+    {
+      "src": "comments/05.png",
+      "start": 20.587,
+      "end": 25.733,
+      "note": "초실력파",
+      "w": 400
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.5,
+      "end": 2.9,
+      "original": "酷いよ 酷いよ",
+      "translation": "酷いよ 酷いよ"
+    },
+    {
+      "start": 2.9,
+      "end": 5.76,
+      "original": "もういっそ 僕の体を",
+      "translation": "もういっそ 僕の体を"
+    },
+    {
+      "start": 5.76,
+      "end": 8.56,
+      "original": "壊して 引き裂いて",
+      "translation": "壊して 引き裂いて"
+    },
+    {
+      "start": 8.56,
+      "end": 11.46,
+      "original": "好きなようにしてよ",
+      "translation": "好きなようにしてよ"
+    },
+    {
+      "start": 11.46,
+      "end": 14.28,
+      "original": "叫んで藻掻いて",
+      "translation": "叫んで藻掻いて"
+    },
+    {
+      "start": 14.28,
+      "end": 17.16,
+      "original": "泣き腫らしても",
+      "translation": "泣き腫らしても"
+    },
+    {
+      "start": 17.16,
+      "end": 19.68,
+      "original": "まだ君は僕の事を",
+      "translation": "まだ君は僕の事を"
+    },
+    {
+      "start": 19.68,
+      "end": 22.92,
+      "original": "抱きしめて離さない",
+      "translation": "抱きしめて離さない"
+    },
+    {
+      "start": 22.92,
+      "end": 24.4,
+      "original": "もういいよ",
+      "translation": "もういいよ"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 772
+}

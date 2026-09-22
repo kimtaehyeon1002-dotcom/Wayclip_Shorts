@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "060",
+  "name": "space_lab/060",
+  "media": {
+    "slug": "catatumbo-lightning",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 264
+}

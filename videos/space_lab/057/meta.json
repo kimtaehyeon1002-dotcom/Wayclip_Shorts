@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "057",
+  "name": "space_lab/057",
+  "media": {
+    "slug": "seabin-ocean-cleaner",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 252
+}

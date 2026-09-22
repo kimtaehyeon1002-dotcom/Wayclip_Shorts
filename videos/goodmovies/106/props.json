@@ -1,0 +1,25 @@
+{
+  "title": "The Perks of Being a Wallflower",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#894",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ウォールフラワー",
+  "captionScale": 0.85,
+  "captionYOffset": 290,
+  "captions": [
+    { "start": 0.0, "end": 1.5, "original": "Can I ask you something?", "translation": "ちょっと聞いてもいいですか？" },
+    { "start": 1.55, "end": 2.45, "original": "Yeah", "translation": "ああ" },
+    { "start": 3.32, "end": 4.6, "original": "Why...", "translation": "どうして…" },
+    { "start": 4.62, "end": 9.1, "original": "do nice people choose the wrong people to date?", "translation": "優しい人ほど、ダメな相手を選ぶんでしょう？" },
+    { "start": 9.38, "end": 11.35, "original": "Are we talking about anyone specific?", "translation": "誰か特定の人の話かい？" },
+    { "start": 13.15, "end": 14.25, "original": "Well...", "translation": "そうだな…" },
+    { "start": 17.85, "end": 19.95, "original": "We accept the love we think we deserve", "translation": "人は自分にふさわしいと思う愛を受け入れる" },
+    { "start": 21.35, "end": 23.2, "original": "Can we make them know that they deserve more?", "translation": "もっと価値があると気づかせられますか？" },
+    { "start": 24.1, "end": 25.75, "original": "We can try", "translation": "努力はできるさ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 804
+}

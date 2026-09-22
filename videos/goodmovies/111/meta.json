@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "111",
+  "name": "goodmovies/111",
+  "media": {
+    "slug": "bruce-almighty-2003",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 848
+}

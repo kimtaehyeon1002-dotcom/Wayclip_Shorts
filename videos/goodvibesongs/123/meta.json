@@ -1,0 +1,14 @@
+{
+  "channel": "goodvibesongs",
+  "number": "123",
+  "name": "goodvibesongs/123",
+  "media": {
+    "slug": "fujii-kaze-matsuri-coachella",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 765
+}

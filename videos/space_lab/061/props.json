@@ -1,0 +1,19 @@
+{
+  "title": "遠近錯視の乾電池",
+  "artist": "@national_issue_graphic",
+  "topCaption": "あなたの[[脳]]が、あなたを\n**騙している証拠**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#939",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 601,
+    "videoH": 629,
+    "warnTop": 1250,
+    "bottomTop": 1320,
+    "bottomH": 600
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 290
+}

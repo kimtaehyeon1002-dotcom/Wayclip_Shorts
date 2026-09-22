@@ -1,0 +1,80 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "**1000 phim kinh điển**\nphải xem trước khi chết",
+  "originalLanguage": "en",
+  "translationLanguage": "vi",
+  "videoNumber": "#887",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "Roseanne",
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.757,
+      "original": "Did you send me flowers, Dan?",
+      "translation": "Dan, anh gửi hoa cho em à?"
+    },
+    {
+      "start": 1.823,
+      "end": 2.423,
+      "original": "No.",
+      "translation": "Không"
+    },
+    {
+      "start": 2.423,
+      "end": 3.757,
+      "original": "Why would I do that?",
+      "translation": "Anh gửi làm gì chứ?"
+    },
+    {
+      "start": 5.39,
+      "end": 6.09,
+      "original": "Yeah, right.",
+      "translation": "Cũng đúng"
+    },
+    {
+      "start": 6.09,
+      "end": 7.523,
+      "original": "Like you'd ever be romantic enough",
+      "translation": "Anh làm gì đủ lãng mạn"
+    },
+    {
+      "start": 7.523,
+      "end": 8.423,
+      "original": "to do something like that",
+      "translation": "để làm chuyện như thế"
+    },
+    {
+      "start": 8.423,
+      "end": 9.457,
+      "original": "for no reason.",
+      "translation": "mà chẳng có lý do gì"
+    },
+    {
+      "start": 10.223,
+      "end": 11.623,
+      "original": "Dear Roseanne, I lied,",
+      "translation": "Roseanne yêu quý, anh đã nói dối"
+    },
+    {
+      "start": 11.623,
+      "end": 13.157,
+      "original": "They're from me, love Dan.",
+      "translation": "Hoa là của anh gửi. Yêu em, Dan"
+    },
+    {
+      "start": 14.857,
+      "end": 16.09,
+      "original": "You scum!",
+      "translation": "Đồ xấu xa!"
+    },
+    {
+      "start": 17.823,
+      "end": 18.9,
+      "original": "I love you too dear.",
+      "translation": "Anh cũng yêu em, em yêu"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 567
+}

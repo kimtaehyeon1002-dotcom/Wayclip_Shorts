@@ -1,0 +1,19 @@
+{
+  "title": "Spider Lightning",
+  "artist": "@cluemag2",
+  "topCaption": "氣象局也[[避而不談]]的2012年影片\n幾秒後，**有東西劃過天空…**",
+  "bottomCTA": "更多內容看貼文",
+  "warnText": "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**",
+  "videoNumber": "#935",
+  "originalLanguage": "ja",
+  "translationLanguage": "tw",
+  "layout": {
+    "topH": 425,
+    "videoH": 981,
+    "warnTop": 1426,
+    "bottomTop": 1496,
+    "bottomH": 424
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 276
+}

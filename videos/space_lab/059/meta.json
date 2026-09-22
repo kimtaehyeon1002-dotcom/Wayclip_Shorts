@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "059",
+  "name": "space_lab/059",
+  "media": {
+    "slug": "observable-universe-93b",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 1829
+}

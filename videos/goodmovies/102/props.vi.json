@@ -1,0 +1,23 @@
+{
+  "title": "The Faculty",
+  "artist": "",
+  "topCaption": "**1000 phim kinh điển**\nphải xem trước khi chết",
+  "originalLanguage": "en",
+  "translationLanguage": "vi",
+  "videoNumber": "#898",
+  "mediaKind": "映画",
+  "mediaTitleJa": "Ký Sinh Trùng Ngoài Hành Tinh",
+  "captions": [
+    { "start": 0.29, "end": 0.74, "original": "Find out", "translation": "Cùng xem thử nào" },
+    { "start": 1.79, "end": 2.41, "original": "Oh, man", "translation": "Ôi trời ơi…" },
+    { "start": 9.43, "end": 11.54, "original": "It's all right", "translation": "Không sao đâu" },
+    { "start": 11.54, "end": 12.26, "original": "It's okay", "translation": "Bình tĩnh nào" },
+    { "start": 22.01, "end": 23.53, "original": "Mr. Furlong, what are you doing?", "translation": "Thầy Furlong, thầy đang làm gì thế?" },
+    { "start": 24.21, "end": 25.5, "original": "Just gonna check his prostate", "translation": "Thầy kiểm tra tuyến tiền liệt của nó thôi" },
+    { "start": 25.5, "end": 29.09, "original": "Actually, the surface texture changed, so...", "translation": "Thật ra bề mặt của nó đã đổi khác, nên là…" },
+    { "start": 30.07, "end": 31.2, "original": "Oh, I feel it", "translation": "Ồ, thầy chạm thấy rồi" },
+    { "start": 44.72, "end": 47.1, "original": "It can replicate... Jesus", "translation": "Nó tự nhân bản được… Trời ạ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1413
+}

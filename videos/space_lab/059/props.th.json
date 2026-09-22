@@ -1,0 +1,19 @@
+{
+  "title": "観測可能な宇宙の大きさ",
+  "artist": "space_secret.zip",
+  "topCaption": "จักรวาลนี้กว้างใหญ่\n[[แค่ไหนกันแน่?]]",
+  "bottomCTA": "อ่านต่อในแคปชัน",
+  "warnText": "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**",
+  "videoNumber": "#941",
+  "originalLanguage": "ja",
+  "translationLanguage": "th",
+  "layout": {
+    "topH": 505,
+    "videoH": 821,
+    "warnTop": 1346,
+    "bottomTop": 1416,
+    "bottomH": 504
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1829
+}

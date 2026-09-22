@@ -1,0 +1,19 @@
+{
+  "title": "Catatumbo Lightning",
+  "artist": "q.media",
+  "topCaption": "一年260天[[雷不停落下]]的地方\n大自然親手造出的**地獄**",
+  "bottomCTA": "更多內容看貼文",
+  "warnText": "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**",
+  "videoNumber": "#940",
+  "originalLanguage": "ja",
+  "translationLanguage": "tw",
+  "layout": {
+    "topH": 602,
+    "videoH": 627,
+    "warnTop": 1249,
+    "bottomTop": 1319,
+    "bottomH": 601
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 264
+}

@@ -1,0 +1,189 @@
+{
+  "title": "水平線",
+  "artist": "back number",
+  "topCaption": "全ての青春に\nこの歌が**届きますように**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.045,
+      "note": "모든 학생에게 힘내라",
+      "w": 448,
+      "h": 158,
+      "anchor": 0
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.045,
+      "end": 10.091,
+      "note": "백넘버 팬 총의 이래서 좋아하는거야",
+      "w": 808,
+      "h": 158
+    },
+    {
+      "src": "comments/03.png",
+      "start": 10.091,
+      "end": 15.136,
+      "note": "다들 주인공이야",
+      "w": 420,
+      "h": 158,
+      "anchor": 12
+    },
+    {
+      "src": "comments/04.png",
+      "start": 15.136,
+      "end": 20.182,
+      "note": "인생은 왜 이렇게 안 풀릴까 눈물이 안 멈춰",
+      "w": 890,
+      "h": 198,
+      "anchor": 18
+    },
+    {
+      "src": "comments/05.png",
+      "start": 20.182,
+      "end": 25.227,
+      "note": "길가 응원이 아니라 나란히 뛰어준다",
+      "w": 890,
+      "h": 198
+    },
+    {
+      "src": "comments/06.png",
+      "start": 25.227,
+      "end": 30.273,
+      "note": "상처받은 사람에게도 다가와주는 곡",
+      "w": 890,
+      "h": 198
+    },
+    {
+      "src": "comments/07.png",
+      "start": 30.273,
+      "end": 35.318,
+      "note": "가사에 힘내라는 말이 없다",
+      "w": 890,
+      "h": 198
+    },
+    {
+      "src": "comments/08.png",
+      "start": 35.318,
+      "end": 40.364,
+      "note": "요즘 젊은것들이 어딨어 다들 힘내고 있잖아",
+      "w": 812,
+      "h": 238
+    },
+    {
+      "src": "comments/09.png",
+      "start": 40.364,
+      "end": 45.409,
+      "note": "매일 힘들어도 살고있어 조금은 대단하지",
+      "w": 672,
+      "h": 198
+    },
+    {
+      "src": "comments/10.png",
+      "start": 45.409,
+      "end": 50.455,
+      "note": "정신차려보니 오열하고 있었다 나 힘들었구나",
+      "w": 890,
+      "h": 198
+    },
+    {
+      "src": "comments/11.png",
+      "start": 50.455,
+      "end": 55.5,
+      "note": "이걸 본 너에게 난 너한테 기대하고 있어",
+      "w": 530,
+      "h": 238
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0,
+      "end": 3.5,
+      "original": "誰の心に残る事も",
+      "translation": "誰の心に残る事も"
+    },
+    {
+      "start": 3.54,
+      "end": 7.05,
+      "original": "目に焼き付く事もない今日も",
+      "translation": "目に焼き付く事もない今日も"
+    },
+    {
+      "start": 7.08,
+      "end": 10.1,
+      "original": "雑音と足音の奥で",
+      "translation": "雑音と足音の奥で"
+    },
+    {
+      "start": 10.15,
+      "end": 14.5,
+      "original": "私はここだと叫んでいる",
+      "translation": "私はここだと叫んでいる"
+    },
+    {
+      "start": 14.5,
+      "end": 17.55,
+      "original": "水平線が光る朝に",
+      "translation": "水平線が光る朝に"
+    },
+    {
+      "start": 17.56,
+      "end": 21.05,
+      "original": "あなたの希望が崩れ落ちて",
+      "translation": "あなたの希望が崩れ落ちて"
+    },
+    {
+      "start": 21.1,
+      "end": 24.05,
+      "original": "風に飛ばされる欠片に",
+      "translation": "風に飛ばされる欠片に"
+    },
+    {
+      "start": 24.1,
+      "end": 27.6,
+      "original": "誰かが綺麗と呟いてる",
+      "translation": "誰かが綺麗と呟いてる"
+    },
+    {
+      "start": 27.6,
+      "end": 30.75,
+      "original": "悲しい声で歌いながら",
+      "translation": "悲しい声で歌いながら"
+    },
+    {
+      "start": 30.76,
+      "end": 34.8,
+      "original": "いつしか海に流れ着いて",
+      "translation": "いつしか海に流れ着いて"
+    },
+    {
+      "start": 34.8,
+      "end": 36.85,
+      "original": "光って",
+      "translation": "光って"
+    },
+    {
+      "start": 36.88,
+      "end": 43,
+      "original": "あなたはそれを見るでしょう",
+      "translation": "あなたはそれを見るでしょう"
+    },
+    {
+      "start": 43.6,
+      "end": 51,
+      "original": "あなたはそれを見るでしょう",
+      "translation": "あなたはそれを見るでしょう"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1665
+}

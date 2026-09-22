@@ -1,0 +1,19 @@
+{
+  "title": "人間を学習したワニ",
+  "artist": "@cosmic._.note",
+  "topCaption": "鳥肌注意…[[人間を学習したワニ]]",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#933",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 517,
+    "videoH": 796,
+    "warnTop": 1333,
+    "bottomTop": 1403,
+    "bottomH": 517
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 296
+}

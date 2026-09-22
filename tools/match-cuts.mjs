@@ -145,7 +145,7 @@ function verifySheet(refFile, origFile, segs, crop, origCrop, out) {
   const grab = (file, m, t, cr, tag, i) => {
     const n = Math.max(0, Math.round((t - m.start) * m.fps));
     const p = path.join(dir, `${tag}${i}.png`);
-    ff(["-v", "error", "-i", file, "-vf", `${cr ? `crop=${cr},` : ""}select='eq(n\\,${n})',scale=360:-2,pad=360:300:0:(300-ih)/2:black`,
+    ff(["-v", "error", "-i", file, "-vf", `${cr ? `crop=${cr},` : ""}select='eq(n\\,${n})',scale=360:300:force_original_aspect_ratio=decrease,pad=360:300:(360-iw)/2:(300-ih)/2:black`,
       "-fps_mode", "passthrough", "-frames:v", "1", p, "-y"]);
     return p;
   };

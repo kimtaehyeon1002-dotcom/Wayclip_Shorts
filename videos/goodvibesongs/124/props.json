@@ -1,0 +1,124 @@
+{
+  "title": "Love so sweet",
+  "artist": "嵐",
+  "topCaption": "こんな**蛍光ペン衣装**でも\n**かっこいい**のは嵐だけ",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 4.771,
+      "note": "이런 형광펜 같은 의상도 멋있는 건 아라시 정도야",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/02.png",
+      "start": 4.771,
+      "end": 9.543,
+      "note": "너무 정석이라 거의 국가잖아",
+      "w": 476,
+      "h": 158
+    },
+    {
+      "src": "comments/03.png",
+      "start": 9.543,
+      "end": 14.314,
+      "note": "이게 그 소문의 사랑이 시작되는 노래인가요",
+      "w": 414,
+      "h": 238
+    },
+    {
+      "src": "comments/04.png",
+      "start": 14.314,
+      "end": 19.086,
+      "note": "급식 시간에 나오자마자 너 고백해 축제가 벌어졌다",
+      "w": 560,
+      "h": 198
+    },
+    {
+      "src": "comments/05.png",
+      "start": 19.086,
+      "end": 23.857,
+      "note": "치매 걸려도 부를 수 있는 자신 있음",
+      "w": 558,
+      "h": 158
+    },
+    {
+      "src": "comments/06.png",
+      "start": 23.857,
+      "end": 28.629,
+      "note": "어떤 장면에 틀어도 사랑이 시작돼버리는 노래",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/07.png",
+      "start": 28.629,
+      "end": 33.4,
+      "note": "슬슬 내 인생에도 러브 소 스위트 흘러나왔으면",
+      "w": 596,
+      "h": 198
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.767,
+      "end": 5.4,
+      "original": "思い出 ずっとずっと 忘れない空",
+      "translation": "思い出 ずっとずっと 忘れない空"
+    },
+    {
+      "start": 5.4,
+      "end": 8.833,
+      "original": "ふたりが離れていても",
+      "translation": "ふたりが離れていても"
+    },
+    {
+      "start": 8.833,
+      "end": 11.567,
+      "original": "こんな好きな人に",
+      "translation": "こんな好きな人に"
+    },
+    {
+      "start": 11.567,
+      "end": 15.433,
+      "original": "出逢う季節二度とない",
+      "translation": "出逢う季節二度とない"
+    },
+    {
+      "start": 15.433,
+      "end": 19.233,
+      "original": "光ってもっと最高のLady",
+      "translation": "光ってもっと最高のLady"
+    },
+    {
+      "start": 19.233,
+      "end": 22.5,
+      "original": "きっとそっと想い届く",
+      "translation": "きっとそっと想い届く"
+    },
+    {
+      "start": 22.5,
+      "end": 26.2,
+      "original": "信じることがすべて",
+      "translation": "信じることがすべて"
+    },
+    {
+      "start": 26.2,
+      "end": 32.967,
+      "original": "Love so sweet",
+      "translation": "Love so sweet"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1002
+}

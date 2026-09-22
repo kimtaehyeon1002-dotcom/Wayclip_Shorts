@@ -1,0 +1,94 @@
+{
+  "title": "Hello Mr. my yesterday",
+  "artist": "Hundred Percent Free",
+  "topCaption": "気づけば**何度も**\n聴き返してしまう**あの曲**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 6.175,
+      "note": "스마트폰 없던 시절 TV 녹화해서 몇 번이고 되감아 들었지",
+      "w": 596,
+      "h": 238
+    },
+    {
+      "src": "comments/02.png",
+      "start": 6.175,
+      "end": 12.35,
+      "note": "갑자기 머릿속에 흘러서 가사로 검색했더니 코난 노래였구나 정말 멋진 노래",
+      "w": 596,
+      "h": 278
+    },
+    {
+      "src": "comments/03.png",
+      "start": 12.35,
+      "end": 18.525,
+      "note": "어릴 때 듣고 계속 찾았는데 드디어 찾았다",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/04.png",
+      "start": 18.525,
+      "end": 24.7,
+      "note": "지금 18살인데 초1 때 이 곡 들은 걸 기억하는 거 대단하지 않아",
+      "w": 596,
+      "h": 238
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0,
+      "end": 2.667,
+      "original": "何処へゆくの？",
+      "translation": "何処へゆくの？"
+    },
+    {
+      "start": 2.667,
+      "end": 5.467,
+      "original": "Hello Mr. my yesterday",
+      "translation": "Hello Mr. my yesterday"
+    },
+    {
+      "start": 5.467,
+      "end": 8.2,
+      "original": "タイムマシンで",
+      "translation": "タイムマシンで"
+    },
+    {
+      "start": 8.2,
+      "end": 13.633,
+      "original": "あの日の僕へ現在伝えたくて",
+      "translation": "あの日の僕へ現在伝えたくて"
+    },
+    {
+      "start": 13.633,
+      "end": 16.4,
+      "original": "声が枯れ果てても",
+      "translation": "声が枯れ果てても"
+    },
+    {
+      "start": 16.4,
+      "end": 19.067,
+      "original": "生命で誓おう",
+      "translation": "生命で誓おう"
+    },
+    {
+      "start": 19.067,
+      "end": 24.367,
+      "original": "「夢叶うその瞬間に迎えにゆくよ」",
+      "translation": "「夢叶うその瞬間に迎えにゆくよ」"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 741
+}

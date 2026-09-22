@@ -1,0 +1,57 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#889",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ブルース・オールマイティ",
+  "videoSrc": "source.mp4",
+  "durationInFrames": 848,
+  "captionScale": 0.85,
+  "captions": [
+    {
+      "start": 0.0,
+      "end": 0.967,
+      "original": "You want her back?",
+      "translation": "彼女を取り戻したいのか"
+    },
+    {
+      "start": 6.667,
+      "end": 7.833,
+      "original": "No...",
+      "translation": "いいえ…"
+    },
+    {
+      "start": 10.033,
+      "end": 11.4,
+      "original": "I want her to be happy",
+      "translation": "幸せでいてほしいんです"
+    },
+    {
+      "start": 14.233,
+      "end": 15.6,
+      "original": "No matter what that means",
+      "translation": "それがどんな形であっても"
+    },
+    {
+      "start": 16.533,
+      "end": 20.667,
+      "original": "I want her to find someone who'll treat her",
+      "translation": "僕が与えてあげられなかった愛を"
+    },
+    {
+      "start": 22.133,
+      "end": 23.7,
+      "original": "with all the love",
+      "translation": "すべて注いでくれる人と"
+    },
+    {
+      "start": 24.867,
+      "end": 26.567,
+      "original": "she deserved from me.",
+      "translation": "彼女が出会えますように"
+    }
+  ]
+}

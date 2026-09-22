@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "067",
+  "name": "space_lab/067",
+  "media": {
+    "slug": "saltwater-croc-hands-up",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 296
+}

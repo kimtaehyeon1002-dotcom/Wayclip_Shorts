@@ -1,0 +1,88 @@
+{
+  "title": "相思相愛",
+  "artist": "aiko",
+  "topCaption": "**「相思相愛」**なんて\n**一度も言ってない**のに",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.867,
+      "note": "솔직해질 수 없다로 봐도 와닿는다",
+      "w": 900,
+      "h": 198,
+      "anchor": 0
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.867,
+      "end": 11.733,
+      "note": "카이토와 토이치가 서로에게 하는 말 같다",
+      "w": 900,
+      "h": 238,
+      "anchor": 11.4
+    },
+    {
+      "src": "comments/03.png",
+      "start": 11.733,
+      "end": 17.6,
+      "note": "눈 뜰 때까지 뒤에서 지켜본 카이토에 울었다",
+      "w": 900,
+      "h": 198,
+      "anchor": 16.9
+    },
+    {
+      "src": "comments/04.png",
+      "start": 17.6,
+      "end": 23.467,
+      "note": "영화 보고 하코다테 전망대에서 프러포즈했다",
+      "w": 900,
+      "h": 318,
+      "anchor": 22
+    },
+    {
+      "src": "comments/05.png",
+      "start": 23.467,
+      "end": 29.333,
+      "note": "좋아요 10개면 고백한다 그리고 성공했다",
+      "w": 900,
+      "h": 278
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0,
+      "end": 6.6,
+      "original": "あたしはあなたにはなれない",
+      "translation": "あたしはあなたにはなれない"
+    },
+    {
+      "start": 6.6,
+      "end": 11.4,
+      "original": "なれない",
+      "translation": "なれない"
+    },
+    {
+      "start": 11.4,
+      "end": 16.933,
+      "original": "ずっと遠くから見てる",
+      "translation": "ずっと遠くから見てる"
+    },
+    {
+      "start": 16.933,
+      "end": 20.733,
+      "original": "見てるだけで",
+      "translation": "見てるだけで"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 880
+}

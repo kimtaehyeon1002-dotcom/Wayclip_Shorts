@@ -1,0 +1,19 @@
+{
+  "title": "Catatumbo Lightning",
+  "artist": "q.media",
+  "topCaption": "1年に260日、[[雷が落ちる]]場所\n大自然が作り出した**地獄**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#940",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 602,
+    "videoH": 627,
+    "warnTop": 1249,
+    "bottomTop": 1319,
+    "bottomH": 601
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 264
+}

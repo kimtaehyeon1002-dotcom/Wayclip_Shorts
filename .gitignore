@@ -6,6 +6,31 @@ media/*.mp4
 .DS_Store
 *.log
 whisper.cpp/
+_보관/
 
 # 🎬 굿무비 레퍼런스 워크플로 중간 산출물 (ref-build --work 기본값)
-_ref-*/
+_ref/
+
+# ── Wayclip_Shorts 모노레포 통합 (2026-09-22) ──
+# Claude Code 워크트리 체크아웃 (수백 MB) / 로컬 설정
+.claude/worktrees/
+.claude/settings.local.json
+# 패리티 검사 임시 워크트리·리포트
+.parity/
+# 레포 루트에 잠깐 두는 원본 소스·잡파일 (작업 후 삭제 대상)
+/*.mp4
+/*.mov
+/*.srt
+/*.png
+/*.geo.json
+/*댓글/
+# publisher 비밀·로그 (GitHub Secrets 로 이관)
+publisher/.env
+publisher/env
+publisher/channels.json
+publisher/*.log
+publisher/schedule.json.bak-*
+publisher/.publish.lock
+publisher/.run-due.lock
+# web 빌드
+web/dist/

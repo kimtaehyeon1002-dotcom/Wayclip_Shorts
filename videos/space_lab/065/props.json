@@ -1,0 +1,19 @@
+{
+  "title": "スパイダーライトニング",
+  "artist": "@cluemag2",
+  "topCaption": "気象庁も[[口を閉ざす]]2012年の映像\n数秒後、**空を何かが走る…**",
+  "bottomCTA": "続きは本文で",
+  "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+  "videoNumber": "#935",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "layout": {
+    "topH": 425,
+    "videoH": 981,
+    "warnTop": 1426,
+    "bottomTop": 1496,
+    "bottomH": 424
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 276
+}

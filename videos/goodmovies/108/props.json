@@ -1,0 +1,22 @@
+{
+  "title": "We Bought a Zoo",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#892",
+  "mediaKind": "映画",
+  "mediaTitleJa": "幸せへのキセキ",
+  "captionScale": 0.85,
+  "captions": [
+    { "start": 0.0, "end": 0.96, "original": "Look, am I nuts to say that", "translation": "なあ、こんなこと言ったら変かな" },
+    { "start": 0.96, "end": 2.533, "original": "I missed you, like, crazy a lot?", "translation": "会いたくてたまらなかった…なんて" },
+    { "start": 3.333, "end": 4.333, "original": "A lot", "translation": "めちゃくちゃ、会いたかった" },
+    { "start": 7.4, "end": 8.567, "original": "Sorry about the rain", "translation": "こんな雨の中、ごめんね" },
+    { "start": 8.667, "end": 9.5, "original": "No, I love it", "translation": "いや、こういうの好きなんだ" },
+    { "start": 9.5, "end": 11.4, "original": "I love your hair, I loved your sign, Lily", "translation": "君の髪も好きだ、あのネオンも好きだった、リリー" },
+    { "start": 11.4, "end": 12.233, "original": "I love you", "translation": "君が好きだ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 636
+}

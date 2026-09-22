@@ -1,0 +1,23 @@
+{
+  "title": "The Faculty",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#898",
+  "mediaKind": "映画",
+  "mediaTitleJa": "パラサイト",
+  "captions": [
+    { "start": 0.29, "end": 0.74, "original": "Find out", "translation": "確かめてみよう" },
+    { "start": 1.79, "end": 2.41, "original": "Oh, man", "translation": "うわ、マジかよ" },
+    { "start": 9.43, "end": 11.54, "original": "It's all right", "translation": "大丈夫だ" },
+    { "start": 11.54, "end": 12.26, "original": "It's okay", "translation": "落ち着け" },
+    { "start": 22.01, "end": 23.53, "original": "Mr. Furlong, what are you doing?", "translation": "フルロング先生、何をしてるんですか？" },
+    { "start": 24.21, "end": 25.5, "original": "Just gonna check his prostate", "translation": "ちょっと前立腺を診てみるだけさ" },
+    { "start": 25.5, "end": 29.09, "original": "Actually, the surface texture changed, so...", "translation": "実は表面の質感が変わっててな、だから…" },
+    { "start": 30.07, "end": 31.2, "original": "Oh, I feel it", "translation": "おっ、何か感じるぞ" },
+    { "start": 44.72, "end": 47.1, "original": "It can replicate... Jesus", "translation": "こいつ、増殖できるんだ…なんてこった" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1413
+}

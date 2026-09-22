@@ -1,0 +1,14 @@
+{
+  "channel": "space_lab",
+  "number": "061",
+  "name": "space_lab/061",
+  "media": {
+    "slug": "perspective-battery-illusion",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 290
+}

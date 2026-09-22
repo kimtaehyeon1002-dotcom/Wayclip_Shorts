@@ -1,0 +1,23 @@
+{
+  "title": "The Faculty",
+  "artist": "",
+  "topCaption": "死前必看的**經典電影**\n**1000部，**不分順序介紹中",
+  "originalLanguage": "en",
+  "translationLanguage": "tw",
+  "videoNumber": "#898",
+  "mediaKind": "映画",
+  "mediaTitleJa": "老師不是人",
+  "captions": [
+    { "start": 0.29, "end": 0.74, "original": "Find out", "translation": "來瞧瞧吧" },
+    { "start": 1.79, "end": 2.41, "original": "Oh, man", "translation": "我的天啊…" },
+    { "start": 9.43, "end": 11.54, "original": "It's all right", "translation": "沒事的" },
+    { "start": 11.54, "end": 12.26, "original": "It's okay", "translation": "別緊張" },
+    { "start": 22.01, "end": 23.53, "original": "Mr. Furlong, what are you doing?", "translation": "佛隆老師，你在做什麼？" },
+    { "start": 24.21, "end": 25.5, "original": "Just gonna check his prostate", "translation": "只是幫牠檢查一下攝護腺" },
+    { "start": 25.5, "end": 29.09, "original": "Actually, the surface texture changed, so...", "translation": "其實牠表面的觸感變了，所以…" },
+    { "start": 30.07, "end": 31.2, "original": "Oh, I feel it", "translation": "喔，摸到了" },
+    { "start": 44.72, "end": 47.1, "original": "It can replicate... Jesus", "translation": "牠會自我複製…我的天" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1413
+}

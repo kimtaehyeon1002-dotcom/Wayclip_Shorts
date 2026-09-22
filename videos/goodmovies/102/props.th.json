@@ -1,0 +1,23 @@
+{
+  "title": "The Faculty",
+  "artist": "",
+  "topCaption": "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย ไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#898",
+  "mediaKind": "映画",
+  "mediaTitleJa": "โรงเรียนสยองโลก",
+  "captions": [
+    { "start": 0.29, "end": 0.74, "original": "Find out", "translation": "มาดูกันเลย" },
+    { "start": 1.79, "end": 2.41, "original": "Oh, man", "translation": "โอ้โห…" },
+    { "start": 9.43, "end": 11.54, "original": "It's all right", "translation": "ไม่เป็นไรนะ" },
+    { "start": 11.54, "end": 12.26, "original": "It's okay", "translation": "ใจเย็นๆ" },
+    { "start": 22.01, "end": 23.53, "original": "Mr. Furlong, what are you doing?", "translation": "อาจารย์เฟอร์ลอง ทำอะไรน่ะ" },
+    { "start": 24.21, "end": 25.5, "original": "Just gonna check his prostate", "translation": "แค่จะตรวจต่อมลูกหมากให้มันหน่อย" },
+    { "start": 25.5, "end": 29.09, "original": "Actually, the surface texture changed, so...", "translation": "ที่จริงพื้นผิวของมันเปลี่ยนไป เลย…" },
+    { "start": 30.07, "end": 31.2, "original": "Oh, I feel it", "translation": "โอ้ สัมผัสได้แล้ว" },
+    { "start": 44.72, "end": 47.1, "original": "It can replicate... Jesus", "translation": "มันแบ่งตัวได้… ให้ตายสิ" }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1413
+}

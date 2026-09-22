@@ -1,0 +1,19 @@
+{
+  "title": "Catatumbo Lightning",
+  "artist": "q.media",
+  "topCaption": "260 วันต่อปีที่[[ฟ้าผ่าไม่หยุด]]\nนรกที่**ธรรมชาติสร้างขึ้นเอง**",
+  "bottomCTA": "อ่านต่อในแคปชัน",
+  "warnText": "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**",
+  "videoNumber": "#940",
+  "originalLanguage": "ja",
+  "translationLanguage": "th",
+  "layout": {
+    "topH": 602,
+    "videoH": 627,
+    "warnTop": 1249,
+    "bottomTop": 1319,
+    "bottomH": 601
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 264
+}

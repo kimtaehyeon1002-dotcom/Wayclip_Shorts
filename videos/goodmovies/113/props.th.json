@@ -1,0 +1,80 @@
+{
+  "title": "",
+  "artist": "",
+  "topCaption": "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย ไม่เรียงลำดับ",
+  "originalLanguage": "en",
+  "translationLanguage": "th",
+  "videoNumber": "#887",
+  "mediaKind": "ドラマ",
+  "mediaTitleJa": "Roseanne",
+  "captions": [
+    {
+      "start": 0,
+      "end": 1.757,
+      "original": "Did you send me flowers, Dan?",
+      "translation": "แดน คุณส่งดอกไม้ให้ฉันเหรอ?"
+    },
+    {
+      "start": 1.823,
+      "end": 2.423,
+      "original": "No.",
+      "translation": "เปล่า"
+    },
+    {
+      "start": 2.423,
+      "end": 3.757,
+      "original": "Why would I do that?",
+      "translation": "จะส่งไปทำไมล่ะ"
+    },
+    {
+      "start": 5.39,
+      "end": 6.09,
+      "original": "Yeah, right.",
+      "translation": "ก็จริงนะ"
+    },
+    {
+      "start": 6.09,
+      "end": 7.523,
+      "original": "Like you'd ever be romantic enough",
+      "translation": "คุณไม่ได้โรแมนติกขนาดนั้น"
+    },
+    {
+      "start": 7.523,
+      "end": 8.423,
+      "original": "to do something like that",
+      "translation": "ที่จะทำอะไรแบบนี้"
+    },
+    {
+      "start": 8.423,
+      "end": 9.457,
+      "original": "for no reason.",
+      "translation": "ทั้งที่ไม่ใช่วันพิเศษอะไรเลย"
+    },
+    {
+      "start": 10.223,
+      "end": 11.623,
+      "original": "Dear Roseanne, I lied,",
+      "translation": "ถึงโรแซนน์ ผมโกหก"
+    },
+    {
+      "start": 11.623,
+      "end": 13.157,
+      "original": "They're from me, love Dan.",
+      "translation": "ดอกไม้นี่จากผมเอง รัก แดน"
+    },
+    {
+      "start": 14.857,
+      "end": 16.09,
+      "original": "You scum!",
+      "translation": "แย่ที่สุดเลย!"
+    },
+    {
+      "start": 17.823,
+      "end": 18.9,
+      "original": "I love you too dear.",
+      "translation": "ผมก็รักคุณ ที่รัก"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 567
+}

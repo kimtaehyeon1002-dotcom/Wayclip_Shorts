@@ -37,6 +37,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
   mediaKind,
   mediaTitleJa,
   captionYOffset = 0,
+  captionScale = 1,
 }) => {
   const numText = videoNumber
     ? String(videoNumber).startsWith("#")
@@ -134,7 +135,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                 style={{
                   width: "100%",
                   fontFamily: originalFontJp(),
-                  fontSize: 36,
+                  fontSize: 36 * captionScale,
                   fontWeight: 300,
                   fontStyle: "italic",
                   fontSynthesis: "style",
@@ -156,7 +157,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
               style={{
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
-                fontSize: 48,
+                fontSize: 48 * captionScale,
                 fontWeight: 400,
                 color: "#FFEB3B",
                 letterSpacing: letterSpacingFor(translationLanguage, -0.02),

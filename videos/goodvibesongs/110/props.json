@@ -1,0 +1,154 @@
+{
+  "title": "W/X/Y",
+  "artist": "Tani Yuuki",
+  "topCaption": "みんなここで\n**たにゆうき**に惚れた",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.667,
+      "note": "편곡이 너무 천재적이야",
+      "w": 402
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.667,
+      "end": 11.333,
+      "note": "타니가 편곡하는 부분에서 유우리는 엥 하는 얼굴 타카야는 끄덕끄덕하는 게 좋아",
+      "w": 924
+    },
+    {
+      "src": "comments/03.png",
+      "start": 11.333,
+      "end": 17,
+      "note": "형들 둘이 중간에 웃으면서 지켜보는 장면 좋아",
+      "w": 894
+    },
+    {
+      "src": "comments/04.png",
+      "start": 17,
+      "end": 22.667,
+      "note": "이 편곡 최고 완전 좋아",
+      "w": 496
+    },
+    {
+      "src": "comments/05.png",
+      "start": 22.667,
+      "end": 28.333,
+      "note": "타카야 안정감 진짜 대단해",
+      "w": 408
+    },
+    {
+      "src": "comments/06.png",
+      "start": 28.333,
+      "end": 34,
+      "note": "타카야의 slowly flowing day가 너무 좋아요",
+      "w": 728
+    },
+    {
+      "src": "comments/07.png",
+      "start": 34,
+      "end": 39.667,
+      "note": "카와사키 타카야한테도 반해버렸어",
+      "w": 420
+    },
+    {
+      "src": "comments/08.png",
+      "start": 39.667,
+      "end": 45.333,
+      "note": "몇 번을 들어도 참 좋네",
+      "w": 422
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.15,
+      "end": 3,
+      "original": "君がいなきゃ今もどこかで",
+      "translation": "君がいなきゃ今もどこかで"
+    },
+    {
+      "start": 3,
+      "end": 6.42,
+      "original": "動けないままの僕で",
+      "translation": "動けないままの僕で"
+    },
+    {
+      "start": 6.42,
+      "end": 9.84,
+      "original": "ありがとうを伝えたいのです",
+      "translation": "ありがとうを伝えたいのです"
+    },
+    {
+      "start": 9.84,
+      "end": 13.34,
+      "original": "これからは僕が支えてくって",
+      "translation": "これからは僕が支えてくって"
+    },
+    {
+      "start": 13.34,
+      "end": 16.64,
+      "original": "呆れてしまうくらいにね",
+      "translation": "呆れてしまうくらいにね"
+    },
+    {
+      "start": 16.64,
+      "end": 20.1,
+      "original": "愛が増していく day by day",
+      "translation": "愛が増していく day by day"
+    },
+    {
+      "start": 20.1,
+      "end": 23.6,
+      "original": "面と向かうとどうしても",
+      "translation": "面と向かうとどうしても"
+    },
+    {
+      "start": 23.6,
+      "end": 27.52,
+      "original": "素直になれないな、ごめんね",
+      "translation": "素直になれないな、ごめんね"
+    },
+    {
+      "start": 28.2,
+      "end": 31.8,
+      "original": "戯れる slowly flowing day",
+      "translation": "戯れる slowly flowing day"
+    },
+    {
+      "start": 31.8,
+      "end": 35.16,
+      "original": "愛してるも通り越して",
+      "translation": "愛してるも通り越して"
+    },
+    {
+      "start": 35.16,
+      "end": 38.5,
+      "original": "似た者同士こうして",
+      "translation": "似た者同士こうして"
+    },
+    {
+      "start": 38.5,
+      "end": 42,
+      "original": "年老いるまで笑っていたいね",
+      "translation": "年老いるまで笑っていたいね"
+    },
+    {
+      "start": 42,
+      "end": 45.33,
+      "original": "君がいなきゃ lonely, lonely day",
+      "translation": "君がいなきゃ lonely, lonely day"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1360
+}

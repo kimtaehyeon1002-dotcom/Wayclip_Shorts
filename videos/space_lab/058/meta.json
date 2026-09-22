@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "058",
+  "name": "space_lab/058",
+  "media": {
+    "slug": "white-browed-bushchat",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 186
+}

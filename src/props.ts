@@ -30,6 +30,33 @@ export const commentSchema = z.object({
   note: z.string().default(""),
   // 블러본 원본 가로 px (prep-comments 가 ffprobe 로 기록). 표시 폭 = w × scale, maxWidth 캡.
   w: z.number().optional(),
+  // 블러본 원본 세로 px (prep-comments 가 기록). 스택 모드의 밀어올림 애니메이션에 필요.
+  h: z.number().optional(),
+  // (선택) 스택 모드 — true 면 교체되지 않고 화면 아래에서부터 **쌓인다**. start 에 등장해
+  // 영상 끝까지 남고, 뒤이어 오는 스택 댓글이 아래에 붙으면서 먼저 온 것들을 위로 밀어올린다.
+  // 마지막 장면에서 사연이 하나씩 모여 쌓이는 연출용 (111 부터).
+  stack: z.boolean().optional(),
+  // (선택) 스택이 붙는 쪽. "bottom"(기본) = 화면 아래에서 위로 쌓이고 새 댓글이 아래에 붙는다.
+  // "top" = 그 거울상 — 화면 위에서 아래로 쌓이고 새 댓글이 위에 붙으며 먼저 온 것들을 내린다.
+  // 위/아래가 같은 배율·같은 밀려붙는 모션이라 형식이 맞는다.
+  anchor: z.enum(["top", "bottom"]).optional(),
+  // (선택) 스택 댓글의 좌우 정렬. 생략하면 아래 스택은 left/right 를 번갈아(지그재그),
+  // 위 스택은 가운데 정렬. 좌우로 어긋나야 세로로 겹쳐 붙여도 서로 글자를 안 가린다.
+  align: z.enum(["left", "right", "center"]).optional(),
+  // (선택) 스택 댓글을 정렬된 가장자리에서 안쪽(중앙쪽)으로 미는 px.
+  dx: z.number().optional(),
+
+  // ── 핀 모드 (pin) — 화면을 통째로 덮는 콜라주 조각 ──
+  // 마지막 1초에 사연이 하나씩 빠르게 꽂히며 여백 없이 화면을 채우는 연출용.
+  // stack 과 달리 레이아웃 계산 없이 x/y 에 그대로 박고, start 부터 영상 끝까지 남는다.
+  pin: z.boolean().optional(),
+  x: z.number().optional(), // 화면 좌표(px) — 조각의 중심
+  y: z.number().optional(),
+  rot: z.number().optional(), // 회전(도). 좌/우로 살짝 틀어 쌓인 느낌을 낸다
+  scale: z.number().optional(), // 이 조각만의 배율 (없으면 commentStack.scale)
+  // 레이어. 큰 값이 위. 0 = 화면을 메우는 배경 더미, 1 = 그 위에 얹는 실제 사연,
+  // 2 = 맨 마지막에 정중앙으로 꽂히는 메인. 같은 z 안에서는 start 순서(나중이 위).
+  z: z.number().optional(),
 });
 export type Comment = z.infer<typeof commentSchema>;
 
@@ -70,11 +97,38 @@ const baseShape = {
 export const goodVibeSongsSchema = z.object({
   ...baseShape,
   comments: z.array(commentSchema).default([]),
+  // (선택) 스택 모드(comments[].stack) 튜닝. 누락이면 아래 default — 스택 댓글이 없으면
+  // 아무 영향 없으므로 기존 양산 영상과 100% 동일.
+  commentStack: z
+    .object({
+      // 스택이 차오를 수 있는 상한 y(px). 넘긴 만큼 오래된 댓글부터 위로 잘려나간다.
+      // 1075 = 자막 블록(영상 세로중앙+70 ≈ y 1000~1060) 바로 아래 — 가수 얼굴·자막을 안 가린다.
+      top: z.number().default(1075),
+      bottom: z.number().default(20), // 화면 맨 아래 여백(px)
+      gap: z.number().default(10), // 쌓인 댓글 사이 세로 간격(px)
+      scale: z.number().default(0.85), // 스택 댓글 표시 배율(원본 px 기준)
+      // 한 장이 등장하며 위를 밀어올리는 데 걸리는 시간(초). 0 이면 즉시(하드컷).
+      riseSeconds: z.number().default(0.22),
+      // 새 댓글이 위 댓글을 얼마나 덜 밀어올리는지 (1 = 안 겹침, 0.7 = 30% 겹쳐 붙음).
+      // 좌우 지그재그(align)와 같이 쓰면 글자를 안 가리면서 촘촘하게 모인다.
+      overlap: z.number().default(1),
+      sideMargin: z.number().default(30), // 좌/우 정렬 시 화면 가장자리 여백(px)
+      // ── 위쪽 스택(anchor:"top") ── 큐레이션한 사연을 화면 상단 가운데에 세워두는 자리.
+      topY: z.number().default(450), // 위 스택이 시작하는 y (영상 밴드 상단 440 바로 아래)
+      topGap: z.number().default(10),
+      // 위 스택은 가운데 정렬이라 좌우로 안 어긋난다 → 겹치면 글자를 가리므로 기본 1(안 겹침).
+      topOverlap: z.number().default(1),
+      topHeight: z.number().default(550), // 위 스택이 쓸 수 있는 세로 범위(px). 자막 위까지.
+    })
+    .optional(),
   // (선택) 채널 핸들 워터마크. 누락이면 아무것도 안 그림(기존 양산 영상과 100% 동일).
   watermark: watermarkSchema.optional(),
   // (선택) 자막을 영상 세로중앙에서 아래로 내리는 양(px). 기본 70 = 채널 표준.
   // 화면분할(상/하 2단) 영상처럼 중앙 정렬이 필요할 때만 0 으로 덮어쓴다.
   captionYOffset: z.number().default(70),
+  // (선택) 자막 글자 배율. 기본 1 = 채널 표준(원어 34 / 번역 46px).
+  // 가사 한 줄이 길어 두 줄로 넘칠 때만 영상별로 낮춘다 (굿무비 captionScale 과 같은 역할).
+  captionScale: z.number().default(1),
 });
 export type GoodVibeSongsProps = z.infer<typeof goodVibeSongsSchema>;
 
@@ -99,6 +153,9 @@ export const goodMoviesSchema = z.object({
   // 자막 블록을 영상 세로중앙에서 아래(+)/위(-)로 미는 px. 클로즈업이라 자막이 얼굴을
   // 가릴 때 영상별로 내린다. default 0 = 기존대로 세로 중앙 (다른 영상 영향 없음).
   captionYOffset: z.number().default(0),
+  // 자막 글자 크기 배율 (원어 36px / 번역 48px 에 곱함). default 1 = 채널 표준이라
+  // 기존 영상엔 영향 없음. 클로즈업이라 자막이 커 보일 때 영상별로 줄인다.
+  captionScale: z.number().default(1),
 });
 export type GoodMoviesProps = z.infer<typeof goodMoviesSchema>;
 

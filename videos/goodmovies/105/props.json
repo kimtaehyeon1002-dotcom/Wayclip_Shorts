@@ -1,0 +1,29 @@
+{
+  "title": "Meet Joe Black",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#895",
+  "mediaKind": "映画",
+  "mediaTitleJa": "ジョー・ブラックをよろしく",
+  "captions": [
+    { "start": 0.0, "end": 1.0, "original": "So you're married?", "translation": "結婚してるの？" },
+    { "start": 1.0, "end": 1.833, "original": "No, I'm not", "translation": "いや、してないよ" },
+    { "start": 1.833, "end": 2.5, "original": "But you..", "translation": "でも…" },
+    { "start": 2.5, "end": 3.8, "original": "You have a girlfriend?", "translation": "恋人はいるの？" },
+    { "start": 3.8, "end": 4.633, "original": "No", "translation": "いないよ" },
+    { "start": 9.067, "end": 9.9, "original": "Gay?", "translation": "ゲイなの？" },
+    { "start": 9.9, "end": 10.733, "original": "No", "translation": "違うよ" },
+    { "start": 10.733, "end": 11.967, "original": "So, tell me, Joe...", "translation": "じゃあ教えて、ジョー" },
+    { "start": 12.967, "end": 14.733, "original": "How come a man as attractive", "translation": "こんなに素敵で" },
+    { "start": 14.733, "end": 15.9, "original": "Intelligent,", "translation": "頭も良くて" },
+    { "start": 16.9, "end": 18.233, "original": "Well-spoken", "translation": "話も上手で" },
+    { "start": 18.233, "end": 19.9, "original": "Diffident in the most", "translation": "しかも、ドキッとするほど" },
+    { "start": 21.433, "end": 23.067, "original": "seductive way, and yet", "translation": "控えめな人が" },
+    { "start": 23.067, "end": 25.333, "original": "Is all alone in this world?", "translation": "どうして独りでいるの？" }
+  ],
+  "captionYOffset": 160,
+  "videoSrc": "source.mp4",
+  "durationInFrames": 804
+}

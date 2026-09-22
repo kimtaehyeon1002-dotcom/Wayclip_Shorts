@@ -1,0 +1,20 @@
+{
+  "channel": "goodmovies",
+  "number": "106",
+  "name": "goodmovies/106",
+  "media": {
+    "slug": "wallflower-2012",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 804
+}

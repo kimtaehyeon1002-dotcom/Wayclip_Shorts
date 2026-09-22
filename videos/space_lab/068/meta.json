@@ -1,0 +1,20 @@
+{
+  "channel": "space_lab",
+  "number": "068",
+  "name": "space_lab/068",
+  "media": {
+    "slug": "body-exhibition-mother-son",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja",
+    "translations": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ]
+  },
+  "durationInFrames": 153
+}

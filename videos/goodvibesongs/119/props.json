@@ -1,0 +1,119 @@
+{
+  "title": "花になって",
+  "artist": "緑黄色社会",
+  "topCaption": "**ビジュアルも歌声も**\n美しすぎる**長屋晴子**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.747,
+      "note": "라이브가 이정도로 잘한다고 미쳤네",
+      "w": 528,
+      "h": 158
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.747,
+      "end": 11.493,
+      "note": "보컬 너무 잘해서 웃음 나오고 베이스도 멋있음",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/03.png",
+      "start": 11.493,
+      "end": 17.24,
+      "note": "트집 잡으려 해도 안 떠오를 만큼 완벽",
+      "w": 596,
+      "h": 238
+    },
+    {
+      "src": "comments/04.png",
+      "start": 17.24,
+      "end": 22.987,
+      "note": "진시 시점 가사에 미스터리한 멜로디까지 천재",
+      "w": 596,
+      "h": 238
+    },
+    {
+      "src": "comments/05.png",
+      "start": 22.987,
+      "end": 28.733,
+      "note": "인쟈나이 다음이 랏타라이였다는 게 들통남ㅋㅋ",
+      "w": 596,
+      "h": 238
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 2.52,
+      "original": "綺麗にされた花瓶も",
+      "translation": "綺麗にされた花瓶も"
+    },
+    {
+      "start": 2.52,
+      "end": 4.88,
+      "original": "肥やしも何もいらない",
+      "translation": "肥やしも何もいらない"
+    },
+    {
+      "start": 4.88,
+      "end": 8.64,
+      "original": "その姿が美しい",
+      "translation": "その姿が美しい"
+    },
+    {
+      "start": 8.64,
+      "end": 11.44,
+      "original": "花になって",
+      "translation": "花になって"
+    },
+    {
+      "start": 11.44,
+      "end": 13.68,
+      "original": "ほらニヒルに笑って",
+      "translation": "ほらニヒルに笑って"
+    },
+    {
+      "start": 13.68,
+      "end": 17.06,
+      "original": "その顔にぞくぞくして",
+      "translation": "その顔にぞくぞくして"
+    },
+    {
+      "start": 17.06,
+      "end": 18.72,
+      "original": "目が離せない",
+      "translation": "目が離せない"
+    },
+    {
+      "start": 18.72,
+      "end": 21.51,
+      "original": "味見して",
+      "translation": "味見して"
+    },
+    {
+      "start": 21.51,
+      "end": 25.2,
+      "original": "君の毒は私の薬って",
+      "translation": "君の毒は私の薬って"
+    },
+    {
+      "start": 25.2,
+      "end": 27.72,
+      "original": "包んであげるから",
+      "translation": "包んであげるから"
+    },
+    {
+      "start": 27.72,
+      "end": 28.73,
+      "original": "笑って",
+      "translation": "笑って"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 862
+}

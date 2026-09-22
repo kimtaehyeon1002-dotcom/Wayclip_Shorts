@@ -1,0 +1,126 @@
+{
+  "title": "晩餐歌",
+  "artist": "May J. × 川崎鷹也",
+  "topCaption": "この眼鏡のおじさんが\n私の人生の理由です",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 10.183,
+      "note": "카와사키 타카야도 너무 잘하는 거 아니야 진짜로",
+      "w": 496
+    },
+    {
+      "src": "comments/02.png",
+      "start": 10.183,
+      "end": 20.367,
+      "note": "부드러움과 힘의 컨트롤이 절묘하다",
+      "w": 832
+    },
+    {
+      "src": "comments/03.png",
+      "start": 20.367,
+      "end": 30.55,
+      "note": "카와사키 타카야가 너무 괴물인 건에 대하여",
+      "w": 724
+    },
+    {
+      "src": "comments/04.png",
+      "start": 30.55,
+      "end": 40.733,
+      "note": "미소의 파괴력이 너무 심하다",
+      "w": 652
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.18,
+      "end": 3.3,
+      "original": "でも味気ないんだよね",
+      "translation": "でも味気ないんだよね"
+    },
+    {
+      "start": 3.45,
+      "end": 5.45,
+      "original": "会いたくなんだよね",
+      "translation": "会いたくなんだよね"
+    },
+    {
+      "start": 5.52,
+      "end": 7.75,
+      "original": "君以外会いたくないんだよね",
+      "translation": "君以外会いたくないんだよね"
+    },
+    {
+      "start": 7.8,
+      "end": 10.35,
+      "original": "なんて勝手だね",
+      "translation": "なんて勝手だね"
+    },
+    {
+      "start": 10.4,
+      "end": 12.55,
+      "original": "大体曖昧なんだよね",
+      "translation": "大体曖昧なんだよね"
+    },
+    {
+      "start": 12.6,
+      "end": 15.15,
+      "original": "愛の存在証明なんて",
+      "translation": "愛の存在証明なんて"
+    },
+    {
+      "start": 15.2,
+      "end": 19.35,
+      "original": "君が教えてくれないか",
+      "translation": "君が教えてくれないか"
+    },
+    {
+      "start": 19.4,
+      "end": 22.4,
+      "original": "何十回の夜を過ごしたって",
+      "translation": "何十回の夜を過ごしたって"
+    },
+    {
+      "start": 22.42,
+      "end": 24.35,
+      "original": "得られぬような",
+      "translation": "得られぬような"
+    },
+    {
+      "start": 24.4,
+      "end": 28.95,
+      "original": "愛してるを並べてみて",
+      "translation": "愛してるを並べてみて"
+    },
+    {
+      "start": 29,
+      "end": 32.15,
+      "original": "何十回の夜を過ごしたって",
+      "translation": "何十回の夜を過ごしたって"
+    },
+    {
+      "start": 32.2,
+      "end": 34.15,
+      "original": "得られぬような",
+      "translation": "得られぬような"
+    },
+    {
+      "start": 34.2,
+      "end": 39.9,
+      "original": "最高のフルコースを頂戴",
+      "translation": "最高のフルコースを頂戴"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1222
+}

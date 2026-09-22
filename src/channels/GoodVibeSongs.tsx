@@ -26,6 +26,22 @@ const COMMENT_SCALE = 1.0; // 모든 댓글 공통 표시 배율(원본 px 기�
 const COMMENT_MAXW = 900; // 표시 폭 상한(px) — 업로드 시 양끝 잘림 방지(안전여백 ~90px). 넘는 댓글은 글자 작아져도 캡
 const COMMENT_TOP = VIDEO_TOP + VIDEO_H + COMMENT_GAP; // = 1496
 const COMMENT_ZONE_H = 1920 - COMMENT_TOP - 20; // 하단 20px 여백
+// 스택 모드(comments[].stack) 기본값 — props.commentStack 으로 영상별 덮어쓰기.
+// 상한 1075 = 자막 블록(영상 세로중앙+70 ≈ y 1000~1060) 바로 아래. 가수 얼굴·자막은 안 가리고
+// 그 아래에만 사연이 가운데 정렬로 쌓인다 (위 스택 anchor:"top" 과 같은 형식).
+const COMMENT_STACK = {
+  top: 1075,
+  bottom: 20,
+  gap: 10,
+  scale: 0.85,
+  riseSeconds: 0.22,
+  overlap: 1,
+  sideMargin: 30,
+  topY: 450,
+  topGap: 10,
+  topOverlap: 1,
+  topHeight: 550,
+};
 
 export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
   topCaption,
@@ -35,9 +51,12 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
   videoSrc,
   captions,
   comments,
+  commentStack,
   watermark,
   captionYOffset = CAPTION_Y_OFFSET,
+  captionScale = 1,
 }) => {
+  const stackCfg = { ...COMMENT_STACK, ...(commentStack ?? {}) };
   return (
     <AbsoluteFill
       style={{ background: "#000", fontFeatureSettings: '"palt"' }}
@@ -148,7 +167,7 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
                 style={{
                   width: "100%",
                   fontFamily: originalFont(originalLanguage),
-                  fontSize: 34,
+                  fontSize: 34 * captionScale,
                   fontWeight: 400,
                   fontStyle: "italic",
                   color: "rgba(255,255,255,0.82)",
@@ -167,7 +186,7 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
               style={{
                 width: "100%",
                 fontFamily: captionFont(translationLanguage),
-                fontSize: 46,
+                fontSize: 46 * captionScale,
                 fontWeight: 400,
                 color: "#fff",
                 letterSpacing: "-0.01em",
@@ -208,6 +227,23 @@ export const GoodVibeSongs: React.FC<GoodVibeSongsProps> = ({
           left: 0,
           right: 0,
           height: COMMENT_ZONE_H,
+          pointerEvents: "none",
+        }}
+        stackScale={stackCfg.scale}
+        stackGap={stackCfg.gap}
+        stackRiseSeconds={stackCfg.riseSeconds}
+        stackOverlap={stackCfg.overlap}
+        stackSideMargin={stackCfg.sideMargin}
+        stackTopY={stackCfg.topY}
+        stackTopGap={stackCfg.topGap}
+        stackTopOverlap={stackCfg.topOverlap}
+        stackTopHeight={stackCfg.topHeight}
+        stackZoneStyle={{
+          position: "absolute",
+          top: stackCfg.top,
+          left: 0,
+          right: 0,
+          bottom: stackCfg.bottom,
           pointerEvents: "none",
         }}
       />

@@ -325,11 +325,11 @@ vi=San Francisco(폴백 Inter, `vietnamese` subset 필수 — 없으면 성조�
 ```bash
 # R-1 만: 컷 매칭 + A/V 진단 + 검증 시트 (여기서 멈춤)
 node tools/ref-build.mjs "104 굿무비 레퍼런스.mp4" "104 굿무비 원본.mp4" --number 104
-#   → _ref-104/104.cuts.json, _ref-104/104-컷검증.png  ← 이 시트를 보고 승인
+#   → _ref/104/104.cuts.json, _ref/104/104-컷검증.png  ← 이 시트를 보고 승인
 
 # 승인 후: 리프레임 역산 + 자막 OCR + 컷 적용까지
 node tools/ref-build.mjs "…레퍼런스.mp4" "…원본.mp4" --number 104 --go
-#   → _ref-104/104컷편집.mp4 (밴드 크기·리프레임 적용됨) + 104자막.srt (컷편집본 시간축)
+#   → _ref/104/104컷편집.mp4 (밴드 크기·리프레임 적용됨) + 104자막.srt (컷편집본 시간축)
 
 # 스캐폴드까지 한 번에 (prep-media + new-video + props.captions 영문 채움)
 node tools/ref-build.mjs "…레퍼런스.mp4" "…원본.mp4" --number 104 --scaffold \

@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "109",
+  "name": "goodmovies/109",
+  "media": {
+    "slug": "the-last-10-years-2022",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "ja",
+    "translation": "ja"
+  },
+  "durationInFrames": 825
+}

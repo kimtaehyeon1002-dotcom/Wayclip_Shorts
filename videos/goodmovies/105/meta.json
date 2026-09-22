@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "105",
+  "name": "goodmovies/105",
+  "media": {
+    "slug": "meet-joe-black-1998",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 804
+}

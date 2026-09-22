@@ -1,0 +1,74 @@
+{
+  "title": "とてと",
+  "artist": "財部亮治 (パペットスンスン)",
+  "topCaption": "見た目で笑ってたのに\n**気づけば泣いてる**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 6.167,
+      "note": "상사한테 혼날 때 계속 머릿속에 흐름",
+      "w": 456
+    },
+    {
+      "src": "comments/02.png",
+      "start": 6.167,
+      "end": 12.333,
+      "note": "눈알 다 드러났는데 왜 이렇게 귀엽지",
+      "w": 726
+    },
+    {
+      "src": "comments/03.png",
+      "start": 12.333,
+      "end": 18.5,
+      "note": "가시투성이 세상에 이런 폭신폭신한 노래가 있는 줄 몰랐다",
+      "w": 1182
+    },
+    {
+      "src": "comments/04.png",
+      "start": 18.5,
+      "end": 24.667,
+      "note": "이거 듣고 눈물 나는 사람은 지친 거야 자신에게도 다정하게",
+      "w": 1138
+    },
+    {
+      "src": "comments/05.png",
+      "start": 24.667,
+      "end": 30.833,
+      "note": "35세 남성인데 토테토 듣고 눈물 나는 이유",
+      "w": 724
+    },
+    {
+      "src": "comments/06.png",
+      "start": 30.833,
+      "end": 37,
+      "note": "인생 지쳤는데 왜 눈물이 나지 고마워 스운스운",
+      "w": 1036
+    },
+    {
+      "src": "comments/07.png",
+      "start": 37,
+      "end": 43.167,
+      "note": "스운스운 좋아하는 사람은 너무 착해서 지친 사람 오늘도 수고했어요",
+      "w": 916
+    }
+  ],
+  "captions": [
+    { "start": 0.0,   "end": 4.17,  "original": "ふりそそいでね おひさま おでこ", "translation": "ふりそそいでね おひさま おでこ" },
+    { "start": 4.63,  "end": 7.93,  "original": "ひんやりしてね まどあけて",     "translation": "ひんやりしてね まどあけて" },
+    { "start": 9.23,  "end": 11.8,  "original": "そうやっていつでも",           "translation": "そうやっていつでも" },
+    { "start": 14.3,  "end": 16.2,  "original": "あおい朝だね",                 "translation": "あおい朝だね" },
+    { "start": 16.6,  "end": 18.47, "original": "あしおと とてと",             "translation": "あしおと とてと" },
+    { "start": 18.87, "end": 23.43, "original": "ぷらぷらと あるこう土手を",     "translation": "ぷらぷらと あるこう土手を" },
+    { "start": 23.77, "end": 28.07, "original": "さらさらと わらうタンポポ",     "translation": "さらさらと わらうタンポポ" },
+    { "start": 28.67, "end": 32.87, "original": "くよくよと してることも",       "translation": "くよくよと してることも" },
+    { "start": 33.4,  "end": 37.63, "original": "そよそよと かぜがなでるの",     "translation": "そよそよと かぜがなでるの" },
+    { "start": 38.17, "end": 40.6,  "original": "ゆかいだね ゆかいだね",         "translation": "ゆかいだね ゆかいだね" },
+    { "start": 40.73, "end": 43.13, "original": "わくわくしていいんだよ",       "translation": "わくわくしていいんだよ" }
+  ],
+  "captionYOffset": 0,
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1295
+}

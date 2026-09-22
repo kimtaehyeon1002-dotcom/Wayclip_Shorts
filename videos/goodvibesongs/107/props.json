@@ -1,0 +1,256 @@
+{
+  "title": "恋",
+  "artist": "星野源",
+  "topCaption": "このドラマが今年で\n**10周年**だなんて…",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 7.151,
+      "note": "대본 없는 부부생활이 시작된다",
+      "w": 488
+    },
+    {
+      "src": "comments/02.png",
+      "start": 7.151,
+      "end": 14.303,
+      "note": "축 결혼 아스키아트",
+      "w": 412
+    },
+    {
+      "src": "comments/03.png",
+      "start": 14.303,
+      "end": 21.454,
+      "note": "드라마에서 결혼하고 현실에서도 결혼하다니 무슨 드라마야",
+      "w": 856
+    },
+    {
+      "src": "comments/04.png",
+      "start": 21.454,
+      "end": 28.605,
+      "note": "그 드라마는 전설이지",
+      "w": 410
+    },
+    {
+      "src": "comments/05.png",
+      "start": 28.605,
+      "end": 35.756,
+      "note": "배고픈 채로 네 곁으로 돌아간다는 가사는 프러포즈",
+      "w": 918
+    },
+    {
+      "src": "comments/06.png",
+      "start": 35.756,
+      "end": 42.908,
+      "note": "이 시절 정말 즐거웠지 뭔가 평화로웠던 것 같아",
+      "w": 790
+    },
+    {
+      "src": "comments/07.png",
+      "start": 42.908,
+      "end": 50.059,
+      "note": "겐상 결혼해서 들으러 온 동지가 많아 기쁘다",
+      "w": 536
+    },
+    {
+      "src": "comments/08.png",
+      "start": 50.059,
+      "end": 57.21,
+      "note": "이런 드라마 같은 인생을 사는 사람이 또 있을까",
+      "w": 772
+    },
+    {
+      "src": "comments/09.png",
+      "start": 57.21,
+      "end": 64.362,
+      "note": "남편 노래에 아내가 춤추는 거 최고로 귀엽다",
+      "w": 676
+    },
+    {
+      "src": "comments/10.png",
+      "start": 64.362,
+      "end": 71.513,
+      "note": "이 사람은 왜 계속 귀여운 거야 ㅋㅋ",
+      "w": 548
+    },
+    {
+      "src": "comments/11.png",
+      "start": 71.513,
+      "end": 78.664,
+      "note": "결혼했으니 다음은 恋이 아니라 愛겠네",
+      "w": 652
+    },
+    {
+      "src": "comments/12.png",
+      "start": 78.664,
+      "end": 85.815,
+      "note": "호시노 겐은 정말 별의 근원 같은 사람",
+      "w": 894
+    },
+    {
+      "src": "comments/13.png",
+      "start": 85.815,
+      "end": 92.967,
+      "note": "지금 이 노래 듣는 사람이면 친해질 수 있을 듯",
+      "w": 736
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 12.7,
+      "end": 14.6,
+      "original": "営みの",
+      "translation": "営みの"
+    },
+    {
+      "start": 15.1,
+      "end": 18.1,
+      "original": "街が暮れたら色めき",
+      "translation": "街が暮れたら色めき"
+    },
+    {
+      "start": 18.3,
+      "end": 20.8,
+      "original": "風たちは運ぶわ",
+      "translation": "風たちは運ぶわ"
+    },
+    {
+      "start": 20.9,
+      "end": 23.9,
+      "original": "カラスと人々の群れ",
+      "translation": "カラスと人々の群れ"
+    },
+    {
+      "start": 24.8,
+      "end": 26.7,
+      "original": "意味なんか",
+      "translation": "意味なんか"
+    },
+    {
+      "start": 27,
+      "end": 30.5,
+      "original": "ないさ暮らしがあるだけ",
+      "translation": "ないさ暮らしがあるだけ"
+    },
+    {
+      "start": 30.6,
+      "end": 33,
+      "original": "ただ腹を空かせて",
+      "translation": "ただ腹を空かせて"
+    },
+    {
+      "start": 33.1,
+      "end": 35.5,
+      "original": "君の元へ帰るんだ",
+      "translation": "君の元へ帰るんだ"
+    },
+    {
+      "start": 36.6,
+      "end": 39.5,
+      "original": "物心ついたらふと",
+      "translation": "物心ついたらふと"
+    },
+    {
+      "start": 39.8,
+      "end": 42.7,
+      "original": "見上げて思うことが",
+      "translation": "見上げて思うことが"
+    },
+    {
+      "start": 42.7,
+      "end": 45.7,
+      "original": "この世にいる誰も",
+      "translation": "この世にいる誰も"
+    },
+    {
+      "start": 45.8,
+      "end": 48,
+      "original": "二人から",
+      "translation": "二人から"
+    },
+    {
+      "start": 48.8,
+      "end": 51.4,
+      "original": "胸の中にあるもの",
+      "translation": "胸の中にあるもの"
+    },
+    {
+      "start": 51.7,
+      "end": 54.8,
+      "original": "いつか見えなくなるもの",
+      "translation": "いつか見えなくなるもの"
+    },
+    {
+      "start": 54.8,
+      "end": 57.9,
+      "original": "それは側にいること",
+      "translation": "それは側にいること"
+    },
+    {
+      "start": 57.9,
+      "end": 61,
+      "original": "いつも思い出して",
+      "translation": "いつも思い出して"
+    },
+    {
+      "start": 61,
+      "end": 63.8,
+      "original": "君の中にあるもの",
+      "translation": "君の中にあるもの"
+    },
+    {
+      "start": 63.8,
+      "end": 66.9,
+      "original": "距離の中にある鼓動",
+      "translation": "距離の中にある鼓動"
+    },
+    {
+      "start": 66.9,
+      "end": 69.6,
+      "original": "恋をしたのは貴方の",
+      "translation": "恋をしたのは貴方の"
+    },
+    {
+      "start": 69.8,
+      "end": 71.3,
+      "original": "指の混ざり",
+      "translation": "指の混ざり"
+    },
+    {
+      "start": 71.5,
+      "end": 72.8,
+      "original": "頬の香り",
+      "translation": "頬の香り"
+    },
+    {
+      "start": 72.8,
+      "end": 75.5,
+      "original": "夫婦を超えてゆけ",
+      "translation": "夫婦を超えてゆけ"
+    },
+    {
+      "start": 75.8,
+      "end": 78.6,
+      "original": "二人を超えてゆけ",
+      "translation": "二人を超えてゆけ"
+    },
+    {
+      "start": 78.8,
+      "end": 81.6,
+      "original": "一人を超えてゆけ",
+      "translation": "一人を超えてゆけ"
+    }
+  ],
+  "captionYOffset": 0,
+  "videoSrc": "source.mp4",
+  "durationInFrames": 2789
+}

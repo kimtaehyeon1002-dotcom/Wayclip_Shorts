@@ -1,0 +1,19 @@
+{
+  "title": "Con đường gạch vàng dưới đáy Thái Bình Dương",
+  "artist": "@cosmic._.note",
+  "topCaption": "[[Con đường gạch vàng]] dưới đáy biển\n**Như lối dẫn tới Atlantis…**",
+  "bottomCTA": "Xem tiếp ở phần mô tả",
+  "warnText": "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết",
+  "videoNumber": "#934",
+  "originalLanguage": "ja",
+  "translationLanguage": "vi",
+  "layout": {
+    "topH": 512,
+    "videoH": 806,
+    "warnTop": 1338,
+    "bottomTop": 1408,
+    "bottomH": 512
+  },
+  "videoSrc": "source.mp4",
+  "durationInFrames": 194
+}

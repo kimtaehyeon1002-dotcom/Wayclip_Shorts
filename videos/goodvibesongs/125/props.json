@@ -1,0 +1,108 @@
+{
+  "title": "逆夢",
+  "artist": "King Gnu",
+  "topCaption": "歌声が**バグってる**\n**井口理**",
+  "originalLanguage": "ja",
+  "translationLanguage": "ja",
+  "comments": [
+    {
+      "src": "comments/01.png",
+      "start": 0,
+      "end": 5.873,
+      "note": "이쪽 사토루도 최강이네",
+      "w": 474,
+      "h": 158
+    },
+    {
+      "src": "comments/02.png",
+      "start": 5.873,
+      "end": 11.747,
+      "note": "이구치 목소리는 뭔가 감싸주는 느낌이야",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/03.png",
+      "start": 11.747,
+      "end": 17.62,
+      "note": "이렇게 노래 잘하는데 개그맨 하는 거 너무 아깝다",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/04.png",
+      "start": 17.62,
+      "end": 23.493,
+      "note": "노랫소리를 천연수 같다고들 하는데 이구치 목소리는 나뭇잎 사이 햇살 같아",
+      "w": 596,
+      "h": 198
+    },
+    {
+      "src": "comments/05.png",
+      "start": 23.493,
+      "end": 29.367,
+      "note": "츠네타 곡을 이구치가 불러서 명곡이 된다고 새삼 느끼게 하는 곡",
+      "w": 596,
+      "h": 238
+    }
+  ],
+  "watermark": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "captions": [
+    {
+      "start": 0.833,
+      "end": 4.4,
+      "original": "あなたが望むなら",
+      "translation": "あなたが望むなら"
+    },
+    {
+      "start": 4.4,
+      "end": 7.233,
+      "original": "この胸を射通して",
+      "translation": "この胸を射通して"
+    },
+    {
+      "start": 7.233,
+      "end": 10.233,
+      "original": "頼りの無い僕もいつか",
+      "translation": "頼りの無い僕もいつか"
+    },
+    {
+      "start": 10.233,
+      "end": 14.633,
+      "original": "何者かに成れたなら",
+      "translation": "何者かに成れたなら"
+    },
+    {
+      "start": 14.633,
+      "end": 16.967,
+      "original": "訳もなく",
+      "translation": "訳もなく"
+    },
+    {
+      "start": 16.967,
+      "end": 19.733,
+      "original": "涙が溢れそうな",
+      "translation": "涙が溢れそうな"
+    },
+    {
+      "start": 19.733,
+      "end": 23.667,
+      "original": "夜を埋め尽くす",
+      "translation": "夜を埋め尽くす"
+    },
+    {
+      "start": 23.667,
+      "end": 27.767,
+      "original": "輝く夢と成る",
+      "translation": "輝く夢と成る"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 881
+}
