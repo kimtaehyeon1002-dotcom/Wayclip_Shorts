@@ -1,12 +1,43 @@
-# remotion-shorts — 설치 & 시작 가이드 (비전공자용)
+# Wayclip_Shorts
 
-세로형 쇼츠(YouTube Shorts / Reels / TikTok)를 **컷편집 없이 자막·번역만으로 양산**하는 도구예요.
-5개 채널(굿바이브 / 굿무비 / 레디액션 / 디스힙합 / 스페이스랩)을 1080×1920 30fps로 뽑습니다.
+세로형 쇼츠 양산(Remotion) + 인스타 릴스 자동 게시(GitHub Actions) + 대시보드(GitHub Pages) — 한 레포.
 
-> **이 문서는 "처음 켜는 컴퓨터에서 어떻게 준비하느냐"만 다룹니다.**
-> 실제 작업 순서(영상 스캐폴드 → 자막 → 렌더)는 설치가 끝난 뒤 `CLAUDE.md`를 보거나, Claude Code에게 그냥 한국어로 시키면 됩니다.
+```
+맥 CLI (Claude Code)                 GitHub Actions                     GitHub Pages
+────────────────────────────         ──────────────────────────         ─────────────────────────
+new-video → STT → 자막/번역           publish-due.yml (10분마다)          web/ 대시보드 (서버 없음)
+→ 프리뷰 승인 → render.mjs            R2 결재본 → 인스타 릴스 게시        스케줄 편집 · 새 포맷 위저드
+→ 캡션 txt → upload-output.mjs ──R2──▶ + 첫 댓글 → schedule.json 커밋  ◀──▶ 결재본 조회 · 팔로워 차트
+```
+
+| 구역 | 문서 |
+| --- | --- |
+| 편집·렌더 (맥) — 채널 규칙, 워크플로, 도구 전부 | [CLAUDE.md](./CLAUDE.md) |
+| 게시 (Actions) — 시크릿, 운영, 규칙 | [publisher/README.md](./publisher/README.md) |
+| 대시보드 (Pages) — PAT 설정, 페이지 | [web/README.md](./web/README.md) |
+| 포맷(채널) 추가 | CLAUDE.md "새 포맷 추가" · `formats/*.json` · `packages/shared/format-schema.mjs` |
+
+## 빠른 시작 (맥)
+
+```bash
+npm install
+# 비밀 2개 인계받아 넣기 (gitignore): publisher/.env (R2 키), publisher/channels.json (IG 토큰)
+node tools/new-video.mjs goodmovies 120 --media <slug> …     # 이하 CLAUDE.md 양산 워크플로
+```
+
+## 한 번만 하는 세팅 (레포 관리자)
+
+1. `gh auth refresh -h github.com -s workflow` → `.github/workflows/*.yml` 커밋·푸시 (토큰에 workflow 스코프 필요).
+2. `bash tools/setup-secrets.sh` → GitHub Secrets (`IG_<SLUG>_<LANG>`, `R2_*`, `GMAIL_*`).
+3. `node tools/upload-output.mjs --all` → 기존 결재본을 R2 에 백필.
+4. GitHub → Settings → Pages → Source: **GitHub Actions**. 대시보드 URL: `https://kimtaehyeon1002-dotcom.github.io/Wayclip_Shorts/`
+5. 대시보드 설정 페이지에 fine-grained PAT(이 레포만: Contents RW, Actions RW) 입력.
+6. 맥 crontab 의 옛 `run-due.sh` 줄 삭제 (이중 게시 방지).
 
 ---
+
+# (보존) 맥 세팅 가이드 — 비전공자용
+
 
 ## 0. 먼저 알아둘 3가지 (중요)
 

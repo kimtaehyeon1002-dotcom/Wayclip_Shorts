@@ -68,9 +68,9 @@ export const NewFormat: React.FC = () => {
     f.features = { ...f.features, captions, videoNumber };
     if (!captions) { f.layout.captionZone = null; delete (f.typography as Record<string, unknown>).original; delete (f.typography as Record<string, unknown>).translation; }
     if (!comments) delete (f.features as Record<string, unknown>).comments;
-    else if (!f.features.comments) f.features.comments = { gap: 16, scale: 1, maxWidth: 900, bottomMargin: 20, stackDefaults: { top: 1075, bottom: 20, gap: 10, scale: 0.85, riseSeconds: 0.22, overlap: 1, sideMargin: 30, topY: 450, topGap: 10, topOverlap: 1, topHeight: 550 } };
+    else if (!(f.features as Record<string, unknown>).comments) (f.features as Record<string, unknown>).comments = { gap: 16, scale: 1, maxWidth: 900, bottomMargin: 20, stackDefaults: { top: 1075, bottom: 20, gap: 10, scale: 0.85, riseSeconds: 0.22, overlap: 1, sideMargin: 30, topY: 450, topGap: 10, topOverlap: 1, topHeight: 550 } };
     if (!watermark) { delete (f.features as Record<string, unknown>).watermark; delete (f.scaffold as Record<string, unknown>).watermark; delete (f.defaultProps as Record<string, unknown>).watermark; }
-    else { f.features.watermark = { default: { text: handle, y: 0.375, size: 17, opacity: 0.45, weight: 500 }, style: { fontFamily: { $fn: "latinFont" }, color: "#fff", letterSpacing: "0.02em", textShadow: "0 2px 12px rgba(0,0,0,0.6)" } }; f.scaffold.watermark = f.features.watermark.default; }
+    else { const wmDef = { text: handle, y: 0.375, size: 17, opacity: 0.45, weight: 500 }; (f.features as Record<string, unknown>).watermark = { default: wmDef, style: { fontFamily: { $fn: "latinFont" }, color: "#fff", letterSpacing: "0.02em", textShadow: "0 2px 12px rgba(0,0,0,0.6)" } }; f.scaffold.watermark = wmDef; }
     f.fixedStrings = Object.fromEntries(Object.entries(fixedTop).filter(([, v]) => v.trim()).map(([l, v]) => [l, { topCaption: v }]));
     if (f.fixedStrings.ja?.topCaption) { f.scaffold.topCaption = f.fixedStrings.ja.topCaption; f.defaultProps.topCaption = f.fixedStrings.ja.topCaption; }
     f.captionGuide = { pinnedComment: Object.fromEntries(f.languages.targets.map((l) => [l, pinned[l] || ""])), rulesFile: `formats/guides/${slug}.md`, imdbRating: false, recommendParagraph: false };

@@ -15,8 +15,10 @@ const listeners = new Set<() => void>();
 
 export function getSettings(): Settings {
   if (cache) return cache;
-  try { cache = { ...DEFAULTS, ...JSON.parse(localStorage.getItem(KEY) || "{}") }; } catch { cache = { ...DEFAULTS }; }
-  return cache;
+  let loaded: Settings;
+  try { loaded = { ...DEFAULTS, ...JSON.parse(localStorage.getItem(KEY) || "{}") }; } catch { loaded = { ...DEFAULTS }; }
+  cache = loaded;
+  return loaded;
 }
 export function setSettings(patch: Partial<Settings>) {
   cache = { ...getSettings(), ...patch };

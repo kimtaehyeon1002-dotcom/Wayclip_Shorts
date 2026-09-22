@@ -38,7 +38,8 @@ export const Schedule: React.FC = () => {
           const { _new, ...clean } = entry!;
           const next: ScheduleEntry = { project: "remotion", ...clean };
           if (!next.lang || next.lang === "ja") delete next.lang;
-          Object.keys(next).forEach((k) => { const v = (next as Record<string, unknown>)[k]; if (v === "" || v === undefined) delete (next as Record<string, unknown>)[k]; });
+          const rec = next as unknown as Record<string, unknown>;
+          Object.keys(rec).forEach((k) => { if (rec[k] === "" || rec[k] === undefined) delete rec[k]; });
           if (i >= 0) list[i] = { ...list[i], ...next }; else list.push(next);
         }
         return stringifySchedule(list);

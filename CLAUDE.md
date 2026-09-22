@@ -1,10 +1,27 @@
-# remotion-shorts
+# Wayclip_Shorts (remotion-shorts + publisher + web 모노레포)
 
-세로형 쇼츠(YouTube Shorts / Reels / TikTok) 양산용 — **Remotion(React) 판.** `hyperframes-shorts` 와 정확히 같은 역할(일본 타깃 5개 채널, 1080×1920 30fps, 컷편집 없는 자막 쇼츠)을 HyperFrames 대신 Remotion 으로 한다.
+세로형 쇼츠(YouTube Shorts / Reels / TikTok) 양산 + 인스타 자동 게시 + 대시보드. 레포: `github.com/kimtaehyeon1002-dotcom/Wayclip_Shorts` (**public**).
 
-**채널별 컴포지션(`src/channels/`) + 영상별 props 격리(`videos/<ch>/<n>/props.json`) + 채널별·영상번호별 결재본 분리(`output/<ch>/<n>/`).**
+| 영역 | 어디서 도나 | 무엇 |
+| --- | --- | --- |
+| **편집·렌더** (이 문서 대부분) | **맥 CLI — Claude Code** | 스캐폴드 → STT → 자막/번역 → 프리뷰 승인 → 렌더 → 캡션 txt → **R2 업로드**(`tools/upload-output.mjs`) |
+| **게시** (`publisher/`) | **GitHub Actions cron** (`publish-due.yml`, 10분마다) | `publisher/schedule.json` 의 pending 항목을 R2 결재본으로 인스타 릴스 게시 + 첫 댓글, 상태를 커밋 |
+| **대시보드** (`web/`) | **GitHub Pages** (정적 SPA, 서버 없음) | 스케줄 편집·포맷 추가·결재본 조회·팔로워 차트 — GitHub API(PAT) 로 레포에 커밋 |
 
-## 채널 (5개)
+**채널 = `formats/<slug>.json` 포맷 레지스트리(진실의 원천) + 단일 컴포지션(`src/format/FormatComposition.tsx`) + 영상별 props 격리(`videos/<ch>/<n>/props.json`) + 채널별·영상번호별 결재본 분리(`output/<ch>[-lang]/<n>/`).**
+
+> ⚠️ **레포가 public 이다.** `videos/**/props.json`(번역 자막), 댓글 PNG, `publisher/schedule.json` 이 공개된다. 토큰·미디어·`output/` 은 gitignore. 비밀은 GitHub Secrets 와 로컬 `publisher/.env` / `publisher/channels.json` 에만.
+
+## 새 포맷(채널) 추가 — JSON 하나
+
+1. **웹 대시보드 → 포맷 → "새 포맷"** 위저드(기존 포맷 복제 → 레이아웃/색/타이포/타깃 언어/댓글 오버레이/워터마크/고정 문구/고정댓글/캡션 규칙 → 커밋) **또는** `formats/<기존>.json` 을 복사해 `formats/<slug>.json` 작성 + `formats/guides/<slug>.md`.
+2. GitHub Secrets 에 `IG_<SLUG대문자>_<LANG대문자>` (JSON `{"igUserId","igAccessToken"}`) 추가 — 언어별. 로컬은 `publisher/channels.json["<slug>[-lang]"]`.
+3. `node tools/gen-formats.mjs` (preview/render/typecheck 가 자동 실행) → `node tools/validate-formats.mjs` 대신 `npm run validate:formats` → Composition id = slug 의 `_`→`-`.
+4. 그 다음은 아래 양산 워크플로 그대로 (`new-video <slug> …`). **기존 5개 포맷의 값은 바꾸지 말 것** — `tools/parity-check.mjs` 가 옛 렌더와 픽셀 동일성을 검사한다(53 스틸 md5 동일, 2026-09-22).
+
+포맷 JSON 의 스타일 값은 DSL: 리터럴 / `{"$lang":{"th":1.45},"default":1.2}` / `{"$fn":"scriptLineHeight","arg":1.18}`(= `src/lang.ts` 헬퍼를 같은 인자로 호출). 스키마: `packages/shared/format-schema.mjs` (+ 생성된 `format.schema.json`).
+
+## 채널 (5개) — 요약. **값의 진실은 `formats/<slug>.json`** (포트·핸들·타깃 언어·고정댓글 포함)
 
 | slug | 한국어 별명 | preview 포트 | Composition id | 비고 |
 | --- | --- | --- | --- | --- |
@@ -23,7 +40,7 @@
 
 **중요:** 새 영상 작업(스캐폴드/번역/렌더) 요청 시 **시작 전에 어느 채널인지 먼저 물어볼 것.** 경로(`videos/goodvibesongs/076`)에서 자명하거나 메시지에 채널이 있으면 다시 묻지 말 것. 인프라/도구 작업은 안 물어도 됨.
 
-각 채널의 레이아웃·타이포·색상 표준은 `src/channels/<Channel>.tsx` 상단 주석과 아래 "채널별 레이아웃 요약" 참조.
+각 채널의 레이아웃·타이포·색상 표준은 `formats/<slug>.json` (layout / typography / features) 과 아래 "채널별 레이아웃 요약" 참조. 렌더 코드는 `src/format/FormatComposition.tsx` 하나.
 
 ## HyperFrames 판과의 차이 (핵심)
 
@@ -50,16 +67,24 @@ Remotion 의 `staticFile()` 은 "public 루트"만 본다. 렌더 시 그 디렉
 ## 파일 구조
 
 ```
-remotion-shorts/
+Wayclip_Shorts/
 ├── CLAUDE.md
-├── package.json              # remotion + @remotion/*. dev:<channel> 스크립트(고정 포트)
+├── package.json              # npm workspaces: packages/shared, publisher, web. remotion + @remotion/*
 ├── remotion.config.ts        # h264 / aac / yuv420p
+├── formats/<slug>.json       # ★ 포맷 레지스트리 (채널 정의의 진실). guides/<slug>.md = 채널별 캡션 규칙
+├── packages/shared/          # 도구·퍼블리셔·웹 공유 순수 모듈: langs / output-paths / caption-txt / schedule / format-schema / layout / props-fields
+├── publisher/                # 인스타 게시기 (Actions cron). schedule.json = 큐(추적). .env/channels.json = 로컬 비밀(무시)
+├── web/                      # 대시보드 SPA (Vite+React) → GitHub Pages
+├── output-index.json         # upload-output 이 쓰는 R2 결재본 목록 (웹 Outputs 페이지)
+├── .github/workflows/        # ci.yml / publish-due.yml / pages.yml
+├── .claude/skills/           # caption (/caption) · comment-picker
 ├── src/
-│   ├── index.ts  Root.tsx    # 5개 <Composition> 등록 + calculateMetadata(durationInFrames)
-│   ├── props.ts              # zod 스키마(채널별) + Caption 타입 + 채널 default
+│   ├── index.ts  Root.tsx    # formats.generated.ts 를 map 해 <Composition> 등록 + calculateMetadata
+│   ├── formats.generated.ts  # tools/gen-formats.mjs 생성 (손대지 말 것)
+│   ├── props.ts              # generic zod 스키마 1개 (채널별 default 는 포맷 JSON 의 defaultProps)
+│   ├── format/               # FormatComposition(단일 컴포지션) / resolveStyle(DSL) / geometry(밴드)
 │   ├── fonts.ts  lang.ts     # 결정적 폰트 로딩 + 언어→폰트/표시 분기
-│   ├── channels/*.tsx        # 채널당 컴포지션 1개
-│   └── components/           # ThreeBand 없음 — BackgroundVideo / CaptionTrack / TopCaption / WarnPill
+│   └── components/           # BackgroundVideo / CaptionTrack / TopCaption / WarnPill / CommentTrack
 ├── media/<slug>.mp4 + <slug>.json       # 공유 원본 + 사이드카 (prep-media 임포트)
 ├── tools/                    # 아래 "도구" 참조
 ├── videos/<ch>/<n>/          # 영상별: props.json + meta.json + source.mp4(하드링크). 렌더 시 --public-dir 가 여기를 가리킴
@@ -74,7 +99,7 @@ remotion-shorts/
 
 레포엔 **코드만** 있고 미디어/바이너리(`media/*.mp4`, `node_modules/`, `whisper.cpp/`)는 제외돼 있다. 각자 환경에서 받거나 자동 생성된다.
 
-1. `npm install` — 의존성(Remotion 등) 설치.
+1. `npm install` — 의존성(Remotion + workspaces) 설치. `publisher/.env`(R2 키) 와 `publisher/channels.json`(IG 토큰)은 인계받아 넣는다(gitignore).
 2. **(자막 쓸 때만)** 첫 `node tools/transcribe.mjs …` 실행 시 `whisper.cpp/` 가 **그 OS에 맞게 자동 빌드 + 모델 자동 다운로드**된다 (이후 캐시). 빌드 전제조건:
    - macOS: `xcode-select --install`
    - Linux: `cmake`, `build-essential`
@@ -150,7 +175,7 @@ node tools/preview.mjs space_lab 047 --lang tw --port 3017     # (선택) 언어
 #   ⚠️ 일본어를 나중에 고쳤으면 반드시: node tools/derive-lang.mjs <dir> --sync
 #      (durationInFrames/layout/caption 타임스탬프 등 구조 필드만 재동기화, 번역문은 보존)
 
-# 6) 렌더 → 결재본 (normalize 단계 없음).
+# 6) 렌더 → 결재본 (normalize 단계 없음). 끝나면 캡션 txt 가 있는 언어는 R2 에 자동 업로드.
 node tools/render.mjs goodvibesongs 076              # 단일 언어 채널 → output/goodvibesongs/076/076.mp4
 node tools/render.mjs space_lab 047                  # 다국어 → output/space_lab[-tw|-th|-vi]/047/047.mp4
 node tools/render.mjs readyaction 952 --langs tw,th,vi   # 일본어판이 이미 있으면 나머지만
@@ -161,7 +186,12 @@ node tools/render.mjs readyaction 952 --langs tw,th,vi   # 일본어판이 이�
 #   npx remotion render src/index.ts space-lab output/space_lab/047/047-tw.mp4 \
 #     --props=videos/space_lab/047/props.tw.json --public-dir=videos/space_lab/047
 
-# 7) 정리 (마지막 스텝, 필수) — 결재본(output) + <번호>캡션.txt 확정된 뒤에만.
+# 6b) 캡션 txt 작성 뒤 **R2 업로드 (필수)** — 게시(GitHub Actions)는 R2 만 본다. 안 올리면 예약이 '보류' 로 남는다.
+node tools/upload-output.mjs goodvibesongs 076       # mp4 + 캡션 txt 멱등 업로드 + output-index.json 갱신 → 커밋
+node tools/check-caption-txt.mjs                     # 목록이 비어야 완료
+#   예약은 웹 대시보드(스케줄) 또는 publisher/schedule.json 편집 → 커밋. 10분마다 Actions 가 게시.
+
+# 7) 정리 (마지막 스텝, 필수) — 결재본(output) + <번호>캡션.txt 확정 + 업로드 뒤에만.
 #   a) 이번 작업의 원본 소스 삭제 — 사용자가 최상단(레포 루트)에 처음 준 그 영상 파일 (예: 956소스.mov).
 #      ⚠️ 이번 영상 것만. 다른 작업의 소스(951소스.mov 등)는 절대 건드리지 말 것. media/<slug>.mp4(공유 임포트본)도 지우지 말 것.
 #   b) 프리뷰 스튜디오 kill — 5)에서 --port 로 내가 실제 띄운 그 포트만 (기본 채널포트라고 단정 말 것).
@@ -179,11 +209,11 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
 - **파일명:** `<번호>캡션.txt` (예: 072번 → `072캡션.txt`), 위치는 `output/<채널>/<번호>/`. 결재본에 별명/접미사가 붙어도 **번호만** 써서 `083캡션.txt`.
 - **🌏 다국어 채널(굿무비·스페이스랩·레디액션)은 캡션도 4개** — 각 언어 폴더(`output/<ch>-<lang>/<번호>/`) 안에 `<번호>캡션.txt`.
   본문·고정댓글 전부 해당 언어로 **재작성**(직역 금지), **@핸들만 그대로**. 굿무비 IMDb 평점은 일본어판에서 한 번만 검색해 4개가 공유.
-  언어별 고정댓글 표와 추천 문단 문형은 [tools/jp-caption-writer.md](./tools/jp-caption-writer.md) "다국어" 절 참조.
-- **내용 순서:** 한 파일에 **캡션 → 구분선 → 고정댓글**. 포맷·채널별 캡션 작성 규칙·CTA 트렌드는 **[tools/jp-caption-writer.md](./tools/jp-caption-writer.md)** (= `/캡션` 스킬과 동일 내용) 참조. **굿무비만** IMDb 평점을 캡션에 넣으므로 그 수치만 **웹 검색으로 실값 확인** 후 기입(레디액션 등 다른 영화 채널은 평점 표기 안 함 — 불필요한 검색 금지).
+  언어별 고정댓글은 `formats/<slug>.json` `captionGuide.pinnedComment`, 추천 문단 문형은 `/caption` 스킬 "다국어" 절 참조.
+- **내용 순서:** 한 파일에 **캡션 → 구분선 → 고정댓글**. 계약 파서: `packages/shared/caption-txt.mjs`. 공통 규칙·CTA 트렌드는 **`.claude/skills/caption/SKILL.md`** (`/caption`), 채널별 규칙은 `formats/guides/<slug>.md`, 고정댓글·핸들은 `formats/<slug>.json` 의 `captionGuide` 참조. **굿무비만** IMDb 평점을 캡션에 넣으므로 그 수치만 **웹 검색으로 실값 확인** 후 기입(레디액션 등 다른 영화 채널은 평점 표기 안 함 — 불필요한 검색 금지).
 - **굿무비 캡션 후반부에 '추천 문단' 필수(레디액션식).** 굿무비 채널 본질이 '영화 추천'이므로, 캡션 후반에 `そして、第〈번호〉作目のおすすめは、この『작품명』。その理由は、〜` 형식으로 추천 이유 2~3문장을 넣는다(번호=영상 번호). 상세는 jp-caption-writer.md 굿무비 구조 참조.
 - **굿무비 고정댓글 앞에 '명작 선정 이유' 문단 필수 (2026-07-29 추가, 레디액션식).** 굿무비 고정댓글은 아래 고정 문구 **그대로** 두되, 그 **위에** 한 문단을 덧붙인다: `✨この映画が「名作映画1000選」に選ばれた理由、それは"<핵심 문구>"にある。` + 왜 명작인지 2~3문장(결말 스포 금지). 즉 굿무비 고정댓글 = **선정 이유 문단 → 빈 줄 → 고정 문구**.
-- **고정댓글은 채널별 고정 문구** — 요청 없으면 아래 그대로(변형 금지):
+- **고정댓글은 채널별 고정 문구** — 요청 없으면 아래 그대로(변형 금지). **진실은 `formats/<slug>.json` `captionGuide.pinnedComment`** (아래 표는 참고용 복사본):
 
 | 채널 | 고정댓글 |
 | --- | --- |
@@ -237,7 +267,7 @@ rm -f "956소스.mov"; lsof -ti :3005 | xargs kill 2>/dev/null
   - **⚠️ 굿바이브 워터마크는 채널 고정 (101 확정본, 2026-07-29 — 영상별로 바꾸지 말 것):**
     `props.watermark = { "text": "@goodvibesongs.mp3", "y": 0.375, "size": 17, "opacity": 0.45, "weight": 500 }`
     영상 밴드(top 440 / h 1040) 안 37.5% 지점 = 화면 y 830px, 라틴 폰트(SF) 흰색 17px. 자막(중앙+70px)보다 위라 안 겹침.
-    `new-video.mjs` 가 굿바이브 스캐폴드 시 **자동 주입**하므로 새 영상엔 수작업 불필요. 표준값은 `tools/channels.mjs` 의 `GOODVIBE_WATERMARK` + `src/props.ts` `watermarkSchema` default 두 곳 미러 — **한쪽만 고치지 말 것.** 워터마크는 굿바이브 전용(다른 채널 스키마엔 없음).
+    `new-video.mjs` 가 굿바이브 스캐폴드 시 **자동 주입**하므로 새 영상엔 수작업 불필요. 표준값은 `formats/goodvibesongs.json` `features.watermark.default` 한 곳 (`GOODVIBE_WATERMARK` 는 거기서 파생). 워터마크는 `features.watermark` 가 있는 포맷에서만 그려진다.
 - **goodmovies**: 흰. **(2026-07-29 개편 — 레이아웃은 레디액션식, 색만 굿무비 유지.)** 상 480 / 영상 960 / 하 480. 상단은 **시리즈 고정 카피**(default `死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中`, 50pt/200 검정, **만 500 — 영상별 멘트 아님, 매번 묻지 말 것). 자막 **영상 세로 중앙**: 원어 36px italic NSJP 흰(검정 stroke, 영어 음원만) 위 → 번역 48px/400 **노랑#FFEB3B**(검정 stroke) 아래. 하단 `#번호`(40px italic 검정) + `映画『제목』`(38px/200 검정 0.72) — **`#번호` = 1000 − 영상번호**(예 090 → `#910`, `new-video` 자동 주입).
   - 개편 전 영상(073~084)은 상 440/영상 1040 + 자막 영상 하단 + `captionPaddingTop` 이었다. `captionPaddingTop` 은 **폐기**(스키마에만 호환용으로 남음) — 새 영상엔 쓰지 말 것.
   - **⚠️ 굿무비 자막 워크플로 — "영문 박힌 영상 + SRT" (경로 C 변형):** 굿무비는 **영어 자막이 영상에 이미 박혀 있는** 클립 + **사용자 SRT(`<번호>자막.srt`)** 조합이 흔하다. 이때:
@@ -511,7 +541,11 @@ R-4  기존 굿무비 흐름 그대로:
 | `apply-cuts.mjs` | 🎬 컷 적용 + 리프레임 굽기 + 오디오 선택/보정 + SRT 리매핑 |
 | `ocr-subs.mjs` | 🎬 영상에 박힌 자막 OCR → SRT (macOS Vision, tesseract 불필요) |
 | `vidutil.mjs` | 프레임 단위 컷 검출·파형 오프셋·회색 프레임 디코드 (위 도구들 공유) |
-| `channels.mjs` | 채널 정의/기본 props/레이아웃 상수/space_lab layout 계산 (모든 도구 공유) |
+| `channels.mjs` | **얇은 로더** — `formats/*.json` 을 읽어 예전 export 이름(CHANNELS/channelDefaults/captionLayouts/…) 그대로 제공. 스냅샷 테스트로 옛 표와 동일 보장 |
+| `gen-formats.mjs` | `formats/*.json` → `src/formats.generated.ts` + `packages/shared/format.schema.json` 생성. `--check` = CI 최신성 검사 |
+| `parity-check.mjs` | 포맷 리팩터 픽셀 패리티 — `pre-format-registry` 태그 워크트리와 새 트리의 스틸을 md5/SSIM 비교 |
+| `upload-output.mjs` | 결재본(mp4+캡션 txt)을 R2 에 멱등 업로드 + `output-index.json`. render.mjs 끝에서 자동 호출 |
+| `setup-secrets.sh` | 로컬 `publisher/channels.json` + `.env` → GitHub Actions Secrets (한 번) |
 
 > **`normalize-output` 없음** — Remotion 출력은 이미 SNS 안전(start_time 0). 절대 edit-list 정규화하지 말 것.
 
@@ -525,5 +559,7 @@ R-4  기존 굿무비 흐름 그대로:
 6. **GL 렌더러 명시 금지** (`remotion.config.ts`). WebGL 미사용 — `angle` 은 CI(GPU 없음)에서 실패하고 메모리 누수. 기본값 사용.
 7. **결정성**: `Math.random()`/`Date.now()` 금지 (병렬 렌더에서 프레임마다 달라짐). 애니메이션은 `useCurrentFrame()` 순수 함수 + `interpolate` 양끝 `clamp`.
 8. **`--props` 는 top-level shallow merge** — 중첩 객체(예: space_lab `layout`)를 부분만 주면 형제 키가 사라짐. 중첩 객체는 통째로 줄 것 (`new-video` 가 완전한 props.json 을 씀).
-9. **언어 enum 은 `src/props.ts` 와 `tools/channels.mjs` 두 곳의 손수 동기화 미러** — 한쪽만 고치면 zod 는 통과하는데 `validate-props` 가 거부하거나 그 반대가 된다. 항상 양쪽 같이.
+9. **언어 enum 은 `packages/shared/langs.mjs` 단일 소스** (`src/props.ts` 와 `tools/channels.mjs` 가 둘 다 여기서 읽는다 — 예전의 2중 미러 폐지). 새 언어는 거기 + `src/lang.ts` 폰트 스택 + `src/fonts.ts` subset.
+11. **포맷 JSON 을 고쳤으면 `node tools/gen-formats.mjs`** — preview/render/typecheck 가 자동 실행하지만 `npx remotion …` 을 직접 칠 땐 생성 파일이 낡을 수 있다. CI 가 `--check` 로 잡는다.
+12. **`.github/workflows/*.yml` 은 `gh` 토큰에 `workflow` 스코프가 있어야 push 된다** (`gh auth refresh -h github.com -s workflow`).
 10. **Google Fonts 는 subset 을 빠뜨리면 조용히 깨진다** — Inter 에 `vietnamese` 가 없으면 베트남어 성조부호만 폴백 폰트로 새고, weight 를 안 올리면(태국어 500/700) 합성 굵기가 나온다. 새 언어를 추가할 땐 `src/fonts.ts` 의 subsets·weights 를 실제 사용값과 맞출 것.

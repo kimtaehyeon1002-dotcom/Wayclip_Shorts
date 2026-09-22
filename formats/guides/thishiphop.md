@@ -1,5 +1,12 @@
-# 디스힙합 (thishiphop) — 캡션 작성 규칙
+# 디스힙합 (힙합 음악 채널) — 캡션 작성 규칙
 
-> 채널별 캡션 규칙. 공통 규칙·출력 포맷은 `.claude/skills/caption/SKILL.md`. 고정댓글·핸들·별명은 `formats/thishiphop.json` 의 captionGuide 를 읽는다.
+> 공통 규칙(3문단·CTA 트렌드·핸들 교체·출력 포맷)은 `.claude/skills/caption/SKILL.md`.
+> 고정댓글(언어별)·핸들·별명은 `formats/thishiphop.json` 의 `captionGuide` / `handle` / `displayName` 을 읽는다 — 여기에 중복해 적지 말 것.
 
-(tools/jp-caption-writer.md 의 "디스힙합" 절을 여기로 옮길 것 — Phase 4)
+**성격**: 힙합 곡·아티스트 소개. **어체**: 평범하고 자연스러운 일본어. 억지 쿨한 힙합체 금지.
+단, 힙합 이해·애정이 자연스럽게. 플로우·샘플링·라임·씬 등 용어를 맥락에 맞게.
+
+**구조**:
+1. 문단 1: 곡/아티스트 소개 — 씬에서의 위치, 의미 있는 배경.
+2. 문단 2: 플로우·가사·비트 등 음악적 특징. 힙합팬에게 왜 중요한지.
+3. 문단 3: 아는 사람은 공감할 포인트 / 처음 듣는 사람에겐 추천 이유. 마지막에 간결한 CTA(저장·공유).
