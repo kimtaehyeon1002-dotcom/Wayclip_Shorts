@@ -1,0 +1,233 @@
+{
+  "$schema": "../packages/shared/format.schema.json",
+  "slug": "goodmovies",
+  "order": 2,
+  "displayName": {
+    "ko": "굿무비"
+  },
+  "previewPort": 3004,
+  "handle": "@goodmovies_reko",
+  "languages": {
+    "base": "ja",
+    "targets": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ],
+    "originalDefault": "en",
+    "originalAllowed": [
+      "en",
+      "ko",
+      "ja"
+    ]
+  },
+  "description": "영화 클립 + 듀얼 자막. 흰 배경 / 검정 멘트 / 노란 번역. 레이아웃은 레디액션식(상 480 / 영상 960 / 하 480), #번호 = 1000 − 영상번호. 4개 언어.",
+  "layout": {
+    "mode": "symmetric",
+    "band": 480,
+    "background": "#fff",
+    "rootStyle": {
+      "fontFeatureSettings": {
+        "$fn": "paltFor"
+      }
+    },
+    "video": {
+      "fit": "cover",
+      "overscan": 1.015,
+      "vignette": true
+    },
+    "topBand": {
+      "padding": "40px 60px 60px 60px",
+      "gap": 6,
+      "justify": "flex-end"
+    },
+    "captionZone": {
+      "left": 60,
+      "right": 60,
+      "gap": 0,
+      "yOffset": {
+        "default": 0
+      }
+    },
+    "bottomBand": {
+      "padding": "90px 40px 0 40px",
+      "gap": 4,
+      "justify": "flex-start",
+      "lineHeight": 1.05,
+      "rows": [
+        {
+          "kind": "number",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "ja"
+            },
+            "fontSize": 40,
+            "fontWeight": 400,
+            "fontStyle": "italic",
+            "color": "#000",
+            "letterSpacing": "0.04em"
+          }
+        },
+        {
+          "kind": "credit",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "translation"
+            },
+            "fontSize": 38,
+            "fontWeight": 200,
+            "color": "rgba(0,0,0,0.72)",
+            "letterSpacing": "0.02em",
+            "textAlign": "center"
+          }
+        }
+      ]
+    }
+  },
+  "typography": {
+    "top": {
+      "markup": "bold",
+      "maxLines": 2,
+      "strong": {
+        "fontWeight": 500,
+        "fontStyle": "normal"
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "topFontJpLead"
+        },
+        "fontSize": "50pt",
+        "fontWeight": 200,
+        "color": "#000",
+        "lineHeight": {
+          "$fn": "scriptLineHeight",
+          "arg": 1.18
+        },
+        "letterSpacing": 0
+      }
+    },
+    "original": {
+      "hideWhenEmpty": true,
+      "scaleWith": "captionScale",
+      "style": {
+        "fontFamily": {
+          "$fn": "originalFontJp"
+        },
+        "fontSize": 36,
+        "fontWeight": 300,
+        "fontStyle": "italic",
+        "fontSynthesis": "style",
+        "color": "#fff",
+        "letterSpacing": "0.01em",
+        "lineHeight": 1.25,
+        "WebkitTextStroke": "1.2px #000",
+        "paintOrder": "stroke fill",
+        "textShadow": "0 2px 10px rgba(0,0,0,0.7), 0 0 3px rgba(0,0,0,0.5)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all"
+      }
+    },
+    "translation": {
+      "scaleWith": "captionScale",
+      "style": {
+        "fontFamily": {
+          "$fn": "captionFont"
+        },
+        "fontSize": 48,
+        "fontWeight": 400,
+        "color": "#FFEB3B",
+        "letterSpacing": {
+          "$fn": "letterSpacingFor",
+          "arg": -0.02
+        },
+        "lineHeight": {
+          "$fn": "scriptLineHeight",
+          "arg": 1.22
+        },
+        "WebkitTextStroke": "1.5px #000",
+        "paintOrder": "stroke fill",
+        "textShadow": "0 3px 12px rgba(0,0,0,0.85)",
+        "overflowWrap": "break-word",
+        "wordBreak": {
+          "$fn": "wordBreakFor"
+        }
+      }
+    }
+  },
+  "features": {
+    "captions": true,
+    "videoNumber": "1000-n",
+    "warnPill": false,
+    "endFade": false
+  },
+  "defaultProps": {
+    "title": "",
+    "artist": "",
+    "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": "",
+    "captionPaddingTop": 555,
+    "captionYOffset": 0,
+    "captionScale": 1
+  },
+  "scaffold": {
+    "title": "",
+    "artist": "",
+    "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": ""
+  },
+  "fixedStrings": {
+    "ja": {
+      "topCaption": "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中"
+    },
+    "tw": {
+      "topCaption": "死前必看的**1000部經典電影，**\n不分順序介紹中"
+    },
+    "th": {
+      "topCaption": "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย แบบไม่เรียงลำดับ"
+    },
+    "vi": {
+      "topCaption": "Giới thiệu **1000 phim kinh điển**\nphải xem trước khi chết, không theo thứ tự"
+    }
+  },
+  "captionGuide": {
+    "pinnedComment": {
+      "ja": "もっと多くの映画の名シーンを見たいなら@goodmovies_rekoフォローしてチェックしてみてください😊",
+      "tw": "想看更多電影的經典場面，就追蹤 @goodmovies_reko 看看吧😊",
+      "th": "ถ้าอยากดูฉากประทับใจจากหนังอีกเพียบ กดติดตาม @goodmovies_reko ไว้เลยนะ😊",
+      "vi": "Nếu muốn xem thêm nhiều cảnh phim kinh điển, hãy theo dõi @goodmovies_reko nhé😊"
+    },
+    "rulesFile": "formats/guides/goodmovies.md",
+    "imdbRating": true,
+    "recommendParagraph": true
+  },
+  "publisher": {
+    "accounts": {
+      "ja": {
+        "secret": "IG_GOODMOVIES_JA"
+      },
+      "tw": {
+        "secret": "IG_GOODMOVIES_TW"
+      },
+      "th": {
+        "secret": "IG_GOODMOVIES_TH"
+      },
+      "vi": {
+        "secret": "IG_GOODMOVIES_VI"
+      }
+    }
+  }
+}

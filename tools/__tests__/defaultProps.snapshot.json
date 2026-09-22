@@ -1,0 +1,79 @@
+{
+  "goodvibesongs": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "comments": [],
+    "captionYOffset": 70,
+    "captionScale": 1
+  },
+  "goodmovies": {
+    "title": "",
+    "artist": "",
+    "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": "",
+    "captionPaddingTop": 555,
+    "captionYOffset": 0,
+    "captionScale": 1
+  },
+  "readyaction": {
+    "title": "",
+    "artist": "",
+    "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": ""
+  },
+  "thishiphop": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "artistTrack": "",
+    "videoFit": "cover"
+  },
+  "space_lab": {
+    "title": "Space Lab Topic",
+    "artist": "Source",
+    "topCaption": "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
+    "topCaptionMaxLines": 2,
+    "bottomCTA": "続きは本文で",
+    "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    "warnBlink": true,
+    "warnOpacity": 1,
+    "videoNumber": "",
+    "originalLanguage": "ja",
+    "translationLanguage": "ja",
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "layout": {
+      "topH": 420,
+      "videoH": 1080,
+      "warnTop": 1520,
+      "bottomTop": 1590,
+      "bottomH": 330
+    }
+  }
+}

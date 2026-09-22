@@ -20,12 +20,12 @@ import {
   ORIG_LANGS,
   TRANS_LANGS,
   FPS,
+  FORMATS,
   channelDefaults,
   hasCaptions,
-  hasVideoNumber,
-  numberFrom1000,
-  computeSpaceLabLayout,
-  compositionId,
+  videoNumberFor,
+  isContainAuto,
+  computeContainAutoLayout,
 } from "./channels.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -184,22 +184,18 @@ function main() {
   if (args.bottomCTA !== null && "bottomCTA" in props) props.bottomCTA = args.bottomCTA;
   if (args.warnText !== null && "warnText" in props) props.warnText = args.warnText;
 
-  // #번호 자동 주입 (videoNumber 보유 채널)
-  // space_lab / goodmovies 는 #번호 = 1000 - 영상번호 (예: 090 → #910). 나머지는 #영상번호.
-  if (hasVideoNumber[channel]) {
-    props.videoNumber = numberFrom1000[channel]
-      ? `#${1000 - parseInt(number, 10)}`
-      : `#${number}`;
-  }
+  // #번호 자동 주입 — formats/<slug>.json features.videoNumber ("n" | "1000-n" | "none")
+  const vn = videoNumberFor(channel, number);
+  if (vn !== null) props.videoNumber = vn;
 
   // 자막 워크플로 채널은 captions 빈 배열로 시작
   if (hasCaptions[channel]) props.captions = [];
 
-  // space_lab: 영상 비율로 밴드 layout 자동 계산
-  if (channel === "space_lab") {
+  // contain-auto 레이아웃(스페이스랩 식): 영상 비율로 밴드 layout 자동 계산
+  if (isContainAuto(channel)) {
     const dim = media === "sample" ? null : probeDimensions(mediaMp4);
     if (dim) {
-      props.layout = computeSpaceLabLayout(dim.w, dim.h);
+      props.layout = computeContainAutoLayout(dim.w, dim.h, FORMATS[channel].layout.containAuto);
     }
   }
 
@@ -231,7 +227,6 @@ function main() {
   }
 
   const videoPath = `videos/${channel}/${number}`;
-  const compId = compositionId[channel];
   const durS = (durationInFrames / FPS).toFixed(2);
   console.log(`✓ Created ${videoPath}/`);
   console.log(`  channel=${channel}  number=${number}  media=${media}  orig=${origLang}  trans=${transLang}`);
@@ -245,14 +240,12 @@ function main() {
     console.log(`     B. 스크립트 없음: Claude 가 transcript → props.json captions 변환 (phrase 그룹핑 + ${transLang.toUpperCase()} 번역)`);
     console.log(`  3) node tools/check-captions.mjs ${videoPath}`);
     console.log(`  4) node tools/validate-props.mjs ${videoPath}`);
-    console.log(`  5) mkdir -p output/${channel} && npx remotion render src/index.ts ${compId} output/${channel}/${number}.mp4 \\`);
-    console.log(`        --props=${videoPath}/props.json --public-dir=${videoPath}`);
+    console.log(`  5) node tools/preview.mjs ${channel} ${number}  → 승인 후  node tools/render.mjs ${channel} ${number}`);
   } else {
     console.log(`  1) ${videoPath}/props.json 에서 topCaption(헤드라인) 등 확인 (이 채널은 자막 없음)`);
     console.log(`  2) node tools/preview.mjs ${channel} ${number}`);
     console.log(`  3) node tools/validate-props.mjs ${videoPath}`);
-    console.log(`  4) mkdir -p output/${channel} && npx remotion render src/index.ts ${compId} output/${channel}/${number}.mp4 \\`);
-    console.log(`        --props=${videoPath}/props.json --public-dir=${videoPath}`);
+    console.log(`  4) 승인 후  node tools/render.mjs ${channel} ${number}`);
   }
 }
 

@@ -5,17 +5,17 @@
   "description": "Wayclip Shorts 모노레포 — 세로형 쇼츠 양산(Remotion, 맥 CLI) + 인스타 자동 게시(publisher, GitHub Actions) + 대시보드(web, GitHub Pages)",
   "type": "module",
   "scripts": {
+    "gen": "node tools/gen-formats.mjs",
+    "predev": "npm run gen",
     "dev": "remotion studio",
-    "dev:goodvibesongs": "remotion studio --port 3003",
-    "dev:goodmovies": "remotion studio --port 3004",
-    "dev:readyaction": "remotion studio --port 3005",
-    "dev:thishiphop": "remotion studio --port 3006",
-    "dev:space_lab": "remotion studio --port 3007",
+    "prerender": "npm run gen",
     "render": "remotion render",
-    "lint": "tsc --noEmit",
+    "pretypecheck": "npm run gen",
     "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
     "test": "npm run test -w @wayclip/shared && node --test \"tools/__tests__/*.test.mjs\"",
-    "upload": "node tools/upload-output.mjs"
+    "upload": "node tools/upload-output.mjs",
+    "validate:formats": "node tools/gen-formats.mjs --check"
   },
   "dependencies": {
     "@remotion/cli": "4.0.475",

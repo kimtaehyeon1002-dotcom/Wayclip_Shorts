@@ -23,8 +23,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import {
   CHANNELS,
-  MULTILANG_CHANNELS,
-  MULTILANG_SET,
+  targetsOf,
   TRANS_LANGS,
   compositionId,
   outputChannelDir,
@@ -86,7 +85,7 @@ function main() {
     const fromMeta = meta.languages && Array.isArray(meta.languages.translations)
       ? meta.languages.translations
       : null;
-    langs = fromMeta || (MULTILANG_CHANNELS.includes(channel) ? MULTILANG_SET : [baseLang]);
+    langs = fromMeta || (targetsOf(channel).length > 1 ? targetsOf(channel) : [baseLang]);
   }
   // 실제로 props 가 있는 언어만 — 아직 파생 안 한 언어를 조용히 베이스로 렌더하면 안 됨.
   const plan = [];
@@ -101,6 +100,8 @@ function main() {
   if (!plan.length) die("렌더할 언어가 없습니다.");
 
   const compId = compositionId[channel];
+  // formats/*.json → src/formats.generated.ts 최신화
+  spawnSync(process.execPath, [path.join("tools", "gen-formats.mjs")], { cwd: ROOT, stdio: "inherit" });
 
   const done = [];
   const skipped = [];

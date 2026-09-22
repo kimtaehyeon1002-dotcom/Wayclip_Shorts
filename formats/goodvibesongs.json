@@ -1,0 +1,204 @@
+{
+  "$schema": "../packages/shared/format.schema.json",
+  "slug": "goodvibesongs",
+  "order": 1,
+  "displayName": {
+    "ko": "굿바이브"
+  },
+  "previewPort": 3003,
+  "handle": "@goodvibesongs.mp3",
+  "languages": {
+    "base": "ja",
+    "targets": [
+      "ja"
+    ],
+    "originalDefault": "en",
+    "originalAllowed": [
+      "en",
+      "ko",
+      "ja"
+    ]
+  },
+  "description": "음악 + 듀얼 자막. 검정 배경, 3-band 대칭(상 440 / 영상 1040 / 하 440). 자막 영상 중앙 +70px. 워터마크 고정, 하단 댓글 오버레이.",
+  "layout": {
+    "mode": "symmetric",
+    "band": 440,
+    "background": "#000",
+    "rootStyle": {
+      "fontFeatureSettings": "\"palt\""
+    },
+    "video": {
+      "fit": "cover",
+      "overscan": 1,
+      "vignette": true
+    },
+    "topBand": {
+      "padding": "40px 60px 30px 60px",
+      "gap": 4,
+      "justify": "flex-end"
+    },
+    "captionZone": {
+      "left": 60,
+      "right": 60,
+      "gap": 3,
+      "yOffset": {
+        "default": 70
+      }
+    },
+    "bottomBand": {
+      "padding": "0",
+      "gap": 0,
+      "justify": "flex-start",
+      "rows": []
+    }
+  },
+  "typography": {
+    "top": {
+      "markup": "bold",
+      "maxLines": 2,
+      "strong": {
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "topFontJpLead"
+        },
+        "fontSize": "55pt",
+        "fontWeight": 300,
+        "color": "#fff",
+        "lineHeight": {
+          "$lang": {
+            "th": 1.4
+          },
+          "default": 1.18
+        },
+        "letterSpacing": "-0.04em"
+      }
+    },
+    "original": {
+      "hideWhenEmpty": false,
+      "scaleWith": "captionScale",
+      "style": {
+        "fontFamily": {
+          "$fn": "originalFont",
+          "lang": "original"
+        },
+        "fontSize": 34,
+        "fontWeight": 400,
+        "fontStyle": "italic",
+        "color": "rgba(255,255,255,0.82)",
+        "letterSpacing": "0.01em",
+        "lineHeight": 1.25,
+        "textShadow": "0 2px 14px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.8)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all"
+      }
+    },
+    "translation": {
+      "scaleWith": "captionScale",
+      "style": {
+        "fontFamily": {
+          "$fn": "captionFont"
+        },
+        "fontSize": 46,
+        "fontWeight": 400,
+        "color": "#fff",
+        "letterSpacing": "-0.01em",
+        "lineHeight": {
+          "$lang": {
+            "th": 1.45
+          },
+          "default": 1.2
+        },
+        "textShadow": "0 3px 20px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.9)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all"
+      }
+    }
+  },
+  "features": {
+    "captions": true,
+    "videoNumber": "none",
+    "comments": {
+      "gap": 16,
+      "scale": 1,
+      "maxWidth": 900,
+      "bottomMargin": 20,
+      "stackDefaults": {
+        "top": 1075,
+        "bottom": 20,
+        "gap": 10,
+        "scale": 0.85,
+        "riseSeconds": 0.22,
+        "overlap": 1,
+        "sideMargin": 30,
+        "topY": 450,
+        "topGap": 10,
+        "topOverlap": 1,
+        "topHeight": 550
+      }
+    },
+    "watermark": {
+      "default": {
+        "text": "@goodvibesongs.mp3",
+        "y": 0.375,
+        "size": 17,
+        "opacity": 0.45,
+        "weight": 500
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "latinFont"
+        },
+        "color": "#fff",
+        "letterSpacing": "0.02em",
+        "textShadow": "0 2px 12px rgba(0,0,0,0.6)"
+      }
+    },
+    "warnPill": false,
+    "endFade": false
+  },
+  "defaultProps": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "comments": [],
+    "captionYOffset": 70,
+    "captionScale": 1
+  },
+  "scaffold": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "comments": [],
+    "watermark": {
+      "text": "@goodvibesongs.mp3",
+      "y": 0.375,
+      "size": 17,
+      "opacity": 0.45,
+      "weight": 500
+    }
+  },
+  "fixedStrings": {},
+  "captionGuide": {
+    "pinnedComment": {
+      "ja": "皆さんはただ待っているだけで大丈夫です。 私が自ら素敵な曲を毎日探してお届けします😊 フォローしておくだけで、フィードまで「配送」いたします！"
+    },
+    "rulesFile": "formats/guides/goodvibesongs.md"
+  },
+  "publisher": {
+    "accounts": {
+      "ja": {
+        "secret": "IG_GOODVIBESONGS_JA"
+      }
+    }
+  }
+}

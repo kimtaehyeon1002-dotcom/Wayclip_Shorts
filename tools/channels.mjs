@@ -1,211 +1,54 @@
-// 채널 정의 — new-video / validate-props / check-captions 가 공유.
-// src/props.ts 의 zod default 와 반드시 일치시킬 것 (props.json 을 완전하게 쓰기 위함).
+// 채널 정의 — **얇은 로더**. 진실은 formats/<slug>.json (packages/shared/format-schema.mjs 스키마).
+// 예전 export 이름은 전부 유지한다 — new-video / validate-props / check-captions / render / preview /
+// derive-lang 등 기존 도구가 그대로 import 한다. 새 포맷은 JSON 하나 추가하면 여기 자동 반영.
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { loadFormats } from "@wayclip/shared/formats-node.mjs";
+import { compositionIdOf, deriveCaptionLayout } from "@wayclip/shared/format-schema.mjs";
+import { STRUCTURAL_KEYS } from "@wayclip/shared/props-fields.mjs";
+import { CANVAS_W, CANVAS_H, FPS, computeSpaceLabLayout, computeContainAutoLayout } from "@wayclip/shared/layout.mjs";
+import { BASE_LANG } from "@wayclip/shared/langs.mjs";
 
-export const CHANNELS = [
-  "goodvibesongs",
-  "goodmovies",
-  "readyaction",
-  "thishiphop",
-  "space_lab",
-];
-// 언어 목록은 packages/shared/langs.mjs 단일 소스 (src/props.ts 도 같은 파일을 읽는다).
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/** slug → 포맷 (order 순). */
+export const FORMATS = loadFormats(path.join(ROOT, "formats"));
+const mapF = (fn) => Object.fromEntries(Object.values(FORMATS).map((f) => [f.slug, fn(f)]));
+
+export const CHANNELS = Object.keys(FORMATS);
 export { ORIG_LANGS, TRANS_LANGS } from "@wayclip/shared/langs.mjs";
-// 다국어 양산 채널 — props.json(=ja 베이스) + props.<lang>.json 3개.
-export const MULTILANG_CHANNELS = ["goodmovies", "space_lab", "readyaction"];
-export const MULTILANG_SET = ["ja", "tw", "th", "vi"];
-
-// 채널 전체가 공유하는 **고정 문구**의 언어별 대응.
-// 영상마다 바뀌는 텍스트(헤드라인·자막·작품명)가 아니라, 채널 브랜딩으로 매 영상 같은 문자열.
-// derive-lang 이 변형 props 를 만들 때 자동으로 채워 넣는다 → 영상마다 손번역해서 문구가
-// 갈라지는 사고를 막는다. 문구를 바꾸려면 여기만 고치고 --sync 가 아니라 재파생할 것.
-export const channelFixedStrings = {
-  readyaction: {
-    // 시리즈 고정 카피. **…** 가 굵게(weight 100 → 400).
-    ja: { topCaption: "歴代最高の**映画1000本を、**\n順不同で収集中" },
-    tw: { topCaption: "史上最棒的**1000部電影，**\n不分順序收藏中" },
-    th: { topCaption: "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ" },
-    vi: { topCaption: "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự" },
-  },
-  space_lab: {
-    // 헤드라인(topCaption)은 영상별이라 여기 없음 — bottomCTA/warnText 만 채널 고정.
-    ja: {
-      bottomCTA: "続きは本文で",
-      warnText: "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
-    },
-    tw: {
-      bottomCTA: "更多內容看貼文",
-      warnText: "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**",
-    },
-    th: {
-      bottomCTA: "อ่านต่อในแคปชัน",
-      warnText: "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**",
-    },
-    vi: {
-      bottomCTA: "Xem tiếp ở phần mô tả",
-      warnText: "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết",
-    },
-  },
-  goodmovies: {
-    // 2026-07-29 개편으로 굿무비도 상단이 **시리즈 고정 카피**가 됐다(영상별 멘트 아님)
-    // → 레디액션과 같이 언어별 고정 문구로 관리한다. **…** 가 굵게(weight 200 → 500).
-    ja: { topCaption: "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中" },
-    tw: { topCaption: "死前必看的**1000部經典電影，**\n不分順序介紹中" },
-    th: { topCaption: "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย แบบไม่เรียงลำดับ" },
-    vi: { topCaption: "Giới thiệu **1000 phim kinh điển**\nphải xem trước khi chết, không theo thứ tự" },
-  },
-};
-export const FPS = 30;
-export const CANVAS_W = 1080;
-export const CANVAS_H = 1920;
-
-// 굿바이브 워터마크 표준 (101 확정본 — 2026-07-29). 모든 굿바이브 영상 고정, 영상별로 바꾸지 말 것.
-// y=0.375 → 영상 밴드(top 440, h 1040) 안 37.5% 지점 = 화면 y 830px. 작고 은은한 핸들 표기.
-export const GOODVIBE_WATERMARK = {
-  text: "@goodvibesongs.mp3",
-  y: 0.375,
-  size: 17,
-  opacity: 0.45,
-  weight: 500,
-};
-
-// 채널별 기본 props (src/props.ts schema default 미러). durationInFrames/captions/layout 은 런타임 주입.
-export const channelDefaults = {
-  goodvibesongs: {
-    title: "",
-    artist: "",
-    topCaption: "",
-    originalLanguage: "en",
-    translationLanguage: "ja",
-    comments: [],
-    watermark: { ...GOODVIBE_WATERMARK },
-  },
-  goodmovies: {
-    title: "",
-    artist: "",
-    topCaption: "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
-    originalLanguage: "en",
-    translationLanguage: "ja",
-    videoNumber: "",
-    mediaKind: "映画",
-    mediaTitleJa: "",
-  },
-  readyaction: {
-    title: "",
-    artist: "",
-    topCaption: "歴代最高の**映画1000本を、**\n順不同で収集中",
-    originalLanguage: "en",
-    translationLanguage: "ja",
-    videoNumber: "",
-    mediaKind: "映画",
-    mediaTitleJa: "",
-  },
-  thishiphop: {
-    title: "",
-    artist: "",
-    topCaption: "",
-    originalLanguage: "en",
-    translationLanguage: "ja",
-    videoNumber: "",
-    artistTrack: "",
-  },
-  space_lab: {
-    title: "Space Lab Topic",
-    artist: "Source",
-    topCaption: "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
-    bottomCTA: "続きは本文で",
-    warnText: "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
-    videoNumber: "",
-    originalLanguage: "ja",
-    translationLanguage: "ja",
-  },
-};
-
-// Remotion Composition id 는 언더스코어 불가 → 채널 slug → composition id 매핑.
-// (slug 는 디렉토리/대화용 그대로, render/studio 의 id 만 변환)
-export const compositionId = {
-  goodvibesongs: "goodvibesongs",
-  goodmovies: "goodmovies",
-  readyaction: "readyaction",
-  thishiphop: "thishiphop",
-  space_lab: "space-lab",
-};
-
-// 동기 자막(captions) 워크플로 있는 채널.
-export const hasCaptions = {
-  goodvibesongs: true,
-  goodmovies: true,
-  readyaction: true,
-  thishiphop: true,
-  space_lab: false,
-};
-
-// 템플릿이 #번호를 자동 주입하는 채널 (videoNumber 변수 보유).
-export const hasVideoNumber = {
-  goodmovies: true, // #번호 = 1000 - 영상번호 (2026-07-29 개편)
-  readyaction: true,
-  thishiphop: true,
-  space_lab: true, // 단, #번호 = 1000 - 영상번호 (new-video.mjs 가 분기)
-};
-
-// #번호를 "1000 - 영상번호" 로 쓰는 채널 (나머지는 #영상번호 그대로).
-export const numberFrom1000 = {
-  goodmovies: true,
-  space_lab: true,
-};
-
-// 오버플로 추정용 레이아웃 상수 (check-captions.mjs 가 사용). src/channels/*.tsx 의 수치 미러.
-// fontPx: pt 는 px 환산(1pt=1.3333px). caption.fontPx 는 main(가장 큰) 자막 기준.
-export const captionLayouts = {
-  goodvibesongs: {
-    top: { padL: 60, padR: 60, fontPx: 73.33, maxLines: 2 },
-    caption: { zoneL: 60, zoneR: 60, fontPx: 46 },
-  },
-  goodmovies: {
-    // 2026-07-29 개편: 상단 50pt(레디액션식), 자막 존 60/60 + 번역 48px 기준.
-    top: { padL: 60, padR: 60, fontPx: 66.67, maxLines: 2 },
-    caption: { zoneL: 60, zoneR: 60, fontPx: 48 },
-  },
-  readyaction: {
-    top: { padL: 60, padR: 60, fontPx: 66.67, maxLines: 2 },
-    caption: { zoneL: 60, zoneR: 60, fontPx: 48 },
-  },
-  thishiphop: {
-    top: { padL: 60, padR: 60, fontPx: 65.33, maxLines: 2 },
-    caption: { zoneL: 60, zoneR: 60, fontPx: 44 },
-  },
-  space_lab: {
-    top: { padL: 50, padR: 50, fontPx: 60, maxLines: 2 },
-    caption: null,
-    // 영상 아래 빨간 깜빡 경고 박스 (WarnPill.tsx: fontSize 38 / padding 0 14px / height 70 = 2줄).
-    // 일본어 기준으로 짜인 문구라 태국어·베트남어에서 실제로 넘친다 → 사전 검사 대상.
-    warn: { padL: 14, padR: 14, fontPx: 38, maxLines: 2 },
-  },
-};
-
-// space_lab 영상별 밴드 layout 계산 — 원본 CLAUDE.md "영상별 layout 패치" 자동화.
-// 영상은 가로폭 1080 에 맞춰 contain, 세로 영상은 height cap, 위·아래 검정 영역은 대칭.
-export function computeSpaceLabLayout(srcW, srcH) {
-  const WARN_H = 70;
-  const VIDEO_BOTTOM_GAP = 20;
-  const MAX_VIDEO_H = 1400;
-  let videoH = Math.round((srcH * CANVAS_W) / srcW);
-  if (videoH > MAX_VIDEO_H) videoH = MAX_VIDEO_H;
-  const totalBlack = CANVAS_H - videoH - WARN_H - VIDEO_BOTTOM_GAP;
-  const topH = Math.round(totalBlack / 2);
-  const bottomH = totalBlack - topH;
-  const warnTop = topH + videoH + VIDEO_BOTTOM_GAP;
-  const bottomTop = warnTop + WARN_H;
-  return { topH, videoH, warnTop, bottomTop, bottomH };
-}
-
-// ── 다국어 props 파일 규칙 ─────────────────────────────────────────────
-// props.json          = 베이스(굿무비·스페이스랩은 일본어)
-// props.<lang>.json   = 변형 (props.tw.json / props.th.json / props.vi.json)
-// 언어코드 = 파일 접미사 = 결재본 접미사로 통일.
-
-// propsFileName / outputChannelDir 는 packages/shared/output-paths.mjs 로 이동 (퍼블리셔·웹과 공유).
-// 시그니처는 그대로 — 기존 도구는 이 파일에서 계속 import 한다.
 export { propsFileName, outputChannelDir } from "@wayclip/shared/output-paths.mjs";
+export { STRUCTURAL_KEYS, CANVAS_W, CANVAS_H, FPS, computeSpaceLabLayout, computeContainAutoLayout };
+
+/** 채널의 타깃 언어 목록 (베이스 포함). */
+export const targetsOf = (slug) => FORMATS[slug].languages.targets;
+export const MULTILANG_CHANNELS = CHANNELS.filter((s) => targetsOf(s).length > 1);
+/** 다국어 채널 공통 세트 (호환용 — 새 코드는 targetsOf 를 쓸 것). */
+export const MULTILANG_SET = [...new Set(MULTILANG_CHANNELS.flatMap(targetsOf))];
+
+export const channelFixedStrings = mapF((f) => f.fixedStrings);
+export const GOODVIBE_WATERMARK = FORMATS.goodvibesongs?.features.watermark?.default;
+export const channelDefaults = mapF((f) => structuredClone(f.scaffold));
+export const compositionId = mapF((f) => compositionIdOf(f.slug));
+export const hasCaptions = mapF((f) => f.features.captions);
+export const hasVideoNumber = Object.fromEntries(Object.values(FORMATS).filter((f) => f.features.videoNumber !== "none").map((f) => [f.slug, true]));
+export const numberFrom1000 = Object.fromEntries(Object.values(FORMATS).filter((f) => f.features.videoNumber === "1000-n").map((f) => [f.slug, true]));
+export const captionLayouts = mapF(deriveCaptionLayout);
+export const previewPorts = mapF((f) => f.previewPort);
+export const displayNames = mapF((f) => f.displayName.ko);
+/** 밴드를 영상 비율로 자동 계산하는 채널 (space_lab 식). */
+export const isContainAuto = (slug) => FORMATS[slug].layout.mode === "contain-auto";
+/** 그 채널의 #번호 문자열. */
+export function videoNumberFor(slug, number) {
+  const mode = FORMATS[slug].features.videoNumber;
+  if (mode === "none") return null;
+  return mode === "1000-n" ? `#${1000 - parseInt(number, 10)}` : `#${number}`;
+}
+/** 채널×언어 IG 시크릿 이름 (formats/<slug>.json publisher.accounts). */
+export function igSecretFor(slug, lang = BASE_LANG) {
+  return FORMATS[slug].publisher.accounts[lang]?.secret ?? `IG_${slug.toUpperCase()}_${lang.toUpperCase()}`;
+}
 
 /**
  * `--lang X` → 실제 읽을 props 경로.

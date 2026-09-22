@@ -16,38 +16,19 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  MULTILANG_SET,
   TRANS_LANGS,
+  STRUCTURAL_KEYS,
   channelFixedStrings,
   propsFileName,
+  targetsOf,
+  FORMATS,
 } from "./channels.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-// props.json 에서 변형으로 항상 그대로 따라가야 하는 필드 (레이아웃·타이밍·미디어).
+// 구조 필드(언어 무관 — 베이스를 따라감) 목록은 packages/shared/props-fields.mjs 한 곳.
 // 여기 없는 필드 = 번역 대상 텍스트 → 변형에서 자유롭게 바뀐다.
-const STRUCTURAL_KEYS = [
-  "durationInFrames",
-  "videoSrc",
-  "layout",
-  "videoNumber",
-  "captionPaddingTop",
-  "topCaptionMaxLines",
-  "originalLanguage",
-  "mediaKind",
-  // 2026-07-29 개편분 — 레이아웃 파라미터라 언어와 무관하게 베이스를 따라간다.
-  "captionYOffset",
-  "watermark",
-  "warnBlink",
-  "warnOpacity",
-  "videoFit",
-  "videoAspectRatio",
-  "videoObjectPosition",
-  "bandHeight",
-  "endFadeSeconds",
-  "comments",
-];
 
 function die(msg) {
   console.error(`✗ ${msg}`);
@@ -72,16 +53,14 @@ function parseArgs() {
     else die(`Unexpected arg: ${a}`);
   }
   if (!dir) die("Usage: node tools/derive-lang.mjs videos/<channel>/<number> [--langs tw,th,vi] [--sync]");
-  // 기본값: 베이스(ja)를 뺀 양산 언어 세트
-  if (!langs) langs = MULTILANG_SET.filter((l) => l !== "ja");
-  for (const l of langs) {
+  for (const l of langs || []) {
     if (!TRANS_LANGS.includes(l)) die(`알 수 없는 언어: ${l} (가능: ${TRANS_LANGS.join(", ")})`);
   }
   return { dir, langs, sync };
 }
 
 function main() {
-  const { dir, langs, sync } = parseArgs();
+  let { dir, langs, sync } = parseArgs();
   const absDir = path.resolve(ROOT, dir);
   const basePath = path.join(absDir, "props.json");
   const metaPath = path.join(absDir, "meta.json");
@@ -93,6 +72,12 @@ function main() {
     ? JSON.parse(fs.readFileSync(metaPath, "utf8")).channel
     : null;
   const fixed = (channel && channelFixedStrings[channel]) || {};
+  // 기본값: 그 채널의 타깃 언어(formats/<slug>.json languages.targets)에서 베이스를 뺀 것
+  if (!langs) {
+    if (!channel || !FORMATS[channel]) die("--langs 없이 쓰려면 meta.json 의 channel 이 포맷 레지스트리에 있어야 함");
+    langs = targetsOf(channel).filter((l) => l !== baseLang);
+    if (!langs.length) die(`${channel} 은 단일 언어 채널 (targets: ${targetsOf(channel).join(",")}) — 파생할 언어 없음`);
+  }
 
   for (const lang of langs) {
     if (lang === baseLang) {

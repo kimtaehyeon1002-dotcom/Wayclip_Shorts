@@ -14,18 +14,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
-import { CHANNELS, compositionId, resolvePropsPath } from "./channels.mjs";
+import { CHANNELS, compositionId, previewPorts, resolvePropsPath } from "./channels.mjs";
+import { spawnSync } from "node:child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-const PORTS = {
-  goodvibesongs: 3003,
-  goodmovies: 3004,
-  readyaction: 3005,
-  thishiphop: 3006,
-  space_lab: 3007,
-};
+// 포트는 formats/<slug>.json previewPort (3003~3007). 이미 점유 중이면 --port 로 십의 자리 올려서 띄울 것.
+const PORTS = previewPorts;
 
 function die(msg) {
   console.error(`✗ ${msg}`);
@@ -59,6 +55,8 @@ function main() {
   const propsRel = path.join(dir, path.basename(absProps));
 
   const usePort = port || PORTS[channel] || 3000;
+  // formats/*.json → src/formats.generated.ts 최신화 (포맷을 방금 고쳤을 수 있다)
+  spawnSync(process.execPath, [path.join("tools", "gen-formats.mjs")], { cwd: ROOT, stdio: "inherit" });
   // Composition id 는 slug 와 같되 space_lab 만 space-lab (Remotion id 는 언더스코어 불가).
   const compId = compositionId[channel];
   const args = [

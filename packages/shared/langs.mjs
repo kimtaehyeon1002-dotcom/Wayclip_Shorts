@@ -2,9 +2,9 @@
 // (예전엔 두 파일에 손수 미러 — CLAUDE.md 함정 #9. 이제 한 곳.)
 
 /** 원어(음원) 언어 */
-export const ORIG_LANGS = ["en", "ko", "ja"];
+export const ORIG_LANGS = /** @type {readonly ["en", "ko", "ja"]} */ (["en", "ko", "ja"]);
 /** 번역(시청자) 언어. tw = 대만/번체중국어. 언어코드 = props 파일 접미사 = 출력 폴더 접미사. */
-export const TRANS_LANGS = ["ko", "ja", "th", "tw", "vi"];
+export const TRANS_LANGS = /** @type {readonly ["ko", "ja", "th", "tw", "vi"]} */ (["ko", "ja", "th", "tw", "vi"]);
 
 /** 대화/UI 표시용 이름 */
 export const LANG_LABEL = {
@@ -17,4 +17,4 @@ export const LANG_LABEL = {
 };
 
 /** 채널 베이스 언어 (props.json 이 이 언어). 모든 채널이 일본 타깃이라 ja. */
-export const BASE_LANG = "ja";
+export const BASE_LANG = /** @type {"ja"} */ ("ja");

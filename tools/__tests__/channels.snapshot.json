@@ -1,0 +1,269 @@
+{
+  "CHANNELS": [
+    "goodvibesongs",
+    "goodmovies",
+    "readyaction",
+    "thishiphop",
+    "space_lab"
+  ],
+  "ORIG_LANGS": [
+    "en",
+    "ko",
+    "ja"
+  ],
+  "TRANS_LANGS": [
+    "ko",
+    "ja",
+    "th",
+    "tw",
+    "vi"
+  ],
+  "MULTILANG_CHANNELS": [
+    "goodmovies",
+    "space_lab",
+    "readyaction"
+  ],
+  "MULTILANG_SET": [
+    "ja",
+    "tw",
+    "th",
+    "vi"
+  ],
+  "channelFixedStrings": {
+    "readyaction": {
+      "ja": {
+        "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中"
+      },
+      "tw": {
+        "topCaption": "史上最棒的**1000部電影，**\n不分順序收藏中"
+      },
+      "th": {
+        "topCaption": "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ"
+      },
+      "vi": {
+        "topCaption": "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự"
+      }
+    },
+    "space_lab": {
+      "ja": {
+        "bottomCTA": "続きは本文で",
+        "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします"
+      },
+      "tw": {
+        "bottomCTA": "更多內容看貼文",
+        "warnText": "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**"
+      },
+      "th": {
+        "bottomCTA": "อ่านต่อในแคปชัน",
+        "warnText": "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**"
+      },
+      "vi": {
+        "bottomCTA": "Xem tiếp ở phần mô tả",
+        "warnText": "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết"
+      }
+    },
+    "goodmovies": {
+      "ja": {
+        "topCaption": "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中"
+      },
+      "tw": {
+        "topCaption": "死前必看的**1000部經典電影，**\n不分順序介紹中"
+      },
+      "th": {
+        "topCaption": "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย แบบไม่เรียงลำดับ"
+      },
+      "vi": {
+        "topCaption": "Giới thiệu **1000 phim kinh điển**\nphải xem trước khi chết, không theo thứ tự"
+      }
+    }
+  },
+  "FPS": 30,
+  "CANVAS_W": 1080,
+  "CANVAS_H": 1920,
+  "GOODVIBE_WATERMARK": {
+    "text": "@goodvibesongs.mp3",
+    "y": 0.375,
+    "size": 17,
+    "opacity": 0.45,
+    "weight": 500
+  },
+  "channelDefaults": {
+    "goodvibesongs": {
+      "title": "",
+      "artist": "",
+      "topCaption": "",
+      "originalLanguage": "en",
+      "translationLanguage": "ja",
+      "comments": [],
+      "watermark": {
+        "text": "@goodvibesongs.mp3",
+        "y": 0.375,
+        "size": 17,
+        "opacity": 0.45,
+        "weight": 500
+      }
+    },
+    "goodmovies": {
+      "title": "",
+      "artist": "",
+      "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+      "originalLanguage": "en",
+      "translationLanguage": "ja",
+      "videoNumber": "",
+      "mediaKind": "映画",
+      "mediaTitleJa": ""
+    },
+    "readyaction": {
+      "title": "",
+      "artist": "",
+      "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+      "originalLanguage": "en",
+      "translationLanguage": "ja",
+      "videoNumber": "",
+      "mediaKind": "映画",
+      "mediaTitleJa": ""
+    },
+    "thishiphop": {
+      "title": "",
+      "artist": "",
+      "topCaption": "",
+      "originalLanguage": "en",
+      "translationLanguage": "ja",
+      "videoNumber": "",
+      "artistTrack": ""
+    },
+    "space_lab": {
+      "title": "Space Lab Topic",
+      "artist": "Source",
+      "topCaption": "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
+      "bottomCTA": "続きは本文で",
+      "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+      "videoNumber": "",
+      "originalLanguage": "ja",
+      "translationLanguage": "ja"
+    }
+  },
+  "compositionId": {
+    "goodvibesongs": "goodvibesongs",
+    "goodmovies": "goodmovies",
+    "readyaction": "readyaction",
+    "thishiphop": "thishiphop",
+    "space_lab": "space-lab"
+  },
+  "hasCaptions": {
+    "goodvibesongs": true,
+    "goodmovies": true,
+    "readyaction": true,
+    "thishiphop": true,
+    "space_lab": false
+  },
+  "hasVideoNumber": {
+    "goodmovies": true,
+    "readyaction": true,
+    "thishiphop": true,
+    "space_lab": true
+  },
+  "numberFrom1000": {
+    "goodmovies": true,
+    "space_lab": true
+  },
+  "captionLayouts": {
+    "goodvibesongs": {
+      "top": {
+        "padL": 60,
+        "padR": 60,
+        "fontPx": 73.33,
+        "maxLines": 2
+      },
+      "caption": {
+        "zoneL": 60,
+        "zoneR": 60,
+        "fontPx": 46
+      }
+    },
+    "goodmovies": {
+      "top": {
+        "padL": 60,
+        "padR": 60,
+        "fontPx": 66.67,
+        "maxLines": 2
+      },
+      "caption": {
+        "zoneL": 60,
+        "zoneR": 60,
+        "fontPx": 48
+      }
+    },
+    "readyaction": {
+      "top": {
+        "padL": 60,
+        "padR": 60,
+        "fontPx": 66.67,
+        "maxLines": 2
+      },
+      "caption": {
+        "zoneL": 60,
+        "zoneR": 60,
+        "fontPx": 48
+      }
+    },
+    "thishiphop": {
+      "top": {
+        "padL": 60,
+        "padR": 60,
+        "fontPx": 65.33,
+        "maxLines": 2
+      },
+      "caption": {
+        "zoneL": 60,
+        "zoneR": 60,
+        "fontPx": 44
+      }
+    },
+    "space_lab": {
+      "top": {
+        "padL": 50,
+        "padR": 50,
+        "fontPx": 60,
+        "maxLines": 2
+      },
+      "caption": null,
+      "warn": {
+        "padL": 14,
+        "padR": 14,
+        "fontPx": 38,
+        "maxLines": 2
+      }
+    }
+  },
+  "computeSpaceLabLayout_samples": {
+    "1920x1080": {
+      "topH": 611,
+      "videoH": 608,
+      "warnTop": 1239,
+      "bottomTop": 1309,
+      "bottomH": 611
+    },
+    "1080x1920": {
+      "topH": 215,
+      "videoH": 1400,
+      "warnTop": 1635,
+      "bottomTop": 1705,
+      "bottomH": 215
+    },
+    "1080x1350": {
+      "topH": 240,
+      "videoH": 1350,
+      "warnTop": 1610,
+      "bottomTop": 1680,
+      "bottomH": 240
+    },
+    "1000x1000": {
+      "topH": 375,
+      "videoH": 1080,
+      "warnTop": 1475,
+      "bottomTop": 1545,
+      "bottomH": 375
+    }
+  }
+}

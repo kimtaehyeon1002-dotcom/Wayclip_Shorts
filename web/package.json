@@ -1,0 +1,26 @@
+{
+  "name": "@wayclip/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Wayclip Shorts 대시보드 — GitHub Pages 정적 SPA. 스케줄/포맷/결재본을 GitHub API(PAT) 로 읽고 커밋한다 (서버 없음).",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@wayclip/shared": "*",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router-dom": "^7.6.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "typescript": "5.8.3",
+    "vite": "^6.3.0"
+  }
+}

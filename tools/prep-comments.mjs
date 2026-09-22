@@ -29,7 +29,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
-import { FPS } from "./channels.mjs";
+import { FPS, CHANNELS, FORMATS, previewPorts, compositionId } from "./channels.mjs";
 import { blurComment } from "./blur-comments.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -103,7 +103,10 @@ function assignSlots(entries, D) {
 
 function main() {
   let argv = process.argv.slice(2);
-  if (argv[0] === "goodvibesongs") argv = argv.slice(1);
+  // 채널 인자(선택) — 기본은 댓글 오버레이(features.comments)를 가진 첫 포맷(굿바이브).
+  let channel = CHANNELS.find((c) => FORMATS[c].features.comments) || "goodvibesongs";
+  if (argv[0] && CHANNELS.includes(argv[0])) { channel = argv.shift(); }
+  if (!FORMATS[channel]?.features.comments) die(`${channel} 포맷엔 댓글 오버레이(features.comments)가 없다`);
   const number = argv[0];
   if (!number || !/^[0-9]+$/.test(number)) {
     die("Usage: node tools/prep-comments.mjs <번호>   (예: 085)");
@@ -114,9 +117,9 @@ function main() {
   const manifestPath = path.join(inDir, "manifest.json");
   if (!fs.existsSync(manifestPath)) die(`manifest.json 없음: ${number}댓글/manifest.json`);
 
-  const videoDir = path.join(ROOT, "videos", "goodvibesongs", number);
+  const videoDir = path.join(ROOT, "videos", channel, number);
   const propsPath = path.join(videoDir, "props.json");
-  if (!fs.existsSync(propsPath)) die(`props.json 없음: videos/goodvibesongs/${number}/  (new-video 먼저)`);
+  if (!fs.existsSync(propsPath)) die(`props.json 없음: videos/${channel}/${number}/  (new-video 먼저)`);
 
   const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   if (!Array.isArray(manifest) || manifest.length === 0) die("manifest 가 비었거나 배열이 아님");
@@ -188,7 +191,7 @@ function main() {
   const nPin = comments.filter((c) => c.pin).length;
   const modes = [nStack && `스택 ${nStack}`, nPin && `핀 ${nPin}`].filter(Boolean).join(" / ");
   console.log(
-    `✓ ${comments.length}개 배치 (원본 ${blurred.size}장) → videos/goodvibesongs/${number}/comments/ + props.json`
+    `✓ ${comments.length}개 배치 (원본 ${blurred.size}장) → videos/${channel}/${number}/comments/ + props.json`
   );
   console.log(
     manual
@@ -211,7 +214,7 @@ function main() {
       ).toFixed(3)}s)`
     );
   }
-  console.log(`\nNext: node tools/preview.mjs goodvibesongs ${number}  → http://localhost:3003/goodvibesongs`);
+  console.log(`\nNext: node tools/preview.mjs ${channel} ${number}  → http://localhost:${previewPorts[channel]}/${compositionId[channel]}`);
 }
 
 main();

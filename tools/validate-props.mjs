@@ -13,7 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { ORIG_LANGS, TRANS_LANGS, FPS, hasCaptions, resolvePropsPath } from "./channels.mjs";
+import { ORIG_LANGS, TRANS_LANGS, FPS, hasCaptions, isContainAuto, resolvePropsPath } from "./channels.mjs";
 
 const errors = [];
 const warns = [];
@@ -95,11 +95,11 @@ function main() {
     }
   }
 
-  // space_lab layout
-  if (channel === "space_lab") {
+  // contain-auto(space_lab 식) layout
+  if (isContainAuto(channel)) {
     const L = props.layout;
     const keys = ["topH", "videoH", "warnTop", "bottomTop", "bottomH"];
-    if (!L || keys.some((k) => typeof L[k] !== "number")) err(`space_lab layout 키 누락/오류: ${keys.join(",")}`);
+    if (!L || keys.some((k) => typeof L[k] !== "number")) err(`${channel} layout 키 누락/오류: ${keys.join(",")}`);
   }
 
   // source.mp4 심볼링크 resolve

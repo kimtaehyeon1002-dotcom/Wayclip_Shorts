@@ -1,0 +1,1500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "order": {
+      "default": 999,
+      "type": "integer",
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    },
+    "displayName": {
+      "type": "object",
+      "properties": {
+        "ko": {
+          "type": "string"
+        },
+        "ja": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ko"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "previewPort": {
+      "type": "integer",
+      "minimum": 1024,
+      "maximum": 65535
+    },
+    "handle": {
+      "type": "string",
+      "pattern": "^@"
+    },
+    "languages": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "default": "ja",
+          "type": "string",
+          "enum": [
+            "ko",
+            "ja",
+            "th",
+            "tw",
+            "vi"
+          ]
+        },
+        "targets": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ko",
+              "ja",
+              "th",
+              "tw",
+              "vi"
+            ]
+          }
+        },
+        "originalDefault": {
+          "default": "en",
+          "type": "string",
+          "enum": [
+            "en",
+            "ko",
+            "ja"
+          ]
+        },
+        "originalAllowed": {
+          "default": [
+            "en",
+            "ko",
+            "ja"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "en",
+              "ko",
+              "ja"
+            ]
+          }
+        }
+      },
+      "required": [
+        "targets"
+      ]
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "symmetric",
+            "contain-auto"
+          ]
+        },
+        "background": {
+          "type": "string"
+        },
+        "band": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "propsBandOverride": {
+          "default": false,
+          "type": "boolean"
+        },
+        "letterboxAware": {
+          "default": false,
+          "type": "boolean"
+        },
+        "containAuto": {
+          "type": "object",
+          "properties": {
+            "warnH": {
+              "type": "number"
+            },
+            "videoBottomGap": {
+              "type": "number"
+            },
+            "maxVideoH": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "warnH",
+            "videoBottomGap",
+            "maxVideoH"
+          ]
+        },
+        "rootStyle": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "$lang": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "ko",
+                        "ja",
+                        "th",
+                        "tw",
+                        "vi"
+                      ]
+                    },
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    }
+                  },
+                  "default": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "$lang"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "$fn": {
+                    "type": "string",
+                    "enum": [
+                      "captionFont",
+                      "originalFont",
+                      "originalFontJp",
+                      "originalFontLatin",
+                      "latinFont",
+                      "topFontJpLead",
+                      "topFontNative",
+                      "topFontInterLead",
+                      "letterSpacingFor",
+                      "scriptLineHeight",
+                      "paltFor",
+                      "wordBreakFor"
+                    ]
+                  },
+                  "arg": {
+                    "type": "number"
+                  },
+                  "lang": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "translation",
+                          "original"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "en",
+                          "ko",
+                          "ja",
+                          "th",
+                          "tw",
+                          "vi"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "$fn"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "video": {
+          "type": "object",
+          "properties": {
+            "fit": {
+              "default": "cover",
+              "type": "string",
+              "enum": [
+                "cover",
+                "contain"
+              ]
+            },
+            "overscan": {
+              "default": 1,
+              "type": "number"
+            },
+            "vignette": {
+              "default": true,
+              "type": "boolean"
+            },
+            "propsFitOverride": {
+              "default": false,
+              "type": "boolean"
+            },
+            "propsObjectPosition": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        },
+        "topBand": {
+          "type": "object",
+          "properties": {
+            "padding": {
+              "type": "string"
+            },
+            "gap": {
+              "type": "number"
+            },
+            "justify": {
+              "default": "flex-end",
+              "type": "string",
+              "enum": [
+                "flex-start",
+                "flex-end",
+                "center"
+              ]
+            },
+            "lineHeight": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "padding",
+            "gap"
+          ]
+        },
+        "captionZone": {
+          "default": null,
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "left": {
+                  "type": "number"
+                },
+                "right": {
+                  "type": "number"
+                },
+                "gap": {
+                  "type": "number"
+                },
+                "yOffset": {
+                  "type": "object",
+                  "properties": {
+                    "default": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "default"
+                  ]
+                }
+              },
+              "required": [
+                "left",
+                "right",
+                "gap"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bottomBand": {
+          "type": "object",
+          "properties": {
+            "padding": {
+              "type": "string"
+            },
+            "gap": {
+              "type": "number"
+            },
+            "justify": {
+              "default": "flex-end",
+              "type": "string",
+              "enum": [
+                "flex-start",
+                "flex-end",
+                "center"
+              ]
+            },
+            "lineHeight": {
+              "type": "number"
+            },
+            "rows": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "number",
+                      "credit",
+                      "artistTrack",
+                      "cta"
+                    ]
+                  },
+                  "style": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$lang": {
+                              "type": "object",
+                              "propertyNames": {
+                                "type": "string",
+                                "enum": [
+                                  "en",
+                                  "ko",
+                                  "ja",
+                                  "th",
+                                  "tw",
+                                  "vi"
+                                ]
+                              },
+                              "additionalProperties": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  }
+                                ]
+                              }
+                            },
+                            "default": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "$lang"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "$fn": {
+                              "type": "string",
+                              "enum": [
+                                "captionFont",
+                                "originalFont",
+                                "originalFontJp",
+                                "originalFontLatin",
+                                "latinFont",
+                                "topFontJpLead",
+                                "topFontNative",
+                                "topFontInterLead",
+                                "letterSpacingFor",
+                                "scriptLineHeight",
+                                "paltFor",
+                                "wordBreakFor"
+                              ]
+                            },
+                            "arg": {
+                              "type": "number"
+                            },
+                            "lang": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "translation",
+                                    "original"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "en",
+                                    "ko",
+                                    "ja",
+                                    "th",
+                                    "tw",
+                                    "vi"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "$fn"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "style"
+                ]
+              }
+            }
+          },
+          "required": [
+            "padding",
+            "gap"
+          ]
+        }
+      },
+      "required": [
+        "mode",
+        "background",
+        "video",
+        "topBand",
+        "bottomBand"
+      ]
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "top": {
+          "type": "object",
+          "properties": {
+            "markup": {
+              "default": "bold",
+              "type": "string",
+              "enum": [
+                "none",
+                "bold",
+                "redbold"
+              ]
+            },
+            "maxLines": {
+              "default": 2,
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "strong": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "red": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "style": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "style"
+          ]
+        },
+        "original": {
+          "type": "object",
+          "properties": {
+            "hideWhenEmpty": {
+              "default": false,
+              "type": "boolean"
+            },
+            "scaleWith": {
+              "type": "string",
+              "enum": [
+                "captionScale"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "style"
+          ]
+        },
+        "translation": {
+          "type": "object",
+          "properties": {
+            "scaleWith": {
+              "type": "string",
+              "enum": [
+                "captionScale"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "style"
+          ]
+        }
+      },
+      "required": [
+        "top"
+      ]
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "captions": {
+          "type": "boolean"
+        },
+        "videoNumber": {
+          "default": "none",
+          "type": "string",
+          "enum": [
+            "none",
+            "n",
+            "1000-n"
+          ]
+        },
+        "comments": {
+          "type": "object",
+          "properties": {
+            "gap": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "maxWidth": {
+              "type": "number"
+            },
+            "bottomMargin": {
+              "type": "number"
+            },
+            "stackDefaults": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "gap",
+            "scale",
+            "maxWidth",
+            "bottomMargin",
+            "stackDefaults"
+          ]
+        },
+        "watermark": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "opacity": {
+                  "type": "number"
+                },
+                "weight": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "text",
+                "y",
+                "size",
+                "opacity",
+                "weight"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$lang": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "ko",
+                            "ja",
+                            "th",
+                            "tw",
+                            "vi"
+                          ]
+                        },
+                        "additionalProperties": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      "default": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$lang"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "$fn": {
+                        "type": "string",
+                        "enum": [
+                          "captionFont",
+                          "originalFont",
+                          "originalFontJp",
+                          "originalFontLatin",
+                          "latinFont",
+                          "topFontJpLead",
+                          "topFontNative",
+                          "topFontInterLead",
+                          "letterSpacingFor",
+                          "scriptLineHeight",
+                          "paltFor",
+                          "wordBreakFor"
+                        ]
+                      },
+                      "arg": {
+                        "type": "number"
+                      },
+                      "lang": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "translation",
+                              "original"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "ko",
+                              "ja",
+                              "th",
+                              "tw",
+                              "vi"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "$fn"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "default",
+            "style"
+          ]
+        },
+        "warnPill": {
+          "default": false,
+          "type": "boolean"
+        },
+        "endFade": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "captions"
+      ]
+    },
+    "defaultProps": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "scaffold": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "fixedStrings": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "enum": [
+          "ko",
+          "ja",
+          "th",
+          "tw",
+          "vi"
+        ]
+      },
+      "additionalProperties": {
+        "type": "object",
+        "propertyNames": {
+          "type": "string"
+        },
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "captionGuide": {
+      "type": "object",
+      "properties": {
+        "pinnedComment": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "enum": [
+              "ko",
+              "ja",
+              "th",
+              "tw",
+              "vi"
+            ]
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "rulesFile": {
+          "type": "string"
+        },
+        "imdbRating": {
+          "default": false,
+          "type": "boolean"
+        },
+        "recommendParagraph": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "pinnedComment",
+        "rulesFile"
+      ]
+    },
+    "publisher": {
+      "default": {
+        "accounts": {}
+      },
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "enum": [
+              "ko",
+              "ja",
+              "th",
+              "tw",
+              "vi"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "secret": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "secret"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "slug",
+    "displayName",
+    "previewPort",
+    "handle",
+    "languages",
+    "layout",
+    "typography",
+    "features",
+    "defaultProps",
+    "scaffold",
+    "captionGuide"
+  ]
+}

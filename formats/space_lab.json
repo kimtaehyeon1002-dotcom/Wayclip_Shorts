@@ -1,0 +1,213 @@
+{
+  "$schema": "../packages/shared/format.schema.json",
+  "slug": "space_lab",
+  "order": 5,
+  "displayName": {
+    "ko": "스페이스랩"
+  },
+  "previewPort": 3007,
+  "handle": "@space_lab.note",
+  "languages": {
+    "base": "ja",
+    "targets": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ],
+    "originalDefault": "ja",
+    "originalAllowed": [
+      "en",
+      "ko",
+      "ja"
+    ]
+  },
+  "description": "정보 쇼츠, 자막 없음. 헤드라인([[빨강]] + **굵게**) / 영상 contain / 영상 아래 빨간 깜빡 경고 / 하단 고정 CTA. 밴드는 영상 비율로 자동 계산. 4개 언어.",
+  "layout": {
+    "mode": "contain-auto",
+    "background": "#000",
+    "containAuto": {
+      "warnH": 70,
+      "videoBottomGap": 20,
+      "maxVideoH": 1400
+    },
+    "rootStyle": {
+      "fontFeatureSettings": {
+        "$fn": "paltFor"
+      }
+    },
+    "video": {
+      "fit": "contain",
+      "overscan": 1,
+      "vignette": false
+    },
+    "topBand": {
+      "padding": "40px 50px 30px 50px",
+      "gap": 6,
+      "justify": "flex-end"
+    },
+    "captionZone": null,
+    "bottomBand": {
+      "padding": "105px 60px 0 60px",
+      "gap": 2,
+      "justify": "flex-start",
+      "rows": [
+        {
+          "kind": "number",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "ja"
+            },
+            "fontSize": 33,
+            "fontWeight": 400,
+            "fontStyle": "italic",
+            "fontSynthesis": "style",
+            "color": "#fff",
+            "letterSpacing": "-0.01em",
+            "fontFeatureSettings": "\"palt\" 1",
+            "textAlign": "center"
+          }
+        },
+        {
+          "kind": "cta",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "translation"
+            },
+            "fontSize": 60,
+            "fontWeight": 400,
+            "color": "#fff",
+            "letterSpacing": {
+              "$fn": "letterSpacingFor",
+              "arg": -0.04
+            },
+            "lineHeight": {
+              "$fn": "scriptLineHeight",
+              "arg": 1.18
+            },
+            "fontFeatureSettings": {
+              "$fn": "paltFor"
+            },
+            "textAlign": "center"
+          }
+        }
+      ]
+    }
+  },
+  "typography": {
+    "top": {
+      "markup": "redbold",
+      "maxLines": 2,
+      "strong": {
+        "fontWeight": 700,
+        "fontStyle": "normal"
+      },
+      "red": {
+        "color": "#FC0200"
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "topFontNative",
+          "lang": "translation"
+        },
+        "fontSize": 60,
+        "fontWeight": 500,
+        "color": "#fff",
+        "lineHeight": {
+          "$fn": "scriptLineHeight",
+          "arg": 1.18
+        },
+        "letterSpacing": {
+          "$fn": "letterSpacingFor",
+          "arg": -0.04
+        },
+        "fontFeatureSettings": {
+          "$fn": "paltFor"
+        }
+      }
+    }
+  },
+  "features": {
+    "captions": false,
+    "videoNumber": "1000-n",
+    "warnPill": true,
+    "endFade": false
+  },
+  "defaultProps": {
+    "title": "Space Lab Topic",
+    "artist": "Source",
+    "topCaption": "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
+    "topCaptionMaxLines": 2,
+    "bottomCTA": "続きは本文で",
+    "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    "warnBlink": true,
+    "warnOpacity": 1,
+    "videoNumber": "",
+    "originalLanguage": "ja",
+    "translationLanguage": "ja",
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "layout": {
+      "topH": 420,
+      "videoH": 1080,
+      "warnTop": 1520,
+      "bottomTop": 1590,
+      "bottomH": 330
+    }
+  },
+  "scaffold": {
+    "title": "Space Lab Topic",
+    "artist": "Source",
+    "topCaption": "[[NASA]]が「タコ」から学んだ驚異の[[技術]]",
+    "bottomCTA": "続きは本文で",
+    "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします",
+    "videoNumber": "",
+    "originalLanguage": "ja",
+    "translationLanguage": "ja"
+  },
+  "fixedStrings": {
+    "ja": {
+      "bottomCTA": "続きは本文で",
+      "warnText": "⚠️ このアカウントは、あなたの知らない科学の知識を\n1000個お届けします"
+    },
+    "tw": {
+      "bottomCTA": "更多內容看貼文",
+      "warnText": "⚠️ 這個帳號會為你送上你不知道的科學知識\n總共**1000則**"
+    },
+    "th": {
+      "bottomCTA": "อ่านต่อในแคปชัน",
+      "warnText": "⚠️ บัญชีนี้จะส่งต่อความรู้วิทยาศาสตร์ที่คุณไม่เคยรู้\nรวม **1000 เรื่อง**"
+    },
+    "vi": {
+      "bottomCTA": "Xem tiếp ở phần mô tả",
+      "warnText": "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết"
+    }
+  },
+  "captionGuide": {
+    "pinnedComment": {
+      "ja": "日常の疑問から宇宙の神秘まで、もっと面白い科学の話が見たいなら @space_lab.note をフォロー！🪐🧪",
+      "tw": "從日常的小疑問到宇宙的奧祕，想看更多有趣的科學故事就追蹤 @space_lab.note ！🪐🧪",
+      "th": "ตั้งแต่คำถามในชีวิตประจำวันไปจนถึงความลับของจักรวาล ถ้าอยากรู้เรื่องวิทยาศาสตร์สนุก ๆ เพิ่ม กดติดตาม @space_lab.note เลย！🪐🧪",
+      "vi": "Từ những thắc mắc thường ngày đến bí ẩn của vũ trụ — muốn xem thêm chuyện khoa học thú vị thì theo dõi @space_lab.note nhé！🪐🧪"
+    },
+    "rulesFile": "formats/guides/space_lab.md"
+  },
+  "publisher": {
+    "accounts": {
+      "ja": {
+        "secret": "IG_SPACE_LAB_JA"
+      },
+      "tw": {
+        "secret": "IG_SPACE_LAB_TW"
+      },
+      "th": {
+        "secret": "IG_SPACE_LAB_TH"
+      },
+      "vi": {
+        "secret": "IG_SPACE_LAB_VI"
+      }
+    }
+  }
+}

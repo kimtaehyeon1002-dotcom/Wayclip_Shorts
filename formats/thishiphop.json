@@ -1,0 +1,197 @@
+{
+  "$schema": "../packages/shared/format.schema.json",
+  "slug": "thishiphop",
+  "order": 4,
+  "displayName": {
+    "ko": "디스힙합"
+  },
+  "previewPort": 3006,
+  "handle": "@thishiphop",
+  "languages": {
+    "base": "ja",
+    "targets": [
+      "ja"
+    ],
+    "originalDefault": "en",
+    "originalAllowed": [
+      "en",
+      "ko",
+      "ja"
+    ]
+  },
+  "description": "힙합 트랙. 검정 배경, 영상별 멘트(전체 동일 굵기) + #번호 + 영문 Artist-Track. 상·하 밴드 480(props.bandHeight 로 조정), contain 시 레터박스 인식, 끝 페이드 옵션.",
+  "layout": {
+    "mode": "symmetric",
+    "band": 480,
+    "background": "#000",
+    "propsBandOverride": true,
+    "letterboxAware": true,
+    "rootStyle": {
+      "fontFeatureSettings": "\"palt\""
+    },
+    "video": {
+      "fit": "cover",
+      "overscan": 1,
+      "vignette": true,
+      "propsFitOverride": true,
+      "propsObjectPosition": true
+    },
+    "topBand": {
+      "padding": "40px 60px 60px 60px",
+      "gap": 6,
+      "justify": "flex-end"
+    },
+    "captionZone": {
+      "left": 60,
+      "right": 60,
+      "gap": 0
+    },
+    "bottomBand": {
+      "padding": "90px 40px 0 40px",
+      "gap": 4,
+      "justify": "flex-start",
+      "lineHeight": 1.05,
+      "rows": [
+        {
+          "kind": "number",
+          "style": {
+            "fontFamily": {
+              "$fn": "latinFont"
+            },
+            "fontSize": 46,
+            "fontWeight": 300,
+            "fontStyle": "italic",
+            "color": "#fff",
+            "letterSpacing": "-0.015em"
+          }
+        },
+        {
+          "kind": "artistTrack",
+          "style": {
+            "fontFamily": {
+              "$fn": "latinFont"
+            },
+            "fontSize": 44,
+            "fontWeight": 100,
+            "color": "rgba(255,255,255,0.65)",
+            "letterSpacing": "-0.015em",
+            "textAlign": "center"
+          }
+        }
+      ]
+    }
+  },
+  "typography": {
+    "top": {
+      "markup": "bold",
+      "maxLines": 2,
+      "strong": {
+        "fontWeight": "inherit",
+        "fontStyle": "normal"
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "topFontInterLead"
+        },
+        "fontSize": "49pt",
+        "fontWeight": 400,
+        "color": "#fff",
+        "lineHeight": {
+          "$lang": {
+            "th": 1.4
+          },
+          "default": 1.18
+        },
+        "letterSpacing": 0,
+        "fontFeatureSettings": "\"palt\" 1"
+      }
+    },
+    "original": {
+      "hideWhenEmpty": false,
+      "style": {
+        "fontFamily": {
+          "$fn": "originalFontLatin"
+        },
+        "fontSize": 36,
+        "fontWeight": 400,
+        "fontStyle": "italic",
+        "fontSynthesis": "style",
+        "color": "#fff",
+        "letterSpacing": "0.01em",
+        "lineHeight": 1.25,
+        "textShadow": "0 2px 10px rgba(0,0,0,0.6), 0 0 3px rgba(0,0,0,0.5)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all"
+      }
+    },
+    "translation": {
+      "style": {
+        "fontFamily": {
+          "$fn": "captionFont"
+        },
+        "fontSize": 44,
+        "fontWeight": 500,
+        "color": "#fff",
+        "letterSpacing": "-0.04em",
+        "lineHeight": {
+          "$lang": {
+            "th": 1.45
+          },
+          "default": 1.22
+        },
+        "WebkitTextStroke": "1.5px rgba(0,0,0,0.7)",
+        "paintOrder": "stroke fill",
+        "textShadow": "0 3px 14px rgba(0,0,0,0.65), 0 0 5px rgba(0,0,0,0.55)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all",
+        "fontFeatureSettings": {
+          "$lang": {
+            "ja": "\"palt\" 1"
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "captions": true,
+    "videoNumber": "n",
+    "warnPill": false,
+    "endFade": true
+  },
+  "defaultProps": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "artistTrack": "",
+    "videoFit": "cover"
+  },
+  "scaffold": {
+    "title": "",
+    "artist": "",
+    "topCaption": "",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "videoNumber": "",
+    "artistTrack": ""
+  },
+  "fixedStrings": {},
+  "captionGuide": {
+    "pinnedComment": {
+      "ja": "フォローすれば、毎日イケてるヒップホップが聴けるぜ skrrr🤙🏾"
+    },
+    "rulesFile": "formats/guides/thishiphop.md"
+  },
+  "publisher": {
+    "accounts": {
+      "ja": {
+        "secret": "IG_THISHIPHOP_JA"
+      }
+    }
+  }
+}

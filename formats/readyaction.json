@@ -1,0 +1,221 @@
+{
+  "$schema": "../packages/shared/format.schema.json",
+  "slug": "readyaction",
+  "order": 3,
+  "displayName": {
+    "ko": "레디액션"
+  },
+  "previewPort": 3005,
+  "handle": "@readyaction_movies",
+  "languages": {
+    "base": "ja",
+    "targets": [
+      "ja",
+      "tw",
+      "th",
+      "vi"
+    ],
+    "originalDefault": "en",
+    "originalAllowed": [
+      "en",
+      "ko",
+      "ja"
+    ]
+  },
+  "description": "영화 클립. 검정 배경, 시리즈 고정 카피 + #번호 + 영화 정보. 상 480 / 영상 960 / 하 480. 4개 언어.",
+  "layout": {
+    "mode": "symmetric",
+    "band": 480,
+    "background": "#000",
+    "rootStyle": {
+      "fontFeatureSettings": {
+        "$fn": "paltFor"
+      }
+    },
+    "video": {
+      "fit": "cover",
+      "overscan": 1,
+      "vignette": true
+    },
+    "topBand": {
+      "padding": "40px 60px 60px 60px",
+      "gap": 6,
+      "justify": "flex-end"
+    },
+    "captionZone": {
+      "left": 60,
+      "right": 60,
+      "gap": 0
+    },
+    "bottomBand": {
+      "padding": "90px 40px 0 40px",
+      "gap": 4,
+      "justify": "flex-start",
+      "lineHeight": 1.05,
+      "rows": [
+        {
+          "kind": "number",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "ja"
+            },
+            "fontSize": 40,
+            "fontWeight": 400,
+            "fontStyle": "italic",
+            "color": "#fff",
+            "letterSpacing": "0.04em"
+          }
+        },
+        {
+          "kind": "credit",
+          "style": {
+            "fontFamily": {
+              "$fn": "topFontNative",
+              "lang": "translation"
+            },
+            "fontSize": 38,
+            "fontWeight": 100,
+            "color": "rgba(255,255,255,0.92)",
+            "letterSpacing": "0.02em",
+            "textAlign": "center"
+          }
+        }
+      ]
+    }
+  },
+  "typography": {
+    "top": {
+      "markup": "bold",
+      "maxLines": 2,
+      "strong": {
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      },
+      "style": {
+        "fontFamily": {
+          "$fn": "topFontJpLead"
+        },
+        "fontSize": "50pt",
+        "fontWeight": 100,
+        "color": "#fff",
+        "lineHeight": {
+          "$fn": "scriptLineHeight",
+          "arg": 1.18
+        },
+        "letterSpacing": 0
+      }
+    },
+    "original": {
+      "hideWhenEmpty": false,
+      "style": {
+        "fontFamily": {
+          "$fn": "originalFontJp"
+        },
+        "fontSize": 36,
+        "fontWeight": 300,
+        "fontStyle": "italic",
+        "fontSynthesis": "style",
+        "color": "#fff",
+        "letterSpacing": "0.01em",
+        "lineHeight": 1.25,
+        "textShadow": "0 2px 10px rgba(0,0,0,0.6), 0 0 3px rgba(0,0,0,0.5)",
+        "overflowWrap": "break-word",
+        "wordBreak": "keep-all"
+      }
+    },
+    "translation": {
+      "style": {
+        "fontFamily": {
+          "$fn": "captionFont"
+        },
+        "fontSize": 48,
+        "fontWeight": 300,
+        "color": "#fff",
+        "letterSpacing": {
+          "$fn": "letterSpacingFor",
+          "arg": -0.04
+        },
+        "lineHeight": {
+          "$fn": "scriptLineHeight",
+          "arg": 1.22
+        },
+        "WebkitTextStroke": "1.5px rgba(0,0,0,0.7)",
+        "paintOrder": "stroke fill",
+        "textShadow": "0 3px 14px rgba(0,0,0,0.65), 0 0 5px rgba(0,0,0,0.55)",
+        "overflowWrap": "break-word",
+        "wordBreak": {
+          "$fn": "wordBreakFor"
+        }
+      }
+    }
+  },
+  "features": {
+    "captions": true,
+    "videoNumber": "n",
+    "warnPill": false,
+    "endFade": false
+  },
+  "defaultProps": {
+    "title": "",
+    "artist": "",
+    "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "captions": [],
+    "videoSrc": "source.mp4",
+    "durationInFrames": 900,
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": ""
+  },
+  "scaffold": {
+    "title": "",
+    "artist": "",
+    "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中",
+    "originalLanguage": "en",
+    "translationLanguage": "ja",
+    "videoNumber": "",
+    "mediaKind": "映画",
+    "mediaTitleJa": ""
+  },
+  "fixedStrings": {
+    "ja": {
+      "topCaption": "歴代最高の**映画1000本を、**\n順不同で収集中"
+    },
+    "tw": {
+      "topCaption": "史上最棒的**1000部電影，**\n不分順序收藏中"
+    },
+    "th": {
+      "topCaption": "รวม **1000 หนังที่ดีที่สุด**\nตลอดกาล แบบไม่เรียงลำดับ"
+    },
+    "vi": {
+      "topCaption": "Sưu tầm **1000 phim hay nhất**\nmọi thời đại, không theo thứ tự"
+    }
+  },
+  "captionGuide": {
+    "pinnedComment": {
+      "ja": "人生に美しい余韻を残す「1000本の名作映画」をここに。フォローして、あなたのフィードを小さな映画館にしてみませんか？次の週末に観たい特別な1本を、@readyaction_movies をフォローして見つけてみてください🎞️",
+      "tw": "在這裡，收藏1000部餘韻悠長的經典電影。追蹤我們，把你的動態變成一間小小的電影院吧？想找下個週末想看的那一部，就追蹤 @readyaction_movies 看看🎞️",
+      "th": "รวม “1000 หนังคลาสสิก” ที่ทิ้งความรู้สึกงดงามไว้ในใจ กดติดตามแล้วเปลี่ยนฟีดของคุณให้เป็นโรงหนังเล็ก ๆ ดีไหม? อยากเจอหนังสักเรื่องสำหรับสุดสัปดาห์หน้า ลองติดตาม @readyaction_movies ดูนะ🎞️",
+      "vi": "Nơi lưu giữ “1000 bộ phim kinh điển” để lại dư âm đẹp trong lòng bạn. Theo dõi và biến bảng tin của bạn thành một rạp chiếu phim nhỏ nhé? Muốn tìm một bộ phim đặc biệt cho cuối tuần tới, hãy theo dõi @readyaction_movies 🎞️"
+    },
+    "rulesFile": "formats/guides/readyaction.md"
+  },
+  "publisher": {
+    "accounts": {
+      "ja": {
+        "secret": "IG_READYACTION_JA"
+      },
+      "tw": {
+        "secret": "IG_READYACTION_TW"
+      },
+      "th": {
+        "secret": "IG_READYACTION_TH"
+      },
+      "vi": {
+        "secret": "IG_READYACTION_VI"
+      }
+    }
+  }
+}
