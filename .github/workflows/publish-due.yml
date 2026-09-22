@@ -59,13 +59,18 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --workspace=@wayclip/publisher --workspace=@wayclip/shared --include-workspace-root=false
+      # 안전장치: 레포 변수 PUBLISH_DRY_RUN=true 면 cron 포함 모든 실행이 점검 모드(실게시 없음).
+      #   켜기: gh variable set PUBLISH_DRY_RUN --body true   /  끄기: gh variable delete PUBLISH_DRY_RUN
       - name: 게시
+        env:
+          DRY: ${{ (inputs.dry_run == true || vars.PUBLISH_DRY_RUN == 'true') && '--dry-run' || '' }}
         run: |
+          [ -n "$DRY" ] && echo "::notice::점검 모드(dry-run) — 실게시 없음 (PUBLISH_DRY_RUN=${{ vars.PUBLISH_DRY_RUN }})"
           if [ -n "${{ inputs.id }}" ]; then
-            node publisher/publish-reel.mjs --id "${{ inputs.id }}" ${{ inputs.dry_run == true && '--dry-run' || '' }}
+            node publisher/publish-reel.mjs --id "${{ inputs.id }}" $DRY
           else
-            node publisher/publish-reel.mjs --due ${{ inputs.dry_run == true && '--dry-run' || '' }}
+            node publisher/publish-reel.mjs --due $DRY
           fi
       - name: schedule.json 상태 커밋
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ inputs.dry_run != true && vars.PUBLISH_DRY_RUN != 'true' }}
         run: node publisher/commit-schedule.mjs
