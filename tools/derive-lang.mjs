@@ -36,6 +36,9 @@ const STRUCTURAL_KEYS = [
   "topCaptionMaxLines",
   "originalLanguage",
   "mediaKind",
+  // 2026-07-29 개편분 — 레이아웃 파라미터라 언어와 무관하게 베이스를 따라간다.
+  "captionYOffset",
+  "watermark",
   "warnBlink",
   "warnOpacity",
   "videoFit",

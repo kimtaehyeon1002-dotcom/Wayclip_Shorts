@@ -46,8 +46,14 @@ export const channelFixedStrings = {
       warnText: "⚠️ Tài khoản này sẽ mang đến cho bạn\n**1000** kiến thức khoa học bạn chưa từng biết",
     },
   },
-  // 굿무비는 채널 고정 문구가 없다 (상단 멘트가 영상마다 다름).
-  goodmovies: {},
+  goodmovies: {
+    // 2026-07-29 개편으로 굿무비도 상단이 **시리즈 고정 카피**가 됐다(영상별 멘트 아님)
+    // → 레디액션과 같이 언어별 고정 문구로 관리한다. **…** 가 굵게(weight 200 → 500).
+    ja: { topCaption: "死ぬまでに観たい**名作映画1000本を、**\n順不同で紹介中" },
+    tw: { topCaption: "死前必看的**1000部經典電影，**\n不分順序介紹中" },
+    th: { topCaption: "แนะนำ **1000 หนังคลาสสิก**\nที่ต้องดูก่อนตาย แบบไม่เรียงลำดับ" },
+    vi: { topCaption: "Giới thiệu **1000 phim kinh điển**\nphải xem trước khi chết, không theo thứ tự" },
+  },
 };
 export const FPS = 30;
 export const CANVAS_W = 1080;

@@ -29,6 +29,7 @@ const VIDEO_H = 960;
 
 export const GoodMovies: React.FC<GoodMoviesProps> = ({
   topCaption,
+  topCaptionLineSizes,
   originalLanguage,
   translationLanguage,
   videoSrc,
@@ -72,12 +73,18 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         <TopCaption
           text={topCaption}
           markup="bold"
+          // 줄별 pt 오버라이드 — check-captions 는 예전부터 이 값을 반영했는데 렌더엔
+          // 연결돼 있지 않았다(검사는 통과하는데 화면은 넘치는 함정). 개편으로 상단이
+          // 48pt→50pt 가 되면서 개편 전 영상(075/084)이 실제로 걸려 배선.
+          lineSizes={topCaptionLineSizes}
           strongStyle={{ fontWeight: 500, fontStyle: "normal" }}
           lineStyle={{
             fontFamily: topFontJpLead(translationLanguage),
             fontSize: "50pt",
             fontWeight: 200,
             color: "#000",
+            // 개편 후 값(1.18 / 트래킹 0)을 유지하되 줄높이만 언어별 헬퍼로.
+            // letterSpacing 은 원래 0 이라 언어 분기할 게 없다.
             lineHeight: scriptLineHeight(translationLanguage, 1.18),
             letterSpacing: 0,
           }}
@@ -160,6 +167,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
                 fontSize: 48 * captionScale,
                 fontWeight: 400,
                 color: "#FFEB3B",
+                // 개편 후 트래킹(-0.02em)을 유지하되 CJK 전용이므로 언어별 분기.
                 letterSpacing: letterSpacingFor(translationLanguage, -0.02),
                 lineHeight: scriptLineHeight(translationLanguage, 1.22),
                 WebkitTextStroke: "1.5px #000",
@@ -196,7 +204,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         {numText ? (
           <div
             style={{
-              // #번호는 라틴 숫자뿐 — 어느 언어든 자형이 같으므로 일본어 스택 고정(합성 italic 유지).
+              // #번호는 라틴 숫자뿐 — 어느 언어든 자형이 같으므로 일본어 스택 고정.
               fontFamily: topFontNative("ja"),
               fontSize: 40,
               fontWeight: 400,
@@ -211,6 +219,7 @@ export const GoodMovies: React.FC<GoodMoviesProps> = ({
         {mediaTitleJa ? (
           <div
             style={{
+              // 개편 후 타이포(38/200/0.72)를 유지하되 폰트만 언어별로.
               fontFamily: topFontNative(translationLanguage),
               fontSize: 38,
               fontWeight: 200,
