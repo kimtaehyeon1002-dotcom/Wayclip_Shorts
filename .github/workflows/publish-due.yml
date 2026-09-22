@@ -25,8 +25,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      # 모든 시크릿을 JSON 으로 — 포맷(채널)이 늘어 IG_<SLUG>_<LANG> 이 추가돼도 이 파일은 안 바뀐다.
-      SECRETS_JSON: ${{ toJSON(secrets) }}
+      # IG 시크릿은 아래 마커 사이를 tools/gen-formats.mjs 가 formats/*.json 에서 자동 생성한다 (손대지 말 것).
+      # (toJSON(secrets) 로 통째로 넘기면 GitHub 이 "악성 가능성" 으로 실행을 막는다 — 2026-09-22 확인)
+      # --- IG secrets (gen-formats) ---
+      IG_GOODMOVIES_JA: ${{ secrets.IG_GOODMOVIES_JA }}
+      IG_GOODMOVIES_TH: ${{ secrets.IG_GOODMOVIES_TH }}
+      IG_GOODMOVIES_TW: ${{ secrets.IG_GOODMOVIES_TW }}
+      IG_GOODMOVIES_VI: ${{ secrets.IG_GOODMOVIES_VI }}
+      IG_GOODVIBESONGS_JA: ${{ secrets.IG_GOODVIBESONGS_JA }}
+      IG_READYACTION_JA: ${{ secrets.IG_READYACTION_JA }}
+      IG_READYACTION_TH: ${{ secrets.IG_READYACTION_TH }}
+      IG_READYACTION_TW: ${{ secrets.IG_READYACTION_TW }}
+      IG_READYACTION_VI: ${{ secrets.IG_READYACTION_VI }}
+      IG_SPACE_LAB_JA: ${{ secrets.IG_SPACE_LAB_JA }}
+      IG_SPACE_LAB_TH: ${{ secrets.IG_SPACE_LAB_TH }}
+      IG_SPACE_LAB_TW: ${{ secrets.IG_SPACE_LAB_TW }}
+      IG_SPACE_LAB_VI: ${{ secrets.IG_SPACE_LAB_VI }}
+      IG_THISHIPHOP_JA: ${{ secrets.IG_THISHIPHOP_JA }}
+      # --- end IG secrets ---
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

@@ -28,9 +28,19 @@ export const FORMAT_SLUGS = [${slugs.map((s) => JSON.stringify(s)).join(", ")}] 
 `;
 const jsonSchema = JSON.stringify(z.toJSONSchema(formatSchema, { io: "input", unrepresentable: "any" }), null, 2) + "\n";
 
+// publish-due.yml 의 IG 시크릿 env 블록 — 포맷×타깃 언어마다 한 줄. (toJSON(secrets) 는 GitHub 이 차단)
+const wfPath = path.join(ROOT, ".github", "workflows", "publish-due.yml");
+const secretNames = [...new Set(Object.values(formats).flatMap((f) => f.languages.targets.map((l) => f.publisher.accounts[l]?.secret).filter(Boolean)))].sort();
+const wfBlock = secretNames.map((n) => `      ${n}: \${{ secrets.${n} }}`).join("\n");
+const wfCur = fs.existsSync(wfPath) ? fs.readFileSync(wfPath, "utf8") : null;
+const wfNext = wfCur
+  ? wfCur.replace(/(# --- IG secrets \(gen-formats\) ---\n)[\s\S]*?(      # --- end IG secrets ---)/, `$1${wfBlock}\n$2`)
+  : null;
+
 const outputs = [
   [path.join(ROOT, "src", "formats.generated.ts"), ts],
   [path.join(ROOT, "packages", "shared", "format.schema.json"), jsonSchema],
+  ...(wfNext ? [[wfPath, wfNext]] : []),
 ];
 let stale = false;
 for (const [file, content] of outputs) {

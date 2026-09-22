@@ -16,7 +16,7 @@
 
 1. **웹 대시보드 → 포맷 → "새 포맷"** 위저드(기존 포맷 복제 → 레이아웃/색/타이포/타깃 언어/댓글 오버레이/워터마크/고정 문구/고정댓글/캡션 규칙 → 커밋) **또는** `formats/<기존>.json` 을 복사해 `formats/<slug>.json` 작성 + `formats/guides/<slug>.md`.
 2. GitHub Secrets 에 `IG_<SLUG대문자>_<LANG대문자>` (JSON `{"igUserId","igAccessToken"}`) 추가 — 언어별. 로컬은 `publisher/channels.json["<slug>[-lang]"]`.
-3. `node tools/gen-formats.mjs` (preview/render/typecheck 가 자동 실행) → `node tools/validate-formats.mjs` 대신 `npm run validate:formats` → Composition id = slug 의 `_`→`-`.
+3. `node tools/gen-formats.mjs` (preview/render/typecheck 가 자동 실행) — `src/formats.generated.ts` 와 **`publish-due.yml` 의 IG 시크릿 env 블록**까지 생성하므로 워크플로 변경분도 함께 커밋. `npm run validate:formats` 로 최신성 검사. Composition id = slug 의 `_`→`-`.
 4. 그 다음은 아래 양산 워크플로 그대로 (`new-video <slug> …`). **기존 5개 포맷의 값은 바꾸지 말 것** — `tools/parity-check.mjs` 가 옛 렌더와 픽셀 동일성을 검사한다(53 스틸 md5 동일, 2026-09-22).
 
 포맷 JSON 의 스타일 값은 DSL: 리터럴 / `{"$lang":{"th":1.45},"default":1.2}` / `{"$fn":"scriptLineHeight","arg":1.18}`(= `src/lang.ts` 헬퍼를 같은 인자로 호출). 스키마: `packages/shared/format-schema.mjs` (+ 생성된 `format.schema.json`).

@@ -33,15 +33,10 @@ export function assertR2() {
 }
 
 // ── 인스타 자격증명 ──
-// 1) 환경변수 IG_<SLUG>_<LANG> (JSON)   ← GitHub Secrets. Actions 워크플로가 toJSON(secrets) 를
-//    SECRETS_JSON 으로 넘기므로 포맷이 늘어도 워크플로를 고칠 필요가 없다.
+// 1) 환경변수 IG_<SLUG>_<LANG> (JSON)   ← GitHub Secrets. publish-due.yml 의 env 블록은
+//    tools/gen-formats.mjs 가 formats/*.json 에서 자동 생성한다 (포맷 추가 → gen-formats → 커밋).
 // 2) channels.json  ← 로컬 폴백. { "goodmovies": {...}, "goodmovies-tw": {...} }
-let SECRETS_ENV = {};
-try {
-  SECRETS_ENV = process.env.SECRETS_JSON ? JSON.parse(process.env.SECRETS_JSON) : {};
-} catch {
-  SECRETS_ENV = {};
-}
+const SECRETS_ENV = {};
 let LOCAL_CHANNELS = {};
 const CH_PATH = join(PUBLISHER_ROOT, "channels.json");
 if (existsSync(CH_PATH)) {
