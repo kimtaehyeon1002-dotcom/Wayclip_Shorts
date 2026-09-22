@@ -8,9 +8,8 @@ export const CHANNELS = [
   "thishiphop",
   "space_lab",
 ];
-export const ORIG_LANGS = ["en", "ko", "ja"];
-// tw = 대만(번체중국어). 언어코드 = props 파일 접미사(props.tw.json) = 결재본 접미사(047-tw.mp4).
-export const TRANS_LANGS = ["ko", "ja", "th", "tw", "vi"];
+// 언어 목록은 packages/shared/langs.mjs 단일 소스 (src/props.ts 도 같은 파일을 읽는다).
+export { ORIG_LANGS, TRANS_LANGS } from "@wayclip/shared/langs.mjs";
 // 다국어 양산 채널 — props.json(=ja 베이스) + props.<lang>.json 3개.
 export const MULTILANG_CHANNELS = ["goodmovies", "space_lab", "readyaction"];
 export const MULTILANG_SET = ["ja", "tw", "th", "vi"];
@@ -204,21 +203,9 @@ export function computeSpaceLabLayout(srcW, srcH) {
 // props.<lang>.json   = 변형 (props.tw.json / props.th.json / props.vi.json)
 // 언어코드 = 파일 접미사 = 결재본 접미사로 통일.
 
-/** 변형 props 파일명. 베이스 언어면 props.json. */
-export function propsFileName(lang, baseLang = "ja") {
-  return !lang || lang === baseLang ? "props.json" : `props.${lang}.json`;
-}
-
-/**
- * 결재본 출력 폴더 — **언어별로 최상위 폴더를 분리**한다.
- *   베이스(일본어)  output/readyaction/952/952.mp4      (기존 그대로)
- *   변형            output/readyaction-tw/952/952.mp4
- * 폴더가 언어를 나타내므로 **파일명엔 접미사를 붙이지 않는다** —
- * 각 언어 폴더가 일본어 폴더와 똑같은 모양이라 나라별로 통째로 넘기기 쉽다.
- */
-export function outputChannelDir(channel, lang, baseLang = "ja") {
-  return !lang || lang === baseLang ? channel : `${channel}-${lang}`;
-}
+// propsFileName / outputChannelDir 는 packages/shared/output-paths.mjs 로 이동 (퍼블리셔·웹과 공유).
+// 시그니처는 그대로 — 기존 도구는 이 파일에서 계속 import 한다.
+export { propsFileName, outputChannelDir } from "@wayclip/shared/output-paths.mjs";
 
 /**
  * `--lang X` → 실제 읽을 props 경로.

@@ -1,0 +1,19 @@
+{
+  "name": "@wayclip/publisher",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "스케줄 기반 인스타 릴스 게시기 — GitHub Actions cron 에서 돌며 R2 에 올라온 결재본(mp4+캡션 txt)을 게시한다. 로컬 output/ 이 있으면 그것도 쓴다.",
+  "scripts": {
+    "due": "node publish-reel.mjs --due",
+    "list": "node publish-reel.mjs --list",
+    "dry": "node publish-reel.mjs --due --dry-run"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.620.0",
+    "@aws-sdk/s3-request-presigner": "^3.620.0",
+    "@wayclip/shared": "*",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^9.0.1"
+  }
+}

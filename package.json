@@ -1,8 +1,8 @@
 {
-  "name": "remotion-shorts",
+  "name": "wayclip-shorts",
   "version": "1.0.0",
   "private": true,
-  "description": "세로형 쇼츠 양산 (Remotion) — 채널별 컴포지션 + 영상별 props 격리 + 채널별 결재본 분리",
+  "description": "Wayclip Shorts 모노레포 — 세로형 쇼츠 양산(Remotion, 맥 CLI) + 인스타 자동 게시(publisher, GitHub Actions) + 대시보드(web, GitHub Pages)",
   "type": "module",
   "scripts": {
     "dev": "remotion studio",
@@ -13,7 +13,9 @@
     "dev:space_lab": "remotion studio --port 3007",
     "render": "remotion render",
     "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "npm run test -w @wayclip/shared && node --test \"tools/__tests__/*.test.mjs\"",
+    "upload": "node tools/upload-output.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.475",
@@ -29,6 +31,14 @@
   },
   "devDependencies": {
     "@types/react": "19.1.0",
-    "typescript": "5.8.3"
-  }
+    "typescript": "5.8.3",
+    "@aws-sdk/client-s3": "^3.620.0",
+    "@aws-sdk/s3-request-presigner": "^3.620.0",
+    "dotenv": "^16.4.5"
+  },
+  "workspaces": [
+    "packages/shared",
+    "publisher",
+    "web"
+  ]
 }

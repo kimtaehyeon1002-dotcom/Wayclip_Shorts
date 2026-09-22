@@ -1,0 +1,9 @@
+{
+  "_comment": "로컬 실행용 폴백. Actions 에선 GitHub Secrets IG_<SLUG>_<LANG> 을 쓴다. 다국어 계정은 '<slug>-<lang>' 키로.",
+  "goodvibesongs": { "igUserId": "", "igAccessToken": "" },
+  "goodmovies":    { "igUserId": "", "igAccessToken": "" },
+  "readyaction":   { "igUserId": "", "igAccessToken": "" },
+  "thishiphop":    { "igUserId": "", "igAccessToken": "" },
+  "space_lab":     { "igUserId": "", "igAccessToken": "" },
+  "goodmovies-tw": { "igUserId": "", "igAccessToken": "" }
+}

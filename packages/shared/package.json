@@ -1,0 +1,13 @@
+{
+  "name": "@wayclip/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "remotion 도구 · publisher · web 이 공유하는 순수 모듈 (언어 목록, 출력 경로, 캡션 txt 계약, 스케줄 규칙)",
+  "exports": {
+    "./*": "./*"
+  },
+  "scripts": {
+    "test": "node --test \"__tests__/*.test.mjs\""
+  }
+}

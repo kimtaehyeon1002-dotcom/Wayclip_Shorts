@@ -162,7 +162,17 @@ function main() {
       `  output/${outputChannelDir(channel, p.lang, baseLang)}/${number}/${number}캡션.txt`
     );
   }
-  console.log("  (포맷·채널 규칙: tools/jp-caption-writer.md)");
+  console.log("  (포맷·채널 규칙: /caption 스킬)");
+
+  // 게시(GitHub Actions)는 R2 의 결재본을 읽는다 → 캡션 txt 가 이미 있는 언어는 지금 올리고,
+  // 없는 언어는 안내만 (upload-output 이 캡션 없는 폴더는 올리지 않는다).
+  if (done.length) {
+    const langsDone = done.map((d) => d.lang).join(",");
+    console.log(`\n▸ R2 업로드 (캡션 txt 있는 언어만): node tools/upload-output.mjs ${channel} ${number} --langs ${langsDone}`);
+    const up = spawnSync(process.execPath, [path.join("tools", "upload-output.mjs"), channel, number, "--langs", langsDone], { cwd: ROOT, stdio: "inherit" });
+    if (up.status !== 0) console.log("  (업로드 실패/보류 — 캡션 txt 작성 후 직접: node tools/upload-output.mjs " + channel + " " + number + ")");
+    console.log("  ⚠ 캡션 txt 를 나중에 쓴 언어는 반드시 다시: node tools/upload-output.mjs " + channel + " " + number);
+  }
   process.exit(failed.length ? 1 : 0);
 }
 

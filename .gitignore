@@ -34,3 +34,4 @@ publisher/.publish.lock
 publisher/.run-due.lock
 # web 빌드
 web/dist/
+.secret-*
