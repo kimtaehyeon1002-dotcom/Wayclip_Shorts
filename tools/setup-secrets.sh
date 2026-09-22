@@ -20,10 +20,10 @@ for (const [k,c] of Object.entries(ch)) {
   rm -f ".secret-$name"
 done
 
-# 2) R2 + Gmail — .env 의 값 그대로
-set -a; . publisher/.env; set +a
+# 2) R2 + Gmail — .env 를 source 하지 않고 dotenv 파서로 읽는다 (앱 비밀번호처럼 공백 있는 값도 안전)
 for k in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET GMAIL_USER GMAIL_APP_PASSWORD NOTIFY_TO; do
-  v="${!k:-}"; [ -z "$v" ] && continue
+  v="$(node -e 'const d=require("dotenv").parse(require("fs").readFileSync("publisher/.env"));process.stdout.write(d[process.argv[1]]||"")' "$k")"
+  [ -z "$v" ] && continue
   printf '%s' "$v" | gh secret set "$k" -R "$REPO" && echo "✓ $k"
 done
 echo; gh secret list -R "$REPO"
