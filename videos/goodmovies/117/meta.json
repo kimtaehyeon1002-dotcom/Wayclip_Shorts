@@ -1,0 +1,14 @@
+{
+  "channel": "goodmovies",
+  "number": "117",
+  "name": "goodmovies/117",
+  "media": {
+    "slug": "the-age-of-adaline",
+    "link": "source.mp4"
+  },
+  "languages": {
+    "original": "en",
+    "translation": "ja"
+  },
+  "durationInFrames": 1360
+}

@@ -1,0 +1,105 @@
+{
+  "title": "The Age of Adaline",
+  "artist": "",
+  "topCaption": "死ぬまでに観たい**名作映画**\n**1000本を、**順不同で紹介中",
+  "originalLanguage": "en",
+  "translationLanguage": "ja",
+  "videoNumber": "#883",
+  "mediaKind": "映画",
+  "mediaTitleJa": "アデライン、100年目の恋",
+  "captions": [
+    {
+      "start": 0.281,
+      "end": 1.448,
+      "original": "Um, this is my dad,",
+      "translation": "えっと、こちらが父の"
+    },
+    {
+      "start": 1.448,
+      "end": 2.011,
+      "original": "William.",
+      "translation": "ウィリアム"
+    },
+    {
+      "start": 2.453,
+      "end": 2.895,
+      "original": "Dad,",
+      "translation": "父さん"
+    },
+    {
+      "start": 3.378,
+      "end": 3.981,
+      "original": "this is...",
+      "translation": "こちらは…"
+    },
+    {
+      "start": 4.343,
+      "end": 5.107,
+      "original": "Adaline.",
+      "translation": "アデライン"
+    },
+    {
+      "start": 6.595,
+      "end": 8.002,
+      "original": "Jenny, actually.",
+      "translation": "いえ、ジェニーです"
+    },
+    {
+      "start": 9.973,
+      "end": 11.702,
+      "original": "Dad, you okay?",
+      "translation": "父さん、大丈夫？"
+    },
+    {
+      "start": 14.557,
+      "end": 15.844,
+      "original": "I'm sorry, it's just...",
+      "translation": "すまない、ただ…"
+    },
+    {
+      "start": 16.889,
+      "end": 18.457,
+      "original": "you look exactly",
+      "translation": "君が本当に"
+    },
+    {
+      "start": 18.457,
+      "end": 20.307,
+      "original": "like this old friend of mine that I...",
+      "translation": "昔の友人にそっくりでね…"
+    },
+    {
+      "start": 20.951,
+      "end": 22.117,
+      "original": "Adaline Bowman.",
+      "translation": "アデライン・ボウマン"
+    },
+    {
+      "start": 24.932,
+      "end": 25.776,
+      "original": "That's my mother.",
+      "translation": "それ、母の名前です"
+    },
+    {
+      "start": 26.58,
+      "end": 27.666,
+      "original": "How she doin'?",
+      "translation": "彼女は元気かい？"
+    },
+    {
+      "start": 30.521,
+      "end": 31.687,
+      "original": "She passed away.",
+      "translation": "亡くなりました"
+    },
+    {
+      "start": 32.974,
+      "end": 34.14,
+      "original": "Six years ago.",
+      "translation": "6年前に"
+    }
+  ],
+  "videoSrc": "source.mp4",
+  "durationInFrames": 1360,
+  "captionYOffset": 290
+}
